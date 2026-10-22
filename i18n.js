@@ -14,6 +14,8 @@
         'footer.legal': 'Legal',
         'footer.rights': 'All rights reserved.',
 
+        'category.home': 'Home',
+        'category.mobile': 'Mobile',
         'category.android': 'Android',
         'category.ios': 'iOS',
         'category.desktop': 'Desktop',
@@ -22,6 +24,7 @@
         'category.streaming_devices': 'Streaming Devices',
         'category.set_top_boxes': 'Set-top Boxes',
 
+        'device.website': 'Website',
         'device.android_phones': 'Android Phones',
         'device.android_tablets': 'Android Tablets',
         'device.iphone': 'iPhone',
@@ -101,6 +104,8 @@
         'footer.legal': 'EBY\'AMATEEKA',
         'footer.rights': 'Eby\'obugagga byonna ebibikiddwa.',
 
+        'category.home': 'Awaka',
+        'category.mobile': 'Amasimu',
         'category.android': 'Android',
         'category.ios': 'iOS',
         'category.desktop': 'Kompyuta y\'omumeesa',
@@ -109,6 +114,7 @@
         'category.streaming_devices': 'Ebyuma by\'Okwolesa',
         'category.set_top_boxes': 'Bbokisi z\'eTivvi',
 
+        'device.website': 'Omukutu',
         'device.android_phones': 'Amasimu ga Android',
         'device.android_tablets': 'Ttabulete za Android',
         'device.iphone': 'iPhone',
@@ -188,6 +194,8 @@
         'footer.legal': 'EBY\'AMATEEKA',
         'footer.rights': 'Eby\'obutaka byona ebibiikilwe.',
 
+        'category.home': 'Eka',
+        'category.mobile': 'Emasimu',
         'category.android': 'Android',
         'category.ios': 'iOS',
         'category.desktop': 'Kompyuta y\'Olukoba',
@@ -196,6 +204,7 @@
         'category.streaming_devices': 'Ebyuma by\'Okusakira',
         'category.set_top_boxes': 'Emboxi sya Tivvi',
 
+        'device.website': 'Omukutu',
         'device.android_phones': 'Emasimu g\'Android',
         'device.android_tablets': 'Amatablet g\'Android',
         'device.iphone': 'iPhone',
@@ -275,6 +284,8 @@
         'footer.legal': 'Kisheria',
         'footer.rights': 'Haki zote zimehifadhiwa.',
 
+        'category.home': 'Mwanzo',
+        'category.mobile': 'Simu za Mkononi',
         'category.android': 'Android',
         'category.ios': 'iOS',
         'category.desktop': 'Karakana / Kompyuta',
@@ -283,6 +294,7 @@
         'category.streaming_devices': 'Vifaa vya Kutiririsha',
         'category.set_top_boxes': 'Dekoda za TV',
 
+        'device.website': 'Tovuti',
         'device.android_phones': 'Simu za Android',
         'device.android_tablets': 'Tableti za Android',
         'device.iphone': 'iPhone',
@@ -362,6 +374,8 @@
         'footer.legal': 'Mentions légales',
         'footer.rights': 'Tous droits réservés.',
 
+        'category.home': 'Accueil',
+        'category.mobile': 'Mobile',
         'category.android': 'Android',
         'category.ios': 'iOS',
         'category.desktop': 'Ordinateur',
@@ -370,6 +384,7 @@
         'category.streaming_devices': 'Passerelles Multimédias',
         'category.set_top_boxes': 'Décodeurs TV',
 
+        'device.website': 'Site web',
         'device.android_phones': 'Téléphones Android',
         'device.android_tablets': 'Tablettes Android',
         'device.iphone': 'iPhone',
@@ -449,6 +464,8 @@
         'footer.legal': 'قانوني',
         'footer.rights': 'جميع الحقوق محفوظة.',
 
+        'category.home': 'الرئيسية',
+        'category.mobile': 'الهاتف المحمول',
         'category.android': 'أندرويد',
         'category.ios': 'آي أو إس',
         'category.desktop': 'أجهزة الكمبيوتر',
@@ -457,6 +474,7 @@
         'category.streaming_devices': 'أجهزة البث',
         'category.set_top_boxes': 'أجهزة الاستقبال',
 
+        'device.website': 'الموقع الإلكتروني',
         'device.android_phones': 'هواتف أندرويد',
         'device.android_tablets': 'أجهزة أندرويد اللوحية',
         'device.iphone': 'آيفون',
@@ -536,6 +554,8 @@
         'footer.legal': 'Jurídico',
         'footer.rights': 'Todos os direitos reservados.',
 
+        'category.home': 'Início',
+        'category.mobile': 'Móvel',
         'category.android': 'Android',
         'category.ios': 'iOS',
         'category.desktop': 'Computadores',
@@ -544,6 +564,7 @@
         'category.streaming_devices': 'Dispositivos de Streaming',
         'category.set_top_boxes': 'Receptores de TV',
 
+        'device.website': 'Website',
         'device.android_phones': 'Celulares Android',
         'device.android_tablets': 'Tablets Android',
         'device.iphone': 'iPhone',
@@ -623,6 +644,8 @@
         'footer.legal': 'Legal',
         'footer.rights': 'Todos los derechos reservados.',
 
+        'category.home': 'Inicio',
+        'category.mobile': 'Móvil',
         'category.android': 'Android',
         'category.ios': 'iOS',
         'category.desktop': 'Escritorio',
@@ -631,6 +654,7 @@
         'category.streaming_devices': 'Dispositivos de Streaming',
         'category.set_top_boxes': 'Decodificadores de TV',
 
+        'device.website': 'Sitio web',
         'device.android_phones': 'Teléfonos Android',
         'device.android_tablets': 'Tabletas Android',
         'device.iphone': 'iPhone',
@@ -710,14 +734,17 @@
         'footer.legal': 'कानूनी',
         'footer.rights': 'सर्वाधिकार सुरक्षित।',
 
+        'category.home': 'होम',
+        'category.mobile': 'मोबाइल',
         'category.android': 'एंड्रॉइड',
         'category.ios': 'आईओएस',
         'category.desktop': 'डेस्कटॉप',
         'category.smart_tv': 'स्मार्ट टीवी',
         'category.gaming_consoles': 'गेमिंग कंसोल',
-        'category.streaming_devices': 'स्ट्रीमिंग डिवाइस',
+        'category.streaming_devices': 'स्ट्रीमing डिवाइस',
         'category.set_top_boxes': 'सेट-टॉप बॉक्स',
 
+        'device.website': 'वेबसाइट',
         'device.android_phones': 'एंड्रॉइड फोन',
         'device.android_tablets': 'एंड्रॉइड टैबलेट',
         'device.iphone': 'आईफोन',
