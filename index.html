@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#111318">
   <title>sanyuhub — Device Menu</title>
   <style>
@@ -13,119 +13,652 @@
       --hover: #292b35;
       --line: #30323a;
       --text: #f5f5f7;
-      --muted: #c8cad3;
+      --muted: #a4a9b4;
     }
     * { box-sizing: border-box; }
-    html, body { margin: 0; min-height: 100%; font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; background: #0d0e12; color: var(--text); }
-    button { font: inherit; }
-    .app { width: min(100%, 440px); min-height: 100vh; margin: 0 auto; background: var(--sidebar); box-shadow: 0 0 40px #0005; }
-    .header { height: 68px; display: flex; align-items: center; gap: 12px; padding: 0 16px; background: var(--header); border-bottom: 1px solid var(--line); }
-    .logo { width: 40px; height: 40px; display: grid; place-items: center; border-radius: 10px; background: var(--hover); color: white; font-size: 21px; font-weight: 800; }
-    .brand { font-size: 20px; font-weight: 750; letter-spacing: -.5px; }
-    .menu-toggle { margin-left: auto; width: 42px; height: 42px; display: grid; place-items: center; border: 0; border-radius: 9px; background: transparent; color: white; cursor: pointer; }
-    .menu-toggle:hover, .menu-toggle:focus-visible { background: var(--hover); outline: none; }
-    .menu-toggle svg { width: 23px; height: 23px; }
-    .sidebar { padding: 10px 8px 20px; background: var(--sidebar); }
-    .category { border-radius: 9px; overflow: hidden; }
-    .category-button { width: 100%; min-height: 48px; display: flex; align-items: center; gap: 13px; padding: 10px 12px; border: 0; border-radius: 9px; color: var(--text); background: transparent; text-align: left; cursor: pointer; }
-    .category-button:hover, .category-button:focus-visible { background: var(--hover); outline: none; }
-    .category-icon { width: 22px; height: 22px; flex: 0 0 22px; display: grid; place-items: center; color: #e7e7eb; }
-    .category-icon svg { width: 21px; height: 21px; stroke: currentColor; fill: none; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
-    .category-name { flex: 1; font-size: 15px; font-weight: 520; }
-    .toggle-symbol { width: 24px; height: 24px; display: grid; place-items: center; font-size: 23px; line-height: 1; font-weight: 350; }
-    .devices { display: none; padding: 0 12px 8px 47px; }
-    .category.open .devices { display: block; animation: reveal .16s ease-out; }
-    .device { display: flex; align-items: center; width: 100%; min-height: 40px; padding: 8px 0 8px 12px; border: 0; border-left: 1px solid #555864; background: transparent; color: var(--muted); text-align: left; font-size: 14px; cursor: pointer; }
-    .device:hover, .device:focus-visible { color: white; background: #ffffff08; outline: none; }
-    .device.selected { color: white; }
-    .workspace { padding: 24px 16px; border-top: 1px solid var(--line); background: #111318; min-height: 200px; }
-    .workspace h2 { margin: 0 0 8px; font-size: 18px; }
-    .workspace p { margin: 0; color: #a1a4b0; font-size: 14px; line-height: 1.5; }
-    .status { margin-top: 18px; padding: 12px; border: 1px solid #30323a; border-radius: 10px; color: #c8cad3; font-size: 13px; }
-    @keyframes reveal { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: translateY(0); } }
-    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; } }
+    html, body {
+      margin: 0;
+      padding: 0;
+      min-height: 100%;
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: #0d0e12;
+      color: var(--text);
+    }
+    button, select, a { font: inherit; }
+
+    .app {
+      width: 100%;
+      max-width: 480px;
+      min-height: 100vh;
+      margin: 0 auto;
+      background: var(--sidebar);
+      box-shadow: 0 0 40px rgba(0,0,0,0.5);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    /* Header */
+    .header {
+      height: 68px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 0 16px;
+      background: var(--header);
+      border-bottom: 1px solid var(--line);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .brand-link {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: inherit;
+    }
+    .logo {
+      width: 40px;
+      height: 40px;
+      display: grid;
+      place-items: center;
+      border-radius: 10px;
+      background: var(--hover);
+      color: white;
+      font-size: 21px;
+      font-weight: 800;
+    }
+    .brand {
+      font-size: 20px;
+      font-weight: 750;
+      letter-spacing: -.5px;
+    }
+    .menu-toggle {
+      margin-left: auto;
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      border: 0;
+      border-radius: 9px;
+      background: transparent;
+      color: white;
+      cursor: pointer;
+      transition: background 0.2s ease;
+    }
+    .menu-toggle:hover, .menu-toggle:focus-visible {
+      background: var(--hover);
+      outline: none;
+    }
+    .menu-toggle svg {
+      width: 23px;
+      height: 23px;
+    }
+
+    /* Sidebar Backdrop Overlay */
+    .backdrop {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(2px);
+      z-index: 80;
+    }
+    .backdrop.active {
+      display: block;
+    }
+
+    /* Sidebar Navigation */
+    .sidebar {
+      display: none;
+      padding: 10px 8px 20px;
+      background: var(--sidebar);
+      border-bottom: 1px solid var(--line);
+      z-index: 90;
+    }
+    .sidebar.open {
+      display: block;
+      animation: reveal .16s ease-out;
+    }
+    .category {
+      border-radius: 9px;
+      overflow: hidden;
+      margin-bottom: 2px;
+    }
+    .category-button {
+      width: 100%;
+      min-height: 48px;
+      display: flex;
+      align-items: center;
+      gap: 13px;
+      padding: 10px 12px;
+      border: 0;
+      border-radius: 9px;
+      color: var(--text);
+      background: transparent;
+      text-align: left;
+      cursor: pointer;
+      transition: background 0.15s ease;
+    }
+    .category-button:hover, .category-button:focus-visible {
+      background: var(--hover);
+      outline: none;
+    }
+    .category-icon {
+      width: 22px;
+      height: 22px;
+      flex: 0 0 22px;
+      display: grid;
+      place-items: center;
+      color: #e7e7eb;
+    }
+    .category-icon svg {
+      width: 21px;
+      height: 21px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 1.7;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .category-name {
+      flex: 1;
+      font-size: 15px;
+      font-weight: 520;
+    }
+    .toggle-symbol {
+      width: 24px;
+      height: 24px;
+      display: grid;
+      place-items: center;
+      font-size: 23px;
+      line-height: 1;
+      font-weight: 350;
+    }
+    .devices {
+      display: none;
+      padding: 0 12px 8px 47px;
+    }
+    .category.open .devices {
+      display: block;
+      animation: reveal .16s ease-out;
+    }
+    .device {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      min-height: 40px;
+      padding: 8px 0 8px 12px;
+      border: 0;
+      border-left: 1px solid #555864;
+      background: transparent;
+      color: var(--muted);
+      text-align: left;
+      font-size: 14px;
+      cursor: pointer;
+      transition: color 0.15s ease, background 0.15s ease;
+      text-decoration: none;
+    }
+    .device:hover, .device:focus-visible {
+      color: white;
+      background: rgba(255, 255, 255, 0.04);
+      outline: none;
+    }
+    .device.selected {
+      color: white;
+      font-weight: 600;
+      border-left-color: #ffffff;
+    }
+
+    /* Main Workspace / Content Area */
+    .workspace {
+      flex: 1;
+      padding: 32px 20px;
+      background: #111318;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      min-height: 280px;
+    }
+    .page-title {
+      margin: 0 0 16px;
+      font-size: 22px;
+      font-weight: 700;
+      text-align: center;
+      color: #ffffff;
+      width: 100%;
+    }
+
+    /* Empty State Component */
+    .empty-state {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 36px 16px;
+      text-align: center;
+      width: 100%;
+    }
+    .empty-icon {
+      width: 48px;
+      height: 48px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: #252a34;
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+    .empty-icon svg {
+      width: 24px;
+      height: 24px;
+    }
+    .empty-text {
+      margin: 0;
+      color: var(--muted);
+      font-size: 15px;
+      font-weight: 400;
+      line-height: 1.4;
+    }
+
+    /* Footer Component */
+    .footer {
+      width: 100%;
+      padding: 28px 20px 20px;
+      background: #111318;
+      color: #fff;
+      border-top: 1px solid var(--line);
+    }
+    .footer .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 22px;
+    }
+    .footer .logo {
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      border-radius: 10px;
+      background: #252a34;
+      font-size: 26px;
+      font-weight: 700;
+    }
+    .brand-name {
+      margin: 0 0 4px;
+      font-size: 21px;
+      font-weight: 700;
+    }
+    .tagline {
+      margin: 0;
+      color: #a4a9b4;
+      font-size: 13px;
+    }
+    .divider {
+      height: 1px;
+      margin: 20px 0;
+      background: #343944;
+    }
+    .selectors {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .selector-label {
+      display: block;
+      margin-bottom: 10px;
+      color: #a4a9b4;
+      font-size: 10px;
+      letter-spacing: .6px;
+    }
+    .selector {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      min-width: 0;
+    }
+    .selector-icon {
+      width: 19px;
+      height: 19px;
+      flex-shrink: 0;
+      color: #a4a9b4;
+    }
+    .selector select {
+      width: 100%;
+      min-width: 0;
+      padding: 2px 0;
+      border: none;
+      outline: none;
+      appearance: none;
+      background: transparent;
+      color: #fff;
+      font-size: 14px;
+      cursor: pointer;
+    }
+    .selector select option {
+      background: #111318;
+      color: #fff;
+    }
+    .chevron {
+      width: 14px;
+      height: 14px;
+      flex-shrink: 0;
+      color: #a4a9b4;
+      pointer-events: none;
+    }
+    .footer-links {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px 12px;
+    }
+    .footer-links a {
+      color: #a4a9b4;
+      font-size: 13px;
+      text-decoration: none;
+      transition: color .2s ease;
+      cursor: pointer;
+    }
+    .footer-links a:hover, .footer-links a:focus-visible {
+      color: #fff;
+      outline: none;
+    }
+    .copyright {
+      margin: 0;
+      color: #a4a9b4;
+      font-size: 11px;
+      line-height: 1.6;
+      text-align: center;
+    }
+
+    @keyframes reveal {
+      from { opacity: 0; transform: translateY(-4px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+    }
+    @media (max-width: 350px) {
+      .footer { padding: 20px 14px 16px; }
+      .selectors { gap: 10px; }
+      .selector select { font-size: 12px; }
+    }
   </style>
 </head>
 <body>
   <main class="app">
+    <!-- Header -->
     <header class="header">
-      <div class="logo" aria-hidden="true">S</div>
-      <div class="brand">sanyuhub</div>
-      <button class="menu-toggle" id="menuToggle" aria-label="Toggle sidebar" aria-expanded="true" aria-controls="sidebar">
+      <a href="/" class="brand-link" id="homeBrandLink" aria-label="sanyuhub homepage">
+        <div class="logo" aria-hidden="true">S</div>
+        <div class="brand">sanyuhub</div>
+      </a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle sidebar" aria-expanded="false" aria-controls="sidebar">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
       </button>
     </header>
 
+    <!-- Sidebar Backdrop Overlay -->
+    <div class="backdrop" id="backdrop" aria-hidden="true"></div>
+
+    <!-- Sidebar Navigation -->
     <nav class="sidebar" id="sidebar" aria-label="Devices">
       <section class="category" data-category="Android">
         <button class="category-button" aria-expanded="false">
           <span class="category-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 7h6M10 17h4"/></svg></span>
           <span class="category-name">Android</span><span class="toggle-symbol" aria-hidden="true">+</span>
         </button>
-        <div class="devices"><button class="device">Android Phones</button><button class="device">Android Tablets</button></div>
+        <div class="devices">
+          <a class="device" href="/devices/android-phones" data-route="/devices/android-phones">Android Phones</a>
+          <a class="device" href="/devices/android-tablets" data-route="/devices/android-tablets">Android Tablets</a>
+        </div>
       </section>
+
       <section class="category" data-category="iOS">
         <button class="category-button" aria-expanded="false">
           <span class="category-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="3"/><path d="M10 17h4"/></svg></span>
           <span class="category-name">iOS</span><span class="toggle-symbol" aria-hidden="true">+</span>
         </button>
-        <div class="devices"><button class="device">iPhone</button><button class="device">iPad</button></div>
+        <div class="devices">
+          <a class="device" href="/devices/iphone" data-route="/devices/iphone">iPhone</a>
+          <a class="device" href="/devices/ipad" data-route="/devices/ipad">iPad</a>
+        </div>
       </section>
+
       <section class="category" data-category="Desktop">
         <button class="category-button" aria-expanded="false">
           <span class="category-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="13" rx="1.5"/><path d="M8 21h8M12 17v4"/></svg></span>
           <span class="category-name">Desktop</span><span class="toggle-symbol" aria-hidden="true">+</span>
         </button>
-        <div class="devices"><button class="device">Windows</button><button class="device">macOS</button><button class="device">Linux</button><button class="device">Chromebook</button></div>
+        <div class="devices">
+          <a class="device" href="/devices/windows" data-route="/devices/windows">Windows</a>
+          <a class="device" href="/devices/macos" data-route="/devices/macos">macOS</a>
+          <a class="device" href="/devices/linux" data-route="/devices/linux">Linux</a>
+          <a class="device" href="/devices/chromebook" data-route="/devices/chromebook">Chromebook</a>
+        </div>
       </section>
+
       <section class="category" data-category="Smart TV">
         <button class="category-button" aria-expanded="false">
           <span class="category-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="13" rx="1.5"/><path d="m8 2 4 3 4-3M9 21h6"/></svg></span>
           <span class="category-name">Smart TV</span><span class="toggle-symbol" aria-hidden="true">+</span>
         </button>
-        <div class="devices"><button class="device">Samsung Smart TV</button><button class="device">LG Smart TV</button><button class="device">Android TV</button><button class="device">Google TV</button><button class="device">Hisense Smart TV</button></div>
+        <div class="devices">
+          <a class="device" href="/devices/samsung-smart-tv" data-route="/devices/samsung-smart-tv">Samsung Smart TV</a>
+          <a class="device" href="/devices/lg-smart-tv" data-route="/devices/lg-smart-tv">LG Smart TV</a>
+          <a class="device" href="/devices/android-tv" data-route="/devices/android-tv">Android TV</a>
+          <a class="device" href="/devices/google-tv" data-route="/devices/google-tv">Google TV</a>
+          <a class="device" href="/devices/hisense-smart-tv" data-route="/devices/hisense-smart-tv">Hisense Smart TV</a>
+        </div>
       </section>
+
       <section class="category" data-category="Gaming Consoles">
         <button class="category-button" aria-expanded="false">
           <span class="category-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 9h12a4 4 0 0 1 3.8 5l-1 3a2 2 0 0 1-3.2 1l-3-2H9l-3 2a2 2 0 0 1-3.2-1l-1-3A4 4 0 0 1 6 9Z"/><path d="M7 11v4M5 13h4M16 12h.01M19 14h.01"/></svg></span>
           <span class="category-name">Gaming Consoles</span><span class="toggle-symbol" aria-hidden="true">+</span>
         </button>
-        <div class="devices"><button class="device">PlayStation</button><button class="device">Xbox</button></div>
+        <div class="devices">
+          <a class="device" href="/devices/playstation" data-route="/devices/playstation">PlayStation</a>
+          <a class="device" href="/devices/xbox" data-route="/devices/xbox">Xbox</a>
+        </div>
       </section>
+
       <section class="category" data-category="Streaming Devices">
         <button class="category-button" aria-expanded="false">
           <span class="category-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 8a12 12 0 0 1 16 0M7 11a8 8 0 0 1 10 0M10 14a4 4 0 0 1 4 0M12 18h.01"/></svg></span>
           <span class="category-name">Streaming Devices</span><span class="toggle-symbol" aria-hidden="true">+</span>
         </button>
-        <div class="devices"><button class="device">Apple TV</button><button class="device">Amazon Fire TV</button><button class="device">Chromecast</button><button class="device">Roku</button></div>
+        <div class="devices">
+          <a class="device" href="/devices/apple-tv" data-route="/devices/apple-tv">Apple TV</a>
+          <a class="device" href="/devices/amazon-fire-tv" data-route="/devices/amazon-fire-tv">Amazon Fire TV</a>
+          <a class="device" href="/devices/chromecast" data-route="/devices/chromecast">Chromecast</a>
+          <a class="device" href="/devices/roku" data-route="/devices/roku">Roku</a>
+        </div>
       </section>
+
       <section class="category" data-category="Set-top Boxes">
         <button class="category-button" aria-expanded="false">
           <span class="category-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="11" rx="2"/><path d="M7 12h.01M11 12h.01M15 12h.01M19 12h.01"/></svg></span>
           <span class="category-name">Set-top Boxes</span><span class="toggle-symbol" aria-hidden="true">+</span>
         </button>
-        <div class="devices"><button class="device">Android TV Boxes</button><button class="device">Compatible Cable Boxes</button></div>
+        <div class="devices">
+          <a class="device" href="/devices/android-tv-boxes" data-route="/devices/android-tv-boxes">Android TV Boxes</a>
+          <a class="device" href="/devices/compatible-cable-boxes" data-route="/devices/compatible-cable-boxes">Compatible Cable Boxes</a>
+        </div>
       </section>
     </nav>
 
-    <section class="workspace" aria-live="polite">
-      <h2 id="workspaceTitle">sanyuhub</h2>
-      <p id="workspaceText">Choose a device from the menu.</p>
-      <div class="status" id="workspaceStatus">Selected device: None</div>
+    <!-- Workspace Area -->
+    <section class="workspace" id="workspace" aria-live="polite">
+      <h2 class="page-title" id="pageTitle">sanyuhub</h2>
+      <div class="empty-state" id="emptyState">
+        <div class="empty-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
+            <line x1="9" y1="14" x2="15" y2="14"></line>
+          </svg>
+        </div>
+        <p class="empty-text">Oops, nothing here</p>
+      </div>
     </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="brand">
+        <div class="logo" aria-hidden="true">S</div>
+        <div>
+          <h2 class="brand-name">sanyuhub</h2>
+          <p class="tagline">Your world, connected.</p>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <!-- Selectors -->
+      <div class="selectors">
+        <div>
+          <label class="selector-label" for="country">COUNTRY / REGION</label>
+          <div class="selector">
+            <svg class="selector-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+              <circle cx="12" cy="12" r="10"/>
+              <path d="M2 12h20"/>
+              <path d="M12 2a15 15 0 0 1 0 20"/>
+              <path d="M12 2a15 15 0 0 0 0 20"/>
+            </svg>
+            <select id="country" aria-label="Country or region">
+              <option value="UG">Uganda</option>
+              <option value="KE">Kenya</option>
+              <option value="TZ">Tanzania</option>
+              <option value="RW">Rwanda</option>
+              <option value="NG">Nigeria</option>
+              <option value="ZA">South Africa</option>
+              <option value="US">United States</option>
+              <option value="GB">United Kingdom</option>
+              <option value="IN">India</option>
+              <option value="OTHER">Other</option>
+            </select>
+            <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="m6 9 6 6 6-6"/>
+            </svg>
+          </div>
+        </div>
+
+        <div>
+          <label class="selector-label" for="language">LANGUAGE</label>
+          <div class="selector">
+            <svg class="selector-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+              <path d="m5 8 6 6"/>
+              <path d="m4 14 6-6 2-3"/>
+              <path d="M2 5h12"/>
+              <path d="M7 2h1"/>
+              <path d="m14 22 5-11 5 11"/>
+              <path d="M16 18h6"/>
+            </svg>
+            <select id="language" aria-label="Language">
+              <option value="en">English</option>
+              <option value="sw">Swahili</option>
+              <option value="fr">French</option>
+              <option value="ar">Arabic</option>
+              <option value="pt">Portuguese</option>
+              <option value="es">Spanish</option>
+              <option value="hi">Hindi</option>
+            </select>
+            <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="m6 9 6 6 6-6"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <!-- Footer navigation -->
+      <nav class="footer-links" aria-label="Footer navigation">
+        <a href="/about" data-route="/about">About sanyuhub</a>
+        <a href="/help" data-route="/help">Help &amp; Support</a>
+        <a href="/privacy" data-route="/privacy">Privacy Policy</a>
+        <a href="/terms" data-route="/terms">Terms of Use</a>
+      </nav>
+
+      <div class="divider"></div>
+
+      <!-- Copyright -->
+      <p class="copyright">
+        © <span id="year">2026</span> sanyuhub. All rights reserved.
+      </p>
+    </footer>
   </main>
 
   <script>
+    // Route Definitions
+    const ROUTES = {
+      '/': { title: 'sanyuhub' },
+      '/devices/android-phones': { title: 'Android Phones' },
+      '/devices/android-tablets': { title: 'Android Tablets' },
+      '/devices/iphone': { title: 'iPhone' },
+      '/devices/ipad': { title: 'iPad' },
+      '/devices/windows': { title: 'Windows' },
+      '/devices/macos': { title: 'macOS' },
+      '/devices/linux': { title: 'Linux' },
+      '/devices/chromebook': { title: 'Chromebook' },
+      '/devices/samsung-smart-tv': { title: 'Samsung Smart TV' },
+      '/devices/lg-smart-tv': { title: 'LG Smart TV' },
+      '/devices/android-tv': { title: 'Android TV' },
+      '/devices/google-tv': { title: 'Google TV' },
+      '/devices/hisense-smart-tv': { title: 'Hisense Smart TV' },
+      '/devices/playstation': { title: 'PlayStation' },
+      '/devices/xbox': { title: 'Xbox' },
+      '/devices/apple-tv': { title: 'Apple TV' },
+      '/devices/amazon-fire-tv': { title: 'Amazon Fire TV' },
+      '/devices/chromecast': { title: 'Chromecast' },
+      '/devices/roku': { title: 'Roku' },
+      '/devices/android-tv-boxes': { title: 'Android TV Boxes' },
+      '/devices/compatible-cable-boxes': { title: 'Compatible Cable Boxes' },
+      '/about': { title: 'About sanyuhub' },
+      '/help': { title: 'Help & Support' },
+      '/privacy': { title: 'Privacy Policy' },
+      '/terms': { title: 'Terms of Use' }
+    };
+
     const menuToggle = document.getElementById('menuToggle');
     const sidebar = document.getElementById('sidebar');
-    menuToggle.addEventListener('click', () => {
-      const isVisible = !sidebar.hidden;
-      sidebar.hidden = isVisible;
-      menuToggle.setAttribute('aria-expanded', String(!isVisible));
+    const backdrop = document.getElementById('backdrop');
+    const pageTitle = document.getElementById('pageTitle');
+
+    // Close Sidebar Helper
+    function closeSidebar() {
+      sidebar.classList.remove('open');
+      backdrop.classList.remove('active');
+      menuToggle.setAttribute('aria-expanded', 'false');
+    }
+
+    // Toggle Sidebar Helper
+    function toggleSidebar() {
+      const isOpen = sidebar.classList.toggle('open');
+      backdrop.classList.toggle('active', isOpen);
+      menuToggle.setAttribute('aria-expanded', String(isOpen));
+    }
+
+    menuToggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      toggleSidebar();
     });
 
+    backdrop.addEventListener('click', () => {
+      closeSidebar();
+    });
+
+    // Expand/Collapse Categories (+ / −)
     document.querySelectorAll('.category-button').forEach(button => {
-      button.addEventListener('click', () => {
+      button.addEventListener('click', (e) => {
+        e.stopPropagation();
         const category = button.closest('.category');
         const isOpen = category.classList.toggle('open');
         button.setAttribute('aria-expanded', String(isOpen));
@@ -133,16 +666,88 @@
       });
     });
 
-    document.querySelectorAll('.device').forEach(button => {
-      button.addEventListener('click', () => {
-        document.querySelectorAll('.device.selected').forEach(el => el.classList.remove('selected'));
-        button.classList.add('selected');
-        const category = button.closest('.category').dataset.category;
-        document.getElementById('workspaceTitle').textContent = button.textContent;
-        document.getElementById('workspaceText').textContent = 'You selected ' + button.textContent + ' under ' + category + '.';
-        document.getElementById('workspaceStatus').textContent = 'Selected device: ' + button.textContent;
-      });
+    // Render Page Content based on current URL path
+    function renderPage(pathname) {
+      const path = pathname.replace(/\/$/, '') || '/';
+      const routeInfo = ROUTES[path];
+
+      document.querySelectorAll('.device.selected').forEach(el => el.classList.remove('selected'));
+
+      if (routeInfo) {
+        pageTitle.textContent = routeInfo.title;
+        document.title = routeInfo.title + ' — sanyuhub';
+
+        // Highlight selected item in sidebar if matching route
+        const selectedDevice = document.querySelector(`.device[data-route="${path}"]`);
+        if (selectedDevice) {
+          selectedDevice.classList.add('selected');
+        }
+      } else {
+        pageTitle.textContent = 'sanyuhub';
+        document.title = 'sanyuhub';
+      }
+    }
+
+    // Router Navigation
+    function navigateTo(url) {
+      if (window.location.pathname !== url) {
+        window.history.pushState({}, '', url);
+      }
+      renderPage(url);
+      closeSidebar();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Intercept clicks on links with data-route
+    document.addEventListener('click', (e) => {
+      const link = e.target.closest('a[data-route]');
+      if (link) {
+        e.preventDefault();
+        const route = link.getAttribute('data-route');
+        navigateTo(route);
+      }
     });
+
+    // Handle Header Home Link click
+    document.getElementById('homeBrandLink').addEventListener('click', (e) => {
+      e.preventDefault();
+      navigateTo('/');
+    });
+
+    // Popstate Listener for Browser Back/Forward
+    window.addEventListener('popstate', () => {
+      renderPage(window.location.pathname);
+      closeSidebar();
+    });
+
+    // Footer Script Functionality
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    const countrySelect = document.getElementById("country");
+    const languageSelect = document.getElementById("language");
+
+    try {
+      const savedCountry = localStorage.getItem("sanyuhub-country");
+      const savedLanguage = localStorage.getItem("sanyuhub-language");
+
+      if (savedCountry && [...countrySelect.options].some(o => o.value === savedCountry)) {
+        countrySelect.value = savedCountry;
+      }
+      if (savedLanguage && [...languageSelect.options].some(o => o.value === savedLanguage)) {
+        languageSelect.value = savedLanguage;
+      }
+    } catch (error) {}
+
+    countrySelect.addEventListener("change", () => {
+      try { localStorage.setItem("sanyuhub-country", countrySelect.value); } catch (error) {}
+    });
+
+    languageSelect.addEventListener("change", () => {
+      try { localStorage.setItem("sanyuhub-language", languageSelect.value); } catch (error) {}
+    });
+
+    // Initial Page Render
+    renderPage(window.location.pathname);
   </script>
 </body>
 </html>
