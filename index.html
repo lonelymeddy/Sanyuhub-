@@ -143,6 +143,10 @@
       padding: 10px 8px 20px;
       background: var(--sidebar);
       border-bottom: 1px solid var(--line);
+      position: sticky;
+      top: 68px;
+      max-height: calc(100vh - 68px);
+      overflow-y: auto;
       z-index: 90;
     }
     .sidebar.open {
