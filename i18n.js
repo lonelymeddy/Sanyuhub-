@@ -176,9 +176,9 @@
       }
     },
 
-    lud: {
+    lus: {
       dir: 'ltr',
-      name: 'Ludoga',
+      name: 'Lusoga',
       translations: {
         'brand.tagline': 'Eisialo lyo, ligaitibwa.',
         'selector.country': 'EILEI / EKITUNDU',
