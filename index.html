@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#111318">
   <title>sanyuhub — Device Menu</title>
+  <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
   <style>
     :root {
       color-scheme: dark;
@@ -61,13 +63,8 @@
     .logo {
       width: 40px;
       height: 40px;
-      display: grid;
-      place-items: center;
-      border-radius: 10px;
-      background: var(--hover);
-      color: white;
-      font-size: 21px;
-      font-weight: 800;
+      object-fit: contain;
+      flex-shrink: 0;
     }
     .brand {
       font-size: 20px;
@@ -283,14 +280,8 @@
     .footer .logo {
       width: 44px;
       height: 44px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      object-fit: contain;
       flex-shrink: 0;
-      border-radius: 10px;
-      background: #252a34;
-      font-size: 26px;
-      font-weight: 700;
     }
     .brand-name {
       margin: 0 0 4px;
@@ -397,7 +388,7 @@
     <!-- Header -->
     <header class="header">
       <a href="/" class="brand-link" id="homeBrandLink" aria-label="sanyuhub homepage">
-        <div class="logo" aria-hidden="true">S</div>
+        <img class="logo" src="/assets/sanyuhub-logo.png" alt="sanyuhub logo" width="40" height="40">
         <div class="brand">sanyuhub</div>
       </a>
       <button class="menu-toggle" id="menuToggle" aria-label="Toggle sidebar" aria-expanded="false" aria-controls="sidebar">
@@ -512,7 +503,7 @@
     <!-- Footer -->
     <footer class="footer">
       <div class="brand">
-        <div class="logo" aria-hidden="true">S</div>
+        <img class="logo" src="/assets/sanyuhub-logo.png" alt="sanyuhub logo" width="44" height="44">
         <div>
           <h2 class="brand-name">sanyuhub</h2>
           <p class="tagline">Your world, connected.</p>
