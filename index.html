@@ -7,6 +7,7 @@
   <title>sanyuhub — Device Menu</title>
   <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
   <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+  <script src="/i18n.js"></script>
   <style>
     :root {
       color-scheme: dark;
@@ -38,6 +39,33 @@
       display: flex;
       flex-direction: column;
       position: relative;
+    }
+
+    /* RTL Support */
+    [dir="rtl"] {
+      text-align: right;
+    }
+    [dir="rtl"] .category-button {
+      text-align: right;
+    }
+    [dir="rtl"] .devices {
+      padding: 0 47px 8px 12px;
+    }
+    [dir="rtl"] .device {
+      border-left: none;
+      border-right: 1px solid #555864;
+      padding: 8px 12px 8px 0;
+      text-align: right;
+    }
+    [dir="rtl"] .device.selected {
+      border-right-color: #ffffff;
+    }
+    [dir="rtl"] .menu-toggle {
+      margin-left: 0;
+      margin-right: auto;
+    }
+    [dir="rtl"] .copyright {
+      text-align: center;
     }
 
     /* Header */
@@ -403,11 +431,11 @@
   <main class="app">
     <!-- Header -->
     <header class="header">
-      <a href="/" class="brand-link" id="homeBrandLink" aria-label="sanyuhub homepage">
+      <a href="/" class="brand-link" id="homeBrandLink" data-i18n-attr="aria-label:aria.homepage" aria-label="sanyuhub homepage">
         <img class="logo" src="/assets/sanyuhub-logo.png" alt="sanyuhub logo" width="40" height="40">
         <div class="brand">sanyuhub</div>
       </a>
-      <button class="menu-toggle" id="menuToggle" aria-label="Toggle sidebar" aria-expanded="false" aria-controls="sidebar">
+      <button class="menu-toggle" id="menuToggle" data-i18n-attr="aria-label:aria.menu_toggle" aria-label="Toggle sidebar" aria-expanded="false" aria-controls="sidebar">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
       </button>
     </header>
@@ -416,88 +444,88 @@
     <div class="backdrop" id="backdrop" aria-hidden="true"></div>
 
     <!-- Sidebar Navigation -->
-    <nav class="sidebar" id="sidebar" aria-label="Devices">
+    <nav class="sidebar" id="sidebar" data-i18n-attr="aria-label:aria.sidebar" aria-label="Devices">
       <section class="category" data-category="Android">
         <button class="category-button" aria-expanded="false">
           <span class="category-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 7h6M10 17h4"/></svg></span>
-          <span class="category-name">Android</span><span class="toggle-symbol" aria-hidden="true">+</span>
+          <span class="category-name" data-i18n="category.android">Android</span><span class="toggle-symbol" aria-hidden="true">+</span>
         </button>
         <div class="devices">
-          <a class="device" href="/devices/android-phones" data-route="/devices/android-phones">Android Phones</a>
-          <a class="device" href="/devices/android-tablets" data-route="/devices/android-tablets">Android Tablets</a>
+          <a class="device" href="/devices/android-phones" data-route="/devices/android-phones" data-i18n="device.android_phones">Android Phones</a>
+          <a class="device" href="/devices/android-tablets" data-route="/devices/android-tablets" data-i18n="device.android_tablets">Android Tablets</a>
         </div>
       </section>
 
       <section class="category" data-category="iOS">
         <button class="category-button" aria-expanded="false">
           <span class="category-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="3"/><path d="M10 17h4"/></svg></span>
-          <span class="category-name">iOS</span><span class="toggle-symbol" aria-hidden="true">+</span>
+          <span class="category-name" data-i18n="category.ios">iOS</span><span class="toggle-symbol" aria-hidden="true">+</span>
         </button>
         <div class="devices">
-          <a class="device" href="/devices/iphone" data-route="/devices/iphone">iPhone</a>
-          <a class="device" href="/devices/ipad" data-route="/devices/ipad">iPad</a>
+          <a class="device" href="/devices/iphone" data-route="/devices/iphone" data-i18n="device.iphone">iPhone</a>
+          <a class="device" href="/devices/ipad" data-route="/devices/ipad" data-i18n="device.ipad">iPad</a>
         </div>
       </section>
 
       <section class="category" data-category="Desktop">
         <button class="category-button" aria-expanded="false">
           <span class="category-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="13" rx="1.5"/><path d="M8 21h8M12 17v4"/></svg></span>
-          <span class="category-name">Desktop</span><span class="toggle-symbol" aria-hidden="true">+</span>
+          <span class="category-name" data-i18n="category.desktop">Desktop</span><span class="toggle-symbol" aria-hidden="true">+</span>
         </button>
         <div class="devices">
-          <a class="device" href="/devices/windows" data-route="/devices/windows">Windows</a>
-          <a class="device" href="/devices/macos" data-route="/devices/macos">macOS</a>
-          <a class="device" href="/devices/linux" data-route="/devices/linux">Linux</a>
-          <a class="device" href="/devices/chromebook" data-route="/devices/chromebook">Chromebook</a>
+          <a class="device" href="/devices/windows" data-route="/devices/windows" data-i18n="device.windows">Windows</a>
+          <a class="device" href="/devices/macos" data-route="/devices/macos" data-i18n="device.macos">macOS</a>
+          <a class="device" href="/devices/linux" data-route="/devices/linux" data-i18n="device.linux">Linux</a>
+          <a class="device" href="/devices/chromebook" data-route="/devices/chromebook" data-i18n="device.chromebook">Chromebook</a>
         </div>
       </section>
 
       <section class="category" data-category="Smart TV">
         <button class="category-button" aria-expanded="false">
           <span class="category-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="13" rx="1.5"/><path d="m8 2 4 3 4-3M9 21h6"/></svg></span>
-          <span class="category-name">Smart TV</span><span class="toggle-symbol" aria-hidden="true">+</span>
+          <span class="category-name" data-i18n="category.smart_tv">Smart TV</span><span class="toggle-symbol" aria-hidden="true">+</span>
         </button>
         <div class="devices">
-          <a class="device" href="/devices/samsung-smart-tv" data-route="/devices/samsung-smart-tv">Samsung Smart TV</a>
-          <a class="device" href="/devices/lg-smart-tv" data-route="/devices/lg-smart-tv">LG Smart TV</a>
-          <a class="device" href="/devices/android-tv" data-route="/devices/android-tv">Android TV</a>
-          <a class="device" href="/devices/google-tv" data-route="/devices/google-tv">Google TV</a>
-          <a class="device" href="/devices/hisense-smart-tv" data-route="/devices/hisense-smart-tv">Hisense Smart TV</a>
+          <a class="device" href="/devices/samsung-smart-tv" data-route="/devices/samsung-smart-tv" data-i18n="device.samsung_smart_tv">Samsung Smart TV</a>
+          <a class="device" href="/devices/lg-smart-tv" data-route="/devices/lg-smart-tv" data-i18n="device.lg_smart_tv">LG Smart TV</a>
+          <a class="device" href="/devices/android-tv" data-route="/devices/android-tv" data-i18n="device.android_tv">Android TV</a>
+          <a class="device" href="/devices/google-tv" data-route="/devices/google-tv" data-i18n="device.google_tv">Google TV</a>
+          <a class="device" href="/devices/hisense-smart-tv" data-route="/devices/hisense-smart-tv" data-i18n="device.hisense_smart_tv">Hisense Smart TV</a>
         </div>
       </section>
 
       <section class="category" data-category="Gaming Consoles">
         <button class="category-button" aria-expanded="false">
           <span class="category-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 9h12a4 4 0 0 1 3.8 5l-1 3a2 2 0 0 1-3.2 1l-3-2H9l-3 2a2 2 0 0 1-3.2-1l-1-3A4 4 0 0 1 6 9Z"/><path d="M7 11v4M5 13h4M16 12h.01M19 14h.01"/></svg></span>
-          <span class="category-name">Gaming Consoles</span><span class="toggle-symbol" aria-hidden="true">+</span>
+          <span class="category-name" data-i18n="category.gaming_consoles">Gaming Consoles</span><span class="toggle-symbol" aria-hidden="true">+</span>
         </button>
         <div class="devices">
-          <a class="device" href="/devices/playstation" data-route="/devices/playstation">PlayStation</a>
-          <a class="device" href="/devices/xbox" data-route="/devices/xbox">Xbox</a>
+          <a class="device" href="/devices/playstation" data-route="/devices/playstation" data-i18n="device.playstation">PlayStation</a>
+          <a class="device" href="/devices/xbox" data-route="/devices/xbox" data-i18n="device.xbox">Xbox</a>
         </div>
       </section>
 
       <section class="category" data-category="Streaming Devices">
         <button class="category-button" aria-expanded="false">
           <span class="category-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 8a12 12 0 0 1 16 0M7 11a8 8 0 0 1 10 0M10 14a4 4 0 0 1 4 0M12 18h.01"/></svg></span>
-          <span class="category-name">Streaming Devices</span><span class="toggle-symbol" aria-hidden="true">+</span>
+          <span class="category-name" data-i18n="category.streaming_devices">Streaming Devices</span><span class="toggle-symbol" aria-hidden="true">+</span>
         </button>
         <div class="devices">
-          <a class="device" href="/devices/apple-tv" data-route="/devices/apple-tv">Apple TV</a>
-          <a class="device" href="/devices/amazon-fire-tv" data-route="/devices/amazon-fire-tv">Amazon Fire TV</a>
-          <a class="device" href="/devices/chromecast" data-route="/devices/chromecast">Chromecast</a>
-          <a class="device" href="/devices/roku" data-route="/devices/roku">Roku</a>
+          <a class="device" href="/devices/apple-tv" data-route="/devices/apple-tv" data-i18n="device.apple_tv">Apple TV</a>
+          <a class="device" href="/devices/amazon-fire-tv" data-route="/devices/amazon-fire-tv" data-i18n="device.amazon_fire_tv">Amazon Fire TV</a>
+          <a class="device" href="/devices/chromecast" data-route="/devices/chromecast" data-i18n="device.chromecast">Chromecast</a>
+          <a class="device" href="/devices/roku" data-route="/devices/roku" data-i18n="device.roku">Roku</a>
         </div>
       </section>
 
       <section class="category" data-category="Set-top Boxes">
         <button class="category-button" aria-expanded="false">
           <span class="category-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="11" rx="2"/><path d="M7 12h.01M11 12h.01M15 12h.01M19 12h.01"/></svg></span>
-          <span class="category-name">Set-top Boxes</span><span class="toggle-symbol" aria-hidden="true">+</span>
+          <span class="category-name" data-i18n="category.set_top_boxes">Set-top Boxes</span><span class="toggle-symbol" aria-hidden="true">+</span>
         </button>
         <div class="devices">
-          <a class="device" href="/devices/android-tv-boxes" data-route="/devices/android-tv-boxes">Android TV Boxes</a>
-          <a class="device" href="/devices/compatible-cable-boxes" data-route="/devices/compatible-cable-boxes">Compatible Cable Boxes</a>
+          <a class="device" href="/devices/android-tv-boxes" data-route="/devices/android-tv-boxes" data-i18n="device.android_tv_boxes">Android TV Boxes</a>
+          <a class="device" href="/devices/compatible-cable-boxes" data-route="/devices/compatible-cable-boxes" data-i18n="device.compatible_cable_boxes">Compatible Cable Boxes</a>
         </div>
       </section>
     </nav>
@@ -512,7 +540,7 @@
             <line x1="9" y1="14" x2="15" y2="14"></line>
           </svg>
         </div>
-        <p class="empty-text">Oops, nothing here</p>
+        <p class="empty-text" data-i18n="empty.oops">Oops, nothing here</p>
       </div>
     </section>
 
@@ -522,7 +550,7 @@
         <img class="logo" src="/assets/sanyuhub-logo.png" alt="sanyuhub logo" width="44" height="44">
         <div>
           <h2 class="brand-name">sanyuhub</h2>
-          <p class="tagline">Your world, connected.</p>
+          <p class="tagline" data-i18n="brand.tagline">Your world, connected.</p>
         </div>
       </div>
 
@@ -531,7 +559,7 @@
       <!-- Selectors -->
       <div class="selectors">
         <div>
-          <label class="selector-label" for="country">COUNTRY / REGION</label>
+          <label class="selector-label" for="country" data-i18n="selector.country">COUNTRY / REGION</label>
           <div class="selector">
             <svg class="selector-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
               <circle cx="12" cy="12" r="10"/>
@@ -539,17 +567,17 @@
               <path d="M12 2a15 15 0 0 1 0 20"/>
               <path d="M12 2a15 15 0 0 0 0 20"/>
             </svg>
-            <select id="country" aria-label="Country or region">
-              <option value="UG">Uganda</option>
-              <option value="KE">Kenya</option>
-              <option value="TZ">Tanzania</option>
-              <option value="RW">Rwanda</option>
-              <option value="NG">Nigeria</option>
-              <option value="ZA">South Africa</option>
-              <option value="US">United States</option>
-              <option value="GB">United Kingdom</option>
-              <option value="IN">India</option>
-              <option value="OTHER">Other</option>
+            <select id="country" data-i18n-attr="aria-label:aria.country" aria-label="Country or region">
+              <option value="UG" data-i18n="country.UG">Uganda</option>
+              <option value="KE" data-i18n="country.KE">Kenya</option>
+              <option value="TZ" data-i18n="country.TZ">Tanzania</option>
+              <option value="RW" data-i18n="country.RW">Rwanda</option>
+              <option value="NG" data-i18n="country.NG">Nigeria</option>
+              <option value="ZA" data-i18n="country.ZA">South Africa</option>
+              <option value="US" data-i18n="country.US">United States</option>
+              <option value="GB" data-i18n="country.GB">United Kingdom</option>
+              <option value="IN" data-i18n="country.IN">India</option>
+              <option value="OTHER" data-i18n="country.OTHER">Other</option>
             </select>
             <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
               <path d="m6 9 6 6 6-6"/>
@@ -558,7 +586,7 @@
         </div>
 
         <div>
-          <label class="selector-label" for="language">LANGUAGE</label>
+          <label class="selector-label" for="language" data-i18n="selector.language">LANGUAGE</label>
           <div class="selector">
             <svg class="selector-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
               <path d="m5 8 6 6"/>
@@ -568,8 +596,10 @@
               <path d="m14 22 5-11 5 11"/>
               <path d="M16 18h6"/>
             </svg>
-            <select id="language" aria-label="Language">
+            <select id="language" data-i18n-attr="aria-label:aria.language" aria-label="Language">
               <option value="en">English</option>
+              <option value="lg">Luganda</option>
+              <option value="lud">Ludoga</option>
               <option value="sw">Swahili</option>
               <option value="fr">French</option>
               <option value="ar">Arabic</option>
@@ -587,29 +617,29 @@
       <div class="divider"></div>
 
       <!-- Footer navigation -->
-      <nav class="footer-links" aria-label="Footer navigation">
+      <nav class="footer-links" data-i18n-attr="aria-label:aria.footer_nav" aria-label="Footer navigation">
         <div class="footer-group">
-          <h3 class="footer-group-title">Company</h3>
+          <h3 class="footer-group-title" data-i18n="footer.company">Company</h3>
           <ul class="footer-group-list">
-            <li><a href="/about" data-route="/about">About sanyuhub</a></li>
-            <li><a href="/blog" data-route="/blog">Blog</a></li>
-            <li><a href="/careers" data-route="/careers">Careers</a></li>
-            <li><a href="/partnerships" data-route="/partnerships">Partnerships</a></li>
+            <li><a href="/about" data-route="/about" data-i18n="nav.about">About sanyuhub</a></li>
+            <li><a href="/blog" data-route="/blog" data-i18n="nav.blog">Blog</a></li>
+            <li><a href="/careers" data-route="/careers" data-i18n="nav.careers">Careers</a></li>
+            <li><a href="/partnerships" data-route="/partnerships" data-i18n="nav.partnerships">Partnerships</a></li>
           </ul>
         </div>
         <div class="footer-group">
-          <h3 class="footer-group-title">Support</h3>
+          <h3 class="footer-group-title" data-i18n="footer.support">Support</h3>
           <ul class="footer-group-list">
-            <li><a href="/help" data-route="/help">Help &amp; Support</a></li>
-            <li><a href="/contact" data-route="/contact">Contact Us</a></li>
-            <li><a href="/accessibility" data-route="/accessibility">Accessibility</a></li>
+            <li><a href="/help" data-route="/help" data-i18n="nav.help">Help &amp; Support</a></li>
+            <li><a href="/contact" data-route="/contact" data-i18n="nav.contact">Contact Us</a></li>
+            <li><a href="/accessibility" data-route="/accessibility" data-i18n="nav.accessibility">Accessibility</a></li>
           </ul>
         </div>
         <div class="footer-group">
-          <h3 class="footer-group-title">Legal</h3>
+          <h3 class="footer-group-title" data-i18n="footer.legal">Legal</h3>
           <ul class="footer-group-list">
-            <li><a href="/privacy" data-route="/privacy">Privacy Policy</a></li>
-            <li><a href="/terms" data-route="/terms">Terms of Use</a></li>
+            <li><a href="/privacy" data-route="/privacy" data-i18n="nav.privacy">Privacy Policy</a></li>
+            <li><a href="/terms" data-route="/terms" data-i18n="nav.terms">Terms of Use</a></li>
           </ul>
         </div>
       </nav>
@@ -618,45 +648,45 @@
 
       <!-- Copyright -->
       <p class="copyright">
-        © <span id="year">2026</span> sanyuhub. All rights reserved.
+        © <span id="year">2026</span> sanyuhub. <span data-i18n="footer.rights">All rights reserved.</span>
       </p>
     </footer>
   </main>
 
   <script>
-    // Route Definitions
+    // Route Definitions with i18n Translation Keys
     const ROUTES = {
-      '/': { title: 'sanyuhub' },
-      '/devices/android-phones': { title: 'Android Phones' },
-      '/devices/android-tablets': { title: 'Android Tablets' },
-      '/devices/iphone': { title: 'iPhone' },
-      '/devices/ipad': { title: 'iPad' },
-      '/devices/windows': { title: 'Windows' },
-      '/devices/macos': { title: 'macOS' },
-      '/devices/linux': { title: 'Linux' },
-      '/devices/chromebook': { title: 'Chromebook' },
-      '/devices/samsung-smart-tv': { title: 'Samsung Smart TV' },
-      '/devices/lg-smart-tv': { title: 'LG Smart TV' },
-      '/devices/android-tv': { title: 'Android TV' },
-      '/devices/google-tv': { title: 'Google TV' },
-      '/devices/hisense-smart-tv': { title: 'Hisense Smart TV' },
-      '/devices/playstation': { title: 'PlayStation' },
-      '/devices/xbox': { title: 'Xbox' },
-      '/devices/apple-tv': { title: 'Apple TV' },
-      '/devices/amazon-fire-tv': { title: 'Amazon Fire TV' },
-      '/devices/chromecast': { title: 'Chromecast' },
-      '/devices/roku': { title: 'Roku' },
-      '/devices/android-tv-boxes': { title: 'Android TV Boxes' },
-      '/devices/compatible-cable-boxes': { title: 'Compatible Cable Boxes' },
-      '/about': { title: 'About sanyuhub' },
-      '/blog': { title: 'Blog' },
-      '/careers': { title: 'Careers' },
-      '/partnerships': { title: 'Partnerships' },
-      '/help': { title: 'Help & Support' },
-      '/contact': { title: 'Contact Us' },
-      '/accessibility': { title: 'Accessibility' },
-      '/privacy': { title: 'Privacy Policy' },
-      '/terms': { title: 'Terms of Use' }
+      '/': { titleKey: 'page.home.title' },
+      '/devices/android-phones': { titleKey: 'device.android_phones' },
+      '/devices/android-tablets': { titleKey: 'device.android_tablets' },
+      '/devices/iphone': { titleKey: 'device.iphone' },
+      '/devices/ipad': { titleKey: 'device.ipad' },
+      '/devices/windows': { titleKey: 'device.windows' },
+      '/devices/macos': { titleKey: 'device.macos' },
+      '/devices/linux': { titleKey: 'device.linux' },
+      '/devices/chromebook': { titleKey: 'device.chromebook' },
+      '/devices/samsung-smart-tv': { titleKey: 'device.samsung_smart_tv' },
+      '/devices/lg-smart-tv': { titleKey: 'device.lg_smart_tv' },
+      '/devices/android-tv': { titleKey: 'device.android_tv' },
+      '/devices/google-tv': { titleKey: 'device.google_tv' },
+      '/devices/hisense-smart-tv': { titleKey: 'device.hisense_smart_tv' },
+      '/devices/playstation': { titleKey: 'device.playstation' },
+      '/devices/xbox': { titleKey: 'device.xbox' },
+      '/devices/apple-tv': { titleKey: 'device.apple_tv' },
+      '/devices/amazon-fire-tv': { titleKey: 'device.amazon_fire_tv' },
+      '/devices/chromecast': { titleKey: 'device.chromecast' },
+      '/devices/roku': { titleKey: 'device.roku' },
+      '/devices/android-tv-boxes': { titleKey: 'device.android_tv_boxes' },
+      '/devices/compatible-cable-boxes': { titleKey: 'device.compatible_cable_boxes' },
+      '/about': { titleKey: 'page.about.title' },
+      '/blog': { titleKey: 'page.blog.title' },
+      '/careers': { titleKey: 'page.careers.title' },
+      '/partnerships': { titleKey: 'page.partnerships.title' },
+      '/help': { titleKey: 'page.help.title' },
+      '/contact': { titleKey: 'page.contact.title' },
+      '/accessibility': { titleKey: 'page.accessibility.title' },
+      '/privacy': { titleKey: 'page.privacy.title' },
+      '/terms': { titleKey: 'page.terms.title' }
     };
 
     const menuToggle = document.getElementById('menuToggle');
@@ -716,9 +746,10 @@
         const emptyText = document.querySelector('.empty-text');
 
         if (routeInfo) {
-          pageTitle.textContent = routeInfo.title;
-          document.title = routeInfo.title + ' — sanyuhub';
-          if (emptyText) emptyText.textContent = 'Oops, nothing here';
+          const title = window.i18n ? window.i18n.t(routeInfo.titleKey) : routeInfo.titleKey;
+          pageTitle.textContent = title;
+          document.title = title + ' — sanyuhub';
+          if (emptyText) emptyText.textContent = window.i18n ? window.i18n.t('empty.oops') : 'Oops, nothing here';
 
           // Highlight selected item in sidebar if matching route
           const selectedDevice = document.querySelector(`.device[data-route="${path}"]`);
@@ -726,9 +757,11 @@
             selectedDevice.classList.add('selected');
           }
         } else {
-          pageTitle.textContent = 'Page Not Found';
-          document.title = '404 — Page Not Found — sanyuhub';
-          if (emptyText) emptyText.textContent = 'The page you are looking for does not exist.';
+          const notFoundTitle = window.i18n ? window.i18n.t('empty.not_found_title') : 'Page Not Found';
+          const notFoundText = window.i18n ? window.i18n.t('empty.not_found_text') : 'The page you are looking for does not exist.';
+          pageTitle.textContent = notFoundTitle;
+          document.title = '404 — ' + notFoundTitle + ' — sanyuhub';
+          if (emptyText) emptyText.textContent = notFoundText;
         }
       } catch (err) {
         console.error('Error rendering page:', err);
@@ -736,6 +769,9 @@
         document.title = 'sanyuhub';
       }
     }
+
+    // Expose renderPage to window so i18n can trigger re-renders
+    window.renderPage = renderPage;
 
     // Router Navigation
     function navigateTo(url) {
@@ -777,13 +813,8 @@
 
     try {
       const savedCountry = localStorage.getItem("sanyuhub-country");
-      const savedLanguage = localStorage.getItem("sanyuhub-language");
-
       if (savedCountry && [...countrySelect.options].some(o => o.value === savedCountry)) {
         countrySelect.value = savedCountry;
-      }
-      if (savedLanguage && [...languageSelect.options].some(o => o.value === savedLanguage)) {
-        languageSelect.value = savedLanguage;
       }
     } catch (error) {}
 
@@ -792,7 +823,9 @@
     });
 
     languageSelect.addEventListener("change", () => {
-      try { localStorage.setItem("sanyuhub-language", languageSelect.value); } catch (error) {}
+      if (window.i18n) {
+        window.i18n.setLanguage(languageSelect.value);
+      }
     });
 
     // Initial Page Render
