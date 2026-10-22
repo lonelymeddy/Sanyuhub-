@@ -37,7 +37,11 @@
     .toggle-symbol { width: 24px; height: 24px; display: grid; place-items: center; font-size: 23px; line-height: 1; font-weight: 350; }
     .devices { display: none; padding: 0 12px 8px 47px; }
     .category.open .devices { display: block; animation: reveal .16s ease-out; }
-    .device { display: flex; align-items: center; width: 100%; min-height: 40px; padding: 8px 0 8px 12px; border: 0; border-left: 1px solid #555864; background: transparent; color: var(--muted); text-align: left; font-size: 14px; cursor: pointer; }
+    a.category-button { text-decoration: none; }
+    .category-button.selected { background: var(--hover); color: white; font-weight: 600; }
+    .device { display: flex; align-items: center; gap: 8px; width: 100%; min-height: 40px; padding: 8px 0 8px 12px; border: 0; border-left: 1px solid #555864; background: transparent; color: var(--muted); text-align: left; font-size: 14px; cursor: pointer; text-decoration: none; }
+    .device-icon { width: 18px; height: 18px; flex: 0 0 18px; display: grid; place-items: center; color: inherit; }
+    .device-icon svg { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
     .device:hover, .device:focus-visible { color: white; background: #ffffff08; outline: none; }
     .device.selected { color: white; }
     .workspace { padding: 24px 16px; border-top: 1px solid var(--line); background: #111318; min-height: 200px; }
@@ -59,6 +63,21 @@
     </header>
 
     <nav class="sidebar" id="sidebar" aria-label="Devices">
+      <section class="category" data-category="Home">
+        <button class="category-button" data-home="true">
+          <span class="category-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></span>
+          <span class="category-name">Home</span>
+        </button>
+      </section>
+      <section class="category" data-category="Mobile">
+        <button class="category-button" aria-expanded="false">
+          <span class="category-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></svg></span>
+          <span class="category-name">Mobile</span><span class="toggle-symbol" aria-hidden="true">+</span>
+        </button>
+        <div class="devices">
+          <button class="device"><span class="device-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg></span>Website</button>
+        </div>
+      </section>
       <section class="category" data-category="Android">
         <button class="category-button" aria-expanded="false">
           <span class="category-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 7h6M10 17h4"/></svg></span>
@@ -128,21 +147,32 @@
 
     document.querySelectorAll('.category-button').forEach(button => {
       button.addEventListener('click', () => {
+        if (button.dataset.home === "true") {
+          document.querySelectorAll('.device.selected, .category-button.selected').forEach(el => el.classList.remove('selected'));
+          button.classList.add('selected');
+          document.getElementById('workspaceTitle').textContent = 'sanyuhub';
+          document.getElementById('workspaceText').textContent = 'Choose a device from the menu.';
+          document.getElementById('workspaceStatus').textContent = 'Selected device: None';
+          return;
+        }
+        const toggleSymbol = button.querySelector('.toggle-symbol');
+        if (!toggleSymbol) return;
         const category = button.closest('.category');
         const isOpen = category.classList.toggle('open');
         button.setAttribute('aria-expanded', String(isOpen));
-        button.querySelector('.toggle-symbol').textContent = isOpen ? '−' : '+';
+        toggleSymbol.textContent = isOpen ? '−' : '+';
       });
     });
 
     document.querySelectorAll('.device').forEach(button => {
       button.addEventListener('click', () => {
-        document.querySelectorAll('.device.selected').forEach(el => el.classList.remove('selected'));
+        document.querySelectorAll('.device.selected, .category-button.selected').forEach(el => el.classList.remove('selected'));
         button.classList.add('selected');
         const category = button.closest('.category').dataset.category;
-        document.getElementById('workspaceTitle').textContent = button.textContent;
-        document.getElementById('workspaceText').textContent = 'You selected ' + button.textContent + ' under ' + category + '.';
-        document.getElementById('workspaceStatus').textContent = 'Selected device: ' + button.textContent;
+        const text = button.textContent.trim();
+        document.getElementById('workspaceTitle').textContent = text;
+        document.getElementById('workspaceText').textContent = 'You selected ' + text + ' under ' + category + '.';
+        document.getElementById('workspaceStatus').textContent = 'Selected device: ' + text;
       });
     });
   </script>
