@@ -347,8 +347,24 @@
     }
     .footer-links {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 22px 12px;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px 12px;
+    }
+    .footer-group-title {
+      margin: 0 0 10px;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .6px;
+      text-transform: uppercase;
+      color: #ffffff;
+    }
+    .footer-group-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
     }
     .footer-links a {
       color: #a4a9b4;
@@ -572,10 +588,30 @@
 
       <!-- Footer navigation -->
       <nav class="footer-links" aria-label="Footer navigation">
-        <a href="/about" data-route="/about">About sanyuhub</a>
-        <a href="/help" data-route="/help">Help &amp; Support</a>
-        <a href="/privacy" data-route="/privacy">Privacy Policy</a>
-        <a href="/terms" data-route="/terms">Terms of Use</a>
+        <div class="footer-group">
+          <h3 class="footer-group-title">Company</h3>
+          <ul class="footer-group-list">
+            <li><a href="/about" data-route="/about">About sanyuhub</a></li>
+            <li><a href="/blog" data-route="/blog">Blog</a></li>
+            <li><a href="/careers" data-route="/careers">Careers</a></li>
+            <li><a href="/partnerships" data-route="/partnerships">Partnerships</a></li>
+          </ul>
+        </div>
+        <div class="footer-group">
+          <h3 class="footer-group-title">Support</h3>
+          <ul class="footer-group-list">
+            <li><a href="/help" data-route="/help">Help &amp; Support</a></li>
+            <li><a href="/contact" data-route="/contact">Contact Us</a></li>
+            <li><a href="/accessibility" data-route="/accessibility">Accessibility</a></li>
+          </ul>
+        </div>
+        <div class="footer-group">
+          <h3 class="footer-group-title">Legal</h3>
+          <ul class="footer-group-list">
+            <li><a href="/privacy" data-route="/privacy">Privacy Policy</a></li>
+            <li><a href="/terms" data-route="/terms">Terms of Use</a></li>
+          </ul>
+        </div>
       </nav>
 
       <div class="divider"></div>
@@ -613,7 +649,12 @@
       '/devices/android-tv-boxes': { title: 'Android TV Boxes' },
       '/devices/compatible-cable-boxes': { title: 'Compatible Cable Boxes' },
       '/about': { title: 'About sanyuhub' },
+      '/blog': { title: 'Blog' },
+      '/careers': { title: 'Careers' },
+      '/partnerships': { title: 'Partnerships' },
       '/help': { title: 'Help & Support' },
+      '/contact': { title: 'Contact Us' },
+      '/accessibility': { title: 'Accessibility' },
       '/privacy': { title: 'Privacy Policy' },
       '/terms': { title: 'Terms of Use' }
     };
@@ -659,21 +700,38 @@
 
     // Render Page Content based on current URL path
     function renderPage(pathname) {
-      const path = pathname.replace(/\/$/, '') || '/';
-      const routeInfo = ROUTES[path];
-
-      document.querySelectorAll('.device.selected').forEach(el => el.classList.remove('selected'));
-
-      if (routeInfo) {
-        pageTitle.textContent = routeInfo.title;
-        document.title = routeInfo.title + ' — sanyuhub';
-
-        // Highlight selected item in sidebar if matching route
-        const selectedDevice = document.querySelector(`.device[data-route="${path}"]`);
-        if (selectedDevice) {
-          selectedDevice.classList.add('selected');
+      try {
+        let rawPath = pathname;
+        try {
+          rawPath = new URL(pathname, window.location.origin).pathname;
+        } catch (e) {
+          rawPath = pathname.split('?')[0].split('#')[0];
         }
-      } else {
+
+        const path = (rawPath !== '/' && rawPath.endsWith('/')) ? rawPath.slice(0, -1) : (rawPath || '/');
+        const routeInfo = ROUTES[path];
+
+        document.querySelectorAll('.device.selected').forEach(el => el.classList.remove('selected'));
+
+        const emptyText = document.querySelector('.empty-text');
+
+        if (routeInfo) {
+          pageTitle.textContent = routeInfo.title;
+          document.title = routeInfo.title + ' — sanyuhub';
+          if (emptyText) emptyText.textContent = 'Oops, nothing here';
+
+          // Highlight selected item in sidebar if matching route
+          const selectedDevice = document.querySelector(`.device[data-route="${path}"]`);
+          if (selectedDevice) {
+            selectedDevice.classList.add('selected');
+          }
+        } else {
+          pageTitle.textContent = 'Page Not Found';
+          document.title = '404 — Page Not Found — sanyuhub';
+          if (emptyText) emptyText.textContent = 'The page you are looking for does not exist.';
+        }
+      } catch (err) {
+        console.error('Error rendering page:', err);
         pageTitle.textContent = 'sanyuhub';
         document.title = 'sanyuhub';
       }
