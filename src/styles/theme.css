@@ -1,0 +1,36 @@
+/* Theme Tokens for sanyuhub Yellow Brand Identity */
+:root {
+  --color-background: #0b0c0f;
+  --color-surface: #15171c;
+  --color-surface-elevated: #1d2026;
+  --color-text-primary: #ffffff;
+  --color-text-secondary: #b5b9c3;
+  --color-accent: #ffd43b;
+  --color-accent-hover: #ffe16a;
+  --color-border: #2c3038;
+  --color-focus: #ffe16a;
+
+  /* Sidebar preservation variables */
+  --header: #111318;
+  --sidebar: #1a1c23;
+  --hover: #292b35;
+  --line: #30323a;
+  --text: #f5f5f7;
+  --muted: #a4a9b4;
+}
+
+/* Centralized Brand Name Component */
+.brand-name {
+  display: inline-flex;
+  align-items: center;
+  font-weight: 750;
+  letter-spacing: -0.03em;
+}
+
+.brand-name__sanyu {
+  color: #ffffff;
+}
+
+.brand-name__hub {
+  color: var(--color-accent);
+}

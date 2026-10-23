@@ -1,0 +1,111 @@
+/* Motion utilities and Scroll-driven Animation States */
+.anim-zoom-in {
+  opacity: 0.85;
+  transform: scale(0.82);
+  transition: opacity 0.4s ease-out, transform 0.4s ease-out;
+  will-change: opacity, transform;
+}
+.anim-zoom-in.visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.anim-zoom-out {
+  opacity: 1;
+  transform: scale(1);
+  transition: opacity 0.4s ease-out, transform 0.4s ease-out;
+  will-change: opacity, transform;
+}
+.anim-zoom-out.scrolled-out {
+  opacity: 0.85;
+  transform: scale(0.78);
+}
+
+.anim-stagger-word span {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.35s ease-out, transform 0.35s ease-out;
+}
+.anim-stagger-word.visible span {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.anim-blur-focus {
+  opacity: 0;
+  filter: blur(5px);
+  transform: translateY(10px);
+  transition: opacity 0.5s ease-out, filter 0.5s ease-out, transform 0.5s ease-out;
+  will-change: opacity, filter, transform;
+}
+.anim-blur-focus.visible {
+  opacity: 1;
+  filter: blur(0);
+  transform: translateY(0);
+}
+
+.anim-parallax {
+  will-change: transform;
+  transition: transform 0.1s linear;
+}
+
+.anim-slide-left {
+  opacity: 0;
+  transform: translateX(-36px);
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+.anim-slide-left.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.anim-slide-right {
+  opacity: 0;
+  transform: translateX(36px);
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+.anim-slide-right.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.anim-pinned {
+  position: relative;
+  z-index: 10;
+}
+@media (min-width: 768px) {
+  .anim-pinned {
+    position: sticky;
+    top: 84px;
+  }
+}
+
+/* Micro-interactions */
+.interactive-btn {
+  transition: transform 0.15s ease, background-color 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+.interactive-btn:hover {
+  transform: translateY(-2px);
+}
+.interactive-btn:active {
+  transform: scale(0.98);
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .anim-zoom-in,
+  .anim-zoom-out,
+  .anim-blur-focus,
+  .anim-slide-left,
+  .anim-slide-right,
+  .anim-stagger-word span,
+  .anim-parallax {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+    transition: none !important;
+  }
+}

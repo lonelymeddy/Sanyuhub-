@@ -1,0 +1,15 @@
+/* Animations and Keyframes CSS Module */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: 0 0 15px rgba(255, 212, 59, 0.2); }
+  50% { box-shadow: 0 0 25px rgba(255, 212, 59, 0.4); }
+}
