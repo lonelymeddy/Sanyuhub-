@@ -3,10 +3,13 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#111318">
-  <title>sanyuhub — Device Menu</title>
+  <meta name="theme-color" content="#0b0c0f">
+  <title>sanyuhub — Device Ecosystem</title>
   <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
   <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+  <link rel="stylesheet" href="/src/styles/theme.css">
+  <link rel="stylesheet" href="/src/styles/animations.css">
+  <link rel="stylesheet" href="/src/styles/motion.css">
   <script src="/i18n.js"></script>
   <style>
     :root {
@@ -16,11 +19,11 @@
       --hover: #292b35;
       --line: #30323a;
       --text: #f5f5f7;
-      --muted: #a4a9b4;
-      --accent: #3b82f6;
-      --accent-hover: #2563eb;
-      --card-bg: #16181f;
-      --card-border: #282a36;
+      --muted: #b5b9c3;
+      --card-bg: #15171c;
+      --card-border: #2c3038;
+      --color-accent: #ffd43b;
+      --color-accent-hover: #ffe16a;
     }
     * { box-sizing: border-box; }
     html, body {
@@ -28,8 +31,8 @@
       padding: 0;
       min-height: 100%;
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-      background: #0d0e12;
-      color: var(--text);
+      background: var(--color-background);
+      color: var(--color-text-primary);
       overflow-x: hidden;
       scroll-behavior: smooth;
     }
@@ -41,7 +44,7 @@
       min-height: 100vh;
       margin: 0 auto;
       background: var(--sidebar);
-      box-shadow: 0 0 40px rgba(0,0,0,0.6);
+      box-shadow: 0 0 50px rgba(0,0,0,0.8);
       display: flex;
       flex-direction: column;
       position: relative;
@@ -64,7 +67,7 @@
       text-align: right;
     }
     [dir="rtl"] .device.selected {
-      border-right-color: #ffffff;
+      border-right-color: var(--color-accent);
     }
     [dir="rtl"] .menu-toggle {
       margin-left: 0;
@@ -74,7 +77,7 @@
       text-align: center;
     }
 
-    /* Header */
+    /* Header - PRESERVED SIDEBAR/HEADER SPEC */
     .header {
       height: 68px;
       display: flex;
@@ -135,7 +138,7 @@
       left: 0;
       right: 0;
       bottom: 0;
-      background: rgba(0, 0, 0, 0.6);
+      background: rgba(0, 0, 0, 0.7);
       backdrop-filter: blur(4px);
       z-index: 80;
     }
@@ -143,7 +146,7 @@
       display: block;
     }
 
-    /* Sidebar Navigation */
+    /* Sidebar Navigation - EXACT BEHAVIOR & STRUCTURE PRESERVED */
     .sidebar {
       display: none;
       padding: 10px 8px 20px;
@@ -270,91 +273,76 @@
       outline: none;
     }
     .device.selected {
-      color: white;
+      color: #ffffff;
       font-weight: 600;
-      border-left-color: #ffffff;
+      border-left-color: var(--color-accent);
     }
 
-    /* Workspace & Scroll Storytelling Layout */
+    /* Workspace Content Area */
     .workspace {
       flex: 1;
       padding: 0;
-      background: #0d0e12;
+      background: var(--color-background);
       display: flex;
       flex-direction: column;
       width: 100%;
       min-height: calc(100vh - 68px);
     }
 
-    /* Editorial Section Styling */
+    /* Storytelling Sections */
     .section-story {
-      padding: 48px 20px;
+      padding: 44px 20px;
       display: flex;
       flex-direction: column;
       align-items: center;
       text-align: center;
       position: relative;
       overflow: hidden;
-      border-bottom: 1px solid var(--line);
+      border-bottom: 1px solid var(--color-border);
     }
     .section-story.bg-dark {
-      background: #0d0e12;
+      background: var(--color-background);
     }
     .section-story.bg-surface {
-      background: #12141a;
+      background: var(--color-surface);
     }
     .section-story.bg-card {
-      background: #171922;
+      background: var(--color-surface-elevated);
     }
 
-    /* Typography Scale - WhatsApp Inspired Proportions & Fluid Clamp Sizing */
+    /* Typography Scale */
     .hero-title {
-      font-size: clamp(40px, 8.5vw, 76px);
-      font-weight: 700;
-      line-height: 1.05;
-      letter-spacing: -0.03em;
-      margin: 0 0 18px;
-      color: #ffffff;
-      text-wrap: balance;
-    }
-    .section-title {
-      font-size: clamp(30px, 6.5vw, 56px);
-      font-weight: 650;
+      font-size: clamp(34px, 8vw, 68px);
+      font-weight: 750;
       line-height: 1.1;
-      letter-spacing: -0.02em;
+      letter-spacing: -0.03em;
       margin: 0 0 16px;
       color: #ffffff;
       text-wrap: balance;
     }
-    .sub-title {
-      font-size: clamp(22px, 4.5vw, 36px);
-      font-weight: 600;
-      line-height: 1.2;
-      letter-spacing: -0.01em;
+    .section-title {
+      font-size: clamp(26px, 6vw, 48px);
+      font-weight: 700;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
       margin: 0 0 14px;
-      color: #f1f5f9;
-    }
-    .feature-title {
-      font-size: clamp(20px, 3.5vw, 26px);
-      font-weight: 600;
-      line-height: 1.25;
-      margin: 0 0 10px;
       color: #ffffff;
+      text-wrap: balance;
     }
     .body-lead {
-      font-size: clamp(16.5px, 2.2vw, 19px);
-      line-height: 1.55;
-      color: #b0b7c3;
+      font-size: clamp(15.5px, 2.2vw, 18px);
+      line-height: 1.6;
+      color: var(--color-text-secondary);
       max-width: 430px;
-      margin: 0 0 26px;
+      margin: 0 0 24px;
       font-weight: 400;
     }
     .body-text {
-      font-size: clamp(15px, 1.9vw, 17.5px);
+      font-size: clamp(14.5px, 1.9vw, 16.5px);
       line-height: 1.65;
       color: var(--muted);
       max-width: 430px;
-      margin: 0 0 20px;
+      margin: 0 0 18px;
     }
     .badge-pill {
       display: inline-flex;
@@ -362,17 +350,17 @@
       gap: 6px;
       padding: 6px 14px;
       border-radius: 20px;
-      background: rgba(59, 130, 246, 0.12);
-      border: 1px solid rgba(59, 130, 246, 0.3);
-      color: #60a5fa;
-      font-size: 12px;
-      font-weight: 600;
+      background: rgba(255, 212, 59, 0.12);
+      border: 1px solid rgba(255, 212, 59, 0.35);
+      color: var(--color-accent);
+      font-size: 11.5px;
+      font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.06em;
       margin-bottom: 16px;
     }
 
-    /* Action Buttons */
+    /* Yellow Buttons & Micro-Interactions */
     .btn-primary {
       display: inline-flex;
       align-items: center;
@@ -382,21 +370,21 @@
       max-width: 340px;
       min-height: 50px;
       padding: 12px 24px;
-      background: #2563eb;
-      color: #ffffff;
+      background: var(--color-accent);
+      color: #0b0c0f;
       border: none;
       border-radius: 25px;
       font-size: 16px;
-      font-weight: 600;
+      font-weight: 700;
       text-decoration: none;
       cursor: pointer;
-      box-shadow: 0 4px 20px rgba(37, 99, 235, 0.35);
+      box-shadow: 0 4px 20px rgba(255, 212, 59, 0.3);
       transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
     }
     .btn-primary:hover, .btn-primary:focus-visible {
-      background: #1d4ed8;
+      background: var(--color-accent-hover);
       transform: translateY(-2px);
-      box-shadow: 0 6px 24px rgba(37, 99, 235, 0.45);
+      box-shadow: 0 6px 24px rgba(255, 212, 59, 0.45);
       outline: none;
     }
     .btn-secondary {
@@ -408,27 +396,27 @@
       max-width: 340px;
       min-height: 48px;
       padding: 10px 20px;
-      background: rgba(255, 255, 255, 0.08);
+      background: rgba(255, 255, 255, 0.06);
       color: #ffffff;
-      border: 1px solid rgba(255, 255, 255, 0.18);
+      border: 1px solid var(--color-border);
       border-radius: 24px;
       font-size: 15px;
-      font-weight: 500;
+      font-weight: 600;
       text-decoration: none;
       cursor: pointer;
       transition: background 0.2s ease, border-color 0.2s ease;
     }
     .btn-secondary:hover, .btn-secondary:focus-visible {
-      background: rgba(255, 255, 255, 0.15);
-      border-color: rgba(255, 255, 255, 0.3);
+      background: rgba(255, 255, 255, 0.12);
+      border-color: rgba(255, 212, 59, 0.5);
       outline: none;
     }
 
-    /* Device Mockup Visuals */
+    /* Visual Containers & Graphics */
     .visual-container {
       width: 100%;
       max-width: 380px;
-      margin: 24px 0 12px;
+      margin: 20px 0 10px;
       position: relative;
     }
     .device-mockup {
@@ -437,30 +425,30 @@
       background: var(--card-bg);
       border: 1px solid var(--card-border);
       padding: 20px;
-      box-shadow: 0 16px 36px rgba(0,0,0,0.4);
+      box-shadow: 0 16px 36px rgba(0,0,0,0.5);
       display: flex;
       flex-direction: column;
       align-items: center;
     }
     .device-graphic {
       width: 100%;
-      max-height: 220px;
+      max-height: 210px;
       object-fit: contain;
-      margin-bottom: 12px;
+      margin-bottom: 8px;
     }
 
-    /* Grid & Step Lists */
+    /* Steps & Cards */
     .steps-container {
       width: 100%;
       display: flex;
       flex-direction: column;
-      gap: 16px;
-      margin: 20px 0;
+      gap: 14px;
+      margin: 18px 0;
       text-align: left;
     }
     .step-card {
       display: flex;
-      gap: 16px;
+      gap: 14px;
       align-items: flex-start;
       background: var(--card-bg);
       border: 1px solid var(--card-border);
@@ -471,8 +459,8 @@
       width: 32px;
       height: 32px;
       border-radius: 50%;
-      background: rgba(59, 130, 246, 0.2);
-      color: #60a5fa;
+      background: rgba(255, 212, 59, 0.15);
+      color: var(--color-accent);
       display: grid;
       place-items: center;
       font-weight: 700;
@@ -481,24 +469,24 @@
     }
     .step-content h4 {
       margin: 0 0 4px;
-      font-size: 16px;
-      font-weight: 600;
+      font-size: 15.5px;
+      font-weight: 650;
       color: #fff;
     }
     .step-content p {
       margin: 0;
-      font-size: 14px;
+      font-size: 13.5px;
       color: var(--muted);
       line-height: 1.45;
     }
 
-    /* Category Cards Grid */
+    /* Category Grid */
     .category-grid {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 14px;
+      gap: 12px;
       width: 100%;
-      margin: 20px 0;
+      margin: 18px 0;
     }
     .cat-card {
       display: flex;
@@ -513,18 +501,18 @@
       transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
     }
     .cat-card:hover {
-      border-color: rgba(255, 255, 255, 0.3);
-      background: #1c1f2b;
+      border-color: rgba(255, 212, 59, 0.4);
+      background: #1c1f28;
       transform: translateY(-2px);
     }
     .cat-card-icon {
       width: 42px;
       height: 42px;
       border-radius: 12px;
-      background: rgba(255,255,255,0.06);
+      background: rgba(255, 212, 59, 0.12);
       display: grid;
       place-items: center;
-      color: #60a5fa;
+      color: var(--color-accent);
       flex-shrink: 0;
     }
     .cat-card-icon svg {
@@ -541,7 +529,7 @@
     .cat-card-info h4 {
       margin: 0 0 2px;
       font-size: 15px;
-      font-weight: 600;
+      font-weight: 650;
       color: #fff;
     }
     .cat-card-info p {
@@ -565,7 +553,7 @@
       justify-content: space-between;
       padding: 10px 0;
       border-bottom: 1px solid rgba(255,255,255,0.06);
-      font-size: 14px;
+      font-size: 13.5px;
     }
     .spec-item:last-child {
       border-bottom: none;
@@ -575,14 +563,14 @@
     }
     .spec-val {
       color: #fff;
-      font-weight: 500;
+      font-weight: 550;
     }
 
-    /* Troubleshooting Box */
+    /* Troubleshooting Card */
     .trouble-card {
       width: 100%;
-      background: rgba(234, 179, 8, 0.08);
-      border: 1px solid rgba(234, 179, 8, 0.25);
+      background: rgba(255, 212, 59, 0.08);
+      border: 1px solid rgba(255, 212, 59, 0.3);
       border-radius: 14px;
       padding: 16px;
       text-align: left;
@@ -590,8 +578,8 @@
     }
     .trouble-card h4 {
       margin: 0 0 6px;
-      font-size: 15px;
-      color: #fde047;
+      font-size: 14.5px;
+      color: var(--color-accent);
       display: flex;
       align-items: center;
       gap: 8px;
@@ -603,91 +591,7 @@
       line-height: 1.45;
     }
 
-    /* Animation Classes & Motion Design (Grounded with opacity fallback and smooth entrance) */
-    .anim-zoom-in {
-      opacity: 0;
-      transform: scale(0.92);
-      transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-      will-change: opacity, transform;
-    }
-    .anim-zoom-in.visible {
-      opacity: 1;
-      transform: scale(1);
-    }
-
-    .anim-zoom-out {
-      opacity: 0;
-      transform: scale(1.08);
-      transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-      will-change: opacity, transform;
-    }
-    .anim-zoom-out.visible {
-      opacity: 1;
-      transform: scale(1);
-    }
-
-    .anim-slide-left {
-      opacity: 0;
-      transform: translateX(-24px);
-      transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-      will-change: opacity, transform;
-    }
-    .anim-slide-left.visible {
-      opacity: 1;
-      transform: translateX(0);
-    }
-
-    .anim-slide-right {
-      opacity: 0;
-      transform: translateX(24px);
-      transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-      will-change: opacity, transform;
-    }
-    .anim-slide-right.visible {
-      opacity: 1;
-      transform: translateX(0);
-    }
-
-    .anim-blur-focus {
-      opacity: 0;
-      filter: blur(6px);
-      transition: opacity 0.5s ease-out, filter 0.5s ease-out;
-      will-change: opacity, filter;
-    }
-    .anim-blur-focus.visible {
-      opacity: 1;
-      filter: blur(0);
-    }
-
-    .anim-stagger-word span {
-      display: inline;
-      opacity: 1;
-      transition: opacity 0.35s ease;
-    }
-
-    .anim-pinned {
-      position: relative;
-      z-index: 10;
-      margin-bottom: 20px;
-    }
-    @media (min-width: 768px) {
-      .anim-pinned {
-        position: sticky;
-        top: 84px;
-      }
-    }
-
-    /* Accessibility / Reduced Motion / Fallback */
-    @media (prefers-reduced-motion: reduce) {
-      .anim-zoom-in, .anim-zoom-out, .anim-slide-left, .anim-slide-right, .anim-blur-focus, .anim-stagger-word span {
-        opacity: 1 !important;
-        transform: none !important;
-        filter: none !important;
-        transition: none !important;
-      }
-    }
-
-    /* Footer Component */
+    /* Footer */
     .footer {
       width: 100%;
       padding: 28px 20px 20px;
@@ -706,11 +610,6 @@
       height: 44px;
       object-fit: contain;
       flex-shrink: 0;
-    }
-    .brand-name {
-      margin: 0 0 4px;
-      font-size: 21px;
-      font-weight: 700;
     }
     .tagline {
       margin: 0;
@@ -826,7 +725,9 @@
     <header class="header">
       <a href="/" class="brand-link" id="homeBrandLink" data-i18n-attr="aria-label:aria.homepage" aria-label="sanyuhub homepage">
         <img class="logo" src="/assets/sanyuhub-logo.png" alt="sanyuhub logo" width="40" height="40">
-        <div class="brand">sanyuhub</div>
+        <div class="brand">
+          <span class="brand-name"><span class="brand-name__sanyu">sanyu</span><span class="brand-name__hub">hub</span></span>
+        </div>
       </a>
       <button class="menu-toggle" id="menuToggle" data-i18n-attr="aria-label:aria.menu_toggle" aria-label="Toggle sidebar" aria-expanded="false" aria-controls="sidebar">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
@@ -836,7 +737,7 @@
     <!-- Sidebar Backdrop Overlay -->
     <div class="backdrop" id="backdrop" aria-hidden="true"></div>
 
-    <!-- Sidebar Navigation -->
+    <!-- Sidebar Navigation - EXACT STRUCTURE UNTOUCHED -->
     <nav class="sidebar" id="sidebar" data-i18n-attr="aria-label:aria.sidebar" aria-label="Devices">
       <section class="category" data-category="Home">
         <a class="category-button" href="/" data-route="/">
@@ -957,7 +858,7 @@
       <div class="brand">
         <img class="logo" src="/assets/sanyuhub-logo.png" alt="sanyuhub logo" width="44" height="44">
         <div>
-          <h2 class="brand-name">sanyuhub</h2>
+          <h2 class="brand-name"><span class="brand-name__sanyu">sanyu</span><span class="brand-name__hub">hub</span></h2>
           <p class="tagline" data-i18n="brand.tagline">Your world, connected.</p>
         </div>
       </div>
@@ -1056,12 +957,21 @@
 
       <!-- Copyright -->
       <p class="copyright">
-        © <span id="year">2026</span> sanyuhub. <span data-i18n="footer.rights">All rights reserved.</span>
+        © <span id="year">2026</span> <span class="brand-name"><span class="brand-name__sanyu">sanyu</span><span class="brand-name__hub">hub</span></span>. <span data-i18n="footer.rights">All rights reserved.</span>
       </p>
     </footer>
   </main>
 
-  <script>
+  <script type="module">
+    import { initZoomTypography } from '/src/js/animations/ZoomTypography.js';
+    import { initZoomOutTypography } from '/src/js/animations/ZoomOutTypography.js';
+    import { initStaggeredWords } from '/src/js/animations/StaggeredWords.js';
+    import { initBlurToFocus } from '/src/js/animations/BlurToFocus.js';
+    import { initParallaxElement } from '/src/js/animations/ParallaxElement.js';
+    import { initPinnedStorySection } from '/src/js/animations/PinnedStorySection.js';
+    import { initDirectionalReveal } from '/src/js/animations/DirectionalReveal.js';
+    import { attachMicroInteractions } from '/src/js/animations/MicroInteractions.js';
+
     // Translation helper shorthand
     function t(key, fallback) {
       if (window.i18n && typeof window.i18n.t === 'function') {
@@ -1075,65 +985,58 @@
     function renderSVGGraphic(type) {
       switch (type) {
         case 'mobile':
-          return `<svg viewBox="0 0 200 140" fill="none" xmlns="http://www.w3.org/2000/svg" class="device-graphic"><rect x="60" y="10" width="80" height="120" rx="12" fill="#1e2230" stroke="#3b82f6" stroke-width="3"/><rect x="68" y="20" width="64" height="92" rx="4" fill="#0d0e12"/><circle cx="100" cy="120" r="3" fill="#60a5fa"/><path d="M78 45h44M78 55h30" stroke="#3b82f6" stroke-width="3" stroke-linecap="round"/></svg>`;
+          return `<svg viewBox="0 0 200 140" fill="none" xmlns="http://www.w3.org/2000/svg" class="device-graphic"><rect x="60" y="10" width="80" height="120" rx="12" fill="#1b1e28" stroke="#ffd43b" stroke-width="3"/><rect x="68" y="20" width="64" height="92" rx="4" fill="#0b0c0f"/><circle cx="100" cy="120" r="3" fill="#ffd43b"/><path d="M78 45h44M78 55h30" stroke="#ffd43b" stroke-width="3" stroke-linecap="round"/></svg>`;
         case 'desktop':
-          return `<svg viewBox="0 0 200 140" fill="none" xmlns="http://www.w3.org/2000/svg" class="device-graphic"><rect x="25" y="15" width="150" height="90" rx="8" fill="#1e2230" stroke="#3b82f6" stroke-width="3"/><rect x="33" y="23" width="134" height="74" rx="3" fill="#0d0e12"/><path d="M85 105h30v15H85z" fill="#1e2230"/><path d="M65 120h70" stroke="#3b82f6" stroke-width="3" stroke-linecap="round"/><circle cx="100" cy="60" r="16" fill="rgba(59,130,246,0.15)" stroke="#60a5fa" stroke-width="2"/></svg>`;
+          return `<svg viewBox="0 0 200 140" fill="none" xmlns="http://www.w3.org/2000/svg" class="device-graphic"><rect x="25" y="15" width="150" height="90" rx="8" fill="#1b1e28" stroke="#ffd43b" stroke-width="3"/><rect x="33" y="23" width="134" height="74" rx="3" fill="#0b0c0f"/><path d="M85 105h30v15H85z" fill="#1b1e28"/><path d="M65 120h70" stroke="#ffd43b" stroke-width="3" stroke-linecap="round"/><circle cx="100" cy="60" r="16" fill="rgba(255,212,59,0.15)" stroke="#ffd43b" stroke-width="2"/></svg>`;
         case 'tv':
-          return `<svg viewBox="0 0 200 140" fill="none" xmlns="http://www.w3.org/2000/svg" class="device-graphic"><rect x="15" y="15" width="170" height="95" rx="6" fill="#1e2230" stroke="#3b82f6" stroke-width="3"/><rect x="22" y="22" width="156" height="81" rx="2" fill="#0d0e12"/><path d="M70 120l15-10h30l15 10" stroke="#3b82f6" stroke-width="3" stroke-linecap="round"/><circle cx="100" cy="62" r="18" fill="rgba(59,130,246,0.2)" stroke="#60a5fa" stroke-width="2"/></svg>`;
+          return `<svg viewBox="0 0 200 140" fill="none" xmlns="http://www.w3.org/2000/svg" class="device-graphic"><rect x="15" y="15" width="170" height="95" rx="6" fill="#1b1e28" stroke="#ffd43b" stroke-width="3"/><rect x="22" y="22" width="156" height="81" rx="2" fill="#0b0c0f"/><path d="M70 120l15-10h30l15 10" stroke="#ffd43b" stroke-width="3" stroke-linecap="round"/><circle cx="100" cy="62" r="18" fill="rgba(255,212,59,0.2)" stroke="#ffd43b" stroke-width="2"/></svg>`;
         case 'console':
-          return `<svg viewBox="0 0 200 140" fill="none" xmlns="http://www.w3.org/2000/svg" class="device-graphic"><rect x="30" y="35" width="140" height="70" rx="20" fill="#1e2230" stroke="#3b82f6" stroke-width="3"/><circle cx="65" cy="70" r="14" fill="#0d0e12" stroke="#60a5fa" stroke-width="2"/><path d="M65 62v16M57 70h16" stroke="#60a5fa" stroke-width="2.5" stroke-linecap="round"/><circle cx="130" cy="62" r="4" fill="#ef4444"/><circle cx="142" cy="70" r="4" fill="#3b82f6"/><circle cx="118" cy="70" r="4" fill="#10b981"/><circle cx="130" cy="78" r="4" fill="#f59e0b"/></svg>`;
+          return `<svg viewBox="0 0 200 140" fill="none" xmlns="http://www.w3.org/2000/svg" class="device-graphic"><rect x="30" y="35" width="140" height="70" rx="20" fill="#1b1e28" stroke="#ffd43b" stroke-width="3"/><circle cx="65" cy="70" r="14" fill="#0b0c0f" stroke="#ffd43b" stroke-width="2"/><path d="M65 62v16M57 70h16" stroke="#ffd43b" stroke-width="2.5" stroke-linecap="round"/><circle cx="130" cy="62" r="4" fill="#ef4444"/><circle cx="142" cy="70" r="4" fill="#ffd43b"/><circle cx="118" cy="70" r="4" fill="#10b981"/><circle cx="130" cy="78" r="4" fill="#f59e0b"/></svg>`;
         case 'streaming':
-          return `<svg viewBox="0 0 200 140" fill="none" xmlns="http://www.w3.org/2000/svg" class="device-graphic"><rect x="50" y="45" width="100" height="50" rx="10" fill="#1e2230" stroke="#3b82f6" stroke-width="3"/><circle cx="100" cy="70" r="12" fill="rgba(59,130,246,0.2)" stroke="#60a5fa" stroke-width="2"/><path d="M130 60a12 12 0 0 1 0 20M140 52a22 22 0 0 1 0 36" stroke="#60a5fa" stroke-width="2.5" stroke-linecap="round"/></svg>`;
+          return `<svg viewBox="0 0 200 140" fill="none" xmlns="http://www.w3.org/2000/svg" class="device-graphic"><rect x="50" y="45" width="100" height="50" rx="10" fill="#1b1e28" stroke="#ffd43b" stroke-width="3"/><circle cx="100" cy="70" r="12" fill="rgba(255,212,59,0.2)" stroke="#ffd43b" stroke-width="2"/><path d="M130 60a12 12 0 0 1 0 20M140 52a22 22 0 0 1 0 36" stroke="#ffd43b" stroke-width="2.5" stroke-linecap="round"/></svg>`;
         default:
-          return `<svg viewBox="0 0 200 140" fill="none" xmlns="http://www.w3.org/2000/svg" class="device-graphic"><rect x="30" y="20" width="140" height="100" rx="10" fill="#1e2230" stroke="#3b82f6" stroke-width="3"/><rect x="40" y="30" width="120" height="80" rx="4" fill="#0d0e12"/></svg>`;
+          return `<svg viewBox="0 0 200 140" fill="none" xmlns="http://www.w3.org/2000/svg" class="device-graphic"><rect x="30" y="20" width="140" height="100" rx="10" fill="#1b1e28" stroke="#ffd43b" stroke-width="3"/><rect x="40" y="30" width="120" height="80" rx="4" fill="#0b0c0f"/></svg>`;
       }
     }
 
-    // Helper for staggered word wrapping
-    function formatStaggerWords(text) {
-      const words = text.split(' ');
-      return words.map((w, idx) => `<span style="transition-delay: ${idx * 0.03}s">${w} </span>`).join('');
-    }
-
-    // Page Builder Data & Content Generators
     const DEVICE_DETAILS = {
       '/devices/website': {
         badge: 'Universal Access',
         title: 'sanyuhub Web Client',
-        subtitle: 'Instant browser access across any desktop, phone, or smart device.',
+        subtitle: 'Instant browser access across any desktop, phone, or smart device with no app downloads required.',
         graphicType: 'desktop',
-        actionLabel: 'Launch Web Client',
+        actionLabel: 'Explore Web Client',
         actionUrl: 'https://sanyuhub.onrender.com/',
         steps: [
-          { num: '1', title: 'Open Your Favorite Browser', text: 'Launch Google Chrome, Safari, Firefox, or Microsoft Edge on any device.' },
-          { num: '2', title: 'Navigate to sanyuhub', text: 'Visit sanyuhub.onrender.com or bookmark the page for instant access.' },
-          { num: '3', title: 'Start Exploring', text: 'Enjoy seamless media syncing, multi-device controls, and localized streaming.' }
+          { num: '1', title: 'Open Your Favorite Browser', text: 'Launch Google Chrome, Safari, Firefox, or Microsoft Edge on any phone, tablet, or PC.' },
+          { num: '2', title: 'Navigate to sanyuhub', text: 'Visit sanyuhub.onrender.com or bookmark the page for 1-tap instant launching.' },
+          { num: '3', title: 'Start Exploring', text: 'Enjoy seamless media syncing, multi-device controls, and localized content delivery.' }
         ],
         specs: [
-          { label: 'Platform Support', val: 'Web Standards (HTML5, WebGL)' },
-          { label: 'Installation', val: 'No installation required' },
-          { label: 'Supported Browsers', val: 'Chrome, Safari, Firefox, Edge' }
+          { label: 'Platform Support', val: 'Web Standards (HTML5, WebGL, ES6+)' },
+          { label: 'Installation', val: 'No installation or store download required' },
+          { label: 'Supported Browsers', val: 'Chrome, Safari, Firefox, Edge, Opera' }
         ],
         trouble: 'If the web client experiences buffering or display issues, verify JavaScript is enabled and clear browser cache.'
       },
       '/devices/android-phones': {
         badge: 'Android Mobile',
         title: 'sanyuhub on Android Phones',
-        subtitle: 'Optimized touch-friendly interface for all modern Android smartphones.',
+        subtitle: 'Touch-optimized mobile web experience for all modern Android smartphones.',
         graphicType: 'mobile',
         actionLabel: 'Open Web App on Android',
         actionUrl: 'https://sanyuhub.onrender.com/',
         steps: [
           { num: '1', title: 'Open Chrome on Android', text: 'Launch Google Chrome or your default Android web browser.' },
           { num: '2', title: 'Visit sanyuhub', text: 'Navigate to sanyuhub.onrender.com.' },
-          { num: '3', title: 'Add to Home Screen', text: 'Tap Chrome menu (⋮) and select "Add to Home screen" for PWA launch.' }
+          { num: '3', title: 'Add to Home Screen', text: 'Tap Chrome menu (⋮) and select "Add to Home screen" for PWA full-screen launch.' }
         ],
         specs: [
           { label: 'Compatibility', val: 'Android 8.0 or newer' },
-          { label: 'Access Method', val: 'Progressive Web App / Mobile Web' },
-          { label: 'Installation Package', val: 'No standalone APK required' }
+          { label: 'Access Method', val: 'Progressive Web App (PWA) / Mobile Web' },
+          { label: 'Installation Package', val: 'No standalone APK or Play Store download needed' }
         ],
-        trouble: 'Note: Official access is provided via browser PWA. Standalone APK installers are not required.'
+        trouble: 'Note: Official access is provided via browser PWA. Third-party APK installers are not needed.'
       },
       '/devices/android-tablets': {
         badge: 'Android Tablet',
@@ -1144,12 +1047,12 @@
         actionUrl: 'https://sanyuhub.onrender.com/',
         steps: [
           { num: '1', title: 'Launch Tablet Browser', text: 'Open Chrome or Samsung Internet on your tablet.' },
-          { num: '2', title: 'Access sanyuhub', text: 'Go to sanyuhub.onrender.com for tablet layout.' },
+          { num: '2', title: 'Access sanyuhub', text: 'Go to sanyuhub.onrender.com for full tablet layout.' },
           { num: '3', title: 'Create Shortcut', text: 'Add shortcut to your tablet home screen for 1-tap entry.' }
         ],
         specs: [
           { label: 'OS Version', val: 'Android 8.0+' },
-          { label: 'Display Support', val: 'Optimized for 7" to 14" tablets' }
+          { label: 'Display Support', val: 'Optimized for 7" to 14" widescreen displays' }
         ],
         trouble: 'Ensure screen auto-rotate is enabled for optimal tablet viewing.'
       },
@@ -1167,14 +1070,14 @@
         ],
         specs: [
           { label: 'Compatibility', val: 'iOS 14.0 or later' },
-          { label: 'Browser', val: 'Safari / WebKit' }
+          { label: 'Browser', val: 'Safari / WebKit Engine' }
         ],
-        trouble: 'For full-screen web app mode, ensure "Add to Home Screen" shortcut is used.'
+        trouble: 'For full-screen web app mode without browser toolbars, use "Add to Home Screen".'
       },
       '/devices/ipad': {
         badge: 'iPadOS',
         title: 'sanyuhub on iPad',
-        subtitle: 'Immersive tablet dashboard taking advantage of iPadOS Multitasking and M-series performance.',
+        subtitle: 'Immersive tablet dashboard taking advantage of iPadOS Multitasking and Retina display performance.',
         graphicType: 'mobile',
         actionLabel: 'Launch iPad Experience',
         actionUrl: 'https://sanyuhub.onrender.com/',
@@ -1497,13 +1400,12 @@
       }
     };
 
-    // Generic fallback info generator for company / support pages
     function renderGenericPage(titleKey, fallbackTitle, descriptionKey, fallbackDesc) {
       const title = t(titleKey, fallbackTitle);
       const desc = t(descriptionKey, fallbackDesc);
       return `
         <section class="section-story bg-dark anim-zoom-in">
-          <div class="badge-pill">sanyuhub Info</div>
+          <div class="badge-pill"><span class="brand-name"><span class="brand-name__sanyu">sanyu</span><span class="brand-name__hub">hub</span></span> Info</div>
           <h1 class="hero-title">${title}</h1>
           <p class="body-lead">${desc}</p>
           <a class="btn-primary" href="/" data-route="/">
@@ -1514,36 +1416,34 @@
       `;
     }
 
-    // Devices Home Page Builder (Scroll-Driven Storytelling)
     function renderHomePage() {
       return `
-        <!-- Hero Section -->
-        <section class="section-story bg-dark">
-          <div class="anim-zoom-in">
-            <div class="badge-pill">Unified Device Ecosystem</div>
-            <h1 class="hero-title">${t('home.hero_title', 'Your world, connected.')}</h1>
-            <p class="body-lead anim-stagger-word">${formatStaggerWords(t('home.hero_lead', 'sanyuhub seamlessly connects your smartphone, computer, smart TV, and streaming devices in one elegant experience.'))}</p>
-            <div style="display:flex; flex-direction:column; gap:12px; width:100%; align-items:center;">
-              <a class="btn-primary" href="/devices/website" data-route="/devices/website">
-                ${t('home.btn_launch', 'Explore Web Client')}
-                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-              </a>
-              <button class="btn-secondary" onclick="toggleSidebar()">
-                ${t('home.btn_choose_device', 'Choose Your Device')}
-              </button>
-            </div>
+        <!-- Hero Section (Task 3 & Animations A, C, D) -->
+        <section class="section-story bg-dark hero-section">
+          <div class="badge-pill">Unified Device Ecosystem</div>
+          <h1 class="hero-title anim-zoom-in">${t('home.hero_title', 'Your world, connected.')}</h1>
+          <p class="body-lead anim-stagger-word">${t('home.hero_lead', 'sanyuhub seamlessly connects your smartphone, computer, smart TV, and streaming devices in one elegant experience.')}</p>
+          <div style="display:flex; flex-direction:column; gap:12px; width:100%; align-items:center; z-index:5;">
+            <a class="btn-primary" href="/devices/website" data-route="/devices/website">
+              ${t('home.btn_launch', 'Explore Web Client')}
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+            <button class="btn-secondary" id="heroChooseDeviceBtn">
+              ${t('home.btn_choose_device', 'Choose Your Device')}
+            </button>
           </div>
-          <div class="visual-container anim-blur-focus">
+
+          <div class="visual-container anim-blur-focus anim-parallax-target">
             <div class="device-mockup">
               ${renderSVGGraphic('desktop')}
             </div>
           </div>
         </section>
 
-        <!-- What is sanyuhub Section (Pinned Headline Transformation) -->
-        <section class="section-story bg-surface">
-          <div class="anim-pinned">
-            <div class="badge-pill">About sanyuhub</div>
+        <!-- What is sanyuhub Section (Animation F: Pinned Section & B: Zoom-out & G: Directional Reveal) -->
+        <section class="section-story bg-surface pinned-container">
+          <div class="pinned-headline">
+            <div class="badge-pill">About <span class="brand-name"><span class="brand-name__sanyu">sanyu</span><span class="brand-name__hub">hub</span></span></div>
             <h2 class="section-title anim-zoom-out">${t('home.about_heading', 'What is sanyuhub?')}</h2>
           </div>
           <p class="body-text anim-slide-left">${t('home.about_text_1', 'sanyuhub is a modern cross-platform hub that unites digital media, device connectivity, and interactive services across all your daily screens.')}</p>
@@ -1583,7 +1483,7 @@
           </div>
         </section>
 
-        <!-- Core Platform Advantages Section -->
+        <!-- Platform Capabilities Section -->
         <section class="section-story bg-surface">
           <div class="badge-pill">Platform Capabilities</div>
           <h2 class="section-title anim-zoom-in">${t('home.features_title', 'Built for Every Display')}</h2>
@@ -1616,7 +1516,7 @@
           </div>
         </section>
 
-        <!-- Device Overview Directory Section -->
+        <!-- Device Overview Directory -->
         <section class="section-story bg-dark">
           <div class="badge-pill">Supported Hardware</div>
           <h2 class="section-title anim-zoom-in">${t('home.directory_title', 'Explore Device Guides')}</h2>
@@ -1700,7 +1600,6 @@
       `;
     }
 
-    // Individual Device Page Builder
     function renderDevicePage(routePath, details) {
       const faqs = details.faqs || [
         { q: `Is a dedicated native app or download required for ${details.badge}?`, a: `No. sanyuhub operates as a lightweight HTML5 web application accessible directly in your web browser.` },
@@ -1709,28 +1608,26 @@
 
       return `
         <!-- Hero Section -->
-        <section class="section-story bg-dark">
-          <div class="anim-zoom-in">
-            <div class="badge-pill">${details.badge}</div>
-            <h1 class="hero-title">${details.title}</h1>
-            <p class="body-lead anim-stagger-word">${formatStaggerWords(details.subtitle)}</p>
+        <section class="section-story bg-dark hero-section">
+          <div class="badge-pill">${details.badge}</div>
+          <h1 class="hero-title anim-zoom-in">${details.title}</h1>
+          <p class="body-lead anim-stagger-word">${details.subtitle}</p>
 
-            <a class="btn-primary" href="${details.actionUrl}" target="_blank" rel="noopener">
-              ${details.actionLabel}
-              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg>
-            </a>
-          </div>
+          <a class="btn-primary" href="${details.actionUrl}" target="_blank" rel="noopener">
+            ${details.actionLabel}
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg>
+          </a>
 
-          <div class="visual-container anim-blur-focus">
+          <div class="visual-container anim-blur-focus anim-parallax-target">
             <div class="device-mockup">
               ${renderSVGGraphic(details.graphicType)}
             </div>
           </div>
         </section>
 
-        <!-- How it Works & Setup Steps -->
-        <section class="section-story bg-surface">
-          <div class="anim-pinned">
+        <!-- Setup Instructions & Steps -->
+        <section class="section-story bg-surface pinned-container">
+          <div class="pinned-headline">
             <div class="badge-pill">Setup Guide</div>
             <h2 class="section-title anim-zoom-out">Getting Started on ${details.badge}</h2>
           </div>
@@ -1748,7 +1645,7 @@
           </div>
         </section>
 
-        <!-- Technical Compatibility & Specifications -->
+        <!-- Specs & Troubleshooting -->
         <section class="section-story bg-card">
           <div class="badge-pill">Compatibility</div>
           <h2 class="section-title anim-zoom-in">System Requirements & Specs</h2>
@@ -1762,7 +1659,6 @@
             `).join('')}
           </div>
 
-          <!-- Troubleshooting note -->
           <div class="trouble-card anim-slide-left">
             <h4>
               <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
@@ -1772,7 +1668,7 @@
           </div>
         </section>
 
-        <!-- Device-Specific FAQs -->
+        <!-- Device FAQs -->
         <section class="section-story bg-surface">
           <div class="badge-pill">Device FAQs</div>
           <h2 class="section-title anim-zoom-in">Frequently Asked Questions</h2>
@@ -1789,7 +1685,7 @@
           </div>
         </section>
 
-        <!-- Related Device Links -->
+        <!-- Related Links -->
         <section class="section-story bg-dark">
           <h2 class="section-title anim-zoom-in">Explore Other Devices</h2>
           <p class="body-lead anim-blur-focus">Check setup guides for your smartphones, smart TVs, or desktop systems.</p>
@@ -1801,7 +1697,6 @@
       `;
     }
 
-    // ROUTES registry definitions
     const ROUTES = {
       '/': { titleKey: 'page.home.title', type: 'home' },
       '/index.html': { titleKey: 'page.home.title', type: 'home' },
@@ -1843,14 +1738,12 @@
     const backdrop = document.getElementById('backdrop');
     const workspace = document.getElementById('workspace');
 
-    // Close Sidebar Helper
     function closeSidebar() {
       sidebar.classList.remove('open');
       backdrop.classList.remove('active');
       menuToggle.setAttribute('aria-expanded', 'false');
     }
 
-    // Toggle Sidebar Helper
     function toggleSidebar() {
       const isOpen = sidebar.classList.toggle('open');
       backdrop.classList.toggle('active', isOpen);
@@ -1866,7 +1759,6 @@
       closeSidebar();
     });
 
-    // Expand/Collapse Categories (+ / −)
     document.querySelectorAll('.category-button').forEach(button => {
       button.addEventListener('click', (e) => {
         const toggleSymbol = button.querySelector('.toggle-symbol');
@@ -1879,35 +1771,52 @@
       });
     });
 
-    // IntersectionObserver setup for Scroll Storytelling Animations
-    let scrollObserver = null;
-    function initScrollAnimations() {
-      const animElements = workspace.querySelectorAll('.anim-zoom-in, .anim-zoom-out, .anim-slide-left, .anim-slide-right, .anim-blur-focus, .anim-stagger-word');
+    // Attach modular JS scroll animations to rendered DOM elements
+    function attachAnimations() {
+      // Task 5: Zoom Typography (Zoom-in scale 0.82->1)
+      const zoomIns = workspace.querySelectorAll('.anim-zoom-in');
+      zoomIns.forEach(el => initZoomTypography(el));
 
-      if ('IntersectionObserver' in window) {
-        if (scrollObserver) scrollObserver.disconnect();
+      // Task 6: Zoom-out Typography (scale 1->0.78)
+      const zoomOuts = workspace.querySelectorAll('.anim-zoom-out');
+      zoomOuts.forEach(el => initZoomOutTypography(el));
 
-        scrollObserver = new IntersectionObserver((entries) => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add('visible');
-            }
-          });
-        }, {
-          threshold: 0.05,
-          rootMargin: '50px 0px 50px 0px'
-        });
+      // Task 7: Staggered Words
+      const staggerWords = workspace.querySelectorAll('.anim-stagger-word');
+      staggerWords.forEach(el => initStaggeredWords(el));
 
-        animElements.forEach(el => scrollObserver.observe(el));
+      // Task 8: Blur to Focus
+      const blurs = workspace.querySelectorAll('.anim-blur-focus');
+      blurs.forEach(el => initBlurToFocus(el));
+
+      // Task 9: Parallax
+      const parallaxTargets = workspace.querySelectorAll('.anim-parallax-target');
+      parallaxTargets.forEach(el => initParallaxElement(el, 0.15, 30));
+
+      // Task 10: Pinned Story Section
+      const pinnedContainer = workspace.querySelector('.pinned-container');
+      const pinnedHeadline = workspace.querySelector('.pinned-headline');
+      if (pinnedContainer && pinnedHeadline) {
+        initPinnedStorySection(pinnedContainer, pinnedHeadline);
       }
 
-      // Safe fallback to make sure all elements become visible immediately
-      setTimeout(() => {
-        animElements.forEach(el => el.classList.add('visible'));
-      }, 100);
+      // Task 11: Directional Slide-in Reveals
+      const slideLefts = workspace.querySelectorAll('.anim-slide-left');
+      slideLefts.forEach(el => initDirectionalReveal(el, 'left'));
+
+      const slideRights = workspace.querySelectorAll('.anim-slide-right');
+      slideRights.forEach(el => initDirectionalReveal(el, 'right'));
+
+      // Task 12: Micro-interactions
+      attachMicroInteractions(workspace);
+
+      // Hero Choose Device button listener
+      const chooseBtn = document.getElementById('heroChooseDeviceBtn');
+      if (chooseBtn) {
+        chooseBtn.addEventListener('click', () => toggleSidebar());
+      }
     }
 
-    // Render Page Content based on current URL path
     function renderPage(pathname) {
       try {
         let rawPath = pathname;
@@ -1935,11 +1844,9 @@
             workspace.innerHTML = renderGenericPage(routeInfo.titleKey, title, routeInfo.descKey, 'Information about sanyuhub service and policies.');
           }
 
-          // Highlight selected item in sidebar if matching route
           const selectedDevice = document.querySelector(`.device[data-route="${path}"], .category-button[data-route="${path}"]`);
           if (selectedDevice) {
             selectedDevice.classList.add('selected');
-            // Auto expand parent category if in sidebar
             const parentCategory = selectedDevice.closest('.category');
             if (parentCategory && !parentCategory.classList.contains('open')) {
               parentCategory.classList.add('open');
@@ -1964,17 +1871,14 @@
           `;
         }
 
-        // Initialize scroll animations for newly rendered DOM
-        initScrollAnimations();
+        attachAnimations();
       } catch (err) {
         console.error('Error rendering page:', err);
       }
     }
 
-    // Expose renderPage to window so i18n can trigger re-renders
     window.renderPage = renderPage;
 
-    // Router Navigation
     function navigateTo(url) {
       if (window.location.pathname !== url) {
         window.history.pushState({}, '', url);
@@ -1984,7 +1888,6 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    // Intercept clicks on links with data-route
     document.addEventListener('click', (e) => {
       const link = e.target.closest('a[data-route]');
       if (link) {
@@ -1994,19 +1897,16 @@
       }
     });
 
-    // Handle Header Home Link click
     document.getElementById('homeBrandLink').addEventListener('click', (e) => {
       e.preventDefault();
       navigateTo('/');
     });
 
-    // Popstate Listener for Browser Back/Forward
     window.addEventListener('popstate', () => {
       renderPage(window.location.pathname);
       closeSidebar();
     });
 
-    // Footer Script Functionality
     document.getElementById("year").textContent = new Date().getFullYear();
 
     const countrySelect = document.getElementById("country");
@@ -2029,7 +1929,6 @@
       }
     });
 
-    // Initial Page Render
     document.addEventListener('DOMContentLoaded', () => {
       renderPage(window.location.pathname);
     });
