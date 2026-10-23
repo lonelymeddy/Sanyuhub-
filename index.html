@@ -436,6 +436,20 @@
       object-fit: contain;
       margin-bottom: 8px;
     }
+    .hero-image-crop-container {
+      width: 100%;
+      height: 240px;
+      overflow: hidden;
+      border-radius: 12px;
+      position: relative;
+    }
+    .hero-image-crop-container img {
+      width: 100%;
+      height: 200%;
+      object-fit: cover;
+      object-position: top right;
+      display: block;
+    }
 
     /* Steps & Cards */
     .steps-container {
@@ -2497,7 +2511,9 @@
 
           <div class="visual-container anim-blur-focus anim-parallax-target">
             <div class="device-mockup">
-              ${renderSVGGraphic('desktop')}
+              <div class="hero-image-crop-container">
+                <img src="/assets/homepage-hero.png" alt="sanyuhub homepage visual" />
+              </div>
             </div>
           </div>
         </section>
