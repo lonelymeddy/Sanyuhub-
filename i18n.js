@@ -222,6 +222,105 @@
       es: 'Iniciar sanyuhub Ahora',
       hi: 'sanyuhub अभी चालू करें'
     },
+    'home.features_title': {
+      en: 'Built for Every Display',
+      lg: 'Ikolera ku Buli Skuleeni',
+      lus: 'Iikolera ku Buli Skuleeni',
+      sw: 'Imeundwa kwa Kila Skrini',
+      fr: 'Conçu pour tous les écrans',
+      ar: 'مصمم لكل شاشة',
+      pt: 'Construído para Todas as Telas',
+      es: 'Construido para Cada Pantalla',
+      hi: 'हर डिस्प्ले के लिए निर्मित'
+    },
+    'home.features_sub': {
+      en: 'Engineered to deliver high performance without forcing app installations or proprietary stores.',
+      lg: 'Yatondebwa okuwa obukugu obwa waggulu nga tewali kukaka kupakira pulogulaamu.',
+      lus: 'Yatondobwa okuwa obukugu obwa waggulu nga tewali kukiika kupakira pulogulaamu.',
+      sw: 'Imeundwa kutoa utendaji wa juu bila kulazimisha usakinishaji wa programu.',
+      fr: 'Conçu pour offrir des performances élevées sans imposer d\'installation.',
+      ar: 'تم تصميمها لتقديم أداء عالٍ دون فرض تثبيت التطبيقات.',
+      pt: 'Projetado para oferecer alto desempenho sem forçar instalações de aplicativos.',
+      es: 'Diseñado para ofrecer un alto rendimiento sin forzar instalaciones de aplicaciones.',
+      hi: 'बिना किसी ऐप इंस्टॉल के उच्च प्रदर्शन देने के लिए इंजीनियर।'
+    },
+    'home.feat1_title': {
+      en: 'Zero App Downloads Needed',
+      lg: 'Tewetaagisa Kupakira Pulogulaamu',
+      lus: 'Tewetaagisa Kupakira Pulogulaamu',
+      sw: 'Hakuna Kupakua Programu',
+      fr: 'Aucun téléchargement requis',
+      ar: 'لا يلزم تنزيل أي تطبيق',
+      pt: 'Nenhum Download Necessário',
+      es: 'Sin Descargas de Aplicaciones',
+      hi: 'किसी ऐप डाउनलोड की आवश्यकता नहीं'
+    },
+    'home.feat1_desc': {
+      en: 'Access sanyuhub directly through standard web browsers (Chrome, Safari, Edge, Firefox). No APKs, installers, or native app store downloads are required.',
+      lg: 'Ingira sanyuhub obuterevu mu munnyonnyosi w\'omukutu gwo. Tewali APK oba pulogulaamu zewetaaga kupakira.',
+      lus: 'Ingira sanyuhub obuterevu mu munnyonnyosi w\'omukutu gwo. Tewali APK oba pulogulaamu zewetaaga kupakira.',
+      sw: 'Fikia sanyuhub moja kwa moja kupitia vivinjari vya mtandao. Hakuna haja ya APK au kupakua programu.',
+      fr: 'Accédez à sanyuhub directement depuis votre navigateur. Aucun fichier APK ou installateur requis.',
+      ar: 'احصل على sanyuhub مباشرة عبر متصفحات الويب القياسية دون الحاجة لتنزيل أي ملفات.',
+      pt: 'Acesse o sanyuhub diretamente nos navegadores web padrão. Nenhum APK ou instalador necessário.',
+      es: 'Accede a sanyuhub directamente a través de navegadores web estándar. Sin necesidad de APK o instaladores.',
+      hi: 'मानक वेब ब्राउज़र के माध्यम से सीधे sanyuhub तक पहुंचें। किसी APK या इंस्टॉलर की आवश्यकता नहीं है।'
+    },
+    'home.feat2_title': {
+      en: 'Smart TV & Casting Support',
+      lg: 'Ewagira TV za Amagezi n\'Okwolesa',
+      lus: 'Ewagira TV sya Amagezi n\'Okwolesa',
+      sw: 'Usaidizi wa Smart TV na Casting',
+      fr: 'Support Smart TV & Casting',
+      ar: 'دعم التلفزيون الذكي والبث',
+      pt: 'Suporte para Smart TV e Transmissão',
+      es: 'Soporte para Smart TV y Transmisión',
+      hi: 'स्मार्ट टीवी और कास्टिंग सपोर्ट'
+    },
+    'home.feat2_desc': {
+      en: 'Seamlessly mirror or cast sanyuhub to Samsung Tizen, LG webOS, Android TV, Apple TV, and Chromecast devices from your phone or PC.',
+      lg: 'Olesa sanyuhub mu bwangu ku Samsung, LG, Android TV oba Chromecast okuva ku ssimu oba kompyuta yo.',
+      lus: 'Olesa sanyuhub mu bwangu ku Samsung, LG, Android TV oba Chromecast okuva ku ssimu oba kompyuta yo.',
+      sw: 'Rusha sanyuhub kwa urahisi kwenye Samsung Tizen, LG webOS, Android TV na Chromecast kutoka kwenye simu yako.',
+      fr: 'Diffusez facilement sanyuhub sur Samsung Tizen, LG webOS, Android TV, Apple TV et Chromecast.',
+      ar: 'قم ببت sanyuhub بسلاسة إلى أجهزة Samsung Tizen و LG webOS و Android TV و Chromecast.',
+      pt: 'Transmita o sanyuhub para Samsung Tizen, LG webOS, Android TV e Chromecast a partir do seu celular ou PC.',
+      es: 'Transmite sanyuhub fácilmente a Samsung Tizen, LG webOS, Android TV y Chromecast desde tu teléfono o PC.',
+      hi: 'अपने फोन या पीसी से सीधे सैमसंग, एलजी, एंड्रॉइड टीवी और क्रोमकास्ट पर sanyuhub कास्ट करें।'
+    },
+    'home.feat3_title': {
+      en: 'Progressive Web App (PWA)',
+      lg: 'Pulogulaamu y\'Omukutu eya PWA',
+      lus: 'Pulogulaamu y\'Omukutu eya PWA',
+      sw: 'Programu ya Mtandao wa PWA',
+      fr: 'Application Web Progressive (PWA)',
+      ar: 'تطبيق الويب التقدمي (PWA)',
+      pt: 'Aplicativo Web Progressivo (PWA)',
+      es: 'Aplicación Web Progresiva (PWA)',
+      hi: 'प्रोग्रेसिव वेब ऐप (PWA)'
+    },
+    'home.feat3_desc': {
+      en: 'Add sanyuhub to your iPhone or Android home screen for full-screen app-like launching with low data usage.',
+      lg: 'Teka sanyuhub ku skuleeni y\'essimu yo okusobola okuyingirirawo mu bwangu nga okozesa data mutono.',
+      lus: 'Teka sanyuhub ku skuleeni y\'essimu yo okusobola okuyingirirawo mu bwangu nga okozesa data mutono.',
+      sw: 'Ongeza sanyuhub kwenye skrini ya simu yako kwa ufunguzi wa haraka na matumizi madogo ya data.',
+      fr: 'Ajoutez sanyuhub à l\'écran d\'accueil de votre smartphone pour un accès instantané et économe en données.',
+      ar: 'أضف sanyuhub إلى الشاشة الرئيسية لهاتفك للحصول على تشغيل سريع واستهلاك منخفض للبيانات.',
+      pt: 'Adicione o sanyuhub à tela inicial do seu smartphone para inicialização rápida e baixo consumo de dados.',
+      es: 'Agrega sanyuhub a la pantalla de inicio de tu teléfono para un acceso rápido y bajo consumo de datos.',
+      hi: 'कम डेटा उपयोग के साथ त्वरित पहुंच के लिए अपने होम स्क्रीन पर sanyuhub जोड़ें।'
+    },
+    'home.faq_title': {
+      en: 'Frequently Asked Questions',
+      lg: 'Ebibuuzo Ebibuuzibwa Ennyo',
+      lus: 'Ebibuuzo Ebibuuzibwa Ennyo',
+      sw: 'Maswali Yanayoulizwa Mara Kwa Mara',
+      fr: 'Foire Aux Questions',
+      ar: 'الأسئلة الشائعة',
+      pt: 'Perguntas Frequentes',
+      es: 'Preguntas Frecuentes',
+      hi: 'अक्सर पूछे जाने वाले प्रश्न'
+    },
     'nav.about_desc': {
       en: 'sanyuhub is designed to bring seamless device connectivity and unified streaming across Africa and worldwide.',
       lg: 'sanyuhub yakolwa okugatta amasimu n\'ebyuma mu Afrika n\'ensi yonna.',

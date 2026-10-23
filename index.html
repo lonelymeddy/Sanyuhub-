@@ -307,43 +307,53 @@
       background: #171922;
     }
 
-    /* Typography Scale */
+    /* Typography Scale - WhatsApp Inspired Proportions & Fluid Clamp Sizing */
     .hero-title {
-      font-size: clamp(32px, 8vw, 44px);
-      font-weight: 400;
-      line-height: 1.08;
+      font-size: clamp(40px, 8.5vw, 76px);
+      font-weight: 700;
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      margin: 0 0 18px;
+      color: #ffffff;
+      text-wrap: balance;
+    }
+    .section-title {
+      font-size: clamp(30px, 6.5vw, 56px);
+      font-weight: 650;
+      line-height: 1.1;
       letter-spacing: -0.02em;
       margin: 0 0 16px;
       color: #ffffff;
-    }
-    .section-title {
-      font-size: clamp(26px, 6vw, 34px);
-      font-weight: 400;
-      line-height: 1.12;
-      letter-spacing: -0.015em;
-      margin: 0 0 14px;
-      color: #ffffff;
+      text-wrap: balance;
     }
     .sub-title {
-      font-size: clamp(20px, 5vw, 24px);
-      font-weight: 400;
+      font-size: clamp(22px, 4.5vw, 36px);
+      font-weight: 600;
       line-height: 1.2;
-      margin: 0 0 12px;
-      color: #e2e8f0;
+      letter-spacing: -0.01em;
+      margin: 0 0 14px;
+      color: #f1f5f9;
+    }
+    .feature-title {
+      font-size: clamp(20px, 3.5vw, 26px);
+      font-weight: 600;
+      line-height: 1.25;
+      margin: 0 0 10px;
+      color: #ffffff;
     }
     .body-lead {
-      font-size: 17px;
-      line-height: 1.5;
-      color: var(--muted);
-      max-width: 420px;
-      margin: 0 0 24px;
+      font-size: clamp(16.5px, 2.2vw, 19px);
+      line-height: 1.55;
+      color: #b0b7c3;
+      max-width: 430px;
+      margin: 0 0 26px;
       font-weight: 400;
     }
     .body-text {
-      font-size: 15px;
-      line-height: 1.6;
+      font-size: clamp(15px, 1.9vw, 17.5px);
+      line-height: 1.65;
       color: var(--muted);
-      max-width: 420px;
+      max-width: 430px;
       margin: 0 0 20px;
     }
     .badge-pill {
@@ -651,11 +661,8 @@
 
     .anim-stagger-word span {
       display: inline;
-      opacity: 0;
-      transition: opacity 0.35s ease;
-    }
-    .anim-stagger-word.visible span {
       opacity: 1;
+      transition: opacity 0.35s ease;
     }
 
     .anim-pinned {
@@ -1576,6 +1583,39 @@
           </div>
         </section>
 
+        <!-- Core Platform Advantages Section -->
+        <section class="section-story bg-surface">
+          <div class="badge-pill">Platform Capabilities</div>
+          <h2 class="section-title anim-zoom-in">${t('home.features_title', 'Built for Every Display')}</h2>
+          <p class="body-lead anim-blur-focus">${t('home.features_sub', 'Engineered to deliver high performance without forcing app installations or proprietary stores.')}</p>
+
+          <div class="steps-container">
+            <div class="step-card anim-slide-left">
+              <div class="step-number">⚡</div>
+              <div class="step-content">
+                <h4>${t('home.feat1_title', 'Zero App Downloads Needed')}</h4>
+                <p>${t('home.feat1_desc', 'Access sanyuhub directly through standard web browsers (Chrome, Safari, Edge, Firefox). No APKs, installers, or native app store downloads are required.')}</p>
+              </div>
+            </div>
+
+            <div class="step-card anim-slide-right">
+              <div class="step-number">📺</div>
+              <div class="step-content">
+                <h4>${t('home.feat2_title', 'Smart TV & Casting Support')}</h4>
+                <p>${t('home.feat2_desc', 'Seamlessly mirror or cast sanyuhub to Samsung Tizen, LG webOS, Android TV, Apple TV, and Chromecast devices from your phone or PC.')}</p>
+              </div>
+            </div>
+
+            <div class="step-card anim-slide-left">
+              <div class="step-number">📱</div>
+              <div class="step-content">
+                <h4>${t('home.feat3_title', 'Progressive Web App (PWA)')}</h4>
+                <p>${t('home.feat3_desc', 'Add sanyuhub to your iPhone or Android home screen for full-screen app-like launching with low data usage.')}</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
         <!-- Device Overview Directory Section -->
         <section class="section-story bg-dark">
           <div class="badge-pill">Supported Hardware</div>
@@ -1586,8 +1626,8 @@
             <a href="/devices/website" data-route="/devices/website" class="cat-card anim-slide-left">
               <div class="cat-card-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/></svg></div>
               <div class="cat-card-info">
-                <h4>Web Client</h4>
-                <p>Universal browser access on any system</p>
+                <h4>Web Client Guide</h4>
+                <p>Universal browser access on any operating system</p>
               </div>
             </a>
 
@@ -1595,15 +1635,15 @@
               <div class="cat-card-icon"><svg viewBox="0 0 24 24"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></svg></div>
               <div class="cat-card-info">
                 <h4>Android & iOS Mobile</h4>
-                <p>Smartphone & tablet PWA guides</p>
+                <p>Smartphone & tablet PWA installation steps</p>
               </div>
             </a>
 
             <a href="/devices/windows" data-route="/devices/windows" class="cat-card anim-slide-left">
               <div class="cat-card-icon"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="13" rx="1.5"/><path d="M8 21h8M12 17v4"/></svg></div>
               <div class="cat-card-info">
-                <h4>Desktop (PC, Mac, Linux)</h4>
-                <p>Windows, macOS, Linux, & Chromebook</p>
+                <h4>Desktop (Windows, Mac, Linux)</h4>
+                <p>Full desktop browser setups and taskbar shortcuts</p>
               </div>
             </a>
 
@@ -1611,9 +1651,38 @@
               <div class="cat-card-icon"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="13" rx="1.5"/><path d="M9 21h6"/></svg></div>
               <div class="cat-card-info">
                 <h4>Smart TV & Consoles</h4>
-                <p>Samsung, LG, Google TV, Xbox, PS5</p>
+                <p>Samsung Tizen, LG webOS, Google TV, Xbox, PS5</p>
               </div>
             </a>
+          </div>
+        </section>
+
+        <!-- Devices FAQ Section -->
+        <section class="section-story bg-card">
+          <div class="badge-pill">Common Questions</div>
+          <h2 class="section-title anim-zoom-in">${t('home.faq_title', 'Frequently Asked Questions')}</h2>
+
+          <div class="steps-container">
+            <div class="step-card anim-slide-left">
+              <div class="step-content">
+                <h4>Do I need to download an application or APK?</h4>
+                <p>No downloads are required. sanyuhub operates entirely inside modern HTML5 web browsers. You can also save a shortcut to your home screen for rapid access.</p>
+              </div>
+            </div>
+
+            <div class="step-card anim-slide-right">
+              <div class="step-content">
+                <h4>How do I stream sanyuhub to my TV?</h4>
+                <p>You can launch sanyuhub in your TV browser (Samsung, LG, Android TV) or use built-in Google Cast or Apple AirPlay from your smartphone or computer.</p>
+              </div>
+            </div>
+
+            <div class="step-card anim-slide-left">
+              <div class="step-content">
+                <h4>Which browsers are supported?</h4>
+                <p>sanyuhub is compatible with all modern browsers including Google Chrome, Apple Safari, Microsoft Edge, Mozilla Firefox, and Opera.</p>
+              </div>
+            </div>
           </div>
         </section>
 
@@ -1633,6 +1702,11 @@
 
     // Individual Device Page Builder
     function renderDevicePage(routePath, details) {
+      const faqs = details.faqs || [
+        { q: `Is a dedicated native app or download required for ${details.badge}?`, a: `No. sanyuhub operates as a lightweight HTML5 web application accessible directly in your web browser.` },
+        { q: `Does sanyuhub support cross-device synchronization?`, a: `Yes. Your preferences and saved settings automatically sync when accessing sanyuhub across multiple devices.` }
+      ];
+
       return `
         <!-- Hero Section -->
         <section class="section-story bg-dark">
@@ -1658,7 +1732,7 @@
         <section class="section-story bg-surface">
           <div class="anim-pinned">
             <div class="badge-pill">Setup Guide</div>
-            <h2 class="section-title anim-zoom-out">How to Access on ${details.badge}</h2>
+            <h2 class="section-title anim-zoom-out">Getting Started on ${details.badge}</h2>
           </div>
 
           <div class="steps-container">
@@ -1677,7 +1751,7 @@
         <!-- Technical Compatibility & Specifications -->
         <section class="section-story bg-card">
           <div class="badge-pill">Compatibility</div>
-          <h2 class="section-title anim-zoom-in">System Requirements</h2>
+          <h2 class="section-title anim-zoom-in">System Requirements & Specs</h2>
 
           <div class="spec-box anim-blur-focus">
             ${details.specs.map(sp => `
@@ -1692,16 +1766,33 @@
           <div class="trouble-card anim-slide-left">
             <h4>
               <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
-              Troubleshooting Guidance
+              Troubleshooting & Support
             </h4>
             <p>${details.trouble}</p>
+          </div>
+        </section>
+
+        <!-- Device-Specific FAQs -->
+        <section class="section-story bg-surface">
+          <div class="badge-pill">Device FAQs</div>
+          <h2 class="section-title anim-zoom-in">Frequently Asked Questions</h2>
+
+          <div class="steps-container">
+            ${faqs.map((faq, idx) => `
+              <div class="step-card ${idx % 2 === 0 ? 'anim-slide-left' : 'anim-slide-right'}">
+                <div class="step-content">
+                  <h4>${faq.q}</h4>
+                  <p>${faq.a}</p>
+                </div>
+              </div>
+            `).join('')}
           </div>
         </section>
 
         <!-- Related Device Links -->
         <section class="section-story bg-dark">
           <h2 class="section-title anim-zoom-in">Explore Other Devices</h2>
-          <p class="body-lead anim-blur-focus">Check instructions for your other tablets, smart TVs, or PCs.</p>
+          <p class="body-lead anim-blur-focus">Check setup guides for your smartphones, smart TVs, or desktop systems.</p>
           <div style="display:flex; gap:12px; flex-wrap:wrap; justify-content:center; width:100%; max-width:380px;">
             <a class="btn-secondary" href="/devices/website" data-route="/devices/website" style="flex:1; min-width:140px;">Web Client</a>
             <a class="btn-secondary" href="/" data-route="/" style="flex:1; min-width:140px;">All Devices</a>
@@ -1713,6 +1804,7 @@
     // ROUTES registry definitions
     const ROUTES = {
       '/': { titleKey: 'page.home.title', type: 'home' },
+      '/index.html': { titleKey: 'page.home.title', type: 'home' },
       '/devices/website': { titleKey: 'device.website', type: 'device' },
       '/devices/android-phones': { titleKey: 'device.android_phones', type: 'device' },
       '/devices/android-tablets': { titleKey: 'device.android_tablets', type: 'device' },
