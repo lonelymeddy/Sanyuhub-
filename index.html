@@ -717,6 +717,108 @@
       .selectors { gap: 10px; }
       .selector select { font-size: 12px; }
     }
+
+    /* Installation Status Badges & Action Buttons */
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    .status-badge.status-available {
+      background: rgba(16, 185, 129, 0.12);
+      border: 1px solid rgba(16, 185, 129, 0.35);
+      color: #34d399;
+    }
+    .status-badge.status-coming-soon {
+      background: rgba(245, 158, 11, 0.12);
+      border: 1px solid rgba(245, 158, 11, 0.35);
+      color: #fbbf24;
+    }
+    .status-badge.status-unsupported {
+      background: rgba(239, 68, 68, 0.12);
+      border: 1px solid rgba(239, 68, 68, 0.35);
+      color: #f87171;
+    }
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      display: inline-block;
+    }
+    .dot-green { background: #34d399; box-shadow: 0 0 8px rgba(52, 211, 153, 0.6); }
+    .dot-amber { background: #fbbf24; box-shadow: 0 0 8px rgba(251, 191, 36, 0.6); }
+    .dot-red { background: #f87171; box-shadow: 0 0 8px rgba(248, 113, 113, 0.6); }
+
+    .actions-group {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      width: 100%;
+      max-width: 380px;
+      margin: 16px 0;
+      align-items: center;
+    }
+    .action-btn-wrapper {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+    }
+    .action-explain-text {
+      margin: 2px 0 0;
+      font-size: 12.5px;
+      color: var(--muted);
+      text-align: center;
+      line-height: 1.4;
+    }
+
+    .btn-disabled, button[disabled], button[aria-disabled="true"] {
+      opacity: 0.6;
+      cursor: not-allowed !important;
+      background: rgba(255, 255, 255, 0.08) !important;
+      border: 1px dashed var(--card-border) !important;
+      color: var(--muted) !important;
+      box-shadow: none !important;
+    }
+    .btn-disabled:hover, button[disabled]:hover, button[aria-disabled="true"]:hover {
+      transform: none !important;
+      background: rgba(255, 255, 255, 0.08) !important;
+    }
+
+    /* Setup & Removal Cards */
+    .guide-card {
+      width: 100%;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
+      padding: 18px;
+      text-align: left;
+      margin: 12px 0;
+    }
+    .guide-card h4 {
+      margin: 0 0 8px;
+      font-size: 15px;
+      font-weight: 650;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .guide-card p {
+      margin: 0;
+      font-size: 13.5px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
   </style>
 </head>
 <body>
@@ -1000,610 +1102,1419 @@
     }
 
     const DEVICE_DETAILS = {
-      '/devices/website': {
-        badge: 'Universal Access',
-        title: 'sanyuhub Web Client',
-        subtitle: 'Instant browser access across any desktop, phone, or smart device with no app downloads required.',
-        graphicType: 'desktop',
-        actionLabel: 'Explore Web Client',
-        actionUrl: 'https://sanyuhub.onrender.com/',
-        steps: [
-          { num: '1', title: 'Open Your Favorite Browser', text: 'Launch Google Chrome, Safari, Firefox, or Microsoft Edge on any phone, tablet, or PC.' },
-          { num: '2', title: 'Navigate to sanyuhub', text: 'Visit sanyuhub.onrender.com or bookmark the page for 1-tap instant launching.' },
-          { num: '3', title: 'Start Exploring', text: 'Enjoy seamless media syncing, multi-device controls, and localized content delivery.' }
-        ],
-        specs: [
-          { label: 'Platform Support', val: 'Web Standards (HTML5, WebGL, ES6+)' },
-          { label: 'Installation', val: 'No installation or store download required' },
-          { label: 'Supported Browsers', val: 'Chrome, Safari, Firefox, Edge, Opera' }
-        ],
-        trouble: 'If the web client experiences buffering or display issues, verify JavaScript is enabled and clear browser cache.'
-      },
-      '/devices/android-phones': {
-        badge: 'Android Mobile',
-        title: 'sanyuhub on Android Phones',
-        subtitle: 'Touch-optimized mobile web experience for all modern Android smartphones.',
-        graphicType: 'mobile',
-        actionLabel: 'Open Web App on Android',
-        actionUrl: 'https://sanyuhub.onrender.com/',
-        steps: [
-          { num: '1', title: 'Open Chrome on Android', text: 'Launch Google Chrome or your default Android web browser.' },
-          { num: '2', title: 'Visit sanyuhub', text: 'Navigate to sanyuhub.onrender.com.' },
-          { num: '3', title: 'Add to Home Screen', text: 'Tap Chrome menu icon and select "Add to Home screen" for PWA full-screen launch.' }
-        ],
-        specs: [
-          { label: 'Compatibility', val: 'Android 8.0 or newer' },
-          { label: 'Access Method', val: 'Progressive Web App (PWA) / Mobile Web' },
-          { label: 'Installation Package', val: 'No standalone APK or Play Store download needed' }
-        ],
-        trouble: 'Note: Official access is provided via browser PWA. Third-party APK installers are not needed.'
-      },
-      '/devices/android-tablets': {
-        badge: 'Android Tablet',
-        title: 'sanyuhub on Android Tablets',
-        subtitle: 'Spacious high-resolution layout crafted for widescreen tablet displays.',
-        graphicType: 'mobile',
-        actionLabel: 'Launch Tablet Experience',
-        actionUrl: 'https://sanyuhub.onrender.com/',
-        steps: [
-          { num: '1', title: 'Launch Tablet Browser', text: 'Open Chrome or Samsung Internet on your tablet.' },
-          { num: '2', title: 'Access sanyuhub', text: 'Go to sanyuhub.onrender.com for full tablet layout.' },
-          { num: '3', title: 'Create Shortcut', text: 'Add shortcut to your tablet home screen for 1-tap entry.' }
-        ],
-        specs: [
-          { label: 'OS Version', val: 'Android 8.0+' },
-          { label: 'Display Support', val: 'Optimized for 7" to 14" widescreen displays' }
-        ],
-        trouble: 'Ensure screen auto-rotate is enabled for optimal tablet viewing.'
-      },
-      '/devices/iphone': {
-        badge: 'iOS Mobile',
-        title: 'sanyuhub on iPhone',
-        subtitle: 'Refined mobile web experience designed for iOS and Apple Retina displays.',
-        graphicType: 'mobile',
-        actionLabel: 'Open in Safari',
-        actionUrl: 'https://sanyuhub.onrender.com/',
-        steps: [
-          { num: '1', title: 'Open Safari', text: 'Launch Apple Safari on your iPhone.' },
-          { num: '2', title: 'Go to sanyuhub', text: 'Type sanyuhub.onrender.com into the address bar.' },
-          { num: '3', title: 'Add to Home Screen', text: 'Tap Share button and select "Add to Home Screen".' }
-        ],
-        specs: [
-          { label: 'Compatibility', val: 'iOS 14.0 or later' },
-          { label: 'Browser', val: 'Safari / WebKit Engine' }
-        ],
-        trouble: 'For full-screen web app mode without browser toolbars, use "Add to Home Screen".'
-      },
-      '/devices/ipad': {
-        badge: 'iPadOS',
-        title: 'sanyuhub on iPad',
-        subtitle: 'Immersive tablet dashboard taking advantage of iPadOS Multitasking and Retina display performance.',
-        graphicType: 'mobile',
-        actionLabel: 'Launch iPad Experience',
-        actionUrl: 'https://sanyuhub.onrender.com/',
-        steps: [
-          { num: '1', title: 'Open Safari on iPad', text: 'Launch Safari on iPadOS.' },
-          { num: '2', title: 'Navigate to sanyuhub', text: 'Visit sanyuhub.onrender.com.' },
-          { num: '3', title: 'Pin to Home Screen', text: 'Tap Share, then select Add to Home Screen for instant launching.' }
-        ],
-        specs: [
-          { label: 'OS Version', val: 'iPadOS 14.0+' },
-          { label: 'Display Mode', val: 'Full Retina / Split View Support' }
-        ],
-        trouble: 'If video controls overlay fails, verify content blockers in Safari Settings.'
-      },
-      '/devices/windows': {
-        badge: 'Windows PC',
-        title: 'sanyuhub for Windows',
-        subtitle: 'High-performance desktop web experience for Windows 10 & 11 PCs.',
-        graphicType: 'desktop',
-        actionLabel: 'Launch Windows Web App',
-        actionUrl: 'https://sanyuhub.onrender.com/',
-        steps: [
-          { num: '1', title: 'Open Browser', text: 'Launch Microsoft Edge, Google Chrome, or Firefox.' },
-          { num: '2', title: 'Visit sanyuhub', text: 'Go to sanyuhub.onrender.com.' },
-          { num: '3', title: 'Install PWA App', text: 'Click the App Install icon in Edge/Chrome URL bar to pin to Windows Taskbar.' }
-        ],
-        specs: [
-          { label: 'OS Compatibility', val: 'Windows 10 / 11 (64-bit)' },
-          { label: 'Method', val: 'Web / Progressive Web App' }
-        ],
-        trouble: 'No separate .exe installation required; runs natively inside modern desktop browsers.'
-      },
-      '/devices/macos': {
-        badge: 'Mac Desktop',
-        title: 'sanyuhub for macOS',
-        subtitle: 'Sleek desktop experience for Apple Silicon and Intel Mac computers.',
-        graphicType: 'desktop',
-        actionLabel: 'Open Mac Web App',
-        actionUrl: 'https://sanyuhub.onrender.com/',
-        steps: [
-          { num: '1', title: 'Open Safari or Chrome', text: 'Launch Safari or Chrome on macOS.' },
-          { num: '2', title: 'Navigate to sanyuhub', text: 'Visit sanyuhub.onrender.com.' },
-          { num: '3', title: 'Add to Dock', text: 'In Safari (macOS Sonoma+), click File, then select Add to Dock.' }
-        ],
-        specs: [
-          { label: 'OS Compatibility', val: 'macOS Monterey / Ventura / Sonoma / Sequoia' },
-          { label: 'Architecture', val: 'Apple Silicon M1/M2/M3/M4 & Intel' }
-        ],
-        trouble: 'Runs seamlessly via browser without extra DMG installation packages.'
-      },
-      '/devices/linux': {
-        badge: 'Linux Desktop',
-        title: 'sanyuhub for Linux',
-        subtitle: 'Native standards-compliant web interface for Ubuntu, Fedora, Debian, and Arch Linux.',
-        graphicType: 'desktop',
-        actionLabel: 'Open Linux Web App',
-        actionUrl: 'https://sanyuhub.onrender.com/',
-        steps: [
-          { num: '1', title: 'Launch Browser', text: 'Open Firefox or Chrome on Linux.' },
-          { num: '2', title: 'Navigate to sanyuhub', text: 'Go to sanyuhub.onrender.com.' },
-          { num: '3', title: 'Create Application Shortcut', text: 'In Chrome, select Menu, then More Tools, then Create Shortcut.' }
-        ],
-        specs: [
-          { label: 'Distro Compatibility', val: 'Ubuntu, Debian, Fedora, Arch, Linux Mint' },
-          { label: 'Format', val: 'HTML5 Web Client' }
-        ],
-        trouble: 'No .deb or .rpm package required; web standards ensure zero configuration setup.'
-      },
-      '/devices/chromebook': {
-        badge: 'ChromeOS',
-        title: 'sanyuhub for Chromebook',
-        subtitle: 'Fast, energy-efficient web experience tailored for ChromeOS devices.',
-        graphicType: 'desktop',
-        actionLabel: 'Launch Chromebook App',
-        actionUrl: 'https://sanyuhub.onrender.com/',
-        steps: [
-          { num: '1', title: 'Open Chrome', text: 'Launch Chrome browser on your Chromebook.' },
-          { num: '2', title: 'Access sanyuhub', text: 'Visit sanyuhub.onrender.com.' },
-          { num: '3', title: 'Install PWA Shortcut', text: 'Click Install App icon on address bar to add to ChromeOS Shelf.' }
-        ],
-        specs: [
-          { label: 'Compatibility', val: 'All ChromeOS devices' },
-          { label: 'Performance', val: 'Lightweight HTML5 Web Client' }
-        ],
-        trouble: 'Runs directly in ChromeOS without requiring Play Store app installation.'
-      },
-      '/devices/samsung-smart-tv': {
-        badge: 'Samsung Tizen',
-        title: 'sanyuhub for Samsung Smart TV',
-        subtitle: 'Enjoy sanyuhub on Samsung Smart TVs via Tizen Web Browser or screen casting.',
-        graphicType: 'tv',
-        actionLabel: 'View TV Setup Guide',
-        actionUrl: 'https://sanyuhub.onrender.com/',
-        steps: [
-          { num: '1', title: 'Launch Samsung Internet', text: 'Open the built-in Web Browser on your Samsung TV.' },
-          { num: '2', title: 'Enter URL', text: 'Navigate to sanyuhub.onrender.com.' },
-          { num: '3', title: 'Alternative: Cast from Phone', text: 'Use Chrome or AirPlay on mobile to cast sanyuhub directly to TV.' }
-        ],
-        specs: [
-          { label: 'Supported OS', val: 'Samsung Tizen OS (2018+ models)' },
-          { label: 'Casting Standard', val: 'Samsung Smart View / Chromecast / AirPlay' }
-        ],
-        trouble: 'Ensure TV remote or Samsung SmartThings app is used for easy text input.'
-      },
-      '/devices/lg-smart-tv': {
-        badge: 'LG webOS',
-        title: 'sanyuhub for LG Smart TV',
-        subtitle: 'Stream sanyuhub on LG Smart TVs using webOS Web Browser or screen mirroring.',
-        graphicType: 'tv',
-        actionLabel: 'Launch LG TV Setup',
-        actionUrl: 'https://sanyuhub.onrender.com/',
-        steps: [
-          { num: '1', title: 'Open Web Browser', text: 'Select Web Browser app on LG webOS Home launcher.' },
-          { num: '2', title: 'Navigate to sanyuhub', text: 'Type sanyuhub.onrender.com using Magic Remote.' },
-          { num: '3', title: 'Cast Option', text: 'Mirror your phone or laptop screen using AirPlay or Chromecast.' }
-        ],
-        specs: [
-          { label: 'Supported OS', val: 'LG webOS 4.0+' },
-          { label: 'Control', val: 'Magic Remote Pointer / Mobile Web' }
-        ],
-        trouble: 'Ensure LG TV and streaming device are connected to the same Wi-Fi network.'
-      },
-      '/devices/android-tv': {
-        badge: 'Android TV',
-        title: 'sanyuhub for Android TV',
-        subtitle: 'Big-screen access via Android TV browser or Google Cast technology.',
-        graphicType: 'tv',
-        actionLabel: 'Open Android TV Guide',
-        actionUrl: 'https://sanyuhub.onrender.com/',
-        steps: [
-          { num: '1', title: 'Open TV Browser', text: 'Launch TV Bro, OpenBrowser, or Chrome on Android TV.' },
-          { num: '2', title: 'Visit sanyuhub', text: 'Enter sanyuhub.onrender.com.' },
-          { num: '3', title: 'Google Cast', text: 'Cast content wirelessly from your smartphone or computer.' }
-        ],
-        specs: [
-          { label: 'Supported OS', val: 'Android TV 9.0+' },
-          { label: 'Wireless Sync', val: 'Google Cast Receiver' }
-        ],
-        trouble: 'Use Google Home app on mobile if direct casting receiver pairing is needed.'
-      },
-      '/devices/google-tv': {
-        badge: 'Google TV',
-        title: 'sanyuhub for Google TV',
-        subtitle: 'Seamless integration with Google TV devices and Chromecast with Google TV.',
-        graphicType: 'tv',
-        actionLabel: 'Launch Setup Guide',
-        actionUrl: 'https://sanyuhub.onrender.com/',
-        steps: [
-          { num: '1', title: 'Open Web Browser', text: 'Use a compatible browser on Google TV.' },
-          { num: '2', title: 'Visit URL', text: 'Go to sanyuhub.onrender.com.' },
-          { num: '3', title: 'Cast from Mobile', text: 'Tap Cast icon in sanyuhub web client on phone.' }
-        ],
-        specs: [
-          { label: 'Device Platform', val: 'Google TV' },
-          { label: 'Casting', val: 'Native Chromecast Built-in' }
-        ],
-        trouble: 'Check Google TV display resolution settings if text scaling appears zoomed.'
-      },
-      '/devices/hisense-smart-tv': {
-        badge: 'Hisense VIDAA',
-        title: 'sanyuhub for Hisense Smart TV',
-        subtitle: 'Access sanyuhub on Hisense TVs powered by VIDAA OS or Android TV.',
-        graphicType: 'tv',
-        actionLabel: 'View Setup Instructions',
-        actionUrl: 'https://sanyuhub.onrender.com/',
-        steps: [
-          { num: '1', title: 'Open VIDAA Browser', text: 'Launch Web Browser app on Hisense Home screen.' },
-          { num: '2', title: 'Type sanyuhub', text: 'Enter sanyuhub.onrender.com in address bar.' },
-          { num: '3', title: 'Screen Sharing', text: 'Use Anyview Cast or AirPlay to mirror mobile screen.' }
-        ],
-        specs: [
-          { label: 'Platform', val: 'Hisense VIDAA / Android TV' },
-          { label: 'Screen Mirroring', val: 'Anyview Cast / AirPlay' }
-        ],
-        trouble: 'Update TV firmware to latest VIDAA version for optimal HTML5 performance.'
-      },
-      '/devices/playstation': {
-        badge: 'PlayStation',
-        title: 'sanyuhub on PlayStation',
-        subtitle: 'Connect sanyuhub through web browser capabilities on PS4 and PS5.',
-        graphicType: 'console',
-        actionLabel: 'Launch Console Guide',
-        actionUrl: 'https://sanyuhub.onrender.com/',
-        steps: [
-          { num: '1', title: 'Open Web Browser', text: 'Launch Internet Browser on PS4 or user web guide link on PS5.' },
-          { num: '2', title: 'Navigate to sanyuhub', text: 'Type sanyuhub.onrender.com into URL bar.' },
-          { num: '3', title: 'Control Navigation', text: 'Use DualSense or DualShock 4 analog stick for cursor movement.' }
-        ],
-        specs: [
-          { label: 'Consoles', val: 'PlayStation 5 & PlayStation 4' },
-          { label: 'Control Method', val: 'Gamepad Cursor / USB Keyboard' }
-        ],
-        trouble: 'Use fullscreen mode (Square button) on PS4 browser for full video viewing.'
-      },
-      '/devices/xbox': {
-        badge: 'Xbox Series X|S',
-        title: 'sanyuhub on Xbox',
-        subtitle: 'Desktop-grade browser experience using Microsoft Edge on Xbox Consoles.',
-        graphicType: 'console',
-        actionLabel: 'Open Xbox Web Client',
-        actionUrl: 'https://sanyuhub.onrender.com/',
-        steps: [
-          { num: '1', title: 'Open Microsoft Edge', text: 'Launch Microsoft Edge from My Games & Apps on Xbox.' },
-          { num: '2', title: 'Visit sanyuhub', text: 'Navigate to sanyuhub.onrender.com.' },
-          { num: '3', title: 'Pin to Start', text: 'Press Menu button and select "Pin to Start" for instant console launch.' }
-        ],
-        specs: [
-          { label: 'Consoles', val: 'Xbox Series X, Series S, Xbox One' },
-          { label: 'Browser', val: 'Chromium Microsoft Edge' }
-        ],
-        trouble: 'Edge on Xbox supports full keyboard and mouse input for desktop-like navigation.'
-      },
-      '/devices/apple-tv': {
-        badge: 'Apple TV & AirPlay',
-        title: 'sanyuhub for Apple TV',
-        subtitle: 'Wireless AirPlay video and screen streaming from iOS, iPadOS, and Mac.',
-        graphicType: 'streaming',
-        actionLabel: 'AirPlay Setup Instructions',
-        actionUrl: 'https://sanyuhub.onrender.com/',
-        steps: [
-          { num: '1', title: 'Open sanyuhub on Apple Device', text: 'Launch sanyuhub in Safari on iPhone, iPad, or Mac.' },
-          { num: '2', title: 'Tap AirPlay', text: 'Click AirPlay icon in video player or iOS Control Center.' },
-          { num: '3', title: 'Select Apple TV', text: 'Choose your Apple TV to stream content instantly to TV screen.' }
-        ],
-        specs: [
-          { label: 'Compatibility', val: 'Apple TV 4K / HD' },
-          { label: 'Protocol', val: 'Apple AirPlay 2' }
-        ],
-        trouble: 'Ensure Apple TV and sending iOS/Mac device are on the exact same Wi-Fi network.'
-      },
-      '/devices/amazon-fire-tv': {
-        badge: 'Fire TV Stick',
-        title: 'sanyuhub for Amazon Fire TV',
-        subtitle: 'Access sanyuhub on Fire TV sticks and Smart TVs via Silk Browser.',
-        graphicType: 'streaming',
-        actionLabel: 'Open Silk Browser Guide',
-        actionUrl: 'https://sanyuhub.onrender.com/',
-        steps: [
-          { num: '1', title: 'Open Amazon Silk Browser', text: 'Search for "Internet" or "Silk Browser" on Fire TV.' },
-          { num: '2', title: 'Enter URL', text: 'Type sanyuhub.onrender.com in address bar.' },
-          { num: '3', title: 'Bookmark Page', text: 'Add to Silk Browser bookmarks for fast access.' }
-        ],
-        specs: [
-          { label: 'Supported Hardware', val: 'Fire TV Stick 4K, Lite, Cube, Fire TV Edition' },
-          { label: 'Browser', val: 'Amazon Silk' }
-        ],
-        trouble: 'Use Fire TV remote ring to control pointer or use Fire TV mobile app.'
-      },
-      '/devices/chromecast': {
-        badge: 'Google Cast',
-        title: 'sanyuhub on Chromecast',
-        subtitle: 'Cast web media wirelessly from Chrome browser on mobile or desktop.',
-        graphicType: 'streaming',
-        actionLabel: 'Cast Setup Guide',
-        actionUrl: 'https://sanyuhub.onrender.com/',
-        steps: [
-          { num: '1', title: 'Open Chrome', text: 'Launch sanyuhub in Chrome on laptop or mobile.' },
-          { num: '2', title: 'Click Cast Icon', text: 'Tap Cast icon or select Chrome Menu, then Cast.' },
-          { num: '3', title: 'Select Receiver', text: 'Pick your Chromecast device to project sanyuhub onto television.' }
-        ],
-        specs: [
-          { label: 'Hardware', val: 'Chromecast (1st-3rd Gen), Chromecast 4K' },
-          { label: 'Standard', val: 'Google Cast Protocol' }
-        ],
-        trouble: 'If Chromecast is not listed, verify local network isolation is disabled in router.'
-      },
-      '/devices/roku': {
-        badge: 'Roku Express / Streaming Stick',
-        title: 'sanyuhub on Roku',
-        subtitle: 'Screen mirroring from Android and Windows devices to Roku hardware.',
-        graphicType: 'streaming',
-        actionLabel: 'View Roku Setup Steps',
-        actionUrl: 'https://sanyuhub.onrender.com/',
-        steps: [
-          { num: '1', title: 'Enable Roku Mirroring', text: 'On Roku, go to Settings, then System, then Screen Mirroring, then Always Allow.' },
-          { num: '2', title: 'Connect Mobile/PC', text: 'Use Smart View (Android) or Win+K (Windows 10/11).' },
-          { num: '3', title: 'Mirror sanyuhub', text: 'Project sanyuhub web client directly onto TV screen.' }
-        ],
-        specs: [
-          { label: 'Roku OS', val: 'Roku OS 9.0+' },
-          { label: 'Mirroring Tech', val: 'Miracast / AirPlay 2' }
-        ],
-        trouble: 'AirPlay is supported on 4K Roku models running Roku OS 9.4+.'
-      },
-      '/devices/android-tv-boxes': {
-        badge: 'Android Box',
-        title: 'sanyuhub for Android TV Boxes',
-        subtitle: 'Broad compatibility across set-top boxes, mini PCs, and media hubs.',
-        graphicType: 'tv',
-        actionLabel: 'Launch TV Box Setup',
-        actionUrl: 'https://sanyuhub.onrender.com/',
-        steps: [
-          { num: '1', title: 'Open Browser App', text: 'Launch Google Chrome or built-in browser on Android TV Box.' },
-          { num: '2', title: 'Visit sanyuhub', text: 'Navigate to sanyuhub.onrender.com.' },
-          { num: '3', title: 'Pin Shortcut', text: 'Add shortcut to TV box app launcher.' }
-        ],
-        specs: [
-          { label: 'Android OS', val: 'Android 7.0 to 14.0' },
-          { label: 'Control', val: 'Air Mouse / Remote / Keyboard' }
-        ],
-        trouble: 'An air mouse or wireless mini keyboard improves web client navigation.'
-      },
-      '/devices/compatible-cable-boxes': {
-        badge: 'Cable Box Integration',
-        title: 'sanyuhub for Cable & Hybrid Boxes',
-        subtitle: 'Browser and casting support for modern HTML5-capable cable decoders.',
-        graphicType: 'tv',
-        actionLabel: 'Cable Box Instructions',
-        actionUrl: 'https://sanyuhub.onrender.com/',
-        steps: [
-          { num: '1', title: 'Access Web App Store', text: 'Open Apps menu on compatible cable decoder.' },
-          { num: '2', title: 'Launch Browser', text: 'Open system web browser and visit sanyuhub.onrender.com.' },
-          { num: '3', title: 'Connect Account', text: 'Pair sanyuhub service for set-top box access.' }
-        ],
-        specs: [
-          { label: 'Decoder Type', val: 'Smart Cable / Hybrid IPTV Decoders' },
-          { label: 'Standards', val: 'HTML5 / HbbTV' }
-        ],
-        trouble: 'Consult your cable provider hardware specifications for HTML5 web browser availability.'
+  "/devices/website": {
+    "status": "available",
+    "statusLabel": "Available",
+    "badge": "Universal Access",
+    "title": "sanyuhub Web Client",
+    "subtitle": "Instant browser access across any desktop, phone, or smart device with no app downloads required.",
+    "graphicType": "desktop",
+    "actions": [
+      {
+        "label": "Launch Web Client",
+        "url": "https://sanyuhub.onrender.com/",
+        "primary": true,
+        "external": true
       }
-    };
+    ],
+    "requirements": [
+      {
+        "label": "Platform Standards",
+        "val": "HTML5, WebGL, ES6+"
+      },
+      {
+        "label": "Installation Requirements",
+        "val": "No store download required"
+      },
+      {
+        "label": "Supported Browsers",
+        "val": "Chrome, Safari, Firefox, Edge, Opera"
+      }
+    ],
+    "steps": [
+      {
+        "num": "1",
+        "title": "Open Your Favorite Browser",
+        "text": "Launch Google Chrome, Apple Safari, Mozilla Firefox, or Microsoft Edge on any device."
+      },
+      {
+        "num": "2",
+        "title": "Access sanyuhub Web Portal",
+        "text": "Open the sanyuhub Web Client interface directly in your browser."
+      },
+      {
+        "num": "3",
+        "title": "Bookmark & Shortcut",
+        "text": "Add a browser bookmark or home screen shortcut for 1-tap instant launching."
+      }
+    ],
+    "setup": {
+      "title": "Initial Setup & Configuration",
+      "text": "Upon launching the Web Client, allow local storage permissions to preserve your language preferences, theme settings, and saved playback state."
+    },
+    "trouble": {
+      "title": "Troubleshooting & Solutions",
+      "text": "If web playback stalls, verify JavaScript is enabled in browser settings, clear browser cache files, and temporarily disable ad-blockers."
+    },
+    "removal": {
+      "title": "Clearing Saved Data",
+      "text": "To reset saved preferences, open your browser Site Settings, find sanyuhub under Privacy, and select Clear Storage & Cookies."
+    }
+  },
+  "/devices/android-phones": {
+    "status": "available",
+    "statusLabel": "Available",
+    "badge": "Android Mobile",
+    "title": "sanyuhub on Android Phones",
+    "subtitle": "Touch-optimized mobile app and web experience for all modern Android smartphones.",
+    "graphicType": "mobile",
+    "actions": [
+      {
+        "label": "Get It on Google Play",
+        "url": "https://play.google.com/store",
+        "primary": true,
+        "external": true
+      },
+      {
+        "label": "Launch Mobile Web App",
+        "url": "https://sanyuhub.onrender.com/",
+        "primary": false,
+        "external": true
+      },
+      {
+        "label": "Direct APK Package — Coming Soon",
+        "type": "coming_soon",
+        "note": "Direct standalone APK download instructions are currently being finalized."
+      }
+    ],
+    "requirements": [
+      {
+        "label": "Operating System",
+        "val": "Android 8.0 (Oreo) or newer"
+      },
+      {
+        "label": "Store Access",
+        "val": "Google Play Store / Chrome PWA"
+      },
+      {
+        "label": "Hardware Prerequisites",
+        "val": "Touchscreen display with internet connectivity"
+      }
+    ],
+    "steps": [
+      {
+        "num": "1",
+        "title": "Open Google Play Store",
+        "text": "Launch Google Play Store on your Android smartphone and search for sanyuhub."
+      },
+      {
+        "num": "2",
+        "title": "Install Application",
+        "text": "Tap Install to download the application directly onto your Android device."
+      },
+      {
+        "num": "3",
+        "title": "PWA Home Screen Alternative",
+        "text": "Or launch Chrome, open the sanyuhub portal, tap the menu (three dots), and tap Add to Home screen."
+      }
+    ],
+    "setup": {
+      "title": "Initial Setup",
+      "text": "Launch sanyuhub from your home screen, accept network access prompts for local casting, and sign in to link your account."
+    },
+    "trouble": {
+      "title": "Troubleshooting",
+      "text": "If installation fails due to storage limits, free up memory under Android Settings > Storage. Ensure Google Play Services are up to date."
+    },
+    "removal": {
+      "title": "Uninstallation & Reset",
+      "text": "To remove, press and hold the sanyuhub app icon on your launcher, then select Uninstall. To clear data without removing, go to Settings > Apps > sanyuhub > Clear Data."
+    }
+  },
+  "/devices/android-tablets": {
+    "status": "available",
+    "statusLabel": "Available",
+    "badge": "Android Tablet",
+    "title": "sanyuhub on Android Tablets",
+    "subtitle": "High-resolution tablet interface engineered for widescreen Android tablet displays.",
+    "graphicType": "mobile",
+    "actions": [
+      {
+        "label": "Get It on Google Play",
+        "url": "https://play.google.com/store",
+        "primary": true,
+        "external": true
+      },
+      {
+        "label": "Launch Tablet Web Client",
+        "url": "https://sanyuhub.onrender.com/",
+        "primary": false,
+        "external": true
+      }
+    ],
+    "requirements": [
+      {
+        "label": "Operating System",
+        "val": "Android 8.0 or newer"
+      },
+      {
+        "label": "Display Compatibility",
+        "val": "7\" to 14\" widescreen displays"
+      },
+      {
+        "label": "Store Access",
+        "val": "Google Play Store / Browser PWA"
+      }
+    ],
+    "steps": [
+      {
+        "num": "1",
+        "title": "Open Play Store",
+        "text": "Launch Google Play Store on your tablet and search for sanyuhub."
+      },
+      {
+        "num": "2",
+        "title": "Install Tablet App",
+        "text": "Tap Install to complete the automatic setup on your tablet."
+      },
+      {
+        "num": "3",
+        "title": "Create Tablet Shortcut",
+        "text": "Alternatively, open Chrome or Samsung Internet and select Add to Home Screen for 1-tap launching."
+      }
+    ],
+    "setup": {
+      "title": "Initial Setup",
+      "text": "Enable screen auto-rotate in tablet quick settings and grant required media permissions on first app launch."
+    },
+    "trouble": {
+      "title": "Troubleshooting",
+      "text": "If controls appear misaligned, verify tablet auto-rotate is enabled and check Font & Display Size under Android Display Settings."
+    },
+    "removal": {
+      "title": "Uninstallation",
+      "text": "Hold down the sanyuhub icon on your tablet home screen and tap Uninstall, or remove via Google Play Store."
+    }
+  },
+  "/devices/iphone": {
+    "status": "available",
+    "statusLabel": "Available",
+    "badge": "iOS Mobile",
+    "title": "sanyuhub on iPhone",
+    "subtitle": "Sleek iOS mobile experience optimized for Apple Retina displays and touch gestures.",
+    "graphicType": "mobile",
+    "actions": [
+      {
+        "label": "Open Apple App Store",
+        "url": "https://apps.apple.com",
+        "primary": true,
+        "external": true
+      },
+      {
+        "label": "Launch iPhone Web Client",
+        "url": "https://sanyuhub.onrender.com/",
+        "primary": false,
+        "external": true
+      }
+    ],
+    "requirements": [
+      {
+        "label": "Operating System",
+        "val": "iOS 14.0 or newer"
+      },
+      {
+        "label": "Hardware",
+        "val": "iPhone with Apple ID or Safari PWA support"
+      }
+    ],
+    "steps": [
+      {
+        "num": "1",
+        "title": "Open App Store",
+        "text": "Launch the Apple App Store on your iPhone and search for sanyuhub."
+      },
+      {
+        "num": "2",
+        "title": "Install App",
+        "text": "Tap Get and authenticate using Face ID, Touch ID, or Apple ID password."
+      },
+      {
+        "num": "3",
+        "title": "Safari Home Screen Shortcut",
+        "text": "Or open Safari, load sanyuhub, tap the Share icon, and select Add to Home Screen."
+      }
+    ],
+    "setup": {
+      "title": "Initial Setup",
+      "text": "Open sanyuhub from your home screen, grant local network access when prompted to enable AirPlay casting, and sign in."
+    },
+    "trouble": {
+      "title": "Troubleshooting",
+      "text": "If App Store downloads pause, verify iOS is updated under Settings > General > Software Update and check your Apple ID login status."
+    },
+    "removal": {
+      "title": "Uninstallation",
+      "text": "Long-press the sanyuhub icon on your iPhone home screen, tap Remove App, and select Delete App."
+    }
+  },
+  "/devices/ipad": {
+    "status": "available",
+    "statusLabel": "Available",
+    "badge": "iPadOS",
+    "title": "sanyuhub on iPad",
+    "subtitle": "Immersive iPad dashboard taking advantage of iPadOS Split View and Retina display.",
+    "graphicType": "mobile",
+    "actions": [
+      {
+        "label": "Open Apple App Store",
+        "url": "https://apps.apple.com",
+        "primary": true,
+        "external": true
+      },
+      {
+        "label": "Launch iPad Web App",
+        "url": "https://sanyuhub.onrender.com/",
+        "primary": false,
+        "external": true
+      }
+    ],
+    "requirements": [
+      {
+        "label": "Operating System",
+        "val": "iPadOS 14.0 or newer"
+      },
+      {
+        "label": "Multitasking Support",
+        "val": "Split View & Stage Manager compatible"
+      }
+    ],
+    "steps": [
+      {
+        "num": "1",
+        "title": "Open App Store on iPad",
+        "text": "Open the Apple App Store on your iPad and search for sanyuhub."
+      },
+      {
+        "num": "2",
+        "title": "Download & Install",
+        "text": "Tap Get to install sanyuhub to your iPad application grid."
+      },
+      {
+        "num": "3",
+        "title": "Safari Web Shortcut",
+        "text": "Or open Safari, load sanyuhub, tap Share, and select Add to Home Screen."
+      }
+    ],
+    "setup": {
+      "title": "Initial Setup",
+      "text": "Launch sanyuhub on iPad, configure display orientation, and sign in to access synced media libraries."
+    },
+    "trouble": {
+      "title": "Troubleshooting",
+      "text": "If playback stops during multitasking, verify background app refresh is enabled under Settings > General > Background App Refresh."
+    },
+    "removal": {
+      "title": "Uninstallation",
+      "text": "Touch and hold the sanyuhub app icon on your iPad home screen, choose Remove App, and tap Delete App."
+    }
+  },
+  "/devices/windows": {
+    "status": "available",
+    "statusLabel": "Available",
+    "badge": "Windows PC",
+    "title": "sanyuhub for Windows",
+    "subtitle": "High-performance desktop experience for Windows 10 & 11 PCs and laptops.",
+    "graphicType": "desktop",
+    "actions": [
+      {
+        "label": "Open Microsoft Store",
+        "url": "https://apps.microsoft.com",
+        "primary": true,
+        "external": true
+      },
+      {
+        "label": "Launch Windows Web Client",
+        "url": "https://sanyuhub.onrender.com/",
+        "primary": false,
+        "external": true
+      }
+    ],
+    "requirements": [
+      {
+        "label": "Operating System",
+        "val": "Windows 10 / Windows 11 (64-bit)"
+      },
+      {
+        "label": "Browser Support",
+        "val": "Microsoft Edge, Google Chrome, Firefox"
+      }
+    ],
+    "steps": [
+      {
+        "num": "1",
+        "title": "Open Microsoft Store",
+        "text": "Launch Microsoft Store on Windows and search for sanyuhub."
+      },
+      {
+        "num": "2",
+        "title": "Install Application",
+        "text": "Click Get or Install to automatically install the Windows application."
+      },
+      {
+        "num": "3",
+        "title": "Install Edge / Chrome PWA",
+        "text": "Alternatively, open Edge/Chrome, visit sanyuhub, and click Install App on the address bar to pin to Windows Taskbar."
+      }
+    ],
+    "setup": {
+      "title": "Initial Setup",
+      "text": "Launch sanyuhub from Start Menu or Taskbar, grant firewall permissions for local device sync, and sign in."
+    },
+    "trouble": {
+      "title": "Troubleshooting",
+      "text": "If Windows Firewall prompts on first launch, allow Private Networks access to ensure local network streaming works properly."
+    },
+    "removal": {
+      "title": "Uninstallation",
+      "text": "Open Windows Settings > Apps > Installed Apps, locate sanyuhub, click the option menu, and select Uninstall."
+    }
+  },
+  "/devices/macos": {
+    "status": "available",
+    "statusLabel": "Available",
+    "badge": "Mac Desktop",
+    "title": "sanyuhub for macOS",
+    "subtitle": "Native macOS desktop application experience for Apple Silicon and Intel Mac computers.",
+    "graphicType": "desktop",
+    "actions": [
+      {
+        "label": "Open Mac App Store",
+        "url": "https://apps.apple.com",
+        "primary": true,
+        "external": true
+      },
+      {
+        "label": "Launch Mac Web Client",
+        "url": "https://sanyuhub.onrender.com/",
+        "primary": false,
+        "external": true
+      }
+    ],
+    "requirements": [
+      {
+        "label": "Operating System",
+        "val": "macOS Monterey, Ventura, Sonoma, Sequoia"
+      },
+      {
+        "label": "Architecture",
+        "val": "Apple Silicon (M1-M4) & Intel Processors"
+      }
+    ],
+    "steps": [
+      {
+        "num": "1",
+        "title": "Open Mac App Store",
+        "text": "Open the App Store on your Mac and search for sanyuhub."
+      },
+      {
+        "num": "2",
+        "title": "Download Application",
+        "text": "Click Get to install sanyuhub directly into your Applications folder."
+      },
+      {
+        "num": "3",
+        "title": "Add to Dock in Safari",
+        "text": "Alternatively, in Safari on macOS, select File > Add to Dock to create a Dock application icon."
+      }
+    ],
+    "setup": {
+      "title": "Initial Setup",
+      "text": "Open sanyuhub from your Applications folder or Dock, accept macOS network permissions, and log in."
+    },
+    "trouble": {
+      "title": "Troubleshooting",
+      "text": "If Gatekeeper blocks opening, open System Settings > Privacy & Security, scroll to Security, and click Open Anyway."
+    },
+    "removal": {
+      "title": "Uninstallation",
+      "text": "Open Finder > Applications, drag sanyuhub to the Trash, and empty Trash to complete uninstallation."
+    }
+  },
+  "/devices/linux": {
+    "status": "available",
+    "statusLabel": "Available",
+    "badge": "Linux Desktop",
+    "title": "sanyuhub for Linux",
+    "subtitle": "Standards-compliant web and desktop app interface for Ubuntu, Fedora, Debian, and Arch Linux.",
+    "graphicType": "desktop",
+    "actions": [
+      {
+        "label": "Launch Linux Web Client",
+        "url": "https://sanyuhub.onrender.com/",
+        "primary": true,
+        "external": true
+      },
+      {
+        "label": "Flatpak Package — Coming Soon",
+        "type": "coming_soon",
+        "note": "Standalone Flatpak and Snap installer packages are currently in build pipeline."
+      }
+    ],
+    "requirements": [
+      {
+        "label": "Distro Compatibility",
+        "val": "Ubuntu, Debian, Fedora, Arch, Linux Mint"
+      },
+      {
+        "label": "Media Codecs",
+        "val": "FFmpeg / H.264 HTML5 video playback"
+      }
+    ],
+    "steps": [
+      {
+        "num": "1",
+        "title": "Open Linux Web Browser",
+        "text": "Launch Firefox, Chrome, or Brave on your Linux distribution."
+      },
+      {
+        "num": "2",
+        "title": "Access sanyuhub Portal",
+        "text": "Open the sanyuhub Web Client interface."
+      },
+      {
+        "num": "3",
+        "title": "Create Desktop Shortcut",
+        "text": "In Chrome/Brave, select Menu > More Tools > Create Shortcut, check Open as window, and click Create."
+      }
+    ],
+    "setup": {
+      "title": "Initial Setup",
+      "text": "Launch sanyuhub from your Linux application launcher desktop entry and configure audio output settings."
+    },
+    "trouble": {
+      "title": "Troubleshooting",
+      "text": "If media codecs fail to render video streams, install FFmpeg system packages via your terminal (e.g., sudo apt install ffmpeg)."
+    },
+    "removal": {
+      "title": "Clearing Shortcut",
+      "text": "To remove the PWA desktop entry, open chrome://apps in Chromium browser, right-click sanyuhub, and select Remove."
+    }
+  },
+  "/devices/chromebook": {
+    "status": "available",
+    "statusLabel": "Available",
+    "badge": "ChromeOS",
+    "title": "sanyuhub for Chromebook",
+    "subtitle": "Energy-efficient web and Play Store application experience tailored for ChromeOS.",
+    "graphicType": "desktop",
+    "actions": [
+      {
+        "label": "Get It on Google Play",
+        "url": "https://play.google.com/store",
+        "primary": true,
+        "external": true
+      },
+      {
+        "label": "Launch Chromebook Web Client",
+        "url": "https://sanyuhub.onrender.com/",
+        "primary": false,
+        "external": true
+      }
+    ],
+    "requirements": [
+      {
+        "label": "Operating System",
+        "val": "ChromeOS (latest version)"
+      },
+      {
+        "label": "Access Method",
+        "val": "Google Play Store / ChromeOS PWA"
+      }
+    ],
+    "steps": [
+      {
+        "num": "1",
+        "title": "Open Play Store",
+        "text": "Launch Google Play Store on your Chromebook and search for sanyuhub."
+      },
+      {
+        "num": "2",
+        "title": "Install Application",
+        "text": "Select Install to add sanyuhub to your ChromeOS Launcher."
+      },
+      {
+        "num": "3",
+        "title": "PWA Shelf Shortcut",
+        "text": "Or open Chrome browser, load sanyuhub, click Install App in the address bar, and pin to ChromeOS Shelf."
+      }
+    ],
+    "setup": {
+      "title": "Initial Setup",
+      "text": "Click sanyuhub on your ChromeOS Shelf, adjust window size mode, and sign in to link your account."
+    },
+    "trouble": {
+      "title": "Troubleshooting",
+      "text": "If app window displays in small mobile mode, click the title bar window control and select Resizable or Fullscreen."
+    },
+    "removal": {
+      "title": "Uninstallation",
+      "text": "Right-click or two-finger tap the sanyuhub app icon on your ChromeOS Launcher and select Uninstall."
+    }
+  },
+  "/devices/samsung-smart-tv": {
+    "status": "available",
+    "statusLabel": "Available",
+    "badge": "Samsung Tizen",
+    "title": "sanyuhub for Samsung Smart TV",
+    "subtitle": "Smart Hub app and browser access tailored for Samsung Tizen Smart TVs.",
+    "graphicType": "tv",
+    "actions": [
+      {
+        "label": "Open Samsung App Store",
+        "url": "https://www.samsung.com/us/appstore/",
+        "primary": true,
+        "external": true
+      },
+      {
+        "label": "Launch TV Browser Guide",
+        "url": "https://sanyuhub.onrender.com/",
+        "primary": false,
+        "external": true
+      },
+      {
+        "label": "Android APK Installer — Not Supported",
+        "type": "unsupported",
+        "note": "Samsung Tizen OS uses native Tizen web apps and does not support Android APK files."
+      }
+    ],
+    "requirements": [
+      {
+        "label": "Supported System",
+        "val": "Samsung Tizen OS (2018 or newer models)"
+      },
+      {
+        "label": "Controller",
+        "val": "Samsung Smart Remote / SmartThings App"
+      }
+    ],
+    "steps": [
+      {
+        "num": "1",
+        "title": "Press Home on Samsung Remote",
+        "text": "Press the Home button on your remote to open Samsung Smart Hub."
+      },
+      {
+        "num": "2",
+        "title": "Open Apps Category",
+        "text": "Select Apps and search for sanyuhub using the on-screen keyboard."
+      },
+      {
+        "num": "3",
+        "title": "Install & Samsung Internet",
+        "text": "Click Install to add sanyuhub to your Home launcher bar. Alternatively, launch the built-in Samsung Internet browser."
+      }
+    ],
+    "setup": {
+      "title": "Initial Setup",
+      "text": "Open sanyuhub from your TV Home bar, enter your activation pairing code or log in, and select display output."
+    },
+    "trouble": {
+      "title": "Troubleshooting",
+      "text": "If the app fails to launch, hold the Power button on your Samsung remote for 5 seconds until the TV reboots and clears system memory."
+    },
+    "removal": {
+      "title": "Uninstallation",
+      "text": "Navigate to Apps > Settings (gear icon) on your Samsung TV, locate sanyuhub, select Delete, and confirm removal."
+    }
+  },
+  "/devices/lg-smart-tv": {
+    "status": "available",
+    "statusLabel": "Available",
+    "badge": "LG webOS",
+    "title": "sanyuhub for LG Smart TV",
+    "subtitle": "Stream sanyuhub on LG Smart TVs using webOS Content Store app or Magic Remote browser.",
+    "graphicType": "tv",
+    "actions": [
+      {
+        "label": "Open LG Content Store",
+        "url": "https://us.lgappstv.com/",
+        "primary": true,
+        "external": true
+      },
+      {
+        "label": "Launch webOS Browser Guide",
+        "url": "https://sanyuhub.onrender.com/",
+        "primary": false,
+        "external": true
+      },
+      {
+        "label": "Android APK Installer — Not Supported",
+        "type": "unsupported",
+        "note": "LG webOS is a proprietary OS and does not support Android APK packages."
+      }
+    ],
+    "requirements": [
+      {
+        "label": "Supported System",
+        "val": "LG webOS 4.0 or newer"
+      },
+      {
+        "label": "Remote Control",
+        "val": "LG Magic Remote / Standard Remote"
+      }
+    ],
+    "steps": [
+      {
+        "num": "1",
+        "title": "Open LG Launcher",
+        "text": "Press Home on your LG Magic Remote to open the webOS launcher bar."
+      },
+      {
+        "num": "2",
+        "title": "Search LG Content Store",
+        "text": "Open LG Content Store (or Apps) and search for sanyuhub."
+      },
+      {
+        "num": "3",
+        "title": "Install Application",
+        "text": "Click Install to download the application directly to your LG TV."
+      }
+    ],
+    "setup": {
+      "title": "Initial Setup",
+      "text": "Select sanyuhub on your LG launcher, complete account pairing, and configure your streaming preferences."
+    },
+    "trouble": {
+      "title": "Troubleshooting",
+      "text": "If streaming buffering occurs, check LG TV System Settings > General > About This TV and install available webOS software updates."
+    },
+    "removal": {
+      "title": "Uninstallation",
+      "text": "On the LG launcher bar, scroll to sanyuhub, long-press the remote wheel/OK button to enter Edit Mode, click the X icon, and confirm."
+    }
+  },
+  "/devices/android-tv": {
+    "status": "available",
+    "statusLabel": "Available",
+    "badge": "Android TV",
+    "title": "sanyuhub for Android TV",
+    "subtitle": "Big-screen television experience for Sony Bravia, TCL, Sharp, and Philips Android TVs.",
+    "graphicType": "tv",
+    "actions": [
+      {
+        "label": "Get It on Google Play",
+        "url": "https://play.google.com/store",
+        "primary": true,
+        "external": true
+      },
+      {
+        "label": "Download TV Package — Coming Soon",
+        "type": "coming_soon",
+        "note": "Direct sideloading package downloads for Android TV are currently being updated."
+      }
+    ],
+    "requirements": [
+      {
+        "label": "Operating System",
+        "val": "Android TV 9.0 or newer"
+      },
+      {
+        "label": "Store & Remote",
+        "val": "Google Play Store TV / Android TV Remote"
+      }
+    ],
+    "steps": [
+      {
+        "num": "1",
+        "title": "Open Play Store on TV",
+        "text": "Navigate to Apps tab or open Google Play Store on your Android TV home screen."
+      },
+      {
+        "num": "2",
+        "title": "Search for sanyuhub",
+        "text": "Search for sanyuhub using voice remote or on-screen keyboard."
+      },
+      {
+        "num": "3",
+        "title": "Select Install",
+        "text": "Click Install to add sanyuhub directly to your Android TV app row."
+      }
+    ],
+    "setup": {
+      "title": "Initial Setup",
+      "text": "Open sanyuhub, select Sign In, scan the QR code with your smartphone or enter the 6-digit activation PIN."
+    },
+    "trouble": {
+      "title": "Troubleshooting",
+      "text": "If Play Store downloads stall, go to Android TV Settings > Apps > See all apps > Google Play Store > Clear Cache."
+    },
+    "removal": {
+      "title": "Uninstallation",
+      "text": "Go to TV Settings > Apps > See all apps > sanyuhub > Uninstall."
+    }
+  },
+  "/devices/google-tv": {
+    "status": "available",
+    "statusLabel": "Available",
+    "badge": "Google TV",
+    "title": "sanyuhub for Google TV",
+    "subtitle": "Seamless integration with Google TV devices and Chromecast with Google TV.",
+    "graphicType": "tv",
+    "actions": [
+      {
+        "label": "Open Google Play Store",
+        "url": "https://play.google.com/store",
+        "primary": true,
+        "external": true
+      },
+      {
+        "label": "Start Setup Guide",
+        "url": "https://sanyuhub.onrender.com/",
+        "primary": false,
+        "external": true
+      }
+    ],
+    "requirements": [
+      {
+        "label": "Device Platform",
+        "val": "Google TV OS (Chromecast / Sony / Hisense)"
+      },
+      {
+        "label": "Control",
+        "val": "Google TV Voice Remote / Google Home"
+      }
+    ],
+    "steps": [
+      {
+        "num": "1",
+        "title": "Search on Google TV",
+        "text": "Press the Voice button on your remote or go to the Search tab on Google TV."
+      },
+      {
+        "num": "2",
+        "title": "Search sanyuhub",
+        "text": "Say or type sanyuhub app."
+      },
+      {
+        "num": "3",
+        "title": "Click Install",
+        "text": "Select Install to add sanyuhub to Your Apps row."
+      }
+    ],
+    "setup": {
+      "title": "Initial Setup",
+      "text": "Open sanyuhub from Your Apps, follow the quick account link prompt, and start streaming."
+    },
+    "trouble": {
+      "title": "Troubleshooting",
+      "text": "If app installation is disabled, check Settings > Accounts & Sign-In to confirm your Google Account is active."
+    },
+    "removal": {
+      "title": "Uninstallation",
+      "text": "Highlight sanyuhub in Your Apps, press and hold Select on remote, choose View details, and click Uninstall."
+    }
+  },
+  "/devices/hisense-smart-tv": {
+    "status": "available",
+    "statusLabel": "Available",
+    "badge": "Hisense VIDAA",
+    "title": "sanyuhub for Hisense Smart TV",
+    "subtitle": "Access sanyuhub on Hisense TVs powered by VIDAA OS or Android TV.",
+    "graphicType": "tv",
+    "actions": [
+      {
+        "label": "Open VIDAA App Store",
+        "url": "https://www.hisense.com/",
+        "primary": true,
+        "external": true
+      },
+      {
+        "label": "Launch Setup Guide",
+        "url": "https://sanyuhub.onrender.com/",
+        "primary": false,
+        "external": true
+      }
+    ],
+    "requirements": [
+      {
+        "label": "Platform Support",
+        "val": "Hisense VIDAA OS 4.0+ / Android TV"
+      },
+      {
+        "label": "Input Method",
+        "val": "Hisense Remote / VIDAA Controller"
+      }
+    ],
+    "steps": [
+      {
+        "num": "1",
+        "title": "Press Home on Hisense Remote",
+        "text": "Press Home on your Hisense remote to open the launcher menu."
+      },
+      {
+        "num": "2",
+        "title": "Open VIDAA App Store",
+        "text": "Select VIDAA App Store (or My Apps) and search for sanyuhub."
+      },
+      {
+        "num": "3",
+        "title": "Click Install",
+        "text": "Select Install to add sanyuhub to your Hisense application bar."
+      }
+    ],
+    "setup": {
+      "title": "Initial Setup",
+      "text": "Launch sanyuhub from your Hisense Home launcher, sign in or pair account code, and set streaming resolution."
+    },
+    "trouble": {
+      "title": "Troubleshooting",
+      "text": "If video buffering occurs on VIDAA OS, navigate to Support > System Update in TV settings to install firmware updates."
+    },
+    "removal": {
+      "title": "Uninstallation",
+      "text": "In My Apps on Hisense TV, select sanyuhub, press the Option button on your remote, and select Uninstall."
+    }
+  },
+  "/devices/playstation": {
+    "status": "available",
+    "statusLabel": "Available",
+    "badge": "PlayStation",
+    "title": "sanyuhub on PlayStation",
+    "subtitle": "Stream sanyuhub through media application section on PS4 and PS5 consoles.",
+    "graphicType": "console",
+    "actions": [
+      {
+        "label": "Open PlayStation Store",
+        "url": "https://store.playstation.com",
+        "primary": true,
+        "external": true
+      },
+      {
+        "label": "Console Browser Guide",
+        "url": "https://sanyuhub.onrender.com/",
+        "primary": false,
+        "external": true
+      }
+    ],
+    "requirements": [
+      {
+        "label": "Consoles Supported",
+        "val": "PlayStation 5 & PlayStation 4"
+      },
+      {
+        "label": "Control Method",
+        "val": "DualSense / DualShock 4 Controller"
+      }
+    ],
+    "steps": [
+      {
+        "num": "1",
+        "title": "Open PlayStation Store",
+        "text": "Navigate to Media tab or PlayStation Store on your PS4 or PS5 console."
+      },
+      {
+        "num": "2",
+        "title": "Search for sanyuhub",
+        "text": "Search for sanyuhub under Apps & Entertainment."
+      },
+      {
+        "num": "3",
+        "title": "Select Download",
+        "text": "Click Download to add sanyuhub to your PlayStation Media library."
+      }
+    ],
+    "setup": {
+      "title": "Initial Setup",
+      "text": "Open sanyuhub from Media gallery, log in using virtual keyboard or scan the on-screen QR code with your mobile phone."
+    },
+    "trouble": {
+      "title": "Troubleshooting",
+      "text": "If media playback freezes, press Options button on your controller, select Close App, and relaunch sanyuhub."
+    },
+    "removal": {
+      "title": "Uninstallation",
+      "text": "Highlight sanyuhub in Media library, press Options button on controller, select Delete, and confirm."
+    }
+  },
+  "/devices/xbox": {
+    "status": "available",
+    "statusLabel": "Available",
+    "badge": "Xbox Series X|S",
+    "title": "sanyuhub on Xbox",
+    "subtitle": "High-performance console media experience for Xbox Series X, Series S, and Xbox One.",
+    "graphicType": "console",
+    "actions": [
+      {
+        "label": "Open Microsoft Store on Xbox",
+        "url": "https://www.xbox.com/apps",
+        "primary": true,
+        "external": true
+      },
+      {
+        "label": "Launch Xbox Edge Web Client",
+        "url": "https://sanyuhub.onrender.com/",
+        "primary": false,
+        "external": true
+      }
+    ],
+    "requirements": [
+      {
+        "label": "Consoles",
+        "val": "Xbox Series X, Series S, Xbox One"
+      },
+      {
+        "label": "Browser & App",
+        "val": "Microsoft Store / Microsoft Edge on Xbox"
+      }
+    ],
+    "steps": [
+      {
+        "num": "1",
+        "title": "Open Microsoft Store",
+        "text": "Launch Microsoft Store app from your Xbox dashboard."
+      },
+      {
+        "num": "2",
+        "title": "Search for sanyuhub",
+        "text": "Type sanyuhub in the Store Search bar."
+      },
+      {
+        "num": "3",
+        "title": "Install to Console",
+        "text": "Click Get or Install to add sanyuhub to My games & apps."
+      }
+    ],
+    "setup": {
+      "title": "Initial Setup",
+      "text": "Launch sanyuhub from My games & apps > Apps, sign in to your account, and set display scaling."
+    },
+    "trouble": {
+      "title": "Troubleshooting",
+      "text": "If navigation skips, press Xbox button, open Settings > Devices & Connections > Accessories, and update controller firmware."
+    },
+    "removal": {
+      "title": "Uninstallation",
+      "text": "Go to My games & apps > Apps > sanyuhub, press Menu button (three lines) on controller, select Uninstall."
+    }
+  },
+  "/devices/apple-tv": {
+    "status": "available",
+    "statusLabel": "Available",
+    "badge": "Apple TV & AirPlay",
+    "title": "sanyuhub for Apple TV",
+    "subtitle": "Native tvOS application and wireless AirPlay video streaming from iPhone, iPad, and Mac.",
+    "graphicType": "streaming",
+    "actions": [
+      {
+        "label": "Open tvOS App Store",
+        "url": "https://apps.apple.com",
+        "primary": true,
+        "external": true
+      },
+      {
+        "label": "Launch AirPlay Setup Guide",
+        "url": "https://sanyuhub.onrender.com/",
+        "primary": false,
+        "external": true
+      }
+    ],
+    "requirements": [
+      {
+        "label": "Hardware",
+        "val": "Apple TV 4K / Apple TV HD"
+      },
+      {
+        "label": "System & Protocol",
+        "val": "tvOS 14.0+ / Apple AirPlay 2"
+      }
+    ],
+    "steps": [
+      {
+        "num": "1",
+        "title": "Open tvOS App Store",
+        "text": "Open App Store on your Apple TV home screen."
+      },
+      {
+        "num": "2",
+        "title": "Search sanyuhub",
+        "text": "Search for sanyuhub using Siri voice remote or trackpad."
+      },
+      {
+        "num": "3",
+        "title": "Install & AirPlay Stream",
+        "text": "Click Download. Alternatively, open sanyuhub in Safari on iPhone/Mac and tap AirPlay icon to stream."
+      }
+    ],
+    "setup": {
+      "title": "Initial Setup",
+      "text": "Launch sanyuhub on Apple TV, authenticate using your nearby iPhone or enter account credentials with Siri Remote."
+    },
+    "trouble": {
+      "title": "Troubleshooting",
+      "text": "If AirPlay disconnects, verify Apple TV and your iOS/Mac device are connected to the same Wi-Fi network."
+    },
+    "removal": {
+      "title": "Uninstallation",
+      "text": "Highlight sanyuhub icon on tvOS home screen, hold Clickpad until icon jiggles, press Play/Pause button, and select Delete."
+    }
+  },
+  "/devices/amazon-fire-tv": {
+    "status": "available",
+    "statusLabel": "Available",
+    "badge": "Fire TV Stick",
+    "title": "sanyuhub for Amazon Fire TV",
+    "subtitle": "Access sanyuhub on Fire TV sticks, Fire TV Cube, and Fire TV Smart TVs.",
+    "graphicType": "streaming",
+    "actions": [
+      {
+        "label": "Open Amazon Appstore",
+        "url": "https://www.amazon.com/appstore",
+        "primary": true,
+        "external": true
+      },
+      {
+        "label": "Open Silk Browser Guide",
+        "url": "https://sanyuhub.onrender.com/",
+        "primary": false,
+        "external": true
+      }
+    ],
+    "requirements": [
+      {
+        "label": "Supported Devices",
+        "val": "Fire TV Stick 4K, Lite, Cube, Fire TV Edition"
+      },
+      {
+        "label": "OS Version",
+        "val": "Fire OS 6.0 or newer"
+      }
+    ],
+    "steps": [
+      {
+        "num": "1",
+        "title": "Search on Fire TV",
+        "text": "Go to Find > Search or hold Alexa voice button on your Fire TV remote."
+      },
+      {
+        "num": "2",
+        "title": "Search for sanyuhub",
+        "text": "Type or say sanyuhub."
+      },
+      {
+        "num": "3",
+        "title": "Download & Silk Browser",
+        "text": "Click Get to install. Or open Amazon Silk Browser and bookmark sanyuhub portal."
+      }
+    ],
+    "setup": {
+      "title": "Initial Setup",
+      "text": "Launch sanyuhub from Your Apps & Channels, complete sign-in, and select streaming preferences."
+    },
+    "trouble": {
+      "title": "Troubleshooting",
+      "text": "If app runs slowly, go to Fire TV Settings > Applications > Manage Installed Applications > sanyuhub > Clear Cache."
+    },
+    "removal": {
+      "title": "Uninstallation",
+      "text": "Go to Settings > Applications > Manage Installed Applications > sanyuhub > Uninstall."
+    }
+  },
+  "/devices/chromecast": {
+    "status": "available",
+    "statusLabel": "Available",
+    "badge": "Google Cast",
+    "title": "sanyuhub on Chromecast",
+    "subtitle": "Cast web media wirelessly from Chrome browser on smartphone or desktop computer.",
+    "graphicType": "streaming",
+    "actions": [
+      {
+        "label": "Start Cast Connection",
+        "url": "https://sanyuhub.onrender.com/",
+        "primary": true,
+        "external": true
+      },
+      {
+        "label": "Google Home Guide",
+        "url": "https://sanyuhub.onrender.com/",
+        "primary": false,
+        "external": true
+      }
+    ],
+    "requirements": [
+      {
+        "label": "Hardware",
+        "val": "Chromecast (1st-3rd Gen), Chromecast Ultra"
+      },
+      {
+        "label": "Network",
+        "val": "Google Cast protocol / Shared Wi-Fi"
+      }
+    ],
+    "steps": [
+      {
+        "num": "1",
+        "title": "Connect to Same Wi-Fi",
+        "text": "Ensure Chromecast and your phone or laptop are connected to the same Wi-Fi network."
+      },
+      {
+        "num": "2",
+        "title": "Open sanyuhub in Chrome",
+        "text": "Launch sanyuhub Web Client in Google Chrome."
+      },
+      {
+        "num": "3",
+        "title": "Tap Cast Icon",
+        "text": "Click Cast icon in browser top bar or player controls and select your Chromecast device name."
+      }
+    ],
+    "setup": {
+      "title": "Initial Setup",
+      "text": "Verify Chromecast pairing in Google Home app before starting casting session from sanyuhub web portal."
+    },
+    "trouble": {
+      "title": "Troubleshooting",
+      "text": "If Chromecast is missing from device list, ensure local network isolation is disabled on your Wi-Fi router settings."
+    },
+    "removal": {
+      "title": "Disconnecting",
+      "text": "To stop streaming, tap Cast icon in sanyuhub player controls and select Disconnect."
+    }
+  },
+  "/devices/roku": {
+    "status": "available",
+    "statusLabel": "Available",
+    "badge": "Roku Express / Stick",
+    "title": "sanyuhub on Roku",
+    "subtitle": "Roku Channel Store app and wireless screen mirroring from Android, Windows, and Apple devices.",
+    "graphicType": "streaming",
+    "actions": [
+      {
+        "label": "Open Roku Channel Store",
+        "url": "https://channelstore.roku.com",
+        "primary": true,
+        "external": true
+      },
+      {
+        "label": "Screen Mirroring Setup",
+        "url": "https://sanyuhub.onrender.com/",
+        "primary": false,
+        "external": true
+      }
+    ],
+    "requirements": [
+      {
+        "label": "Roku OS",
+        "val": "Roku OS 9.0 or newer"
+      },
+      {
+        "label": "Mirroring Support",
+        "val": "Miracast / Apple AirPlay 2"
+      }
+    ],
+    "steps": [
+      {
+        "num": "1",
+        "title": "Open Roku Store",
+        "text": "Press Home on Roku remote and select Streaming Store (or Search)."
+      },
+      {
+        "num": "2",
+        "title": "Search for sanyuhub",
+        "text": "Search for sanyuhub and select Add channel."
+      },
+      {
+        "num": "3",
+        "title": "Enable Screen Mirroring",
+        "text": "For screen mirroring: On Roku, go to Settings > System > Screen Mirroring > Always Allow, then mirror from phone or PC."
+      }
+    ],
+    "setup": {
+      "title": "Initial Setup",
+      "text": "Open sanyuhub channel on Roku, sign in or scan activation QR code, and select streaming profile."
+    },
+    "trouble": {
+      "title": "Troubleshooting",
+      "text": "If screen mirroring stutters, connect Roku and mobile device to 5GHz Wi-Fi network band."
+    },
+    "removal": {
+      "title": "Uninstallation",
+      "text": "Highlight sanyuhub on Roku home screen, press Star (*) button on remote, select Remove channel."
+    }
+  },
+  "/devices/android-tv-boxes": {
+    "status": "available",
+    "statusLabel": "Available",
+    "badge": "Android Box",
+    "title": "sanyuhub for Android TV Boxes",
+    "subtitle": "Compatibility across set-top boxes, mini PCs, and media hubs (NVIDIA Shield, Xiaomi, Beelink).",
+    "graphicType": "tv",
+    "actions": [
+      {
+        "label": "Get It on Google Play",
+        "url": "https://play.google.com/store",
+        "primary": true,
+        "external": true
+      },
+      {
+        "label": "Download TV Box Package — Coming Soon",
+        "type": "coming_soon",
+        "note": "Standalone offline installer package for Android set-top boxes is in preparation."
+      }
+    ],
+    "requirements": [
+      {
+        "label": "Android OS",
+        "val": "Android 7.0 to 14.0"
+      },
+      {
+        "label": "Control Input",
+        "val": "Remote / Air Mouse / Wireless Keyboard"
+      }
+    ],
+    "steps": [
+      {
+        "num": "1",
+        "title": "Open Play Store",
+        "text": "Launch Google Play Store on your Android TV box and search for sanyuhub."
+      },
+      {
+        "num": "2",
+        "title": "Install Application",
+        "text": "Click Install to download sanyuhub to your TV box."
+      },
+      {
+        "num": "3",
+        "title": "Sideload Option",
+        "text": "For non-Play Store boxes, copy verified APK to USB flash drive, open File Manager on box, enable Unknown Sources, and install."
+      }
+    ],
+    "setup": {
+      "title": "Initial Setup",
+      "text": "Launch sanyuhub from TV Box app drawer, enable air mouse or remote directional mode, and sign in."
+    },
+    "trouble": {
+      "title": "Troubleshooting",
+      "text": "If remote navigation cursor disappears, press Mouse mode key on your remote or connect USB mouse."
+    },
+    "removal": {
+      "title": "Uninstallation",
+      "text": "Open Android Settings > Apps > sanyuhub > Uninstall."
+    }
+  },
+  "/devices/compatible-cable-boxes": {
+    "status": "available",
+    "statusLabel": "Available",
+    "badge": "Cable Box Integration",
+    "title": "sanyuhub for Cable & Hybrid Boxes",
+    "subtitle": "Browser and casting support for modern HTML5-capable cable decoders and telecom set-top boxes.",
+    "graphicType": "tv",
+    "actions": [
+      {
+        "label": "Start Cable Box Setup",
+        "url": "https://sanyuhub.onrender.com/",
+        "primary": true,
+        "external": true
+      },
+      {
+        "label": "Direct APK Sideloading — Not Supported",
+        "type": "unsupported",
+        "note": "Legacy non-Android cable boxes do not support direct APK sideloading. Use HTML5 web portal instead."
+      }
+    ],
+    "requirements": [
+      {
+        "label": "Decoder Type",
+        "val": "Smart Cable / Hybrid IPTV Decoders"
+      },
+      {
+        "label": "Standards",
+        "val": "HTML5 / HbbTV / Provider App Marketplace"
+      }
+    ],
+    "steps": [
+      {
+        "num": "1",
+        "title": "Open Cable Box App Menu",
+        "text": "Press Interactive or Apps button on your cable remote controller."
+      },
+      {
+        "num": "2",
+        "title": "Launch System Browser",
+        "text": "Open provider App Store or built-in System Web Browser."
+      },
+      {
+        "num": "3",
+        "title": "Access sanyuhub",
+        "text": "Open the sanyuhub Web Client interface directly on your set-top box."
+      }
+    ],
+    "setup": {
+      "title": "Initial Setup",
+      "text": "Select sanyuhub in provider apps menu, enter activation code displayed on TV screen, and link your account."
+    },
+    "trouble": {
+      "title": "Troubleshooting",
+      "text": "If set-top box browser freezes, restart the decoder by disconnecting its power cord for 30 seconds."
+    },
+    "removal": {
+      "title": "Unlinking Account",
+      "text": "Open sanyuhub Settings inside the set-top app, select Log Out, and clear saved user credentials."
+    }
+  }
+};
 
-    function renderGenericPage(titleKey, fallbackTitle, descriptionKey, fallbackDesc) {
-      const title = t(titleKey, fallbackTitle);
-      const desc = t(descriptionKey, fallbackDesc);
-      return `
-        <section class="section-story bg-dark anim-zoom-in">
-          <div class="badge-pill"><span class="brand-name"><span class="brand-name__sanyu">sanyu</span><span class="brand-name__hub">hub</span></span> Info</div>
-          <h1 class="hero-title">${title}</h1>
-          <p class="body-lead">${desc}</p>
-          <a class="btn-primary" href="/" data-route="/">
-            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-            ${t('nav.back_home', 'Return to Home')}
-          </a>
-        </section>
-      `;
+
+    function renderStatusBadge(status) {
+      if (status === 'coming_soon') {
+        return `<div class="status-badge status-coming-soon"><span class="status-dot dot-amber"></span> Coming Soon</div>`;
+      } else if (status === 'unsupported') {
+        return `<div class="status-badge status-unsupported"><span class="status-dot dot-red"></span> Not Supported</div>`;
+      }
+      return `<div class="status-badge status-available"><span class="status-dot dot-green"></span> Supported & Available</div>`;
     }
 
-    function renderHomePage() {
-      return `
-        <!-- Hero Section (Task 3 & Animations A, C, D) -->
-        <section class="section-story bg-dark hero-section">
-          <div class="badge-pill">Unified Device Ecosystem</div>
-          <h1 class="hero-title anim-zoom-in">${t('home.hero_title', 'Your world, connected.')}</h1>
-          <p class="body-lead anim-stagger-word">${t('home.hero_lead', 'sanyuhub seamlessly connects your smartphone, computer, smart TV, and streaming devices in one elegant experience.')}</p>
-          <div style="display:flex; flex-direction:column; gap:12px; width:100%; align-items:center; z-index:5;">
-            <a class="btn-primary" href="/devices/website" data-route="/devices/website">
-              ${t('home.btn_launch', 'Explore Web Client')}
-              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-            </a>
-            <button class="btn-secondary" id="heroChooseDeviceBtn">
-              ${t('home.btn_choose_device', 'Choose Your Device')}
-            </button>
-          </div>
-
-          <div class="visual-container anim-blur-focus anim-parallax-target">
-            <div class="device-mockup">
-              ${renderSVGGraphic('desktop')}
-            </div>
-          </div>
-        </section>
-
-        <!-- What is sanyuhub Section (Animation F: Pinned Section & B: Zoom-out & G: Directional Reveal) -->
-        <section class="section-story bg-surface pinned-container">
-          <div class="pinned-headline">
-            <div class="badge-pill">About <span class="brand-name"><span class="brand-name__sanyu">sanyu</span><span class="brand-name__hub">hub</span></span></div>
-            <h2 class="section-title anim-zoom-out">${t('home.about_heading', 'What is sanyuhub?')}</h2>
-          </div>
-          <p class="body-text anim-slide-left">${t('home.about_text_1', 'sanyuhub is a modern cross-platform hub that unites digital media, device connectivity, and interactive services across all your daily screens.')}</p>
-          <p class="body-text anim-slide-right">${t('home.about_text_2', 'Whether on an iPhone, Android device, Windows PC, Mac, or 4K Smart TV, sanyuhub provides instant browser-based accessibility with zero forced installs.')}</p>
-        </section>
-
-        <!-- How It Works Section (Staggered Card List) -->
-        <section class="section-story bg-card">
-          <div class="badge-pill">Simple 3-Step Setup</div>
-          <h2 class="section-title anim-zoom-in">${t('home.how_heading', 'How sanyuhub Works')}</h2>
-          <p class="body-lead anim-blur-focus">${t('home.how_sub', 'Get started in seconds on any hardware with zero hassle.')}</p>
-
-          <div class="steps-container">
-            <div class="step-card anim-slide-left">
-              <div class="step-number">1</div>
-              <div class="step-content">
-                <h4>${t('home.step1_title', 'Select Your Device')}</h4>
-                <p>${t('home.step1_desc', 'Browse our verified device catalog for tailored instructions for mobile, desktop, TV, or consoles.')}</p>
+    function renderActionButtons(actions = []) {
+      if (!actions.length) return '';
+      return `<div class="actions-group">
+        ${actions.map(act => {
+          if (act.type === 'coming_soon' || act.disabled) {
+            return `
+              <div class="action-btn-wrapper">
+                <button class="btn-secondary btn-disabled" disabled aria-disabled="true" title="Feature coming soon">
+                  ${act.label}
+                </button>
+                <p class="action-explain-text">${act.note || 'Installation instructions for this device feature are being prepared.'}</p>
               </div>
-            </div>
-
-            <div class="step-card anim-slide-right">
-              <div class="step-number">2</div>
-              <div class="step-content">
-                <h4>${t('home.step2_title', 'Launch Web App')}</h4>
-                <p>${t('home.step2_desc', 'Open sanyuhub directly in your web browser. No complex setup or software installers required.')}</p>
+            `;
+          } else if (act.type === 'unsupported') {
+            return `
+              <div class="action-btn-wrapper">
+                <button class="btn-secondary btn-disabled" disabled aria-disabled="true" title="Method unsupported">
+                  ${act.label}
+                </button>
+                <p class="action-explain-text">${act.note || 'This installation method is not supported on this device architecture.'}</p>
               </div>
-            </div>
-
-            <div class="step-card anim-slide-left">
-              <div class="step-number">3</div>
-              <div class="step-content">
-                <h4>${t('home.step3_title', 'Connect & Enjoy')}</h4>
-                <p>${t('home.step3_desc', 'Sync your preferences, stream media, and cast seamlessly between all your personal devices.')}</p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- Platform Capabilities Section -->
-        <section class="section-story bg-surface">
-          <div class="badge-pill">Platform Capabilities</div>
-          <h2 class="section-title anim-zoom-in">${t('home.features_title', 'Built for Every Display')}</h2>
-          <p class="body-lead anim-blur-focus">${t('home.features_sub', 'Engineered to deliver high performance without forcing app installations or proprietary stores.')}</p>
-
-          <div class="steps-container">
-            <div class="step-card anim-slide-left">
-              <div class="step-number">
-                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-              </div>
-              <div class="step-content">
-                <h4>${t('home.feat1_title', 'Zero App Downloads Needed')}</h4>
-                <p>${t('home.feat1_desc', 'Access sanyuhub directly through standard web browsers (Chrome, Safari, Edge, Firefox). No APKs, installers, or native app store downloads are required.')}</p>
-              </div>
-            </div>
-
-            <div class="step-card anim-slide-right">
-              <div class="step-number">
-                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="7" width="20" height="15" rx="2"/><polyline points="17 2 12 7 7 2"/></svg>
-              </div>
-              <div class="step-content">
-                <h4>${t('home.feat2_title', 'Smart TV & Casting Support')}</h4>
-                <p>${t('home.feat2_desc', 'Seamlessly mirror or cast sanyuhub to Samsung Tizen, LG webOS, Android TV, Apple TV, and Chromecast devices from your phone or PC.')}</p>
-              </div>
-            </div>
-
-            <div class="step-card anim-slide-left">
-              <div class="step-number">
-                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
-              </div>
-              <div class="step-content">
-                <h4>${t('home.feat3_title', 'Progressive Web App (PWA)')}</h4>
-                <p>${t('home.feat3_desc', 'Add sanyuhub to your iPhone or Android home screen for full-screen app-like launching with low data usage.')}</p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- Device Overview Directory -->
-        <section class="section-story bg-dark">
-          <div class="badge-pill">Supported Hardware</div>
-          <h2 class="section-title anim-zoom-in">${t('home.directory_title', 'Explore Device Guides')}</h2>
-          <p class="body-lead anim-blur-focus">${t('home.directory_sub', 'Select your device category below to view specific requirements and setup guides.')}</p>
-
-          <div class="category-grid">
-            <a href="/devices/website" data-route="/devices/website" class="cat-card anim-slide-left">
-              <div class="cat-card-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/></svg></div>
-              <div class="cat-card-info">
-                <h4>Web Client Guide</h4>
-                <p>Universal browser access on any operating system</p>
-              </div>
-            </a>
-
-            <a href="/devices/android-phones" data-route="/devices/android-phones" class="cat-card anim-slide-right">
-              <div class="cat-card-icon"><svg viewBox="0 0 24 24"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></svg></div>
-              <div class="cat-card-info">
-                <h4>Android & iOS Mobile</h4>
-                <p>Smartphone & tablet PWA installation steps</p>
-              </div>
-            </a>
-
-            <a href="/devices/windows" data-route="/devices/windows" class="cat-card anim-slide-left">
-              <div class="cat-card-icon"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="13" rx="1.5"/><path d="M8 21h8M12 17v4"/></svg></div>
-              <div class="cat-card-info">
-                <h4>Desktop (Windows, Mac, Linux)</h4>
-                <p>Full desktop browser setups and taskbar shortcuts</p>
-              </div>
-            </a>
-
-            <a href="/devices/samsung-smart-tv" data-route="/devices/samsung-smart-tv" class="cat-card anim-slide-right">
-              <div class="cat-card-icon"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="13" rx="1.5"/><path d="M9 21h6"/></svg></div>
-              <div class="cat-card-info">
-                <h4>Smart TV & Consoles</h4>
-                <p>Samsung Tizen, LG webOS, Google TV, Xbox, PS5</p>
-              </div>
-            </a>
-          </div>
-        </section>
-
-        <!-- Devices FAQ Section -->
-        <section class="section-story bg-card">
-          <div class="badge-pill">Common Questions</div>
-          <h2 class="section-title anim-zoom-in">${t('home.faq_title', 'Frequently Asked Questions')}</h2>
-
-          <div class="steps-container">
-            <div class="step-card anim-slide-left">
-              <div class="step-content">
-                <h4>Do I need to download an application or APK?</h4>
-                <p>No downloads are required. sanyuhub operates entirely inside modern HTML5 web browsers. You can also save a shortcut to your home screen for rapid access.</p>
-              </div>
-            </div>
-
-            <div class="step-card anim-slide-right">
-              <div class="step-content">
-                <h4>How do I stream sanyuhub to my TV?</h4>
-                <p>You can launch sanyuhub in your TV browser (Samsung, LG, Android TV) or use built-in Google Cast or Apple AirPlay from your smartphone or computer.</p>
-              </div>
-            </div>
-
-            <div class="step-card anim-slide-left">
-              <div class="step-content">
-                <h4>Which browsers are supported?</h4>
-                <p>sanyuhub is compatible with all modern browsers including Google Chrome, Apple Safari, Microsoft Edge, Mozilla Firefox, and Opera.</p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- Final Call-to-Action Section -->
-        <section class="section-story bg-surface">
-          <div class="anim-zoom-in">
-            <h2 class="section-title">${t('home.cta_title', 'Ready to connect?')}</h2>
-            <p class="body-lead">${t('home.cta_lead', 'Launch the sanyuhub web client now and experience seamless device integration.')}</p>
-            <a class="btn-primary" href="https://sanyuhub.onrender.com/" target="_blank" rel="noopener">
-              ${t('home.cta_btn', 'Launch sanyuhub Now')}
-              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg>
-            </a>
-          </div>
-        </section>
-      `;
+            `;
+          } else {
+            const btnClass = act.primary ? 'btn-primary' : 'btn-secondary';
+            if (act.url) {
+              const targetAttr = act.external ? 'target="_blank" rel="noopener"' : '';
+              return `
+                <a class="${btnClass}" href="${act.url}" ${targetAttr}>
+                  ${act.label}
+                  <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg>
+                </a>
+              `;
+            } else {
+              return `
+                <button class="${btnClass}">
+                  ${act.label}
+                </button>
+              `;
+            }
+          }
+        }).join('')}
+      </div>`;
     }
 
     function renderDevicePage(routePath, details) {
@@ -1615,14 +2526,12 @@
       return `
         <!-- Hero Section -->
         <section class="section-story bg-dark hero-section">
+          ${renderStatusBadge(details.status)}
           <div class="badge-pill">${details.badge}</div>
           <h1 class="hero-title anim-zoom-in">${details.title}</h1>
           <p class="body-lead anim-stagger-word">${details.subtitle}</p>
 
-          <a class="btn-primary" href="${details.actionUrl}" target="_blank" rel="noopener">
-            ${details.actionLabel}
-            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg>
-          </a>
+          ${renderActionButtons(details.actions)}
 
           <div class="visual-container anim-blur-focus anim-parallax-target">
             <div class="device-mockup">
@@ -1631,15 +2540,30 @@
           </div>
         </section>
 
+        <!-- System Requirements Section -->
+        <section class="section-story bg-card">
+          <div class="badge-pill">Compatibility</div>
+          <h2 class="section-title anim-zoom-in">System Requirements & Prerequisites</h2>
+
+          <div class="spec-box anim-blur-focus">
+            ${(details.requirements || []).map(sp => `
+              <div class="spec-item">
+                <span class="spec-label">${sp.label}</span>
+                <span class="spec-val">${sp.val}</span>
+              </div>
+            `).join('')}
+          </div>
+        </section>
+
         <!-- Setup Instructions & Steps -->
         <section class="section-story bg-surface pinned-container">
           <div class="pinned-headline">
-            <div class="badge-pill">Setup Guide</div>
-            <h2 class="section-title anim-zoom-out">Getting Started on ${details.badge}</h2>
+            <div class="badge-pill">Installation Guide</div>
+            <h2 class="section-title anim-zoom-out">Step-by-Step Installation</h2>
           </div>
 
           <div class="steps-container">
-            ${details.steps.map((s, idx) => `
+            ${(details.steps || []).map((s, idx) => `
               <div class="step-card ${idx % 2 === 0 ? 'anim-slide-left' : 'anim-slide-right'}">
                 <div class="step-number">${s.num}</div>
                 <div class="step-content">
@@ -1651,27 +2575,40 @@
           </div>
         </section>
 
-        <!-- Specs & Troubleshooting -->
+        <!-- Initial Setup & Troubleshooting -->
         <section class="section-story bg-card">
-          <div class="badge-pill">Compatibility</div>
-          <h2 class="section-title anim-zoom-in">System Requirements & Specs</h2>
+          <div class="badge-pill">Setup & Troubleshooting</div>
+          <h2 class="section-title anim-zoom-in">Configuration & Support</h2>
 
-          <div class="spec-box anim-blur-focus">
-            ${details.specs.map(sp => `
-              <div class="spec-item">
-                <span class="spec-label">${sp.label}</span>
-                <span class="spec-val">${sp.val}</span>
-              </div>
-            `).join('')}
-          </div>
+          ${details.setup ? `
+            <div class="guide-card anim-slide-left">
+              <h4>
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
+                ${details.setup.title}
+              </h4>
+              <p>${details.setup.text}</p>
+            </div>
+          ` : ''}
 
-          <div class="trouble-card anim-slide-left">
-            <h4>
-              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
-              Troubleshooting & Support
-            </h4>
-            <p>${details.trouble}</p>
-          </div>
+          ${details.trouble ? `
+            <div class="trouble-card anim-slide-right">
+              <h4>
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+                ${details.trouble.title}
+              </h4>
+              <p>${details.trouble.text}</p>
+            </div>
+          ` : ''}
+
+          ${details.removal ? `
+            <div class="guide-card anim-slide-left">
+              <h4>
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+                ${details.removal.title}
+              </h4>
+              <p>${details.removal.text}</p>
+            </div>
+          ` : ''}
         </section>
 
         <!-- Device FAQs -->
@@ -1702,6 +2639,7 @@
         </section>
       `;
     }
+
 
     const ROUTES = {
       '/': { titleKey: 'page.home.title', type: 'home' },
@@ -1814,7 +2752,7 @@
       slideRights.forEach(el => initDirectionalReveal(el, 'right'));
 
       // Task 12: Micro-interactions
-      attachMicroInteractions(workspace);
+      attachMicroInteractions(document);
 
       // Hero Choose Device button listener
       const chooseBtn = document.getElementById('heroChooseDeviceBtn');

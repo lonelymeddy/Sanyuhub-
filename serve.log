@@ -1,315 +1,52 @@
- INFO  Accepting connections at http://localhost:3000
- HTTP  10/23/2026 1:43:46 PM ::1 GET /
- HTTP  10/23/2026 1:43:46 PM ::1 Returned 200 in 22 ms
- HTTP  10/23/2026 1:43:46 PM ::1 GET /devices/website
- HTTP  10/23/2026 1:43:46 PM ::1 Returned 200 in 2 ms
- HTTP  10/23/2026 1:43:46 PM ::1 GET /devices/android-phones
- HTTP  10/23/2026 1:43:46 PM ::1 Returned 200 in 4 ms
- HTTP  10/23/2026 1:43:46 PM ::1 GET /devices/android-tablets
- HTTP  10/23/2026 1:43:46 PM ::1 Returned 200 in 1 ms
- HTTP  10/23/2026 1:43:46 PM ::1 GET /devices/iphone
- HTTP  10/23/2026 1:43:46 PM ::1 Returned 200 in 1 ms
- HTTP  10/23/2026 1:43:46 PM ::1 GET /devices/ipad
- HTTP  10/23/2026 1:43:46 PM ::1 Returned 200 in 0 ms
- HTTP  10/23/2026 1:43:46 PM ::1 GET /devices/windows
- HTTP  10/23/2026 1:43:46 PM ::1 Returned 200 in 1 ms
- HTTP  10/23/2026 1:43:46 PM ::1 GET /devices/macos
- HTTP  10/23/2026 1:43:46 PM ::1 Returned 200 in 1 ms
- HTTP  10/23/2026 1:43:46 PM ::1 GET /devices/linux
- HTTP  10/23/2026 1:43:46 PM ::1 Returned 200 in 1 ms
- HTTP  10/23/2026 1:43:46 PM ::1 GET /devices/chromebook
- HTTP  10/23/2026 1:43:46 PM ::1 Returned 200 in 1 ms
- HTTP  10/23/2026 1:43:46 PM ::1 GET /devices/samsung-smart-tv
- HTTP  10/23/2026 1:43:46 PM ::1 Returned 200 in 0 ms
- HTTP  10/23/2026 1:43:46 PM ::1 GET /devices/lg-smart-tv
- HTTP  10/23/2026 1:43:46 PM ::1 Returned 200 in 0 ms
- HTTP  10/23/2026 1:43:46 PM ::1 GET /devices/android-tv
- HTTP  10/23/2026 1:43:46 PM ::1 Returned 200 in 0 ms
- HTTP  10/23/2026 1:43:46 PM ::1 GET /devices/google-tv
- HTTP  10/23/2026 1:43:46 PM ::1 Returned 200 in 0 ms
- HTTP  10/23/2026 1:43:46 PM ::1 GET /devices/hisense-smart-tv
- HTTP  10/23/2026 1:43:46 PM ::1 Returned 200 in 0 ms
- HTTP  10/23/2026 1:43:46 PM ::1 GET /devices/playstation
- HTTP  10/23/2026 1:43:46 PM ::1 Returned 200 in 0 ms
- HTTP  10/23/2026 1:43:46 PM ::1 GET /devices/xbox
- HTTP  10/23/2026 1:43:46 PM ::1 Returned 200 in 0 ms
- HTTP  10/23/2026 1:43:46 PM ::1 GET /devices/apple-tv
- HTTP  10/23/2026 1:43:46 PM ::1 Returned 200 in 0 ms
- HTTP  10/23/2026 1:43:46 PM ::1 GET /devices/amazon-fire-tv
- HTTP  10/23/2026 1:43:46 PM ::1 Returned 200 in 1 ms
- HTTP  10/23/2026 1:43:46 PM ::1 GET /devices/chromecast
- HTTP  10/23/2026 1:43:46 PM ::1 Returned 200 in 1 ms
- HTTP  10/23/2026 1:43:46 PM ::1 GET /devices/roku
- HTTP  10/23/2026 1:43:46 PM ::1 Returned 200 in 1 ms
- HTTP  10/23/2026 1:43:46 PM ::1 GET /devices/android-tv-boxes
- HTTP  10/23/2026 1:43:46 PM ::1 Returned 200 in 1 ms
- HTTP  10/23/2026 1:43:46 PM ::1 GET /devices/compatible-cable-boxes
- HTTP  10/23/2026 1:43:46 PM ::1 Returned 200 in 1 ms
- HTTP  10/23/2026 1:43:46 PM ::1 GET /about
- HTTP  10/23/2026 1:43:46 PM ::1 Returned 200 in 1 ms
- HTTP  10/23/2026 1:43:46 PM ::1 GET /privacy
- HTTP  10/23/2026 1:43:46 PM ::1 Returned 200 in 0 ms
- HTTP  10/23/2026 1:43:46 PM ::1 GET /src/styles/theme.css
- HTTP  10/23/2026 1:43:46 PM ::1 Returned 200 in 1 ms
- HTTP  10/23/2026 1:43:46 PM ::1 GET /src/styles/animations.css
- HTTP  10/23/2026 1:43:46 PM ::1 Returned 200 in 1 ms
- HTTP  10/23/2026 1:43:46 PM ::1 GET /src/styles/motion.css
- HTTP  10/23/2026 1:43:46 PM ::1 Returned 200 in 1 ms
- HTTP  10/23/2026 1:43:46 PM ::1 GET /src/js/animations/ZoomTypography.js
- HTTP  10/23/2026 1:43:46 PM ::1 Returned 200 in 1 ms
- HTTP  10/23/2026 1:43:46 PM ::1 GET /src/js/animations/ZoomOutTypography.js
- HTTP  10/23/2026 1:43:46 PM ::1 Returned 200 in 1 ms
- HTTP  10/23/2026 1:43:46 PM ::1 GET /src/js/animations/StaggeredWords.js
- HTTP  10/23/2026 1:43:46 PM ::1 Returned 200 in 1 ms
- HTTP  10/23/2026 1:43:46 PM ::1 GET /src/js/animations/BlurToFocus.js
- HTTP  10/23/2026 1:43:46 PM ::1 Returned 200 in 1 ms
- HTTP  10/23/2026 1:43:46 PM ::1 GET /src/js/animations/ParallaxElement.js
- HTTP  10/23/2026 1:43:46 PM ::1 Returned 200 in 2 ms
- HTTP  10/23/2026 1:43:46 PM ::1 GET /src/js/animations/PinnedStorySection.js
- HTTP  10/23/2026 1:43:46 PM ::1 Returned 200 in 1 ms
- HTTP  10/23/2026 1:43:46 PM ::1 GET /src/js/animations/DirectionalReveal.js
- HTTP  10/23/2026 1:43:46 PM ::1 Returned 200 in 1 ms
- HTTP  10/23/2026 1:43:46 PM ::1 GET /src/js/animations/MicroInteractions.js
- HTTP  10/23/2026 1:43:46 PM ::1 Returned 200 in 1 ms
- HTTP  10/23/2026 1:43:46 PM ::1 GET /i18n.js
- HTTP  10/23/2026 1:43:46 PM ::1 Returned 200 in 1 ms
- HTTP  10/23/2026 1:44:26 PM ::1 GET /
- HTTP  10/23/2026 1:44:26 PM ::1 Returned 200 in 19 ms
- HTTP  10/23/2026 1:44:26 PM ::1 GET /src/styles/theme.css
- HTTP  10/23/2026 1:44:26 PM ::1 GET /src/styles/animations.css
- HTTP  10/23/2026 1:44:26 PM ::1 Returned 200 in 3 ms
- HTTP  10/23/2026 1:44:26 PM ::1 GET /src/styles/motion.css
- HTTP  10/23/2026 1:44:26 PM ::1 Returned 200 in 2 ms
- HTTP  10/23/2026 1:44:26 PM ::1 Returned 200 in 3 ms
- HTTP  10/23/2026 1:44:26 PM ::1 GET /i18n.js
- HTTP  10/23/2026 1:44:26 PM ::1 Returned 200 in 1 ms
- HTTP  10/23/2026 1:44:26 PM ::1 GET /assets/sanyuhub-logo.png
- HTTP  10/23/2026 1:44:26 PM ::1 Returned 200 in 18 ms
- HTTP  10/23/2026 1:44:27 PM ::1 GET /src/js/animations/ZoomTypography.js
- HTTP  10/23/2026 1:44:27 PM ::1 GET /src/js/animations/ZoomOutTypography.js
- HTTP  10/23/2026 1:44:27 PM ::1 GET /src/js/animations/StaggeredWords.js
- HTTP  10/23/2026 1:44:27 PM ::1 GET /src/js/animations/BlurToFocus.js
- HTTP  10/23/2026 1:44:27 PM ::1 Returned 200 in 3 ms
- HTTP  10/23/2026 1:44:27 PM ::1 Returned 200 in 3 ms
- HTTP  10/23/2026 1:44:27 PM ::1 Returned 200 in 4 ms
- HTTP  10/23/2026 1:44:27 PM ::1 Returned 200 in 4 ms
- HTTP  10/23/2026 1:44:27 PM ::1 GET /src/js/animations/ParallaxElement.js
- HTTP  10/23/2026 1:44:27 PM ::1 Returned 200 in 5 ms
- HTTP  10/23/2026 1:44:27 PM ::1 GET /src/js/animations/PinnedStorySection.js
- HTTP  10/23/2026 1:44:27 PM ::1 GET /src/js/animations/DirectionalReveal.js
- HTTP  10/23/2026 1:44:27 PM ::1 Returned 200 in 2 ms
- HTTP  10/23/2026 1:44:27 PM ::1 Returned 200 in 2 ms
- HTTP  10/23/2026 1:44:27 PM ::1 GET /src/js/animations/MicroInteractions.js
- HTTP  10/23/2026 1:44:27 PM ::1 Returned 200 in 1 ms
- HTTP  10/23/2026 1:44:27 PM ::1 GET /src/js/hooks/useReducedMotion.js
- HTTP  10/23/2026 1:44:27 PM ::1 Returned 200 in 3 ms
- HTTP  10/23/2026 1:44:27 PM ::1 GET /devices/android-phones
- HTTP  10/23/2026 1:44:27 PM ::1 Returned 200 in 2 ms
- HTTP  10/23/2026 1:44:27 PM ::1 GET /src/styles/theme.css
- HTTP  10/23/2026 1:44:27 PM ::1 Returned 200 in 2 ms
- HTTP  10/23/2026 1:44:27 PM ::1 GET /src/styles/animations.css
- HTTP  10/23/2026 1:44:27 PM ::1 Returned 200 in 2 ms
- HTTP  10/23/2026 1:44:27 PM ::1 GET /src/styles/motion.css
- HTTP  10/23/2026 1:44:27 PM ::1 GET /i18n.js
- HTTP  10/23/2026 1:44:27 PM ::1 Returned 200 in 3 ms
- HTTP  10/23/2026 1:44:27 PM ::1 Returned 200 in 3 ms
- HTTP  10/23/2026 1:44:27 PM ::1 GET /assets/sanyuhub-logo.png
- HTTP  10/23/2026 1:44:27 PM ::1 Returned 200 in 1 ms
- HTTP  10/23/2026 1:44:27 PM ::1 GET /src/js/animations/ZoomTypography.js
- HTTP  10/23/2026 1:44:27 PM ::1 Returned 200 in 2 ms
- HTTP  10/23/2026 1:44:27 PM ::1 GET /src/js/animations/ZoomOutTypography.js
- HTTP  10/23/2026 1:44:27 PM ::1 Returned 200 in 1 ms
- HTTP  10/23/2026 1:44:27 PM ::1 GET /src/js/animations/StaggeredWords.js
- HTTP  10/23/2026 1:44:27 PM ::1 GET /src/js/animations/BlurToFocus.js
- HTTP  10/23/2026 1:44:27 PM ::1 GET /src/js/animations/ParallaxElement.js
- HTTP  10/23/2026 1:44:27 PM ::1 Returned 200 in 2 ms
- HTTP  10/23/2026 1:44:27 PM ::1 Returned 200 in 2 ms
- HTTP  10/23/2026 1:44:27 PM ::1 GET /src/js/animations/PinnedStorySection.js
- HTTP  10/23/2026 1:44:27 PM ::1 Returned 200 in 2 ms
- HTTP  10/23/2026 1:44:27 PM ::1 Returned 200 in 2 ms
- HTTP  10/23/2026 1:44:27 PM ::1 GET /src/js/animations/DirectionalReveal.js
- HTTP  10/23/2026 1:44:27 PM ::1 Returned 200 in 4 ms
- HTTP  10/23/2026 1:44:28 PM ::1 GET /src/js/animations/MicroInteractions.js
- HTTP  10/23/2026 1:44:28 PM ::1 GET /src/js/hooks/useReducedMotion.js
- HTTP  10/23/2026 1:44:28 PM ::1 Returned 200 in 2 ms
- HTTP  10/23/2026 1:44:28 PM ::1 Returned 200 in 1 ms
- HTTP  10/23/2026 1:44:50 PM ::1 GET /
- HTTP  10/23/2026 1:44:50 PM ::1 Returned 200 in 2 ms
- HTTP  10/23/2026 1:44:50 PM ::1 GET /src/styles/theme.css
- HTTP  10/23/2026 1:44:50 PM ::1 Returned 200 in 1 ms
- HTTP  10/23/2026 1:44:50 PM ::1 GET /src/styles/animations.css
- HTTP  10/23/2026 1:44:50 PM ::1 GET /src/styles/motion.css
- HTTP  10/23/2026 1:44:50 PM ::1 GET /i18n.js
- HTTP  10/23/2026 1:44:50 PM ::1 Returned 200 in 1 ms
- HTTP  10/23/2026 1:44:50 PM ::1 Returned 200 in 1 ms
- HTTP  10/23/2026 1:44:50 PM ::1 Returned 200 in 2 ms
- HTTP  10/23/2026 1:44:50 PM ::1 GET /assets/sanyuhub-logo.png
- HTTP  10/23/2026 1:44:50 PM ::1 Returned 200 in 1 ms
- HTTP  10/23/2026 1:44:50 PM ::1 GET /src/js/animations/ZoomTypography.js
- HTTP  10/23/2026 1:44:50 PM ::1 GET /src/js/animations/ZoomOutTypography.js
- HTTP  10/23/2026 1:44:50 PM ::1 GET /src/js/animations/StaggeredWords.js
- HTTP  10/23/2026 1:44:50 PM ::1 GET /src/js/animations/BlurToFocus.js
- HTTP  10/23/2026 1:44:50 PM ::1 Returned 200 in 3 ms
- HTTP  10/23/2026 1:44:50 PM ::1 Returned 200 in 2 ms
- HTTP  10/23/2026 1:44:50 PM ::1 Returned 200 in 2 ms
- HTTP  10/23/2026 1:44:50 PM ::1 GET /src/js/animations/ParallaxElement.js
- HTTP  10/23/2026 1:44:50 PM ::1 GET /src/js/animations/PinnedStorySection.js
- HTTP  10/23/2026 1:44:50 PM ::1 Returned 200 in 1 ms
- HTTP  10/23/2026 1:44:50 PM ::1 Returned 200 in 2 ms
- HTTP  10/23/2026 1:44:50 PM ::1 Returned 200 in 4 ms
- HTTP  10/23/2026 1:44:50 PM ::1 GET /src/js/animations/DirectionalReveal.js
- HTTP  10/23/2026 1:44:50 PM ::1 Returned 200 in 1 ms
- HTTP  10/23/2026 1:44:50 PM ::1 GET /src/js/animations/MicroInteractions.js
- HTTP  10/23/2026 1:44:50 PM ::1 Returned 200 in 1 ms
- HTTP  10/23/2026 1:44:50 PM ::1 GET /src/js/hooks/useReducedMotion.js
- HTTP  10/23/2026 1:44:50 PM ::1 Returned 200 in 2 ms
- HTTP  10/23/2026 1:44:50 PM ::1 GET /devices/android-phones
- HTTP  10/23/2026 1:44:50 PM ::1 Returned 200 in 1 ms
- HTTP  10/23/2026 1:44:50 PM ::1 GET /src/styles/theme.css
- HTTP  10/23/2026 1:44:50 PM ::1 Returned 200 in 1 ms
- HTTP  10/23/2026 1:44:50 PM ::1 GET /src/styles/animations.css
- HTTP  10/23/2026 1:44:50 PM ::1 GET /src/styles/motion.css
- HTTP  10/23/2026 1:44:50 PM ::1 Returned 200 in 1 ms
- HTTP  10/23/2026 1:44:50 PM ::1 Returned 200 in 2 ms
- HTTP  10/23/2026 1:44:50 PM ::1 GET /i18n.js
- HTTP  10/23/2026 1:44:50 PM ::1 Returned 200 in 1 ms
- HTTP  10/23/2026 1:44:50 PM ::1 GET /assets/sanyuhub-logo.png
- HTTP  10/23/2026 1:44:50 PM ::1 Returned 200 in 0 ms
- HTTP  10/23/2026 1:44:50 PM ::1 GET /src/js/animations/ZoomTypography.js
- HTTP  10/23/2026 1:44:50 PM ::1 GET /src/js/animations/ZoomOutTypography.js
- HTTP  10/23/2026 1:44:50 PM ::1 GET /src/js/animations/StaggeredWords.js
- HTTP  10/23/2026 1:44:50 PM ::1 GET /src/js/animations/BlurToFocus.js
- HTTP  10/23/2026 1:44:50 PM ::1 GET /src/js/animations/ParallaxElement.js
- HTTP  10/23/2026 1:44:50 PM ::1 GET /src/js/animations/PinnedStorySection.js
- HTTP  10/23/2026 1:44:50 PM ::1 Returned 200 in 3 ms
- HTTP  10/23/2026 1:44:50 PM ::1 Returned 200 in 2 ms
- HTTP  10/23/2026 1:44:50 PM ::1 Returned 200 in 2 ms
- HTTP  10/23/2026 1:44:50 PM ::1 Returned 200 in 3 ms
- HTTP  10/23/2026 1:44:50 PM ::1 Returned 200 in 2 ms
- HTTP  10/23/2026 1:44:50 PM ::1 Returned 200 in 2 ms
- HTTP  10/23/2026 1:44:50 PM ::1 GET /src/js/animations/DirectionalReveal.js
- HTTP  10/23/2026 1:44:50 PM ::1 GET /src/js/animations/MicroInteractions.js
- HTTP  10/23/2026 1:44:50 PM ::1 Returned 200 in 2 ms
- HTTP  10/23/2026 1:44:50 PM ::1 Returned 200 in 1 ms
- HTTP  10/23/2026 1:44:50 PM ::1 GET /src/js/hooks/useReducedMotion.js
- HTTP  10/23/2026 1:44:50 PM ::1 Returned 200 in 1 ms
- HTTP  10/23/2026 1:45:13 PM ::1 GET /
- HTTP  10/23/2026 1:45:13 PM ::1 Returned 200 in 1 ms
- HTTP  10/23/2026 1:45:13 PM ::1 GET /src/styles/theme.css
- HTTP  10/23/2026 1:45:13 PM ::1 Returned 200 in 1 ms
- HTTP  10/23/2026 1:45:13 PM ::1 GET /src/styles/animations.css
- HTTP  10/23/2026 1:45:13 PM ::1 GET /src/styles/motion.css
- HTTP  10/23/2026 1:45:13 PM ::1 GET /i18n.js
- HTTP  10/23/2026 1:45:13 PM ::1 Returned 200 in 2 ms
- HTTP  10/23/2026 1:45:13 PM ::1 Returned 200 in 2 ms
- HTTP  10/23/2026 1:45:13 PM ::1 Returned 200 in 4 ms
- HTTP  10/23/2026 1:45:13 PM ::1 GET /assets/sanyuhub-logo.png
- HTTP  10/23/2026 1:45:13 PM ::1 Returned 200 in 1 ms
- HTTP  10/23/2026 1:45:13 PM ::1 GET /src/js/animations/ZoomTypography.js
- HTTP  10/23/2026 1:45:13 PM ::1 GET /src/js/animations/ZoomOutTypography.js
- HTTP  10/23/2026 1:45:13 PM ::1 Returned 200 in 2 ms
- HTTP  10/23/2026 1:45:13 PM ::1 GET /src/js/animations/StaggeredWords.js
- HTTP  10/23/2026 1:45:13 PM ::1 GET /src/js/animations/BlurToFocus.js
- HTTP  10/23/2026 1:45:13 PM ::1 GET /src/js/animations/ParallaxElement.js
- HTTP  10/23/2026 1:45:13 PM ::1 Returned 200 in 2 ms
- HTTP  10/23/2026 1:45:13 PM ::1 Returned 200 in 2 ms
- HTTP  10/23/2026 1:45:13 PM ::1 Returned 200 in 2 ms
- HTTP  10/23/2026 1:45:13 PM ::1 Returned 200 in 1 ms
- HTTP  10/23/2026 1:45:13 PM ::1 GET /src/js/animations/PinnedStorySection.js
- HTTP  10/23/2026 1:45:13 PM ::1 Returned 200 in 1 ms
- HTTP  10/23/2026 1:45:13 PM ::1 GET /src/js/animations/DirectionalReveal.js
- HTTP  10/23/2026 1:45:13 PM ::1 GET /src/js/animations/MicroInteractions.js
- HTTP  10/23/2026 1:45:13 PM ::1 Returned 200 in 2 ms
- HTTP  10/23/2026 1:45:13 PM ::1 Returned 200 in 2 ms
- HTTP  10/23/2026 1:45:13 PM ::1 GET /src/js/hooks/useReducedMotion.js
- HTTP  10/23/2026 1:45:13 PM ::1 Returned 200 in 1 ms
- HTTP  10/23/2026 1:45:13 PM ::1 GET /devices/android-phones
- HTTP  10/23/2026 1:45:13 PM ::1 Returned 200 in 1 ms
- HTTP  10/23/2026 1:45:13 PM ::1 GET /src/styles/theme.css
- HTTP  10/23/2026 1:45:13 PM ::1 Returned 200 in 1 ms
- HTTP  10/23/2026 1:45:13 PM ::1 GET /src/styles/animations.css
- HTTP  10/23/2026 1:45:13 PM ::1 GET /src/styles/motion.css
- HTTP  10/23/2026 1:45:13 PM ::1 GET /i18n.js
- HTTP  10/23/2026 1:45:13 PM ::1 Returned 200 in 2 ms
- HTTP  10/23/2026 1:45:13 PM ::1 Returned 200 in 1 ms
- HTTP  10/23/2026 1:45:13 PM ::1 Returned 200 in 1 ms
- HTTP  10/23/2026 1:45:13 PM ::1 GET /assets/sanyuhub-logo.png
- HTTP  10/23/2026 1:45:13 PM ::1 Returned 200 in 1 ms
- HTTP  10/23/2026 1:45:13 PM ::1 GET /src/js/animations/ZoomTypography.js
- HTTP  10/23/2026 1:45:13 PM ::1 GET /src/js/animations/ZoomOutTypography.js
- HTTP  10/23/2026 1:45:13 PM ::1 GET /src/js/animations/StaggeredWords.js
- HTTP  10/23/2026 1:45:13 PM ::1 GET /src/js/animations/BlurToFocus.js
- HTTP  10/23/2026 1:45:13 PM ::1 GET /src/js/animations/ParallaxElement.js
- HTTP  10/23/2026 1:45:13 PM ::1 GET /src/js/animations/PinnedStorySection.js
- HTTP  10/23/2026 1:45:13 PM ::1 Returned 200 in 2 ms
- HTTP  10/23/2026 1:45:13 PM ::1 Returned 200 in 2 ms
- HTTP  10/23/2026 1:45:13 PM ::1 Returned 200 in 2 ms
- HTTP  10/23/2026 1:45:13 PM ::1 Returned 200 in 3 ms
- HTTP  10/23/2026 1:45:13 PM ::1 Returned 200 in 2 ms
- HTTP  10/23/2026 1:45:13 PM ::1 Returned 200 in 3 ms
- HTTP  10/23/2026 1:45:13 PM ::1 GET /src/js/animations/DirectionalReveal.js
- HTTP  10/23/2026 1:45:13 PM ::1 GET /src/js/animations/MicroInteractions.js
- HTTP  10/23/2026 1:45:13 PM ::1 Returned 200 in 1 ms
- HTTP  10/23/2026 1:45:13 PM ::1 Returned 200 in 0 ms
- HTTP  10/23/2026 1:45:13 PM ::1 GET /src/js/hooks/useReducedMotion.js
- HTTP  10/23/2026 1:45:13 PM ::1 Returned 200 in 0 ms
- HTTP  10/23/2026 1:45:28 PM ::1 GET /
- HTTP  10/23/2026 1:45:28 PM ::1 Returned 200 in 1 ms
- HTTP  10/23/2026 1:45:28 PM ::1 GET /src/styles/theme.css
- HTTP  10/23/2026 1:45:28 PM ::1 GET /src/styles/animations.css
- HTTP  10/23/2026 1:45:28 PM ::1 GET /src/styles/motion.css
- HTTP  10/23/2026 1:45:28 PM ::1 GET /i18n.js
- HTTP  10/23/2026 1:45:28 PM ::1 Returned 200 in 2 ms
- HTTP  10/23/2026 1:45:28 PM ::1 Returned 200 in 1 ms
- HTTP  10/23/2026 1:45:28 PM ::1 Returned 200 in 1 ms
- HTTP  10/23/2026 1:45:28 PM ::1 Returned 200 in 2 ms
- HTTP  10/23/2026 1:45:28 PM ::1 GET /assets/sanyuhub-logo.png
- HTTP  10/23/2026 1:45:28 PM ::1 Returned 200 in 1 ms
- HTTP  10/23/2026 1:45:28 PM ::1 GET /src/js/animations/ZoomTypography.js
- HTTP  10/23/2026 1:45:28 PM ::1 Returned 200 in 0 ms
- HTTP  10/23/2026 1:45:28 PM ::1 GET /src/js/animations/ZoomOutTypography.js
- HTTP  10/23/2026 1:45:28 PM ::1 GET /src/js/animations/StaggeredWords.js
- HTTP  10/23/2026 1:45:28 PM ::1 GET /src/js/animations/BlurToFocus.js
- HTTP  10/23/2026 1:45:28 PM ::1 GET /src/js/animations/ParallaxElement.js
- HTTP  10/23/2026 1:45:28 PM ::1 GET /src/js/animations/PinnedStorySection.js
- HTTP  10/23/2026 1:45:28 PM ::1 Returned 200 in 2 ms
- HTTP  10/23/2026 1:45:28 PM ::1 Returned 200 in 2 ms
- HTTP  10/23/2026 1:45:28 PM ::1 Returned 200 in 1 ms
- HTTP  10/23/2026 1:45:28 PM ::1 Returned 200 in 2 ms
- HTTP  10/23/2026 1:45:28 PM ::1 Returned 200 in 5 ms
- HTTP  10/23/2026 1:45:28 PM ::1 GET /src/js/animations/DirectionalReveal.js
- HTTP  10/23/2026 1:45:28 PM ::1 GET /src/js/animations/MicroInteractions.js
- HTTP  10/23/2026 1:45:28 PM ::1 Returned 200 in 2 ms
- HTTP  10/23/2026 1:45:28 PM ::1 Returned 200 in 2 ms
- HTTP  10/23/2026 1:45:28 PM ::1 GET /src/js/hooks/useReducedMotion.js
- HTTP  10/23/2026 1:45:28 PM ::1 Returned 200 in 1 ms
- HTTP  10/23/2026 1:45:29 PM ::1 GET /devices/android-phones
- HTTP  10/23/2026 1:45:29 PM ::1 Returned 200 in 1 ms
- HTTP  10/23/2026 1:45:29 PM ::1 GET /src/styles/theme.css
- HTTP  10/23/2026 1:45:29 PM ::1 Returned 200 in 1 ms
- HTTP  10/23/2026 1:45:29 PM ::1 GET /src/styles/animations.css
- HTTP  10/23/2026 1:45:29 PM ::1 GET /src/styles/motion.css
- HTTP  10/23/2026 1:45:29 PM ::1 GET /i18n.js
- HTTP  10/23/2026 1:45:29 PM ::1 Returned 200 in 1 ms
- HTTP  10/23/2026 1:45:29 PM ::1 Returned 200 in 1 ms
- HTTP  10/23/2026 1:45:29 PM ::1 Returned 200 in 1 ms
- HTTP  10/23/2026 1:45:29 PM ::1 GET /assets/sanyuhub-logo.png
- HTTP  10/23/2026 1:45:29 PM ::1 Returned 200 in 1 ms
- HTTP  10/23/2026 1:45:29 PM ::1 GET /src/js/animations/ZoomTypography.js
- HTTP  10/23/2026 1:45:29 PM ::1 GET /src/js/animations/ZoomOutTypography.js
- HTTP  10/23/2026 1:45:29 PM ::1 GET /src/js/animations/StaggeredWords.js
- HTTP  10/23/2026 1:45:29 PM ::1 GET /src/js/animations/BlurToFocus.js
- HTTP  10/23/2026 1:45:29 PM ::1 GET /src/js/animations/ParallaxElement.js
- HTTP  10/23/2026 1:45:29 PM ::1 GET /src/js/animations/PinnedStorySection.js
- HTTP  10/23/2026 1:45:29 PM ::1 Returned 200 in 2 ms
- HTTP  10/23/2026 1:45:29 PM ::1 Returned 200 in 2 ms
- HTTP  10/23/2026 1:45:29 PM ::1 Returned 200 in 2 ms
- HTTP  10/23/2026 1:45:29 PM ::1 Returned 200 in 2 ms
- HTTP  10/23/2026 1:45:29 PM ::1 Returned 200 in 2 ms
- HTTP  10/23/2026 1:45:29 PM ::1 Returned 200 in 3 ms
- HTTP  10/23/2026 1:45:29 PM ::1 GET /src/js/animations/DirectionalReveal.js
- HTTP  10/23/2026 1:45:29 PM ::1 GET /src/js/animations/MicroInteractions.js
- HTTP  10/23/2026 1:45:29 PM ::1 Returned 200 in 0 ms
- HTTP  10/23/2026 1:45:29 PM ::1 Returned 200 in 1 ms
- HTTP  10/23/2026 1:45:29 PM ::1 GET /src/js/hooks/useReducedMotion.js
- HTTP  10/23/2026 1:45:29 PM ::1 Returned 200 in 1 ms
+127.0.0.1 - - [23/Oct/2026 16:11:15] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [23/Oct/2026 16:11:15] "GET /src/styles/theme.css HTTP/1.1" 200 -
+127.0.0.1 - - [23/Oct/2026 16:11:15] "GET /src/styles/animations.css HTTP/1.1" 200 -
+127.0.0.1 - - [23/Oct/2026 16:11:15] "GET /src/styles/motion.css HTTP/1.1" 200 -
+127.0.0.1 - - [23/Oct/2026 16:11:15] "GET /i18n.js HTTP/1.1" 200 -
+127.0.0.1 - - [23/Oct/2026 16:11:15] "GET /assets/sanyuhub-logo.png HTTP/1.1" 200 -
+127.0.0.1 - - [23/Oct/2026 16:11:15] "GET /src/js/animations/ZoomTypography.js HTTP/1.1" 200 -
+127.0.0.1 - - [23/Oct/2026 16:11:15] "GET /src/js/animations/ZoomOutTypography.js HTTP/1.1" 200 -
+127.0.0.1 - - [23/Oct/2026 16:11:15] "GET /src/js/animations/StaggeredWords.js HTTP/1.1" 200 -
+127.0.0.1 - - [23/Oct/2026 16:11:15] "GET /src/js/animations/BlurToFocus.js HTTP/1.1" 200 -
+127.0.0.1 - - [23/Oct/2026 16:11:15] "GET /src/js/animations/ParallaxElement.js HTTP/1.1" 200 -
+127.0.0.1 - - [23/Oct/2026 16:11:15] "GET /src/js/animations/PinnedStorySection.js HTTP/1.1" 200 -
+127.0.0.1 - - [23/Oct/2026 16:11:15] "GET /src/js/animations/DirectionalReveal.js HTTP/1.1" 200 -
+127.0.0.1 - - [23/Oct/2026 16:11:15] "GET /src/js/animations/MicroInteractions.js HTTP/1.1" 200 -
+127.0.0.1 - - [23/Oct/2026 16:11:15] "GET /src/js/hooks/useReducedMotion.js HTTP/1.1" 200 -
+127.0.0.1 - - [23/Oct/2026 16:11:15] "GET /devices/website HTTP/1.1" 200 -
+127.0.0.1 - - [23/Oct/2026 16:11:16] "GET /devices/android-phones HTTP/1.1" 200 -
+127.0.0.1 - - [23/Oct/2026 16:11:16] "GET /devices/android-tablets HTTP/1.1" 200 -
+127.0.0.1 - - [23/Oct/2026 16:11:16] "GET /devices/iphone HTTP/1.1" 200 -
+127.0.0.1 - - [23/Oct/2026 16:11:17] "GET /devices/ipad HTTP/1.1" 200 -
+127.0.0.1 - - [23/Oct/2026 16:11:17] "GET /devices/windows HTTP/1.1" 200 -
+127.0.0.1 - - [23/Oct/2026 16:11:18] "GET /devices/macos HTTP/1.1" 200 -
+127.0.0.1 - - [23/Oct/2026 16:11:18] "GET /devices/linux HTTP/1.1" 200 -
+127.0.0.1 - - [23/Oct/2026 16:11:18] "GET /devices/chromebook HTTP/1.1" 200 -
+127.0.0.1 - - [23/Oct/2026 16:11:19] "GET /devices/samsung-smart-tv HTTP/1.1" 200 -
+127.0.0.1 - - [23/Oct/2026 16:11:19] "GET /devices/lg-smart-tv HTTP/1.1" 200 -
+127.0.0.1 - - [23/Oct/2026 16:11:19] "GET /devices/android-tv HTTP/1.1" 200 -
+127.0.0.1 - - [23/Oct/2026 16:11:20] "GET /devices/google-tv HTTP/1.1" 200 -
+127.0.0.1 - - [23/Oct/2026 16:11:20] "GET /devices/hisense-smart-tv HTTP/1.1" 200 -
+127.0.0.1 - - [23/Oct/2026 16:11:21] "GET /devices/playstation HTTP/1.1" 200 -
+127.0.0.1 - - [23/Oct/2026 16:11:21] "GET /devices/xbox HTTP/1.1" 200 -
+127.0.0.1 - - [23/Oct/2026 16:11:21] "GET /devices/apple-tv HTTP/1.1" 200 -
+127.0.0.1 - - [23/Oct/2026 16:11:22] "GET /devices/amazon-fire-tv HTTP/1.1" 200 -
+127.0.0.1 - - [23/Oct/2026 16:11:22] "GET /devices/chromecast HTTP/1.1" 200 -
+127.0.0.1 - - [23/Oct/2026 16:11:23] "GET /devices/roku HTTP/1.1" 200 -
+127.0.0.1 - - [23/Oct/2026 16:11:23] "GET /devices/android-tv-boxes HTTP/1.1" 200 -
+127.0.0.1 - - [23/Oct/2026 16:11:23] "GET /devices/compatible-cable-boxes HTTP/1.1" 200 -
+127.0.0.1 - - [23/Oct/2026 16:11:49] "GET /devices/samsung-smart-tv HTTP/1.1" 200 -
+127.0.0.1 - - [23/Oct/2026 16:11:49] "GET /src/styles/theme.css HTTP/1.1" 200 -
+127.0.0.1 - - [23/Oct/2026 16:11:49] "GET /src/styles/animations.css HTTP/1.1" 200 -
+127.0.0.1 - - [23/Oct/2026 16:11:49] "GET /src/styles/motion.css HTTP/1.1" 200 -
+127.0.0.1 - - [23/Oct/2026 16:11:49] "GET /i18n.js HTTP/1.1" 200 -
+127.0.0.1 - - [23/Oct/2026 16:11:49] "GET /assets/sanyuhub-logo.png HTTP/1.1" 200 -
+127.0.0.1 - - [23/Oct/2026 16:11:49] "GET /src/js/animations/ZoomTypography.js HTTP/1.1" 200 -
+127.0.0.1 - - [23/Oct/2026 16:11:49] "GET /src/js/animations/ZoomOutTypography.js HTTP/1.1" 200 -
+127.0.0.1 - - [23/Oct/2026 16:11:49] "GET /src/js/animations/StaggeredWords.js HTTP/1.1" 200 -
+127.0.0.1 - - [23/Oct/2026 16:11:49] "GET /src/js/animations/BlurToFocus.js HTTP/1.1" 200 -
+127.0.0.1 - - [23/Oct/2026 16:11:49] "GET /src/js/animations/ParallaxElement.js HTTP/1.1" 200 -
+127.0.0.1 - - [23/Oct/2026 16:11:49] "GET /src/js/animations/PinnedStorySection.js HTTP/1.1" 200 -
+127.0.0.1 - - [23/Oct/2026 16:11:49] "GET /src/js/animations/DirectionalReveal.js HTTP/1.1" 200 -
+127.0.0.1 - - [23/Oct/2026 16:11:49] "GET /src/js/animations/MicroInteractions.js HTTP/1.1" 200 -
+127.0.0.1 - - [23/Oct/2026 16:11:49] "GET /src/js/hooks/useReducedMotion.js HTTP/1.1" 200 -

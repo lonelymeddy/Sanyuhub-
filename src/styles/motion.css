@@ -83,18 +83,89 @@
   }
 }
 
-/* Micro-interactions */
-.interactive-btn {
-  transition: transform 0.15s ease, background-color 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
-}
-.interactive-btn:hover {
-  transform: translateY(-2px);
-}
-.interactive-btn:active {
-  transform: scale(0.98);
+/* Global Button Click & Tap Animations */
+button,
+.btn-primary,
+.btn-secondary,
+.menu-toggle,
+.category-button,
+.device,
+.cat-card,
+.footer-links a,
+a.btn-primary,
+a.btn-secondary,
+a.cat-card,
+[role="button"] {
+  transition: transform 150ms cubic-bezier(0.2, 0, 0, 1),
+              background-color 150ms ease,
+              border-color 150ms ease,
+              box-shadow 150ms ease,
+              filter 150ms ease;
+  will-change: transform;
+  -webkit-tap-highlight-color: transparent;
 }
 
-/* Reduced motion preference */
+/* Hover brightness enhancement */
+button:not([disabled]):not([aria-disabled="true"]):hover,
+.btn-primary:not([disabled]):not([aria-disabled="true"]):hover,
+.btn-secondary:not([disabled]):not([aria-disabled="true"]):hover,
+.category-button:hover,
+.device:hover,
+.menu-toggle:hover,
+.cat-card:hover,
+[role="button"]:not([disabled]):hover {
+  filter: brightness(1.06);
+}
+
+/* Active Press & Tap Animation (Scale down to ~0.96) */
+button:not([disabled]):not([aria-disabled="true"]):active,
+button:not([disabled]):not([aria-disabled="true"]).is-pressed,
+.btn-primary:not([disabled]):not([aria-disabled="true"]):active,
+.btn-primary:not([disabled]):not([aria-disabled="true"]).is-pressed,
+.btn-secondary:not([disabled]):not([aria-disabled="true"]):active,
+.btn-secondary:not([disabled]):not([aria-disabled="true"]).is-pressed,
+a.btn-primary:not([disabled]):not([aria-disabled="true"]):active,
+a.btn-primary:not([disabled]):not([aria-disabled="true"]).is-pressed,
+a.btn-secondary:not([disabled]):not([aria-disabled="true"]):active,
+a.btn-secondary:not([disabled]):not([aria-disabled="true"]).is-pressed,
+.menu-toggle:active,
+.menu-toggle.is-pressed,
+.category-button:active,
+.category-button.is-pressed,
+.device:active,
+.device.is-pressed,
+.cat-card:active,
+.cat-card.is-pressed {
+  transform: scale(0.96) !important;
+  filter: brightness(0.92);
+  transition-duration: 120ms;
+}
+
+/* Keyboard Focus Indicators */
+button:focus-visible,
+a:focus-visible,
+.category-button:focus-visible,
+.device:focus-visible,
+.menu-toggle:focus-visible,
+.cat-card:focus-visible,
+select:focus-visible {
+  outline: 2px solid var(--color-accent, #ffd43b);
+  outline-offset: 3px;
+}
+
+/* Disabled & Coming Soon Buttons */
+button[disabled],
+button[aria-disabled="true"],
+.btn-disabled,
+.btn-unsupported {
+  transform: none !important;
+  cursor: not-allowed !important;
+  opacity: 0.65 !important;
+  filter: none !important;
+  box-shadow: none !important;
+}
+
+/* Reduced Motion Preference */
 @media (prefers-reduced-motion: reduce) {
   .anim-zoom-in,
   .anim-zoom-out,
@@ -102,7 +173,15 @@
   .anim-slide-left,
   .anim-slide-right,
   .anim-stagger-word span,
-  .anim-parallax {
+  .anim-parallax,
+  button,
+  .btn-primary,
+  .btn-secondary,
+  .menu-toggle,
+  .category-button,
+  .device,
+  .cat-card,
+  [role="button"] {
     opacity: 1 !important;
     transform: none !important;
     filter: none !important;
