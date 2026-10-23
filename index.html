@@ -1083,21 +1083,33 @@
       return fallback || key;
     }
 
+    // Helper image renderer with loading skeleton & error fallback
+    function renderImageWithFallback(src, alt, className = 'device-graphic') {
+      const fallbackSvg = `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="200" height="140" viewBox="0 0 200 140" fill="%2315171c"><rect width="200" height="140" rx="12" fill="%2315171c" stroke="%23ffd43b" stroke-width="2"/><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="%23ffd43b" font-family="sans-serif" font-size="14">sanyuhub Device</text></svg>`;
+      return `
+        <div class="img-wrapper" style="position:relative; width:100%; overflow:hidden;">
+          <img src="${src}" alt="${alt}" class="${className} img-loading"
+            onload="this.classList.remove('img-loading'); this.classList.add('img-loaded');"
+            onerror="this.onerror=null; this.src='${fallbackSvg}'; this.classList.remove('img-loading'); this.classList.add('img-loaded');" />
+        </div>
+      `;
+    }
+
     // Helper SVG graphics generator for devices
     function renderSVGGraphic(type) {
       switch (type) {
         case 'mobile':
-          return `<svg viewBox="0 0 200 140" fill="none" xmlns="http://www.w3.org/2000/svg" class="device-graphic"><rect x="60" y="10" width="80" height="120" rx="12" fill="#1b1e28" stroke="#ffd43b" stroke-width="3"/><rect x="68" y="20" width="64" height="92" rx="4" fill="#0b0c0f"/><circle cx="100" cy="120" r="3" fill="#ffd43b"/><path d="M78 45h44M78 55h30" stroke="#ffd43b" stroke-width="3" stroke-linecap="round"/></svg>`;
+          return `<svg viewBox="0 0 200 140" fill="none" xmlns="http://www.w3.org/2000/svg" class="device-graphic" role="img" aria-label="Smartphone illustration"><rect x="60" y="10" width="80" height="120" rx="12" fill="#1b1e28" stroke="#ffd43b" stroke-width="3"/><rect x="68" y="20" width="64" height="92" rx="4" fill="#0b0c0f"/><circle cx="100" cy="120" r="3" fill="#ffd43b"/><path d="M78 45h44M78 55h30" stroke="#ffd43b" stroke-width="3" stroke-linecap="round"/></svg>`;
         case 'desktop':
-          return `<svg viewBox="0 0 200 140" fill="none" xmlns="http://www.w3.org/2000/svg" class="device-graphic"><rect x="25" y="15" width="150" height="90" rx="8" fill="#1b1e28" stroke="#ffd43b" stroke-width="3"/><rect x="33" y="23" width="134" height="74" rx="3" fill="#0b0c0f"/><path d="M85 105h30v15H85z" fill="#1b1e28"/><path d="M65 120h70" stroke="#ffd43b" stroke-width="3" stroke-linecap="round"/><circle cx="100" cy="60" r="16" fill="rgba(255,212,59,0.15)" stroke="#ffd43b" stroke-width="2"/></svg>`;
+          return `<svg viewBox="0 0 200 140" fill="none" xmlns="http://www.w3.org/2000/svg" class="device-graphic" role="img" aria-label="Desktop Computer illustration"><rect x="25" y="15" width="150" height="90" rx="8" fill="#1b1e28" stroke="#ffd43b" stroke-width="3"/><rect x="33" y="23" width="134" height="74" rx="3" fill="#0b0c0f"/><path d="M85 105h30v15H85z" fill="#1b1e28"/><path d="M65 120h70" stroke="#ffd43b" stroke-width="3" stroke-linecap="round"/><circle cx="100" cy="60" r="16" fill="rgba(255,212,59,0.15)" stroke="#ffd43b" stroke-width="2"/></svg>`;
         case 'tv':
-          return `<svg viewBox="0 0 200 140" fill="none" xmlns="http://www.w3.org/2000/svg" class="device-graphic"><rect x="15" y="15" width="170" height="95" rx="6" fill="#1b1e28" stroke="#ffd43b" stroke-width="3"/><rect x="22" y="22" width="156" height="81" rx="2" fill="#0b0c0f"/><path d="M70 120l15-10h30l15 10" stroke="#ffd43b" stroke-width="3" stroke-linecap="round"/><circle cx="100" cy="62" r="18" fill="rgba(255,212,59,0.2)" stroke="#ffd43b" stroke-width="2"/></svg>`;
+          return `<svg viewBox="0 0 200 140" fill="none" xmlns="http://www.w3.org/2000/svg" class="device-graphic" role="img" aria-label="Smart TV illustration"><rect x="15" y="15" width="170" height="95" rx="6" fill="#1b1e28" stroke="#ffd43b" stroke-width="3"/><rect x="22" y="22" width="156" height="81" rx="2" fill="#0b0c0f"/><path d="M70 120l15-10h30l15 10" stroke="#ffd43b" stroke-width="3" stroke-linecap="round"/><circle cx="100" cy="62" r="18" fill="rgba(255,212,59,0.2)" stroke="#ffd43b" stroke-width="2"/></svg>`;
         case 'console':
-          return `<svg viewBox="0 0 200 140" fill="none" xmlns="http://www.w3.org/2000/svg" class="device-graphic"><rect x="30" y="35" width="140" height="70" rx="20" fill="#1b1e28" stroke="#ffd43b" stroke-width="3"/><circle cx="65" cy="70" r="14" fill="#0b0c0f" stroke="#ffd43b" stroke-width="2"/><path d="M65 62v16M57 70h16" stroke="#ffd43b" stroke-width="2.5" stroke-linecap="round"/><circle cx="130" cy="62" r="4" fill="#ef4444"/><circle cx="142" cy="70" r="4" fill="#ffd43b"/><circle cx="118" cy="70" r="4" fill="#10b981"/><circle cx="130" cy="78" r="4" fill="#f59e0b"/></svg>`;
+          return `<svg viewBox="0 0 200 140" fill="none" xmlns="http://www.w3.org/2000/svg" class="device-graphic" role="img" aria-label="Gaming Console Controller illustration"><rect x="30" y="35" width="140" height="70" rx="20" fill="#1b1e28" stroke="#ffd43b" stroke-width="3"/><circle cx="65" cy="70" r="14" fill="#0b0c0f" stroke="#ffd43b" stroke-width="2"/><path d="M65 62v16M57 70h16" stroke="#ffd43b" stroke-width="2.5" stroke-linecap="round"/><circle cx="130" cy="62" r="4" fill="#ef4444"/><circle cx="142" cy="70" r="4" fill="#ffd43b"/><circle cx="118" cy="70" r="4" fill="#10b981"/><circle cx="130" cy="78" r="4" fill="#f59e0b"/></svg>`;
         case 'streaming':
-          return `<svg viewBox="0 0 200 140" fill="none" xmlns="http://www.w3.org/2000/svg" class="device-graphic"><rect x="50" y="45" width="100" height="50" rx="10" fill="#1b1e28" stroke="#ffd43b" stroke-width="3"/><circle cx="100" cy="70" r="12" fill="rgba(255,212,59,0.2)" stroke="#ffd43b" stroke-width="2"/><path d="M130 60a12 12 0 0 1 0 20M140 52a22 22 0 0 1 0 36" stroke="#ffd43b" stroke-width="2.5" stroke-linecap="round"/></svg>`;
+          return `<svg viewBox="0 0 200 140" fill="none" xmlns="http://www.w3.org/2000/svg" class="device-graphic" role="img" aria-label="Streaming Device illustration"><rect x="50" y="45" width="100" height="50" rx="10" fill="#1b1e28" stroke="#ffd43b" stroke-width="3"/><circle cx="100" cy="70" r="12" fill="rgba(255,212,59,0.2)" stroke="#ffd43b" stroke-width="2"/><path d="M130 60a12 12 0 0 1 0 20M140 52a22 22 0 0 1 0 36" stroke="#ffd43b" stroke-width="2.5" stroke-linecap="round"/></svg>`;
         default:
-          return `<svg viewBox="0 0 200 140" fill="none" xmlns="http://www.w3.org/2000/svg" class="device-graphic"><rect x="30" y="20" width="140" height="100" rx="10" fill="#1b1e28" stroke="#ffd43b" stroke-width="3"/><rect x="40" y="30" width="120" height="80" rx="4" fill="#0b0c0f"/></svg>`;
+          return `<svg viewBox="0 0 200 140" fill="none" xmlns="http://www.w3.org/2000/svg" class="device-graphic" role="img" aria-label="Device Hardware illustration"><rect x="30" y="20" width="140" height="100" rx="10" fill="#1b1e28" stroke="#ffd43b" stroke-width="3"/><rect x="40" y="30" width="120" height="80" rx="4" fill="#0b0c0f"/></svg>`;
       }
     }
 
@@ -2464,13 +2476,192 @@
 };
 
 
+    function renderHomePage() {
+      return `
+        <!-- Hero Section -->
+        <section class="section-story bg-dark hero-section">
+          <div class="badge-pill">${t('home.hero_badge', 'Universal Ecosystem')}</div>
+          <h1 class="hero-title anim-zoom-in">${t('home.hero_title', 'Your world, connected.')}</h1>
+          <p class="body-lead anim-stagger-word">${t('home.hero_lead', 'sanyuhub seamlessly connects your smartphone, computer, smart TV, and streaming devices in one elegant experience.')}</p>
+
+          <div class="actions-group">
+            <a class="btn-primary" href="/devices/website" data-route="/devices/website">
+              ${t('home.btn_launch', 'Explore Web Client')}
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+            <button class="btn-secondary" id="heroChooseDeviceBtn">
+              ${t('home.btn_choose_device', 'Choose Your Device')}
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+            </button>
+          </div>
+
+          <div class="visual-container anim-blur-focus anim-parallax-target">
+            <div class="device-mockup">
+              ${renderSVGGraphic('desktop')}
+            </div>
+          </div>
+        </section>
+
+        <!-- About Section -->
+        <section class="section-story bg-card">
+          <div class="badge-pill">Overview</div>
+          <h2 class="section-title anim-zoom-in">${t('home.about_heading', 'What is sanyuhub?')}</h2>
+          <p class="body-text anim-blur-focus">${t('home.about_text_1', 'sanyuhub is a modern cross-platform hub that unites digital media, device connectivity, and interactive services across all your daily screens.')}</p>
+          <p class="body-text anim-blur-focus">${t('home.about_text_2', 'Whether on an iPhone, Android device, Windows PC, Mac, or 4K Smart TV, sanyuhub provides instant browser-based accessibility with zero forced installs.')}</p>
+        </section>
+
+        <!-- How It Works Section -->
+        <section class="section-story bg-surface pinned-container">
+          <div class="pinned-headline">
+            <div class="badge-pill">Simple Setup</div>
+            <h2 class="section-title anim-zoom-out">${t('home.how_heading', 'How sanyuhub Works')}</h2>
+            <p class="body-lead">${t('home.how_sub', 'Get started in seconds on any hardware with zero hassle.')}</p>
+          </div>
+
+          <div class="steps-container">
+            <div class="step-card anim-slide-left">
+              <div class="step-number">1</div>
+              <div class="step-content">
+                <h4>${t('home.step1_title', 'Select Your Device')}</h4>
+                <p>${t('home.step1_desc', 'Browse our verified device catalog for tailored instructions for mobile, desktop, TV, or consoles.')}</p>
+              </div>
+            </div>
+
+            <div class="step-card anim-slide-right">
+              <div class="step-number">2</div>
+              <div class="step-content">
+                <h4>${t('home.step2_title', 'Launch Web App')}</h4>
+                <p>${t('home.step2_desc', 'Open sanyuhub directly in your web browser. No complex setup or software installers required.')}</p>
+              </div>
+            </div>
+
+            <div class="step-card anim-slide-left">
+              <div class="step-number">3</div>
+              <div class="step-content">
+                <h4>${t('home.step3_title', 'Connect & Enjoy')}</h4>
+                <p>${t('home.step3_desc', 'Sync your preferences, stream media, and cast seamlessly between all your personal devices.')}</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Device Directory Grid -->
+        <section class="section-story bg-card">
+          <div class="badge-pill">Directory</div>
+          <h2 class="section-title anim-zoom-in">${t('home.directory_title', 'Explore Device Guides')}</h2>
+          <p class="body-lead anim-blur-focus">${t('home.directory_sub', 'Select your device category below to view specific requirements and setup guides.')}</p>
+
+          <div class="category-grid">
+            <a class="cat-card anim-slide-left" href="/devices/android-phones" data-route="/devices/android-phones">
+              <div class="cat-card-icon">
+                <svg viewBox="0 0 24 24"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></svg>
+              </div>
+              <div class="cat-card-info">
+                <h4>Android & iOS Mobile</h4>
+                <p>Smartphones & Tablets</p>
+              </div>
+            </a>
+
+            <a class="cat-card anim-slide-right" href="/devices/windows" data-route="/devices/windows">
+              <div class="cat-card-icon">
+                <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="13" rx="1.5"/><path d="M8 21h8M12 17v4"/></svg>
+              </div>
+              <div class="cat-card-info">
+                <h4>Desktop Computers</h4>
+                <p>Windows, macOS, Linux, Chromebook</p>
+              </div>
+            </a>
+
+            <a class="cat-card anim-slide-left" href="/devices/samsung-smart-tv" data-route="/devices/samsung-smart-tv">
+              <div class="cat-card-icon">
+                <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="13" rx="1.5"/><path d="m8 2 4 3 4-3M9 21h6"/></svg>
+              </div>
+              <div class="cat-card-info">
+                <h4>Smart TVs</h4>
+                <p>Samsung Tizen, LG webOS, Android TV</p>
+              </div>
+            </a>
+
+            <a class="cat-card anim-slide-right" href="/devices/chromecast" data-route="/devices/chromecast">
+              <div class="cat-card-icon">
+                <svg viewBox="0 0 24 24"><path d="M4 8a12 12 0 0 1 16 0M7 11a8 8 0 0 1 10 0M10 14a4 4 0 0 1 4 0M12 18h.01"/></svg>
+              </div>
+              <div class="cat-card-info">
+                <h4>Streaming Devices</h4>
+                <p>Chromecast, Fire TV, Apple TV, Roku</p>
+              </div>
+            </a>
+
+            <a class="cat-card anim-slide-left" href="/devices/playstation" data-route="/devices/playstation">
+              <div class="cat-card-icon">
+                <svg viewBox="0 0 24 24"><path d="M6 9h12a4 4 0 0 1 3.8 5l-1 3a2 2 0 0 1-3.2 1l-3-2H9l-3 2a2 2 0 0 1-3.2-1l-1-3A4 4 0 0 1 6 9Z"/><path d="M7 11v4M5 13h4M16 12h.01M19 14h.01"/></svg>
+              </div>
+              <div class="cat-card-info">
+                <h4>Gaming Consoles</h4>
+                <p>PlayStation 4/5, Xbox Series X|S</p>
+              </div>
+            </a>
+          </div>
+        </section>
+
+        <!-- Feature Highlights -->
+        <section class="section-story bg-surface">
+          <div class="badge-pill">Capabilities</div>
+          <h2 class="section-title anim-zoom-in">${t('home.features_title', 'Built for Every Display')}</h2>
+          <p class="body-lead anim-blur-focus">${t('home.features_sub', 'Engineered to deliver high performance without forcing app installations or proprietary stores.')}</p>
+
+          <div class="steps-container">
+            <div class="step-card anim-slide-left">
+              <div class="cat-card-icon" style="margin-right:4px;">
+                <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+              </div>
+              <div class="step-content">
+                <h4>${t('home.feat1_title', 'Zero App Downloads Needed')}</h4>
+                <p>${t('home.feat1_desc', 'Access sanyuhub directly through standard web browsers (Chrome, Safari, Edge, Firefox). No APKs, installers, or native app store downloads are required.')}</p>
+              </div>
+            </div>
+
+            <div class="step-card anim-slide-right">
+              <div class="cat-card-icon" style="margin-right:4px;">
+                <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="13" rx="1.5"/><path d="m8 2 4 3 4-3M9 21h6"/></svg>
+              </div>
+              <div class="step-content">
+                <h4>${t('home.feat2_title', 'Smart TV & Casting Support')}</h4>
+                <p>${t('home.feat2_desc', 'Seamlessly mirror or cast sanyuhub to Samsung Tizen, LG webOS, Android TV, Apple TV, and Chromecast devices from your phone or PC.')}</p>
+              </div>
+            </div>
+
+            <div class="step-card anim-slide-left">
+              <div class="cat-card-icon" style="margin-right:4px;">
+                <svg viewBox="0 0 24 24"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></svg>
+              </div>
+              <div class="step-content">
+                <h4>${t('home.feat3_title', 'Progressive Web App (PWA)')}</h4>
+                <p>${t('home.feat3_desc', 'Add sanyuhub to your iPhone or Android home screen for full-screen app-like launching with low data usage.')}</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="section-story bg-card">
+          <h2 class="hero-title anim-zoom-in">${t('home.cta_title', 'Ready to connect?')}</h2>
+          <p class="body-lead anim-stagger-word">${t('home.cta_lead', 'Launch the sanyuhub web client now and experience seamless device integration.')}</p>
+          <a class="btn-primary" href="/devices/website" data-route="/devices/website">
+            ${t('home.cta_btn', 'Launch sanyuhub Now')}
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </section>
+      `;
+    }
+
     function renderStatusBadge(status) {
       if (status === 'coming_soon') {
         return `<div class="status-badge status-coming-soon"><span class="status-dot dot-amber"></span> Coming Soon</div>`;
       } else if (status === 'unsupported') {
         return `<div class="status-badge status-unsupported"><span class="status-dot dot-red"></span> Not Supported</div>`;
       }
-      return `<div class="status-badge status-available"><span class="status-dot dot-green"></span> Supported & Available</div>`;
+      return '';
     }
 
     function renderActionButtons(actions = []) {
@@ -2515,6 +2706,29 @@
           }
         }).join('')}
       </div>`;
+    }
+
+    function renderGenericPage(titleKey, title, descKey, fallbackDesc) {
+      const desc = descKey ? t(descKey, fallbackDesc) : fallbackDesc;
+      return `
+        <section class="section-story bg-dark hero-section">
+          <div class="badge-pill">Information</div>
+          <h1 class="hero-title anim-zoom-in">${title}</h1>
+          <p class="body-lead anim-stagger-word">${desc}</p>
+        </section>
+
+        <section class="section-story bg-card">
+          <div class="badge-pill">sanyuhub Ecosystem</div>
+          <h2 class="section-title anim-zoom-in">Connected Device Experience</h2>
+          <p class="body-text anim-blur-focus">sanyuhub enables seamless connectivity across mobile smartphones, desktop operating systems, smart TVs, and streaming platforms worldwide.</p>
+          <div style="margin-top: 16px;">
+            <a class="btn-primary" href="/" data-route="/">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+              ${t('nav.back_home', 'Return to Home')}
+            </a>
+          </div>
+        </section>
+      `;
     }
 
     function renderDevicePage(routePath, details) {
@@ -2761,6 +2975,32 @@
       }
     }
 
+    function renderSkeletonLayout() {
+      return `
+        <section class="section-story bg-dark">
+          <div class="skeleton skeleton-pill"></div>
+          <div class="skeleton skeleton-title"></div>
+          <div class="skeleton skeleton-lead"></div>
+          <div style="width:100%; max-width:340px; display:flex; flex-direction:column; gap:10px;">
+            <div class="skeleton skeleton-btn"></div>
+            <div class="skeleton skeleton-btn" style="height:44px; max-width:280px;"></div>
+          </div>
+          <div class="visual-container">
+            <div class="skeleton skeleton-mockup"></div>
+          </div>
+        </section>
+        <section class="section-story bg-card">
+          <div class="skeleton skeleton-pill"></div>
+          <div class="skeleton skeleton-title" style="width:60%;"></div>
+          <div style="width:100%; max-width:400px;">
+            <div class="skeleton skeleton-card"></div>
+            <div class="skeleton skeleton-card"></div>
+            <div class="skeleton skeleton-card"></div>
+          </div>
+        </section>
+      `;
+    }
+
     function renderPage(pathname) {
       try {
         let rawPath = pathname;
@@ -2779,27 +3019,39 @@
           const title = t(routeInfo.titleKey, 'sanyuhub');
           document.title = title + ' — sanyuhub';
 
-          if (routeInfo.type === 'home') {
-            workspace.innerHTML = renderHomePage();
-          } else if (routeInfo.type === 'device') {
-            const devDetails = DEVICE_DETAILS[path] || DEVICE_DETAILS['/devices/website'];
-            workspace.innerHTML = renderDevicePage(path, devDetails);
-          } else {
-            workspace.innerHTML = renderGenericPage(routeInfo.titleKey, title, routeInfo.descKey, 'Information about sanyuhub service and policies.');
-          }
+          // Render initial skeleton layout briefly to prevent blank flashes
+          workspace.innerHTML = renderSkeletonLayout();
 
-          const selectedDevice = document.querySelector(`.device[data-route="${path}"], .category-button[data-route="${path}"]`);
-          if (selectedDevice) {
-            selectedDevice.classList.add('selected');
-            const parentCategory = selectedDevice.closest('.category');
-            if (parentCategory && !parentCategory.classList.contains('open')) {
-              parentCategory.classList.add('open');
-              const catButton = parentCategory.querySelector('.category-button');
-              if (catButton) catButton.setAttribute('aria-expanded', 'true');
-              const toggleSym = parentCategory.querySelector('.toggle-symbol');
-              if (toggleSym) toggleSym.textContent = '−';
+          // Render actual content on next microtask / short animation frame
+          setTimeout(() => {
+            try {
+              if (routeInfo.type === 'home') {
+                workspace.innerHTML = renderHomePage();
+              } else if (routeInfo.type === 'device') {
+                const devDetails = DEVICE_DETAILS[path] || DEVICE_DETAILS['/devices/website'];
+                workspace.innerHTML = renderDevicePage(path, devDetails);
+              } else {
+                workspace.innerHTML = renderGenericPage(routeInfo.titleKey, title, routeInfo.descKey, 'Information about sanyuhub service and policies.');
+              }
+
+              const selectedDevice = document.querySelector(`.device[data-route="${path}"], .category-button[data-route="${path}"]`);
+              if (selectedDevice) {
+                selectedDevice.classList.add('selected');
+                const parentCategory = selectedDevice.closest('.category');
+                if (parentCategory && !parentCategory.classList.contains('open')) {
+                  parentCategory.classList.add('open');
+                  const catButton = parentCategory.querySelector('.category-button');
+                  if (catButton) catButton.setAttribute('aria-expanded', 'true');
+                  const toggleSym = parentCategory.querySelector('.toggle-symbol');
+                  if (toggleSym) toggleSym.textContent = '−';
+                }
+              }
+
+              attachAnimations();
+            } catch (innerErr) {
+              console.error('Error rendering page content:', innerErr);
             }
-          }
+          }, 60);
         } else {
           const notFoundTitle = t('empty.not_found_title', 'Page Not Found');
           document.title = '404 — ' + notFoundTitle + ' — sanyuhub';
@@ -2818,6 +3070,18 @@
         attachAnimations();
       } catch (err) {
         console.error('Error rendering page:', err);
+        if (workspace) {
+          workspace.innerHTML = `
+            <section class="section-story bg-dark">
+              <h1 class="hero-title">Content Unavailable</h1>
+              <p class="body-lead">An error occurred while loading this section. Please try reloading or returning home.</p>
+              <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap;">
+                <a class="btn-primary" href="/" data-route="/">Return Home</a>
+                <button class="btn-secondary" onclick="window.location.reload()">Reload Page</button>
+              </div>
+            </section>
+          `;
+        }
       }
     }
 
