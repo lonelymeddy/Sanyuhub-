@@ -17,15 +17,21 @@
       --line: #30323a;
       --text: #f5f5f7;
       --muted: #a4a9b4;
+      --accent: #3b82f6;
+      --accent-hover: #2563eb;
+      --card-bg: #16181f;
+      --card-border: #282a36;
     }
     * { box-sizing: border-box; }
     html, body {
       margin: 0;
       padding: 0;
       min-height: 100%;
-      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
       background: #0d0e12;
       color: var(--text);
+      overflow-x: hidden;
+      scroll-behavior: smooth;
     }
     button, select, a { font: inherit; }
 
@@ -35,7 +41,7 @@
       min-height: 100vh;
       margin: 0 auto;
       background: var(--sidebar);
-      box-shadow: 0 0 40px rgba(0,0,0,0.5);
+      box-shadow: 0 0 40px rgba(0,0,0,0.6);
       display: flex;
       flex-direction: column;
       position: relative;
@@ -130,7 +136,7 @@
       right: 0;
       bottom: 0;
       background: rgba(0, 0, 0, 0.6);
-      backdrop-filter: blur(2px);
+      backdrop-filter: blur(4px);
       z-index: 80;
     }
     .backdrop.active {
@@ -269,56 +275,409 @@
       border-left-color: #ffffff;
     }
 
-    /* Main Workspace / Content Area */
+    /* Workspace & Scroll Storytelling Layout */
     .workspace {
       flex: 1;
-      padding: 32px 20px;
-      background: #111318;
+      padding: 0;
+      background: #0d0e12;
       display: flex;
       flex-direction: column;
-      align-items: center;
-      justify-content: flex-start;
-      min-height: 280px;
-    }
-    .page-title {
-      margin: 0 0 16px;
-      font-size: 22px;
-      font-weight: 700;
-      text-align: center;
-      color: #ffffff;
       width: 100%;
+      min-height: calc(100vh - 68px);
     }
 
-    /* Empty State Component */
-    .empty-state {
+    /* Editorial Section Styling */
+    .section-story {
+      padding: 48px 20px;
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
-      padding: 36px 16px;
       text-align: center;
-      width: 100%;
+      position: relative;
+      overflow: hidden;
+      border-bottom: 1px solid var(--line);
     }
-    .empty-icon {
-      width: 48px;
-      height: 48px;
+    .section-story.bg-dark {
+      background: #0d0e12;
+    }
+    .section-story.bg-surface {
+      background: #12141a;
+    }
+    .section-story.bg-card {
+      background: #171922;
+    }
+
+    /* Typography Scale */
+    .hero-title {
+      font-size: clamp(32px, 8vw, 44px);
+      font-weight: 400;
+      line-height: 1.08;
+      letter-spacing: -0.02em;
+      margin: 0 0 16px;
+      color: #ffffff;
+    }
+    .section-title {
+      font-size: clamp(26px, 6vw, 34px);
+      font-weight: 400;
+      line-height: 1.12;
+      letter-spacing: -0.015em;
+      margin: 0 0 14px;
+      color: #ffffff;
+    }
+    .sub-title {
+      font-size: clamp(20px, 5vw, 24px);
+      font-weight: 400;
+      line-height: 1.2;
+      margin: 0 0 12px;
+      color: #e2e8f0;
+    }
+    .body-lead {
+      font-size: 17px;
+      line-height: 1.5;
+      color: var(--muted);
+      max-width: 420px;
+      margin: 0 0 24px;
+      font-weight: 400;
+    }
+    .body-text {
+      font-size: 15px;
+      line-height: 1.6;
+      color: var(--muted);
+      max-width: 420px;
+      margin: 0 0 20px;
+    }
+    .badge-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      border-radius: 20px;
+      background: rgba(59, 130, 246, 0.12);
+      border: 1px solid rgba(59, 130, 246, 0.3);
+      color: #60a5fa;
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 16px;
+    }
+
+    /* Action Buttons */
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      max-width: 340px;
+      min-height: 50px;
+      padding: 12px 24px;
+      background: #2563eb;
+      color: #ffffff;
+      border: none;
+      border-radius: 25px;
+      font-size: 16px;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      box-shadow: 0 4px 20px rgba(37, 99, 235, 0.35);
+      transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+    }
+    .btn-primary:hover, .btn-primary:focus-visible {
+      background: #1d4ed8;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 24px rgba(37, 99, 235, 0.45);
+      outline: none;
+    }
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      max-width: 340px;
+      min-height: 48px;
+      padding: 10px 20px;
+      background: rgba(255, 255, 255, 0.08);
+      color: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 24px;
+      font-size: 15px;
+      font-weight: 500;
+      text-decoration: none;
+      cursor: pointer;
+      transition: background 0.2s ease, border-color 0.2s ease;
+    }
+    .btn-secondary:hover, .btn-secondary:focus-visible {
+      background: rgba(255, 255, 255, 0.15);
+      border-color: rgba(255, 255, 255, 0.3);
+      outline: none;
+    }
+
+    /* Device Mockup Visuals */
+    .visual-container {
+      width: 100%;
+      max-width: 380px;
+      margin: 24px 0 12px;
+      position: relative;
+    }
+    .device-mockup {
+      width: 100%;
+      border-radius: 16px;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      padding: 20px;
+      box-shadow: 0 16px 36px rgba(0,0,0,0.4);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .device-graphic {
+      width: 100%;
+      max-height: 220px;
+      object-fit: contain;
+      margin-bottom: 12px;
+    }
+
+    /* Grid & Step Lists */
+    .steps-container {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin: 20px 0;
+      text-align: left;
+    }
+    .step-card {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
+      padding: 16px;
+    }
+    .step-number {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: rgba(59, 130, 246, 0.2);
+      color: #60a5fa;
       display: grid;
       place-items: center;
-      border-radius: 50%;
-      background: #252a34;
-      color: var(--muted);
-      margin-bottom: 14px;
-    }
-    .empty-icon svg {
-      width: 24px;
-      height: 24px;
-    }
-    .empty-text {
-      margin: 0;
-      color: var(--muted);
+      font-weight: 700;
       font-size: 15px;
-      font-weight: 400;
-      line-height: 1.4;
+      flex-shrink: 0;
+    }
+    .step-content h4 {
+      margin: 0 0 4px;
+      font-size: 16px;
+      font-weight: 600;
+      color: #fff;
+    }
+    .step-content p {
+      margin: 0;
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.45;
+    }
+
+    /* Category Cards Grid */
+    .category-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+      width: 100%;
+      margin: 20px 0;
+    }
+    .cat-card {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
+      padding: 16px;
+      text-decoration: none;
+      color: inherit;
+      transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+    }
+    .cat-card:hover {
+      border-color: rgba(255, 255, 255, 0.3);
+      background: #1c1f2b;
+      transform: translateY(-2px);
+    }
+    .cat-card-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      background: rgba(255,255,255,0.06);
+      display: grid;
+      place-items: center;
+      color: #60a5fa;
+      flex-shrink: 0;
+    }
+    .cat-card-icon svg {
+      width: 22px;
+      height: 22px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 1.8;
+    }
+    .cat-card-info {
+      text-align: left;
+      flex: 1;
+    }
+    .cat-card-info h4 {
+      margin: 0 0 2px;
+      font-size: 15px;
+      font-weight: 600;
+      color: #fff;
+    }
+    .cat-card-info p {
+      margin: 0;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    /* Spec List */
+    .spec-box {
+      width: 100%;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
+      padding: 18px;
+      text-align: left;
+      margin: 16px 0;
+    }
+    .spec-item {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      font-size: 14px;
+    }
+    .spec-item:last-child {
+      border-bottom: none;
+    }
+    .spec-label {
+      color: var(--muted);
+    }
+    .spec-val {
+      color: #fff;
+      font-weight: 500;
+    }
+
+    /* Troubleshooting Box */
+    .trouble-card {
+      width: 100%;
+      background: rgba(234, 179, 8, 0.08);
+      border: 1px solid rgba(234, 179, 8, 0.25);
+      border-radius: 14px;
+      padding: 16px;
+      text-align: left;
+      margin: 16px 0;
+    }
+    .trouble-card h4 {
+      margin: 0 0 6px;
+      font-size: 15px;
+      color: #fde047;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .trouble-card p {
+      margin: 0;
+      font-size: 13.5px;
+      color: #fef08a;
+      line-height: 1.45;
+    }
+
+    /* Animation Classes & Motion Design (Grounded with opacity fallback and smooth entrance) */
+    .anim-zoom-in {
+      opacity: 0;
+      transform: scale(0.92);
+      transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity, transform;
+    }
+    .anim-zoom-in.visible {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .anim-zoom-out {
+      opacity: 0;
+      transform: scale(1.08);
+      transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity, transform;
+    }
+    .anim-zoom-out.visible {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .anim-slide-left {
+      opacity: 0;
+      transform: translateX(-24px);
+      transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity, transform;
+    }
+    .anim-slide-left.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .anim-slide-right {
+      opacity: 0;
+      transform: translateX(24px);
+      transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity, transform;
+    }
+    .anim-slide-right.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .anim-blur-focus {
+      opacity: 0;
+      filter: blur(6px);
+      transition: opacity 0.5s ease-out, filter 0.5s ease-out;
+      will-change: opacity, filter;
+    }
+    .anim-blur-focus.visible {
+      opacity: 1;
+      filter: blur(0);
+    }
+
+    .anim-stagger-word span {
+      display: inline;
+      opacity: 0;
+      transition: opacity 0.35s ease;
+    }
+    .anim-stagger-word.visible span {
+      opacity: 1;
+    }
+
+    .anim-pinned {
+      position: relative;
+      z-index: 10;
+      margin-bottom: 20px;
+    }
+    @media (min-width: 768px) {
+      .anim-pinned {
+        position: sticky;
+        top: 84px;
+      }
+    }
+
+    /* Accessibility / Reduced Motion / Fallback */
+    @media (prefers-reduced-motion: reduce) {
+      .anim-zoom-in, .anim-zoom-out, .anim-slide-left, .anim-slide-right, .anim-blur-focus, .anim-stagger-word span {
+        opacity: 1 !important;
+        transform: none !important;
+        filter: none !important;
+        transition: none !important;
+      }
     }
 
     /* Footer Component */
@@ -446,9 +805,6 @@
     @keyframes reveal {
       from { opacity: 0; transform: translateY(-4px); }
       to { opacity: 1; transform: translateY(0); }
-    }
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
     }
     @media (max-width: 350px) {
       .footer { padding: 20px 14px 16px; }
@@ -586,16 +942,7 @@
 
     <!-- Workspace Area -->
     <section class="workspace" id="workspace" aria-live="polite">
-      <h2 class="page-title" id="pageTitle">sanyuhub</h2>
-      <div class="empty-state" id="emptyState">
-        <div class="empty-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
-            <line x1="9" y1="14" x2="15" y2="14"></line>
-          </svg>
-        </div>
-        <p class="empty-text" data-i18n="empty.oops">Oops, nothing here</p>
-      </div>
+      <!-- Dynamic Content Rendered Here -->
     </section>
 
     <!-- Footer -->
@@ -708,46 +1055,701 @@
   </main>
 
   <script>
-    // Route Definitions with i18n Translation Keys
+    // Translation helper shorthand
+    function t(key, fallback) {
+      if (window.i18n && typeof window.i18n.t === 'function') {
+        const val = window.i18n.t(key);
+        if (val !== key) return val;
+      }
+      return fallback || key;
+    }
+
+    // Helper SVG graphics generator for devices
+    function renderSVGGraphic(type) {
+      switch (type) {
+        case 'mobile':
+          return `<svg viewBox="0 0 200 140" fill="none" xmlns="http://www.w3.org/2000/svg" class="device-graphic"><rect x="60" y="10" width="80" height="120" rx="12" fill="#1e2230" stroke="#3b82f6" stroke-width="3"/><rect x="68" y="20" width="64" height="92" rx="4" fill="#0d0e12"/><circle cx="100" cy="120" r="3" fill="#60a5fa"/><path d="M78 45h44M78 55h30" stroke="#3b82f6" stroke-width="3" stroke-linecap="round"/></svg>`;
+        case 'desktop':
+          return `<svg viewBox="0 0 200 140" fill="none" xmlns="http://www.w3.org/2000/svg" class="device-graphic"><rect x="25" y="15" width="150" height="90" rx="8" fill="#1e2230" stroke="#3b82f6" stroke-width="3"/><rect x="33" y="23" width="134" height="74" rx="3" fill="#0d0e12"/><path d="M85 105h30v15H85z" fill="#1e2230"/><path d="M65 120h70" stroke="#3b82f6" stroke-width="3" stroke-linecap="round"/><circle cx="100" cy="60" r="16" fill="rgba(59,130,246,0.15)" stroke="#60a5fa" stroke-width="2"/></svg>`;
+        case 'tv':
+          return `<svg viewBox="0 0 200 140" fill="none" xmlns="http://www.w3.org/2000/svg" class="device-graphic"><rect x="15" y="15" width="170" height="95" rx="6" fill="#1e2230" stroke="#3b82f6" stroke-width="3"/><rect x="22" y="22" width="156" height="81" rx="2" fill="#0d0e12"/><path d="M70 120l15-10h30l15 10" stroke="#3b82f6" stroke-width="3" stroke-linecap="round"/><circle cx="100" cy="62" r="18" fill="rgba(59,130,246,0.2)" stroke="#60a5fa" stroke-width="2"/></svg>`;
+        case 'console':
+          return `<svg viewBox="0 0 200 140" fill="none" xmlns="http://www.w3.org/2000/svg" class="device-graphic"><rect x="30" y="35" width="140" height="70" rx="20" fill="#1e2230" stroke="#3b82f6" stroke-width="3"/><circle cx="65" cy="70" r="14" fill="#0d0e12" stroke="#60a5fa" stroke-width="2"/><path d="M65 62v16M57 70h16" stroke="#60a5fa" stroke-width="2.5" stroke-linecap="round"/><circle cx="130" cy="62" r="4" fill="#ef4444"/><circle cx="142" cy="70" r="4" fill="#3b82f6"/><circle cx="118" cy="70" r="4" fill="#10b981"/><circle cx="130" cy="78" r="4" fill="#f59e0b"/></svg>`;
+        case 'streaming':
+          return `<svg viewBox="0 0 200 140" fill="none" xmlns="http://www.w3.org/2000/svg" class="device-graphic"><rect x="50" y="45" width="100" height="50" rx="10" fill="#1e2230" stroke="#3b82f6" stroke-width="3"/><circle cx="100" cy="70" r="12" fill="rgba(59,130,246,0.2)" stroke="#60a5fa" stroke-width="2"/><path d="M130 60a12 12 0 0 1 0 20M140 52a22 22 0 0 1 0 36" stroke="#60a5fa" stroke-width="2.5" stroke-linecap="round"/></svg>`;
+        default:
+          return `<svg viewBox="0 0 200 140" fill="none" xmlns="http://www.w3.org/2000/svg" class="device-graphic"><rect x="30" y="20" width="140" height="100" rx="10" fill="#1e2230" stroke="#3b82f6" stroke-width="3"/><rect x="40" y="30" width="120" height="80" rx="4" fill="#0d0e12"/></svg>`;
+      }
+    }
+
+    // Helper for staggered word wrapping
+    function formatStaggerWords(text) {
+      const words = text.split(' ');
+      return words.map((w, idx) => `<span style="transition-delay: ${idx * 0.03}s">${w} </span>`).join('');
+    }
+
+    // Page Builder Data & Content Generators
+    const DEVICE_DETAILS = {
+      '/devices/website': {
+        badge: 'Universal Access',
+        title: 'sanyuhub Web Client',
+        subtitle: 'Instant browser access across any desktop, phone, or smart device.',
+        graphicType: 'desktop',
+        actionLabel: 'Launch Web Client',
+        actionUrl: 'https://sanyuhub.onrender.com/',
+        steps: [
+          { num: '1', title: 'Open Your Favorite Browser', text: 'Launch Google Chrome, Safari, Firefox, or Microsoft Edge on any device.' },
+          { num: '2', title: 'Navigate to sanyuhub', text: 'Visit sanyuhub.onrender.com or bookmark the page for instant access.' },
+          { num: '3', title: 'Start Exploring', text: 'Enjoy seamless media syncing, multi-device controls, and localized streaming.' }
+        ],
+        specs: [
+          { label: 'Platform Support', val: 'Web Standards (HTML5, WebGL)' },
+          { label: 'Installation', val: 'No installation required' },
+          { label: 'Supported Browsers', val: 'Chrome, Safari, Firefox, Edge' }
+        ],
+        trouble: 'If the web client experiences buffering or display issues, verify JavaScript is enabled and clear browser cache.'
+      },
+      '/devices/android-phones': {
+        badge: 'Android Mobile',
+        title: 'sanyuhub on Android Phones',
+        subtitle: 'Optimized touch-friendly interface for all modern Android smartphones.',
+        graphicType: 'mobile',
+        actionLabel: 'Open Web App on Android',
+        actionUrl: 'https://sanyuhub.onrender.com/',
+        steps: [
+          { num: '1', title: 'Open Chrome on Android', text: 'Launch Google Chrome or your default Android web browser.' },
+          { num: '2', title: 'Visit sanyuhub', text: 'Navigate to sanyuhub.onrender.com.' },
+          { num: '3', title: 'Add to Home Screen', text: 'Tap Chrome menu (⋮) and select "Add to Home screen" for PWA launch.' }
+        ],
+        specs: [
+          { label: 'Compatibility', val: 'Android 8.0 or newer' },
+          { label: 'Access Method', val: 'Progressive Web App / Mobile Web' },
+          { label: 'Installation Package', val: 'No standalone APK required' }
+        ],
+        trouble: 'Note: Official access is provided via browser PWA. Standalone APK installers are not required.'
+      },
+      '/devices/android-tablets': {
+        badge: 'Android Tablet',
+        title: 'sanyuhub on Android Tablets',
+        subtitle: 'Spacious high-resolution layout crafted for widescreen tablet displays.',
+        graphicType: 'mobile',
+        actionLabel: 'Launch Tablet Experience',
+        actionUrl: 'https://sanyuhub.onrender.com/',
+        steps: [
+          { num: '1', title: 'Launch Tablet Browser', text: 'Open Chrome or Samsung Internet on your tablet.' },
+          { num: '2', title: 'Access sanyuhub', text: 'Go to sanyuhub.onrender.com for tablet layout.' },
+          { num: '3', title: 'Create Shortcut', text: 'Add shortcut to your tablet home screen for 1-tap entry.' }
+        ],
+        specs: [
+          { label: 'OS Version', val: 'Android 8.0+' },
+          { label: 'Display Support', val: 'Optimized for 7" to 14" tablets' }
+        ],
+        trouble: 'Ensure screen auto-rotate is enabled for optimal tablet viewing.'
+      },
+      '/devices/iphone': {
+        badge: 'iOS Mobile',
+        title: 'sanyuhub on iPhone',
+        subtitle: 'Refined mobile web experience designed for iOS and Apple Retina displays.',
+        graphicType: 'mobile',
+        actionLabel: 'Open in Safari',
+        actionUrl: 'https://sanyuhub.onrender.com/',
+        steps: [
+          { num: '1', title: 'Open Safari', text: 'Launch Apple Safari on your iPhone.' },
+          { num: '2', title: 'Go to sanyuhub', text: 'Type sanyuhub.onrender.com into the address bar.' },
+          { num: '3', title: 'Add to Home Screen', text: 'Tap Share button (↑) and select "Add to Home Screen".' }
+        ],
+        specs: [
+          { label: 'Compatibility', val: 'iOS 14.0 or later' },
+          { label: 'Browser', val: 'Safari / WebKit' }
+        ],
+        trouble: 'For full-screen web app mode, ensure "Add to Home Screen" shortcut is used.'
+      },
+      '/devices/ipad': {
+        badge: 'iPadOS',
+        title: 'sanyuhub on iPad',
+        subtitle: 'Immersive tablet dashboard taking advantage of iPadOS Multitasking and M-series performance.',
+        graphicType: 'mobile',
+        actionLabel: 'Launch iPad Experience',
+        actionUrl: 'https://sanyuhub.onrender.com/',
+        steps: [
+          { num: '1', title: 'Open Safari on iPad', text: 'Launch Safari on iPadOS.' },
+          { num: '2', title: 'Navigate to sanyuhub', text: 'Visit sanyuhub.onrender.com.' },
+          { num: '3', title: 'Pin to Home Screen', text: 'Tap Share -> Add to Home Screen for instant launching.' }
+        ],
+        specs: [
+          { label: 'OS Version', val: 'iPadOS 14.0+' },
+          { label: 'Display Mode', val: 'Full Retina / Split View Support' }
+        ],
+        trouble: 'If video controls overlay fails, verify content blockers in Safari Settings.'
+      },
+      '/devices/windows': {
+        badge: 'Windows PC',
+        title: 'sanyuhub for Windows',
+        subtitle: 'High-performance desktop web experience for Windows 10 & 11 PCs.',
+        graphicType: 'desktop',
+        actionLabel: 'Launch Windows Web App',
+        actionUrl: 'https://sanyuhub.onrender.com/',
+        steps: [
+          { num: '1', title: 'Open Browser', text: 'Launch Microsoft Edge, Google Chrome, or Firefox.' },
+          { num: '2', title: 'Visit sanyuhub', text: 'Go to sanyuhub.onrender.com.' },
+          { num: '3', title: 'Install PWA App', text: 'Click the App Install icon in Edge/Chrome URL bar to pin to Windows Taskbar.' }
+        ],
+        specs: [
+          { label: 'OS Compatibility', val: 'Windows 10 / 11 (64-bit)' },
+          { label: 'Method', val: 'Web / Progressive Web App' }
+        ],
+        trouble: 'No separate .exe installation required; runs natively inside modern desktop browsers.'
+      },
+      '/devices/macos': {
+        badge: 'Mac Desktop',
+        title: 'sanyuhub for macOS',
+        subtitle: 'Sleek desktop experience for Apple Silicon and Intel Mac computers.',
+        graphicType: 'desktop',
+        actionLabel: 'Open Mac Web App',
+        actionUrl: 'https://sanyuhub.onrender.com/',
+        steps: [
+          { num: '1', title: 'Open Safari or Chrome', text: 'Launch Safari or Chrome on macOS.' },
+          { num: '2', title: 'Navigate to sanyuhub', text: 'Visit sanyuhub.onrender.com.' },
+          { num: '3', title: 'Add to Dock', text: 'In Safari (macOS Sonoma+), click File -> Add to Dock.' }
+        ],
+        specs: [
+          { label: 'OS Compatibility', val: 'macOS Monterey / Ventura / Sonoma / Sequoia' },
+          { label: 'Architecture', val: 'Apple Silicon M1/M2/M3/M4 & Intel' }
+        ],
+        trouble: 'Runs seamlessly via browser without extra DMG installation packages.'
+      },
+      '/devices/linux': {
+        badge: 'Linux Desktop',
+        title: 'sanyuhub for Linux',
+        subtitle: 'Native standards-compliant web interface for Ubuntu, Fedora, Debian, and Arch Linux.',
+        graphicType: 'desktop',
+        actionLabel: 'Open Linux Web App',
+        actionUrl: 'https://sanyuhub.onrender.com/',
+        steps: [
+          { num: '1', title: 'Launch Browser', text: 'Open Firefox or Chrome on Linux.' },
+          { num: '2', title: 'Navigate to sanyuhub', text: 'Go to sanyuhub.onrender.com.' },
+          { num: '3', title: 'Create Application Shortcut', text: 'In Chrome, select Menu -> More Tools -> Create Shortcut.' }
+        ],
+        specs: [
+          { label: 'Distro Compatibility', val: 'Ubuntu, Debian, Fedora, Arch, Linux Mint' },
+          { label: 'Format', val: 'HTML5 Web Client' }
+        ],
+        trouble: 'No .deb or .rpm package required; web standards ensure zero configuration setup.'
+      },
+      '/devices/chromebook': {
+        badge: 'ChromeOS',
+        title: 'sanyuhub for Chromebook',
+        subtitle: 'Fast, energy-efficient web experience tailored for ChromeOS devices.',
+        graphicType: 'desktop',
+        actionLabel: 'Launch Chromebook App',
+        actionUrl: 'https://sanyuhub.onrender.com/',
+        steps: [
+          { num: '1', title: 'Open Chrome', text: 'Launch Chrome browser on your Chromebook.' },
+          { num: '2', title: 'Access sanyuhub', text: 'Visit sanyuhub.onrender.com.' },
+          { num: '3', title: 'Install PWA Shortcut', text: 'Click Install App icon on address bar to add to ChromeOS Shelf.' }
+        ],
+        specs: [
+          { label: 'Compatibility', val: 'All ChromeOS devices' },
+          { label: 'Performance', val: 'Lightweight HTML5 Web Client' }
+        ],
+        trouble: 'Runs directly in ChromeOS without requiring Play Store app installation.'
+      },
+      '/devices/samsung-smart-tv': {
+        badge: 'Samsung Tizen',
+        title: 'sanyuhub for Samsung Smart TV',
+        subtitle: 'Enjoy sanyuhub on Samsung Smart TVs via Tizen Web Browser or screen casting.',
+        graphicType: 'tv',
+        actionLabel: 'View TV Setup Guide',
+        actionUrl: 'https://sanyuhub.onrender.com/',
+        steps: [
+          { num: '1', title: 'Launch Samsung Internet', text: 'Open the built-in Web Browser on your Samsung TV.' },
+          { num: '2', title: 'Enter URL', text: 'Navigate to sanyuhub.onrender.com.' },
+          { num: '3', title: 'Alternative: Cast from Phone', text: 'Use Chrome or AirPlay on mobile to cast sanyuhub directly to TV.' }
+        ],
+        specs: [
+          { label: 'Supported OS', val: 'Samsung Tizen OS (2018+ models)' },
+          { label: 'Casting Standard', val: 'Samsung Smart View / Chromecast / AirPlay' }
+        ],
+        trouble: 'Ensure TV remote or Samsung SmartThings app is used for easy text input.'
+      },
+      '/devices/lg-smart-tv': {
+        badge: 'LG webOS',
+        title: 'sanyuhub for LG Smart TV',
+        subtitle: 'Stream sanyuhub on LG Smart TVs using webOS Web Browser or screen mirroring.',
+        graphicType: 'tv',
+        actionLabel: 'Launch LG TV Setup',
+        actionUrl: 'https://sanyuhub.onrender.com/',
+        steps: [
+          { num: '1', title: 'Open Web Browser', text: 'Select Web Browser app on LG webOS Home launcher.' },
+          { num: '2', title: 'Navigate to sanyuhub', text: 'Type sanyuhub.onrender.com using Magic Remote.' },
+          { num: '3', title: 'Cast Option', text: 'Mirror your phone or laptop screen using AirPlay or Chromecast.' }
+        ],
+        specs: [
+          { label: 'Supported OS', val: 'LG webOS 4.0+' },
+          { label: 'Control', val: 'Magic Remote Pointer / Mobile Web' }
+        ],
+        trouble: 'Ensure LG TV and streaming device are connected to the same Wi-Fi network.'
+      },
+      '/devices/android-tv': {
+        badge: 'Android TV',
+        title: 'sanyuhub for Android TV',
+        subtitle: 'Big-screen access via Android TV browser or Google Cast technology.',
+        graphicType: 'tv',
+        actionLabel: 'Open Android TV Guide',
+        actionUrl: 'https://sanyuhub.onrender.com/',
+        steps: [
+          { num: '1', title: 'Open TV Browser', text: 'Launch TV Bro, OpenBrowser, or Chrome on Android TV.' },
+          { num: '2', title: 'Visit sanyuhub', text: 'Enter sanyuhub.onrender.com.' },
+          { num: '3', title: 'Google Cast', text: 'Cast content wirelessly from your smartphone or computer.' }
+        ],
+        specs: [
+          { label: 'Supported OS', val: 'Android TV 9.0+' },
+          { label: 'Wireless Sync', val: 'Google Cast Receiver' }
+        ],
+        trouble: 'Use Google Home app on mobile if direct casting receiver pairing is needed.'
+      },
+      '/devices/google-tv': {
+        badge: 'Google TV',
+        title: 'sanyuhub for Google TV',
+        subtitle: 'Seamless integration with Google TV devices and Chromecast with Google TV.',
+        graphicType: 'tv',
+        actionLabel: 'Launch Setup Guide',
+        actionUrl: 'https://sanyuhub.onrender.com/',
+        steps: [
+          { num: '1', title: 'Open Web Browser', text: 'Use a compatible browser on Google TV.' },
+          { num: '2', title: 'Visit URL', text: 'Go to sanyuhub.onrender.com.' },
+          { num: '3', title: 'Cast from Mobile', text: 'Tap Cast icon in sanyuhub web client on phone.' }
+        ],
+        specs: [
+          { label: 'Device Platform', val: 'Google TV' },
+          { label: 'Casting', val: 'Native Chromecast Built-in' }
+        ],
+        trouble: 'Check Google TV display resolution settings if text scaling appears zoomed.'
+      },
+      '/devices/hisense-smart-tv': {
+        badge: 'Hisense VIDAA',
+        title: 'sanyuhub for Hisense Smart TV',
+        subtitle: 'Access sanyuhub on Hisense TVs powered by VIDAA OS or Android TV.',
+        graphicType: 'tv',
+        actionLabel: 'View Setup Instructions',
+        actionUrl: 'https://sanyuhub.onrender.com/',
+        steps: [
+          { num: '1', title: 'Open VIDAA Browser', text: 'Launch Web Browser app on Hisense Home screen.' },
+          { num: '2', title: 'Type sanyuhub', text: 'Enter sanyuhub.onrender.com in address bar.' },
+          { num: '3', title: 'Screen Sharing', text: 'Use Anyview Cast or AirPlay to mirror mobile screen.' }
+        ],
+        specs: [
+          { label: 'Platform', val: 'Hisense VIDAA / Android TV' },
+          { label: 'Screen Mirroring', val: 'Anyview Cast / AirPlay' }
+        ],
+        trouble: 'Update TV firmware to latest VIDAA version for optimal HTML5 performance.'
+      },
+      '/devices/playstation': {
+        badge: 'PlayStation',
+        title: 'sanyuhub on PlayStation',
+        subtitle: 'Connect sanyuhub through web browser capabilities on PS4 and PS5.',
+        graphicType: 'console',
+        actionLabel: 'Launch Console Guide',
+        actionUrl: 'https://sanyuhub.onrender.com/',
+        steps: [
+          { num: '1', title: 'Open Web Browser', text: 'Launch Internet Browser on PS4 or user web guide link on PS5.' },
+          { num: '2', title: 'Navigate to sanyuhub', text: 'Type sanyuhub.onrender.com into URL bar.' },
+          { num: '3', title: 'Control Navigation', text: 'Use DualSense or DualShock 4 analog stick for cursor movement.' }
+        ],
+        specs: [
+          { label: 'Consoles', val: 'PlayStation 5 & PlayStation 4' },
+          { label: 'Control Method', val: 'Gamepad Cursor / USB Keyboard' }
+        ],
+        trouble: 'Use fullscreen mode (Square button) on PS4 browser for full video viewing.'
+      },
+      '/devices/xbox': {
+        badge: 'Xbox Series X|S',
+        title: 'sanyuhub on Xbox',
+        subtitle: 'Desktop-grade browser experience using Microsoft Edge on Xbox Consoles.',
+        graphicType: 'console',
+        actionLabel: 'Open Xbox Web Client',
+        actionUrl: 'https://sanyuhub.onrender.com/',
+        steps: [
+          { num: '1', title: 'Open Microsoft Edge', text: 'Launch Microsoft Edge from My Games & Apps on Xbox.' },
+          { num: '2', title: 'Visit sanyuhub', text: 'Navigate to sanyuhub.onrender.com.' },
+          { num: '3', title: 'Pin to Start', text: 'Press Menu button and select "Pin to Start" for instant console launch.' }
+        ],
+        specs: [
+          { label: 'Consoles', val: 'Xbox Series X, Series S, Xbox One' },
+          { label: 'Browser', val: 'Chromium Microsoft Edge' }
+        ],
+        trouble: 'Edge on Xbox supports full keyboard and mouse input for desktop-like navigation.'
+      },
+      '/devices/apple-tv': {
+        badge: 'Apple TV & AirPlay',
+        title: 'sanyuhub for Apple TV',
+        subtitle: 'Wireless AirPlay video and screen streaming from iOS, iPadOS, and Mac.',
+        graphicType: 'streaming',
+        actionLabel: 'AirPlay Setup Instructions',
+        actionUrl: 'https://sanyuhub.onrender.com/',
+        steps: [
+          { num: '1', title: 'Open sanyuhub on Apple Device', text: 'Launch sanyuhub in Safari on iPhone, iPad, or Mac.' },
+          { num: '2', title: 'Tap AirPlay', text: 'Click AirPlay icon in video player or iOS Control Center.' },
+          { num: '3', title: 'Select Apple TV', text: 'Choose your Apple TV to stream content instantly to TV screen.' }
+        ],
+        specs: [
+          { label: 'Compatibility', val: 'Apple TV 4K / HD' },
+          { label: 'Protocol', val: 'Apple AirPlay 2' }
+        ],
+        trouble: 'Ensure Apple TV and sending iOS/Mac device are on the exact same Wi-Fi network.'
+      },
+      '/devices/amazon-fire-tv': {
+        badge: 'Fire TV Stick',
+        title: 'sanyuhub for Amazon Fire TV',
+        subtitle: 'Access sanyuhub on Fire TV sticks and Smart TVs via Silk Browser.',
+        graphicType: 'streaming',
+        actionLabel: 'Open Silk Browser Guide',
+        actionUrl: 'https://sanyuhub.onrender.com/',
+        steps: [
+          { num: '1', title: 'Open Amazon Silk Browser', text: 'Search for "Internet" or "Silk Browser" on Fire TV.' },
+          { num: '2', title: 'Enter URL', text: 'Type sanyuhub.onrender.com in address bar.' },
+          { num: '3', title: 'Bookmark Page', text: 'Add to Silk Browser bookmarks for fast access.' }
+        ],
+        specs: [
+          { label: 'Supported Hardware', val: 'Fire TV Stick 4K, Lite, Cube, Fire TV Edition' },
+          { label: 'Browser', val: 'Amazon Silk' }
+        ],
+        trouble: 'Use Fire TV remote ring to control pointer or use Fire TV mobile app.'
+      },
+      '/devices/chromecast': {
+        badge: 'Google Cast',
+        title: 'sanyuhub on Chromecast',
+        subtitle: 'Cast web media wirelessly from Chrome browser on mobile or desktop.',
+        graphicType: 'streaming',
+        actionLabel: 'Cast Setup Guide',
+        actionUrl: 'https://sanyuhub.onrender.com/',
+        steps: [
+          { num: '1', title: 'Open Chrome', text: 'Launch sanyuhub in Chrome on laptop or mobile.' },
+          { num: '2', title: 'Click Cast Icon', text: 'Tap Cast icon or select Chrome Menu -> Cast.' },
+          { num: '3', title: 'Select Receiver', text: 'Pick your Chromecast device to project sanyuhub onto television.' }
+        ],
+        specs: [
+          { label: 'Hardware', val: 'Chromecast (1st-3rd Gen), Chromecast 4K' },
+          { label: 'Standard', val: 'Google Cast Protocol' }
+        ],
+        trouble: 'If Chromecast is not listed, verify local network isolation is disabled in router.'
+      },
+      '/devices/roku': {
+        badge: 'Roku Express / Streaming Stick',
+        title: 'sanyuhub on Roku',
+        subtitle: 'Screen mirroring from Android and Windows devices to Roku hardware.',
+        graphicType: 'streaming',
+        actionLabel: 'View Roku Setup Steps',
+        actionUrl: 'https://sanyuhub.onrender.com/',
+        steps: [
+          { num: '1', title: 'Enable Roku Mirroring', text: 'On Roku, go to Settings -> System -> Screen Mirroring -> Always Allow.' },
+          { num: '2', title: 'Connect Mobile/PC', text: 'Use Smart View (Android) or Win+K (Windows 10/11).' },
+          { num: '3', title: 'Mirror sanyuhub', text: 'Project sanyuhub web client directly onto TV screen.' }
+        ],
+        specs: [
+          { label: 'Roku OS', val: 'Roku OS 9.0+' },
+          { label: 'Mirroring Tech', val: 'Miracast / AirPlay 2' }
+        ],
+        trouble: 'AirPlay is supported on 4K Roku models running Roku OS 9.4+.'
+      },
+      '/devices/android-tv-boxes': {
+        badge: 'Android Box',
+        title: 'sanyuhub for Android TV Boxes',
+        subtitle: 'Broad compatibility across set-top boxes, mini PCs, and media hubs.',
+        graphicType: 'tv',
+        actionLabel: 'Launch TV Box Setup',
+        actionUrl: 'https://sanyuhub.onrender.com/',
+        steps: [
+          { num: '1', title: 'Open Browser App', text: 'Launch Google Chrome or built-in browser on Android TV Box.' },
+          { num: '2', title: 'Visit sanyuhub', text: 'Navigate to sanyuhub.onrender.com.' },
+          { num: '3', title: 'Pin Shortcut', text: 'Add shortcut to TV box app launcher.' }
+        ],
+        specs: [
+          { label: 'Android OS', val: 'Android 7.0 to 14.0' },
+          { label: 'Control', val: 'Air Mouse / Remote / Keyboard' }
+        ],
+        trouble: 'An air mouse or wireless mini keyboard improves web client navigation.'
+      },
+      '/devices/compatible-cable-boxes': {
+        badge: 'Cable Box Integration',
+        title: 'sanyuhub for Cable & Hybrid Boxes',
+        subtitle: 'Browser and casting support for modern HTML5-capable cable decoders.',
+        graphicType: 'tv',
+        actionLabel: 'Cable Box Instructions',
+        actionUrl: 'https://sanyuhub.onrender.com/',
+        steps: [
+          { num: '1', title: 'Access Web App Store', text: 'Open Apps menu on compatible cable decoder.' },
+          { num: '2', title: 'Launch Browser', text: 'Open system web browser and visit sanyuhub.onrender.com.' },
+          { num: '3', title: 'Connect Account', text: 'Pair sanyuhub service for set-top box access.' }
+        ],
+        specs: [
+          { label: 'Decoder Type', val: 'Smart Cable / Hybrid IPTV Decoders' },
+          { label: 'Standards', val: 'HTML5 / HbbTV' }
+        ],
+        trouble: 'Consult your cable provider hardware specifications for HTML5 web browser availability.'
+      }
+    };
+
+    // Generic fallback info generator for company / support pages
+    function renderGenericPage(titleKey, fallbackTitle, descriptionKey, fallbackDesc) {
+      const title = t(titleKey, fallbackTitle);
+      const desc = t(descriptionKey, fallbackDesc);
+      return `
+        <section class="section-story bg-dark anim-zoom-in">
+          <div class="badge-pill">sanyuhub Info</div>
+          <h1 class="hero-title">${title}</h1>
+          <p class="body-lead">${desc}</p>
+          <a class="btn-primary" href="/" data-route="/">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+            ${t('nav.back_home', 'Return to Home')}
+          </a>
+        </section>
+      `;
+    }
+
+    // Devices Home Page Builder (Scroll-Driven Storytelling)
+    function renderHomePage() {
+      return `
+        <!-- Hero Section -->
+        <section class="section-story bg-dark">
+          <div class="anim-zoom-in">
+            <div class="badge-pill">Unified Device Ecosystem</div>
+            <h1 class="hero-title">${t('home.hero_title', 'Your world, connected.')}</h1>
+            <p class="body-lead anim-stagger-word">${formatStaggerWords(t('home.hero_lead', 'sanyuhub seamlessly connects your smartphone, computer, smart TV, and streaming devices in one elegant experience.'))}</p>
+            <div style="display:flex; flex-direction:column; gap:12px; width:100%; align-items:center;">
+              <a class="btn-primary" href="/devices/website" data-route="/devices/website">
+                ${t('home.btn_launch', 'Explore Web Client')}
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </a>
+              <button class="btn-secondary" onclick="toggleSidebar()">
+                ${t('home.btn_choose_device', 'Choose Your Device')}
+              </button>
+            </div>
+          </div>
+          <div class="visual-container anim-blur-focus">
+            <div class="device-mockup">
+              ${renderSVGGraphic('desktop')}
+            </div>
+          </div>
+        </section>
+
+        <!-- What is sanyuhub Section (Pinned Headline Transformation) -->
+        <section class="section-story bg-surface">
+          <div class="anim-pinned">
+            <div class="badge-pill">About sanyuhub</div>
+            <h2 class="section-title anim-zoom-out">${t('home.about_heading', 'What is sanyuhub?')}</h2>
+          </div>
+          <p class="body-text anim-slide-left">${t('home.about_text_1', 'sanyuhub is a modern cross-platform hub that unites digital media, device connectivity, and interactive services across all your daily screens.')}</p>
+          <p class="body-text anim-slide-right">${t('home.about_text_2', 'Whether on an iPhone, Android device, Windows PC, Mac, or 4K Smart TV, sanyuhub provides instant browser-based accessibility with zero forced installs.')}</p>
+        </section>
+
+        <!-- How It Works Section (Staggered Card List) -->
+        <section class="section-story bg-card">
+          <div class="badge-pill">Simple 3-Step Setup</div>
+          <h2 class="section-title anim-zoom-in">${t('home.how_heading', 'How sanyuhub Works')}</h2>
+          <p class="body-lead anim-blur-focus">${t('home.how_sub', 'Get started in seconds on any hardware with zero hassle.')}</p>
+
+          <div class="steps-container">
+            <div class="step-card anim-slide-left">
+              <div class="step-number">1</div>
+              <div class="step-content">
+                <h4>${t('home.step1_title', 'Select Your Device')}</h4>
+                <p>${t('home.step1_desc', 'Browse our verified device catalog for tailored instructions for mobile, desktop, TV, or consoles.')}</p>
+              </div>
+            </div>
+
+            <div class="step-card anim-slide-right">
+              <div class="step-number">2</div>
+              <div class="step-content">
+                <h4>${t('home.step2_title', 'Launch Web App')}</h4>
+                <p>${t('home.step2_desc', 'Open sanyuhub directly in your web browser. No complex setup or software installers required.')}</p>
+              </div>
+            </div>
+
+            <div class="step-card anim-slide-left">
+              <div class="step-number">3</div>
+              <div class="step-content">
+                <h4>${t('home.step3_title', 'Connect & Enjoy')}</h4>
+                <p>${t('home.step3_desc', 'Sync your preferences, stream media, and cast seamlessly between all your personal devices.')}</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Device Overview Directory Section -->
+        <section class="section-story bg-dark">
+          <div class="badge-pill">Supported Hardware</div>
+          <h2 class="section-title anim-zoom-in">${t('home.directory_title', 'Explore Device Guides')}</h2>
+          <p class="body-lead anim-blur-focus">${t('home.directory_sub', 'Select your device category below to view specific requirements and setup guides.')}</p>
+
+          <div class="category-grid">
+            <a href="/devices/website" data-route="/devices/website" class="cat-card anim-slide-left">
+              <div class="cat-card-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/></svg></div>
+              <div class="cat-card-info">
+                <h4>Web Client</h4>
+                <p>Universal browser access on any system</p>
+              </div>
+            </a>
+
+            <a href="/devices/android-phones" data-route="/devices/android-phones" class="cat-card anim-slide-right">
+              <div class="cat-card-icon"><svg viewBox="0 0 24 24"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></svg></div>
+              <div class="cat-card-info">
+                <h4>Android & iOS Mobile</h4>
+                <p>Smartphone & tablet PWA guides</p>
+              </div>
+            </a>
+
+            <a href="/devices/windows" data-route="/devices/windows" class="cat-card anim-slide-left">
+              <div class="cat-card-icon"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="13" rx="1.5"/><path d="M8 21h8M12 17v4"/></svg></div>
+              <div class="cat-card-info">
+                <h4>Desktop (PC, Mac, Linux)</h4>
+                <p>Windows, macOS, Linux, & Chromebook</p>
+              </div>
+            </a>
+
+            <a href="/devices/samsung-smart-tv" data-route="/devices/samsung-smart-tv" class="cat-card anim-slide-right">
+              <div class="cat-card-icon"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="13" rx="1.5"/><path d="M9 21h6"/></svg></div>
+              <div class="cat-card-info">
+                <h4>Smart TV & Consoles</h4>
+                <p>Samsung, LG, Google TV, Xbox, PS5</p>
+              </div>
+            </a>
+          </div>
+        </section>
+
+        <!-- Final Call-to-Action Section -->
+        <section class="section-story bg-surface">
+          <div class="anim-zoom-in">
+            <h2 class="section-title">${t('home.cta_title', 'Ready to connect?')}</h2>
+            <p class="body-lead">${t('home.cta_lead', 'Launch the sanyuhub web client now and experience seamless device integration.')}</p>
+            <a class="btn-primary" href="https://sanyuhub.onrender.com/" target="_blank" rel="noopener">
+              ${t('home.cta_btn', 'Launch sanyuhub Now')}
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg>
+            </a>
+          </div>
+        </section>
+      `;
+    }
+
+    // Individual Device Page Builder
+    function renderDevicePage(routePath, details) {
+      return `
+        <!-- Hero Section -->
+        <section class="section-story bg-dark">
+          <div class="anim-zoom-in">
+            <div class="badge-pill">${details.badge}</div>
+            <h1 class="hero-title">${details.title}</h1>
+            <p class="body-lead anim-stagger-word">${formatStaggerWords(details.subtitle)}</p>
+
+            <a class="btn-primary" href="${details.actionUrl}" target="_blank" rel="noopener">
+              ${details.actionLabel}
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg>
+            </a>
+          </div>
+
+          <div class="visual-container anim-blur-focus">
+            <div class="device-mockup">
+              ${renderSVGGraphic(details.graphicType)}
+            </div>
+          </div>
+        </section>
+
+        <!-- How it Works & Setup Steps -->
+        <section class="section-story bg-surface">
+          <div class="anim-pinned">
+            <div class="badge-pill">Setup Guide</div>
+            <h2 class="section-title anim-zoom-out">How to Access on ${details.badge}</h2>
+          </div>
+
+          <div class="steps-container">
+            ${details.steps.map((s, idx) => `
+              <div class="step-card ${idx % 2 === 0 ? 'anim-slide-left' : 'anim-slide-right'}">
+                <div class="step-number">${s.num}</div>
+                <div class="step-content">
+                  <h4>${s.title}</h4>
+                  <p>${s.text}</p>
+                </div>
+              </div>
+            `).join('')}
+          </div>
+        </section>
+
+        <!-- Technical Compatibility & Specifications -->
+        <section class="section-story bg-card">
+          <div class="badge-pill">Compatibility</div>
+          <h2 class="section-title anim-zoom-in">System Requirements</h2>
+
+          <div class="spec-box anim-blur-focus">
+            ${details.specs.map(sp => `
+              <div class="spec-item">
+                <span class="spec-label">${sp.label}</span>
+                <span class="spec-val">${sp.val}</span>
+              </div>
+            `).join('')}
+          </div>
+
+          <!-- Troubleshooting note -->
+          <div class="trouble-card anim-slide-left">
+            <h4>
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+              Troubleshooting Guidance
+            </h4>
+            <p>${details.trouble}</p>
+          </div>
+        </section>
+
+        <!-- Related Device Links -->
+        <section class="section-story bg-dark">
+          <h2 class="section-title anim-zoom-in">Explore Other Devices</h2>
+          <p class="body-lead anim-blur-focus">Check instructions for your other tablets, smart TVs, or PCs.</p>
+          <div style="display:flex; gap:12px; flex-wrap:wrap; justify-content:center; width:100%; max-width:380px;">
+            <a class="btn-secondary" href="/devices/website" data-route="/devices/website" style="flex:1; min-width:140px;">Web Client</a>
+            <a class="btn-secondary" href="/" data-route="/" style="flex:1; min-width:140px;">All Devices</a>
+          </div>
+        </section>
+      `;
+    }
+
+    // ROUTES registry definitions
     const ROUTES = {
-      '/': { titleKey: 'page.home.title' },
-      '/devices/website': { titleKey: 'device.website' },
-      '/devices/android-phones': { titleKey: 'device.android_phones' },
-      '/devices/android-tablets': { titleKey: 'device.android_tablets' },
-      '/devices/iphone': { titleKey: 'device.iphone' },
-      '/devices/ipad': { titleKey: 'device.ipad' },
-      '/devices/windows': { titleKey: 'device.windows' },
-      '/devices/macos': { titleKey: 'device.macos' },
-      '/devices/linux': { titleKey: 'device.linux' },
-      '/devices/chromebook': { titleKey: 'device.chromebook' },
-      '/devices/samsung-smart-tv': { titleKey: 'device.samsung_smart_tv' },
-      '/devices/lg-smart-tv': { titleKey: 'device.lg_smart_tv' },
-      '/devices/android-tv': { titleKey: 'device.android_tv' },
-      '/devices/google-tv': { titleKey: 'device.google_tv' },
-      '/devices/hisense-smart-tv': { titleKey: 'device.hisense_smart_tv' },
-      '/devices/playstation': { titleKey: 'device.playstation' },
-      '/devices/xbox': { titleKey: 'device.xbox' },
-      '/devices/apple-tv': { titleKey: 'device.apple_tv' },
-      '/devices/amazon-fire-tv': { titleKey: 'device.amazon_fire_tv' },
-      '/devices/chromecast': { titleKey: 'device.chromecast' },
-      '/devices/roku': { titleKey: 'device.roku' },
-      '/devices/android-tv-boxes': { titleKey: 'device.android_tv_boxes' },
-      '/devices/compatible-cable-boxes': { titleKey: 'device.compatible_cable_boxes' },
-      '/about': { titleKey: 'page.about.title' },
-      '/blog': { titleKey: 'page.blog.title' },
-      '/careers': { titleKey: 'page.careers.title' },
-      '/partnerships': { titleKey: 'page.partnerships.title' },
-      '/help': { titleKey: 'page.help.title' },
-      '/contact': { titleKey: 'page.contact.title' },
-      '/accessibility': { titleKey: 'page.accessibility.title' },
-      '/privacy': { titleKey: 'page.privacy.title' },
-      '/terms': { titleKey: 'page.terms.title' }
+      '/': { titleKey: 'page.home.title', type: 'home' },
+      '/devices/website': { titleKey: 'device.website', type: 'device' },
+      '/devices/android-phones': { titleKey: 'device.android_phones', type: 'device' },
+      '/devices/android-tablets': { titleKey: 'device.android_tablets', type: 'device' },
+      '/devices/iphone': { titleKey: 'device.iphone', type: 'device' },
+      '/devices/ipad': { titleKey: 'device.ipad', type: 'device' },
+      '/devices/windows': { titleKey: 'device.windows', type: 'device' },
+      '/devices/macos': { titleKey: 'device.macos', type: 'device' },
+      '/devices/linux': { titleKey: 'device.linux', type: 'device' },
+      '/devices/chromebook': { titleKey: 'device.chromebook', type: 'device' },
+      '/devices/samsung-smart-tv': { titleKey: 'device.samsung_smart_tv', type: 'device' },
+      '/devices/lg-smart-tv': { titleKey: 'device.lg_smart_tv', type: 'device' },
+      '/devices/android-tv': { titleKey: 'device.android_tv', type: 'device' },
+      '/devices/google-tv': { titleKey: 'device.google_tv', type: 'device' },
+      '/devices/hisense-smart-tv': { titleKey: 'device.hisense_smart_tv', type: 'device' },
+      '/devices/playstation': { titleKey: 'device.playstation', type: 'device' },
+      '/devices/xbox': { titleKey: 'device.xbox', type: 'device' },
+      '/devices/apple-tv': { titleKey: 'device.apple_tv', type: 'device' },
+      '/devices/amazon-fire-tv': { titleKey: 'device.amazon_fire_tv', type: 'device' },
+      '/devices/chromecast': { titleKey: 'device.chromecast', type: 'device' },
+      '/devices/roku': { titleKey: 'device.roku', type: 'device' },
+      '/devices/android-tv-boxes': { titleKey: 'device.android_tv_boxes', type: 'device' },
+      '/devices/compatible-cable-boxes': { titleKey: 'device.compatible_cable_boxes', type: 'device' },
+      '/about': { titleKey: 'page.about.title', type: 'generic', descKey: 'nav.about_desc' },
+      '/blog': { titleKey: 'page.blog.title', type: 'generic', descKey: 'nav.blog_desc' },
+      '/careers': { titleKey: 'page.careers.title', type: 'generic', descKey: 'nav.careers_desc' },
+      '/partnerships': { titleKey: 'page.partnerships.title', type: 'generic', descKey: 'nav.partnerships_desc' },
+      '/help': { titleKey: 'page.help.title', type: 'generic', descKey: 'nav.help_desc' },
+      '/contact': { titleKey: 'page.contact.title', type: 'generic', descKey: 'nav.contact_desc' },
+      '/accessibility': { titleKey: 'page.accessibility.title', type: 'generic', descKey: 'nav.accessibility_desc' },
+      '/privacy': { titleKey: 'page.privacy.title', type: 'generic', descKey: 'nav.privacy_desc' },
+      '/terms': { titleKey: 'page.terms.title', type: 'generic', descKey: 'nav.terms_desc' }
     };
 
     const menuToggle = document.getElementById('menuToggle');
     const sidebar = document.getElementById('sidebar');
     const backdrop = document.getElementById('backdrop');
-    const pageTitle = document.getElementById('pageTitle');
+    const workspace = document.getElementById('workspace');
 
     // Close Sidebar Helper
     function closeSidebar() {
@@ -785,6 +1787,34 @@
       });
     });
 
+    // IntersectionObserver setup for Scroll Storytelling Animations
+    let scrollObserver = null;
+    function initScrollAnimations() {
+      const animElements = workspace.querySelectorAll('.anim-zoom-in, .anim-zoom-out, .anim-slide-left, .anim-slide-right, .anim-blur-focus, .anim-stagger-word');
+
+      if ('IntersectionObserver' in window) {
+        if (scrollObserver) scrollObserver.disconnect();
+
+        scrollObserver = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+            }
+          });
+        }, {
+          threshold: 0.05,
+          rootMargin: '50px 0px 50px 0px'
+        });
+
+        animElements.forEach(el => scrollObserver.observe(el));
+      }
+
+      // Safe fallback to make sure all elements become visible immediately
+      setTimeout(() => {
+        animElements.forEach(el => el.classList.add('visible'));
+      }, 100);
+    }
+
     // Render Page Content based on current URL path
     function renderPage(pathname) {
       try {
@@ -800,30 +1830,52 @@
 
         document.querySelectorAll('.device.selected, .category-button.selected').forEach(el => el.classList.remove('selected'));
 
-        const emptyText = document.querySelector('.empty-text');
-
         if (routeInfo) {
-          const title = window.i18n ? window.i18n.t(routeInfo.titleKey) : routeInfo.titleKey;
-          pageTitle.textContent = title;
+          const title = t(routeInfo.titleKey, 'sanyuhub');
           document.title = title + ' — sanyuhub';
-          if (emptyText) emptyText.textContent = window.i18n ? window.i18n.t('empty.oops') : 'Oops, nothing here';
+
+          if (routeInfo.type === 'home') {
+            workspace.innerHTML = renderHomePage();
+          } else if (routeInfo.type === 'device') {
+            const devDetails = DEVICE_DETAILS[path] || DEVICE_DETAILS['/devices/website'];
+            workspace.innerHTML = renderDevicePage(path, devDetails);
+          } else {
+            workspace.innerHTML = renderGenericPage(routeInfo.titleKey, title, routeInfo.descKey, 'Information about sanyuhub service and policies.');
+          }
 
           // Highlight selected item in sidebar if matching route
           const selectedDevice = document.querySelector(`.device[data-route="${path}"], .category-button[data-route="${path}"]`);
           if (selectedDevice) {
             selectedDevice.classList.add('selected');
+            // Auto expand parent category if in sidebar
+            const parentCategory = selectedDevice.closest('.category');
+            if (parentCategory && !parentCategory.classList.contains('open')) {
+              parentCategory.classList.add('open');
+              const catButton = parentCategory.querySelector('.category-button');
+              if (catButton) catButton.setAttribute('aria-expanded', 'true');
+              const toggleSym = parentCategory.querySelector('.toggle-symbol');
+              if (toggleSym) toggleSym.textContent = '−';
+            }
           }
         } else {
-          const notFoundTitle = window.i18n ? window.i18n.t('empty.not_found_title') : 'Page Not Found';
-          const notFoundText = window.i18n ? window.i18n.t('empty.not_found_text') : 'The page you are looking for does not exist.';
-          pageTitle.textContent = notFoundTitle;
+          const notFoundTitle = t('empty.not_found_title', 'Page Not Found');
           document.title = '404 — ' + notFoundTitle + ' — sanyuhub';
-          if (emptyText) emptyText.textContent = notFoundText;
+          workspace.innerHTML = `
+            <section class="section-story bg-dark anim-zoom-in">
+              <h1 class="hero-title">404</h1>
+              <p class="body-lead">${t('empty.not_found_text', 'The page you are looking for does not exist.')}</p>
+              <a class="btn-primary" href="/" data-route="/">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                Return Home
+              </a>
+            </section>
+          `;
         }
+
+        // Initialize scroll animations for newly rendered DOM
+        initScrollAnimations();
       } catch (err) {
         console.error('Error rendering page:', err);
-        pageTitle.textContent = 'sanyuhub';
-        document.title = 'sanyuhub';
       }
     }
 
@@ -886,7 +1938,9 @@
     });
 
     // Initial Page Render
-    renderPage(window.location.pathname);
+    document.addEventListener('DOMContentLoaded', () => {
+      renderPage(window.location.pathname);
+    });
   </script>
 </body>
 </html>
