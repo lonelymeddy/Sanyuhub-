@@ -33,7 +33,7 @@
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
       background: var(--color-background);
       color: var(--color-text-primary);
-      overflow-x: hidden;
+      overflow-x: clip;
       scroll-behavior: smooth;
     }
     button, select, a { font: inherit; }
@@ -1029,7 +1029,7 @@
         steps: [
           { num: '1', title: 'Open Chrome on Android', text: 'Launch Google Chrome or your default Android web browser.' },
           { num: '2', title: 'Visit sanyuhub', text: 'Navigate to sanyuhub.onrender.com.' },
-          { num: '3', title: 'Add to Home Screen', text: 'Tap Chrome menu (⋮) and select "Add to Home screen" for PWA full-screen launch.' }
+          { num: '3', title: 'Add to Home Screen', text: 'Tap Chrome menu icon and select "Add to Home screen" for PWA full-screen launch.' }
         ],
         specs: [
           { label: 'Compatibility', val: 'Android 8.0 or newer' },
@@ -1066,7 +1066,7 @@
         steps: [
           { num: '1', title: 'Open Safari', text: 'Launch Apple Safari on your iPhone.' },
           { num: '2', title: 'Go to sanyuhub', text: 'Type sanyuhub.onrender.com into the address bar.' },
-          { num: '3', title: 'Add to Home Screen', text: 'Tap Share button (↑) and select "Add to Home Screen".' }
+          { num: '3', title: 'Add to Home Screen', text: 'Tap Share button and select "Add to Home Screen".' }
         ],
         specs: [
           { label: 'Compatibility', val: 'iOS 14.0 or later' },
@@ -1084,7 +1084,7 @@
         steps: [
           { num: '1', title: 'Open Safari on iPad', text: 'Launch Safari on iPadOS.' },
           { num: '2', title: 'Navigate to sanyuhub', text: 'Visit sanyuhub.onrender.com.' },
-          { num: '3', title: 'Pin to Home Screen', text: 'Tap Share -> Add to Home Screen for instant launching.' }
+          { num: '3', title: 'Pin to Home Screen', text: 'Tap Share, then select Add to Home Screen for instant launching.' }
         ],
         specs: [
           { label: 'OS Version', val: 'iPadOS 14.0+' },
@@ -1120,7 +1120,7 @@
         steps: [
           { num: '1', title: 'Open Safari or Chrome', text: 'Launch Safari or Chrome on macOS.' },
           { num: '2', title: 'Navigate to sanyuhub', text: 'Visit sanyuhub.onrender.com.' },
-          { num: '3', title: 'Add to Dock', text: 'In Safari (macOS Sonoma+), click File -> Add to Dock.' }
+          { num: '3', title: 'Add to Dock', text: 'In Safari (macOS Sonoma+), click File, then select Add to Dock.' }
         ],
         specs: [
           { label: 'OS Compatibility', val: 'macOS Monterey / Ventura / Sonoma / Sequoia' },
@@ -1138,7 +1138,7 @@
         steps: [
           { num: '1', title: 'Launch Browser', text: 'Open Firefox or Chrome on Linux.' },
           { num: '2', title: 'Navigate to sanyuhub', text: 'Go to sanyuhub.onrender.com.' },
-          { num: '3', title: 'Create Application Shortcut', text: 'In Chrome, select Menu -> More Tools -> Create Shortcut.' }
+          { num: '3', title: 'Create Application Shortcut', text: 'In Chrome, select Menu, then More Tools, then Create Shortcut.' }
         ],
         specs: [
           { label: 'Distro Compatibility', val: 'Ubuntu, Debian, Fedora, Arch, Linux Mint' },
@@ -1335,7 +1335,7 @@
         actionUrl: 'https://sanyuhub.onrender.com/',
         steps: [
           { num: '1', title: 'Open Chrome', text: 'Launch sanyuhub in Chrome on laptop or mobile.' },
-          { num: '2', title: 'Click Cast Icon', text: 'Tap Cast icon or select Chrome Menu -> Cast.' },
+          { num: '2', title: 'Click Cast Icon', text: 'Tap Cast icon or select Chrome Menu, then Cast.' },
           { num: '3', title: 'Select Receiver', text: 'Pick your Chromecast device to project sanyuhub onto television.' }
         ],
         specs: [
@@ -1352,7 +1352,7 @@
         actionLabel: 'View Roku Setup Steps',
         actionUrl: 'https://sanyuhub.onrender.com/',
         steps: [
-          { num: '1', title: 'Enable Roku Mirroring', text: 'On Roku, go to Settings -> System -> Screen Mirroring -> Always Allow.' },
+          { num: '1', title: 'Enable Roku Mirroring', text: 'On Roku, go to Settings, then System, then Screen Mirroring, then Always Allow.' },
           { num: '2', title: 'Connect Mobile/PC', text: 'Use Smart View (Android) or Win+K (Windows 10/11).' },
           { num: '3', title: 'Mirror sanyuhub', text: 'Project sanyuhub web client directly onto TV screen.' }
         ],
@@ -1491,7 +1491,9 @@
 
           <div class="steps-container">
             <div class="step-card anim-slide-left">
-              <div class="step-number">⚡</div>
+              <div class="step-number">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+              </div>
               <div class="step-content">
                 <h4>${t('home.feat1_title', 'Zero App Downloads Needed')}</h4>
                 <p>${t('home.feat1_desc', 'Access sanyuhub directly through standard web browsers (Chrome, Safari, Edge, Firefox). No APKs, installers, or native app store downloads are required.')}</p>
@@ -1499,7 +1501,9 @@
             </div>
 
             <div class="step-card anim-slide-right">
-              <div class="step-number">📺</div>
+              <div class="step-number">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="7" width="20" height="15" rx="2"/><polyline points="17 2 12 7 7 2"/></svg>
+              </div>
               <div class="step-content">
                 <h4>${t('home.feat2_title', 'Smart TV & Casting Support')}</h4>
                 <p>${t('home.feat2_desc', 'Seamlessly mirror or cast sanyuhub to Samsung Tizen, LG webOS, Android TV, Apple TV, and Chromecast devices from your phone or PC.')}</p>
@@ -1507,7 +1511,9 @@
             </div>
 
             <div class="step-card anim-slide-left">
-              <div class="step-number">📱</div>
+              <div class="step-number">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+              </div>
               <div class="step-content">
                 <h4>${t('home.feat3_title', 'Progressive Web App (PWA)')}</h4>
                 <p>${t('home.feat3_desc', 'Add sanyuhub to your iPhone or Android home screen for full-screen app-like launching with low data usage.')}</p>
