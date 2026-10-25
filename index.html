@@ -2872,6 +2872,658 @@
     }
 
 
+
+    // Comprehensive Worldwide Countries Dataset for Support Form
+    const WORLD_COUNTRIES = [
+      { code: 'UG', name: 'Uganda', flag: '🇺🇬' },
+      { code: 'KE', name: 'Kenya', flag: '🇰🇪' },
+      { code: 'TZ', name: 'Tanzania', flag: '🇹🇿' },
+      { code: 'RW', name: 'Rwanda', flag: '🇷🇼' },
+      { code: 'NG', name: 'Nigeria', flag: '🇳🇬' },
+      { code: 'ZA', name: 'South Africa', flag: '🇿🇦' },
+      { code: 'US', name: 'United States', flag: '🇺🇸' },
+      { code: 'GB', name: 'United Kingdom', flag: '🇬🇧' },
+      { code: 'IN', name: 'India', flag: '🇮🇳' },
+      { code: 'CA', name: 'Canada', flag: '🇨🇦' },
+      { code: 'AU', name: 'Australia', flag: '🇦🇺' },
+      { code: 'DE', name: 'Germany', flag: '🇩🇪' },
+      { code: 'FR', name: 'France', flag: '🇫🇷' },
+      { code: 'JP', name: 'Japan', flag: '🇯🇵' },
+      { code: 'CN', name: 'China', flag: '🇨🇳' },
+      { code: 'BR', name: 'Brazil', flag: '🇧🇷' },
+      { code: 'AE', name: 'United Arab Emirates', flag: '🇦🇪' },
+      { code: 'SE', name: 'Sweden', flag: '🇸🇪' },
+      { code: 'EG', name: 'Egypt', flag: '🇪🇬' },
+      { code: 'ET', name: 'Ethiopia', flag: '🇪🇹' },
+      { code: 'GH', name: 'Ghana', flag: '🇬🇭' },
+      { code: 'DZA', name: 'Algeria', flag: '🇩🇿' },
+      { code: 'AGO', name: 'Angola', flag: '🇦🇴' },
+      { code: 'ARG', name: 'Argentina', flag: '🇦🇷' },
+      { code: 'AUT', name: 'Austria', flag: '🇦🇹' },
+      { code: 'BEL', name: 'Belgium', flag: '🇧🇪' },
+      { code: 'CMR', name: 'Cameroon', flag: '🇨🇲' },
+      { code: 'CHL', name: 'Chile', flag: '🇨🇱' },
+      { code: 'COL', name: 'Colombia', flag: '🇨🇴' },
+      { code: 'DNK', name: 'Denmark', flag: '🇩🇰' },
+      { code: 'FIN', name: 'Finland', flag: '🇫🇮' },
+      { code: 'GRC', name: 'Greece', flag: '🇬🇷' },
+      { code: 'IDN', name: 'Indonesia', flag: '🇮🇩' },
+      { code: 'IRL', name: 'Ireland', flag: '🇮🇪' },
+      { code: 'ISR', name: 'Israel', flag: '🇮🇱' },
+      { code: 'ITA', name: 'Italy', flag: '🇮🇹' },
+      { code: 'MEX', name: 'Mexico', flag: '🇲🇽' },
+      { code: 'MAR', name: 'Morocco', flag: '🇲🇦' },
+      { code: 'NLD', name: 'Netherlands', flag: '🇳🇱' },
+      { code: 'NZL', name: 'New Zealand', flag: '🇳🇿' },
+      { code: 'NOR', name: 'Norway', flag: '🇳🇴' },
+      { code: 'PAK', name: 'Pakistan', flag: '🇵🇰' },
+      { code: 'PER', name: 'Peru', flag: '🇵🇪' },
+      { code: 'PHL', name: 'Philippines', flag: '🇵🇭' },
+      { code: 'POL', name: 'Poland', flag: '🇵🇱' },
+      { code: 'PRT', name: 'Portugal', flag: '🇵🇹' },
+      { code: 'SAU', name: 'Saudi Arabia', flag: '🇸🇦' },
+      { code: 'SEN', name: 'Senegal', flag: '🇸🇳' },
+      { code: 'SGP', name: 'Singapore', flag: '🇸🇬' },
+      { code: 'ESP', name: 'Spain', flag: '🇪🇸' },
+      { code: 'CHE', name: 'Switzerland', flag: '🇨🇭' },
+      { code: 'THA', name: 'Thailand', flag: '🇹🇭' },
+      { code: 'TUR', name: 'Turkey', flag: '🇹🇷' },
+      { code: 'UKR', name: 'Ukraine', flag: '🇺🇦' },
+      { code: 'ZMW', name: 'Zambia', flag: '🇿🇲' },
+      { code: 'ZWE', name: 'Zimbabwe', flag: '🇿🇼' }
+    ];
+
+    // The Exact 11 Support Categories in exact order
+    const SUPPORT_CATEGORIES = [
+      {
+        id: 'movies_entertainment',
+        topicName: 'Movies & Entertainment',
+        icon: `<svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M7 4v16M17 4v16M2 12h20M2 8h5M2 16h5M17 8h5M17 16h5"/></svg>`,
+        title: 'Movies & Entertainment',
+        desc: 'For enquiries about movie and entertainment content across the sanyuhub ecosystem.',
+        options: [
+          'Report missing information or incorrect movie/entertainment details',
+          'Inquire about movie content availability in your region',
+          'Report entertainment media display or playback issues where applicable',
+          'Submit movie & entertainment suggestions for the sanyuhub ecosystem'
+        ]
+      },
+      {
+        id: 'live_tv',
+        topicName: 'Live TV',
+        icon: `<svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M17 2l-5 5-5-5"/></svg>`,
+        title: 'Live TV',
+        desc: 'For enquiries about Live TV, including unavailable channels, channel information, and playback or streaming problems where applicable.',
+        options: [
+          'Report channel guide information or stream connectivity issues',
+          'Enquire about regional Live TV channel schedules',
+          'Report inaccurate channel metadata or broadcast stream errors',
+          'Note: The Devices website provides guides; Live TV streaming requires platform access.'
+        ]
+      },
+      {
+        id: 'music_culture',
+        topicName: 'Music & Culture',
+        icon: `<svg viewBox="0 0 24 24"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>`,
+        title: 'Music & Culture',
+        desc: 'For enquiries about music, cultural content, and related experiences within the sanyuhub ecosystem where applicable.',
+        options: [
+          'Report missing artist, song, or cultural feature metadata',
+          'Inquire about audio playback or cultural stream availability',
+          'Submit cultural content suggestions or creator partnership enquiries'
+        ]
+      },
+      {
+        id: 'concerts_events',
+        topicName: 'Concerts & Events',
+        icon: `<svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/><circle cx="8" cy="15" r="1"/><circle cx="12" cy="15" r="1"/><circle cx="16" cy="15" r="1"/></svg>`,
+        title: 'Concerts & Events',
+        desc: 'For enquiries about events, missing event information, incorrect details, event images, and other event-related problems where applicable.',
+        options: [
+          'Report incorrect event dates, times, or missing schedules',
+          'Report event image or promotional banner display issues',
+          'Enquire about live event streaming compatibility across sanyuhub devices'
+        ]
+      },
+      {
+        id: 'mobile_experience',
+        topicName: 'Mobile Experience',
+        icon: `<svg viewBox="0 0 24 24"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M11 18h2"/></svg>`,
+        title: 'Mobile Experience',
+        desc: 'For mobile-access issues, mobile layouts, navigation, responsiveness, loading problems, and usability issues across the relevant sanyuhub experience.',
+        options: [
+          'Report mobile layout, font sizing, or touch navigation bugs',
+          'Report touchscreen gesture or mobile browser loading issues',
+          'Get help setting up the sanyuhub Progressive Web App (PWA) home screen shortcut'
+        ]
+      },
+      {
+        id: 'website_casting',
+        topicName: 'Website & Casting',
+        icon: `<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20"/></svg>`,
+        title: 'Website & Casting',
+        desc: 'For website access, supported-device compatibility, casting, and device-specific website behavior.',
+        options: [
+          'Report device browser compatibility or website loading issues',
+          'Get assistance with Chromecast, AirPlay, or Smart TV casting setup',
+          'Report layout glitches on desktop, TV browsers, or gaming consoles'
+        ]
+      },
+      {
+        id: 'country_language',
+        topicName: 'Country & Language Settings',
+        icon: `<svg viewBox="0 0 24 24"><path d="m5 8 6 6M4 14l6-6 2-3M2 5h12M7 2h1M14 22l5-11 5 11M16 18h6"/></svg>`,
+        title: 'Country & Language Settings',
+        desc: 'For country selection, country-specific content, language selection, and related settings problems across the sanyuhub ecosystem.',
+        options: [
+          'Get assistance with country or regional preference selection',
+          'Report translation inaccuracies or missing local language options',
+          'Clarify the distinction between content country filtering and support contact location'
+        ]
+      },
+      {
+        id: 'account_profile',
+        topicName: 'Account & Profile',
+        icon: `<svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 4-4H8a4 4 0 0 4-4v2"/><circle cx="12" cy="7" r="4"/></svg>`,
+        title: 'Account & Profile',
+        desc: 'Provide a dedicated category for account-related support across the sanyuhub ecosystem.',
+        options: [
+          'Registration or account creation assistance across sanyuhub services',
+          'Login, logout, or session persistence issues',
+          'Profile information and account settings synchronization',
+          'Important Security Notice: Never submit passwords, PINs, or verification codes in messages.'
+        ]
+      },
+      {
+        id: 'technical_problems',
+        topicName: 'Technical Problems',
+        icon: `<svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>`,
+        title: 'Technical Problems',
+        desc: 'For technical issues such as errors, broken pages, unexpected behavior, loading failures, refresh problems, and other bugs affecting the relevant sanyuhub experience.',
+        options: [
+          'Report error codes, broken links, or blank screen glitches',
+          'Report slow loading, connection timeouts, or cache errors',
+          'Submit technical details to reproduce a bug on your specific device'
+        ]
+      },
+      {
+        id: 'suggestions_feedback',
+        topicName: 'Suggestions & Feedback',
+        icon: `<svg viewBox="0 0 24 24"><path d="M9 18h6M10 22h4M15 14a7 7 0 1 0-6 0v2h6v-2z"/></svg>`,
+        title: 'Suggestions & Feedback',
+        desc: 'For suggestions, feature requests, usability improvements, and general feedback about sanyuhub.',
+        options: [
+          'Submit device support requests for new platforms or operating systems',
+          'Suggest website UI/UX enhancements or accessibility improvements',
+          'Share general feedback with the sanyuhub engineering team'
+        ]
+      },
+      {
+        id: 'other_enquiries',
+        topicName: 'Other Enquiries',
+        icon: `<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3M12 17h.01"/></svg>`,
+        title: 'Other Enquiries',
+        desc: 'For questions and issues that do not fit any other category.',
+        options: [
+          'General inquiries about sanyuhub devices website and web client',
+          'Partnership, press, or public communication questions',
+          'Any question or topic not covered in the preceding support categories'
+        ]
+      }
+    ];
+
+    // Contact Form Persistent Local State
+    let contactState = {
+      selectedCategoryIndex: null,
+      country: WORLD_COUNTRIES[0].name,
+      countryCode: WORLD_COUNTRIES[0].code,
+      countryFlag: WORLD_COUNTRIES[0].flag,
+      email: '',
+      topic: 'Website & Casting',
+      message: '',
+      isSubmitting: false,
+      successMessage: null,
+      errorMessage: null,
+      fieldErrors: {}
+    };
+
+    function renderContactPage() {
+      const selectedCat = contactState.selectedCategoryIndex !== null ? SUPPORT_CATEGORIES[contactState.selectedCategoryIndex] : null;
+
+      const groundedFaqs = [
+        {
+          q: "Which devices are supported by the sanyuhub Devices website?",
+          a: "sanyuhub supports standard HTML5 web browsers on smartphones (Android, iPhone), desktop computers (Windows, macOS, Linux, Chromebook), Smart TVs (Samsung Tizen, LG webOS, Android TV), and streaming hardware (Chromecast, Apple TV, Fire TV, Roku)."
+        },
+        {
+          q: "How do I cast or mirror sanyuhub to my Smart TV?",
+          a: "On Google Chrome (mobile or desktop), tap the Cast icon in browser settings or video controls to stream to Chromecast or Android TV. On iPhone, iPad, or Mac, use Apple AirPlay in Control Center to stream to Apple TV or AirPlay-enabled Smart TVs."
+        },
+        {
+          q: "Is an account required to use the sanyuhub Devices website?",
+          a: "No account registration or login is required to browse device compatibility guides and support topics on the Devices website. Account support is available for users of connected sanyuhub platform services."
+        },
+        {
+          q: "How quickly will support respond to my Direct Message?",
+          a: "Direct messages sent through our form are routed to the sanyuhub support team. Inquiries submitted with a valid email address receive an automated confirmation timestamp and follow-up within 24–48 hours."
+        },
+        {
+          q: "Should I include passwords or security credentials in my support message?",
+          a: "NO! Never submit passwords, PIN codes, one-time verification codes, session tokens, or financial numbers in a support message. SanyuHub staff will never ask for your account password."
+        }
+      ];
+
+      return `
+        <!-- Hero Section -->
+        <section class="section-story bg-dark hero-section">
+          <div class="contact-nav-header">
+            <a href="/" class="btn-back" data-route="/" aria-label="Back to Homepage">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+            </a>
+            <span class="contact-title-compact">${t('contact.page_title', 'Contact Us & Support')}</span>
+          </div>
+
+          <div class="badge-pill">Support Center</div>
+          <h1 class="hero-title anim-zoom-in">${t('contact.header_lead', 'How can we help you?')}</h1>
+          <p class="body-lead anim-stagger-word">${t('contact.sub_intro', 'Choose a support topic from the list below or send a direct message to our support team.')}</p>
+        </section>
+
+        <!-- Category Detail View Card (If selected) -->
+        <section class="section-story bg-card" id="categoryDetailSection">
+          ${selectedCat ? `
+            <div class="category-detail-card anim-zoom-in" id="categoryDetailCard">
+              <div class="category-detail-header">
+                <div class="support-cat-icon" aria-hidden="true">${selectedCat.icon}</div>
+                <div>
+                  <h3>${selectedCat.title}</h3>
+                  <span class="support-cat-num">Category #${contactState.selectedCategoryIndex + 1}</span>
+                </div>
+              </div>
+              <p class="body-text" style="text-align:left; max-width:none;">${selectedCat.desc}</p>
+
+              <div style="text-align:left; margin-top:10px;">
+                <h4 style="margin:0 0 8px; font-size:14px; color:var(--color-accent);">Common Inquiries & Features:</h4>
+                <div class="grounded-options-list">
+                  ${selectedCat.options.map(opt => `
+                    <div class="grounded-option-item">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+                      <span>${opt}</span>
+                    </div>
+                  `).join('')}
+                </div>
+              </div>
+
+              <div style="display:flex; flex-direction:column; gap:10px; margin-top:16px;">
+                <button class="btn-primary" id="btnContinueDM" style="width:100%; max-width:none;">
+                  ${t('contact.btn_continue_dm', 'Continue to Direct Message')}
+                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+                </button>
+                <button class="btn-secondary" id="btnCloseCatDetail" style="width:100%; max-width:none;">
+                  ${t('contact.btn_back_categories', 'Back to Support Topics')}
+                </button>
+              </div>
+            </div>
+          ` : ''}
+
+          <!-- Support Categories Grid (Exact 11 Categories) -->
+          <div class="badge-pill">Support Topics</div>
+          <h2 class="section-title anim-zoom-in">Select a Support Category</h2>
+
+          <div class="support-category-list">
+            ${SUPPORT_CATEGORIES.map((cat, idx) => `
+              <button class="support-cat-item ${contactState.selectedCategoryIndex === idx ? 'active' : ''}" data-cat-idx="${idx}" type="button">
+                <div class="support-cat-icon" aria-hidden="true">${cat.icon}</div>
+                <div class="support-cat-content">
+                  <div class="support-cat-title">
+                    <span>${cat.title}</span>
+                    <span class="support-cat-num">${idx + 1}</span>
+                  </div>
+                  <p class="support-cat-desc">${cat.desc}</p>
+                </div>
+                <div class="support-cat-arrow" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
+                </div>
+              </button>
+            `).join('')}
+          </div>
+        </section>
+
+        <!-- Direct Message Section -->
+        <section class="section-story bg-surface" id="dmSection">
+          <div class="badge-pill">Direct Message</div>
+          <h2 class="section-title anim-zoom-in">Send Support Message</h2>
+
+          <div class="dm-section">
+            <h3 class="dm-title">Direct Support Inquiry</h3>
+            <p class="dm-sub">Send a message directly to our support team regarding any topic across the sanyuhub ecosystem.</p>
+
+            ${contactState.successMessage ? `
+              <div class="alert-banner alert-success anim-zoom-in">
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                <div>
+                  <strong>Success!</strong> ${contactState.successMessage}
+                </div>
+              </div>
+            ` : ''}
+
+            ${contactState.errorMessage ? `
+              <div class="alert-banner alert-error anim-zoom-in">
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                <div>
+                  <strong>Notice:</strong> ${contactState.errorMessage}
+                </div>
+              </div>
+            ` : ''}
+
+            <form id="contactForm" novalidate>
+              <!-- FIELD 1 — COUNTRY -->
+              <div class="form-group">
+                <label class="form-label" for="countrySelectBtn">
+                  <span>${t('contact.field_country', 'Country')}<span class="required-asterisk">*</span></span>
+                </label>
+                <button type="button" id="countrySelectBtn" class="form-control country-select-btn">
+                  <span>
+                    <span class="country-flag-icon">${contactState.countryFlag}</span>
+                    <span>${contactState.country}</span>
+                  </span>
+                  <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="m6 9 6 6 6-6"/></svg>
+                </button>
+                ${contactState.fieldErrors.country ? `<div class="field-error"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg><span>${contactState.fieldErrors.country}</span></div>` : ''}
+              </div>
+
+              <!-- FIELD 2 — EMAIL ADDRESS -->
+              <div class="form-group">
+                <label class="form-label" for="contactEmail">
+                  <span>${t('contact.field_email', 'Email Address')}<span class="required-asterisk">*</span></span>
+                </label>
+                <input type="email" id="contactEmail" class="form-control ${contactState.fieldErrors.email ? 'is-invalid' : ''}" placeholder="your.email@example.com" value="${contactState.email.replace(/"/g, '&quot;')}" required autocomplete="email">
+                ${contactState.fieldErrors.email ? `<div class="field-error"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg><span>${contactState.fieldErrors.email}</span></div>` : ''}
+              </div>
+
+              <!-- FIELD 3 — TOPIC -->
+              <div class="form-group">
+                <label class="form-label" for="contactTopic">
+                  <span>${t('contact.field_topic', 'Topic')}<span class="required-asterisk">*</span></span>
+                </label>
+                <select id="contactTopic" class="form-control ${contactState.fieldErrors.topic ? 'is-invalid' : ''}">
+                  ${SUPPORT_CATEGORIES.map(cat => `
+                    <option value="${cat.topicName}" ${contactState.topic === cat.topicName ? 'selected' : ''}>${cat.topicName}</option>
+                  `).join('')}
+                </select>
+                ${contactState.fieldErrors.topic ? `<div class="field-error"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg><span>${contactState.fieldErrors.topic}</span></div>` : ''}
+              </div>
+
+              <!-- FIELD 4 — MESSAGE -->
+              <div class="form-group">
+                <label class="form-label" for="contactMessage">
+                  <span>${t('contact.field_message', 'Message')}<span class="required-asterisk">*</span></span>
+                </label>
+                <textarea id="contactMessage" class="form-control ${contactState.fieldErrors.message ? 'is-invalid' : ''}" placeholder="Describe your question or issue..." maxlength="5000" required>${contactState.message}</textarea>
+                <div style="display:flex; justify-content:space-between; align-items:center;">
+                  ${contactState.fieldErrors.message ? `<div class="field-error"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg><span>${contactState.fieldErrors.message}</span></div>` : '<div></div>'}
+                  <span class="char-counter" id="messageCharCounter">${contactState.message.length} / 5000</span>
+                </div>
+              </div>
+
+              <!-- SUBMIT BUTTON -->
+              <button type="submit" id="btnSendMessage" class="btn-primary" style="width:100%; max-width:none; margin-top:8px;" ${contactState.isSubmitting ? 'disabled' : ''}>
+                ${contactState.isSubmitting ? `
+                  <span class="spinner"></span>
+                  <span>${t('contact.btn_sending', 'Sending Message...')}</span>
+                ` : `
+                  <span>${t('contact.btn_send', 'Send Message')}</span>
+                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                `}
+              </button>
+            </form>
+          </div>
+        </section>
+
+        <!-- Grounded FAQ Section -->
+        <section class="section-story bg-card">
+          <div class="badge-pill">Support FAQs</div>
+          <h2 class="section-title anim-zoom-in">Frequently Asked Questions</h2>
+
+          <div class="steps-container">
+            ${groundedFaqs.map((faq, idx) => `
+              <div class="step-card ${idx % 2 === 0 ? 'anim-slide-left' : 'anim-slide-right'}">
+                <div class="step-content">
+                  <h4>${faq.q}</h4>
+                  <p>${faq.a}</p>
+                </div>
+              </div>
+            `).join('')}
+          </div>
+        </section>
+
+        <!-- Searchable Country Modal Overlay -->
+        <div class="country-modal-backdrop" id="countryModalBackdrop" aria-hidden="true">
+          <div class="country-modal" role="dialog" aria-label="Select Country">
+            <div class="country-modal-header">
+              <h4>Select Your Country</h4>
+              <button type="button" class="btn-close-modal" id="btnCloseCountryModal" aria-label="Close country selector">&times;</button>
+            </div>
+            <div class="country-search-box">
+              <input type="text" id="countrySearchInput" class="country-search-input" placeholder="Search country name..." aria-label="Search country name">
+            </div>
+            <div class="country-list-scroll" id="countryListContainer">
+              <!-- Rendered via JS -->
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    // Attach event listeners for Contact page controls
+    function setupContactListeners() {
+      const workspaceEl = document.getElementById('workspace');
+      if (!workspaceEl) return;
+
+      // Category item selection handler
+      workspaceEl.querySelectorAll('.support-cat-item').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const idx = parseInt(btn.getAttribute('data-cat-idx'), 10);
+          contactState.selectedCategoryIndex = idx;
+          contactState.topic = SUPPORT_CATEGORIES[idx].topicName;
+          renderPage(window.location.pathname);
+
+          setTimeout(() => {
+            const catDetail = document.getElementById('categoryDetailSection');
+            if (catDetail) catDetail.scrollIntoView({ behavior: 'smooth' });
+          }, 80);
+        });
+      });
+
+      // Continue to Direct Message button
+      const btnContinueDM = document.getElementById('btnContinueDM');
+      if (btnContinueDM) {
+        btnContinueDM.addEventListener('click', () => {
+          const dmSec = document.getElementById('dmSection');
+          if (dmSec) dmSec.scrollIntoView({ behavior: 'smooth' });
+        });
+      }
+
+      // Close Category Detail button
+      const btnCloseCatDetail = document.getElementById('btnCloseCatDetail');
+      if (btnCloseCatDetail) {
+        btnCloseCatDetail.addEventListener('click', () => {
+          contactState.selectedCategoryIndex = null;
+          renderPage(window.location.pathname);
+        });
+      }
+
+      // Live Form Input updates
+      const contactEmail = document.getElementById('contactEmail');
+      if (contactEmail) {
+        contactEmail.addEventListener('input', (e) => {
+          contactState.email = e.target.value;
+          if (contactState.fieldErrors.email) delete contactState.fieldErrors.email;
+        });
+      }
+
+      const contactTopic = document.getElementById('contactTopic');
+      if (contactTopic) {
+        contactTopic.addEventListener('change', (e) => {
+          contactState.topic = e.target.value;
+          if (contactState.fieldErrors.topic) delete contactState.fieldErrors.topic;
+        });
+      }
+
+      const contactMessage = document.getElementById('contactMessage');
+      const charCounter = document.getElementById('messageCharCounter');
+      if (contactMessage) {
+        contactMessage.addEventListener('input', (e) => {
+          contactState.message = e.target.value;
+          if (charCounter) charCounter.textContent = `${contactState.message.length} / 5000`;
+          if (contactState.fieldErrors.message) delete contactState.fieldErrors.message;
+        });
+      }
+
+      // Searchable Country Selector Modal
+      const countrySelectBtn = document.getElementById('countrySelectBtn');
+      const countryModalBackdrop = document.getElementById('countryModalBackdrop');
+      const btnCloseCountryModal = document.getElementById('btnCloseCountryModal');
+      const countrySearchInput = document.getElementById('countrySearchInput');
+      const countryListContainer = document.getElementById('countryListContainer');
+
+      function renderCountryList(filterText = '') {
+        if (!countryListContainer) return;
+        const q = filterText.toLowerCase().trim();
+        const filtered = WORLD_COUNTRIES.filter(c => c.name.toLowerCase().includes(q) || c.code.toLowerCase().includes(q));
+
+        if (filtered.length === 0) {
+          countryListContainer.innerHTML = `<div style="padding:16px; text-align:center; color:var(--muted); font-size:13.5px;">No countries found matching "${filterText}".</div>`;
+          return;
+        }
+
+        countryListContainer.innerHTML = filtered.map(c => `
+          <button type="button" class="country-option-item ${contactState.countryCode === c.code ? 'selected' : ''}" data-ccode="${c.code}" data-cname="${c.name}" data-cflag="${c.flag}">
+            <span class="country-flag-icon">${c.flag}</span>
+            <span style="flex:1;">${c.name}</span>
+            ${contactState.countryCode === c.code ? '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>' : ''}
+          </button>
+        `).join('');
+
+        countryListContainer.querySelectorAll('.country-option-item').forEach(opt => {
+          opt.addEventListener('click', () => {
+            contactState.countryCode = opt.getAttribute('data-ccode');
+            contactState.country = opt.getAttribute('data-cname');
+            contactState.countryFlag = opt.getAttribute('data-cflag');
+            if (contactState.fieldErrors.country) delete contactState.fieldErrors.country;
+            countryModalBackdrop.classList.remove('open');
+            countryModalBackdrop.setAttribute('aria-hidden', 'true');
+            renderPage(window.location.pathname);
+          });
+        });
+      }
+
+      if (countrySelectBtn && countryModalBackdrop) {
+        countrySelectBtn.addEventListener('click', () => {
+          countryModalBackdrop.classList.add('open');
+          countryModalBackdrop.setAttribute('aria-hidden', 'false');
+          renderCountryList('');
+          if (countrySearchInput) {
+            countrySearchInput.value = '';
+            setTimeout(() => countrySearchInput.focus(), 100);
+          }
+        });
+
+        if (btnCloseCountryModal) {
+          btnCloseCountryModal.addEventListener('click', () => {
+            countryModalBackdrop.classList.remove('open');
+            countryModalBackdrop.setAttribute('aria-hidden', 'true');
+          });
+        }
+
+        countryModalBackdrop.addEventListener('click', (e) => {
+          if (e.target === countryModalBackdrop) {
+            countryModalBackdrop.classList.remove('open');
+            countryModalBackdrop.setAttribute('aria-hidden', 'true');
+          }
+        });
+
+        if (countrySearchInput) {
+          countrySearchInput.addEventListener('input', (e) => {
+            renderCountryList(e.target.value);
+          });
+        }
+      }
+
+      // Contact Form Submission Handler
+      const contactForm = document.getElementById('contactForm');
+      if (contactForm) {
+        contactForm.addEventListener('submit', async (e) => {
+          e.preventDefault();
+
+          // Client-side field validations
+          const errors = {};
+          if (!contactState.country) errors.country = t('contact.err_country_req', 'Please select a country.');
+          const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+          if (!contactState.email || !emailRegex.test(contactState.email.trim())) {
+            errors.email = t('contact.err_email_invalid', 'Please enter a valid email address.');
+          }
+          if (!contactState.topic) errors.topic = t('contact.err_topic_req', 'Please select a valid topic.');
+          const trimmedMsg = contactState.message.trim();
+          if (!trimmedMsg || trimmedMsg.length < 5) {
+            errors.message = t('contact.err_msg_req', 'Please enter a message (at least 5 characters).');
+          }
+
+          if (Object.keys(errors).length > 0) {
+            contactState.fieldErrors = errors;
+            contactState.errorMessage = 'Please fix the highlighted input errors before sending.';
+            contactState.successMessage = null;
+            renderPage(window.location.pathname);
+            return;
+          }
+
+          // Clear errors and start submitting
+          contactState.fieldErrors = {};
+          contactState.errorMessage = null;
+          contactState.successMessage = null;
+          contactState.isSubmitting = true;
+          renderPage(window.location.pathname);
+
+          try {
+            const response = await fetch('/api/contact', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                country: contactState.country,
+                email: contactState.email.trim(),
+                topic: contactState.topic,
+                message: trimmedMsg
+              })
+            });
+
+            const data = await response.json();
+
+            contactState.isSubmitting = false;
+
+            if (response.ok && data.success) {
+              contactState.successMessage = `Thank you! ${data.message} (Reference Code: ${data.id})`;
+              contactState.message = ''; // Clear message on success
+              contactState.errorMessage = null;
+              contactState.fieldErrors = {};
+            } else {
+              contactState.errorMessage = data.error || 'Failed to deliver message. Please try again.';
+              if (data.errors) contactState.fieldErrors = data.errors;
+            }
+          } catch (fetchErr) {
+            console.error('Submission fetch error:', fetchErr);
+            contactState.isSubmitting = false;
+            contactState.errorMessage = 'A network connection issue occurred while submitting. Your message has been saved above so you can retry.';
+          }
+
+          renderPage(window.location.pathname);
+
+          setTimeout(() => {
+            const dmSec = document.getElementById('dmSection');
+            if (dmSec) dmSec.scrollIntoView({ behavior: 'smooth' });
+          }, 80);
+        });
+      }
+    }
+
     const ROUTES = {
       '/': { titleKey: 'page.home.title', type: 'home' },
       '/index.html': { titleKey: 'page.home.title', type: 'home' },
@@ -2901,8 +3553,8 @@
       '/blog': { titleKey: 'page.blog.title', type: 'generic', descKey: 'nav.blog_desc' },
       '/careers': { titleKey: 'page.careers.title', type: 'generic', descKey: 'nav.careers_desc' },
       '/partnerships': { titleKey: 'page.partnerships.title', type: 'generic', descKey: 'nav.partnerships_desc' },
-      '/help': { titleKey: 'page.help.title', type: 'generic', descKey: 'nav.help_desc' },
-      '/contact': { titleKey: 'page.contact.title', type: 'generic', descKey: 'nav.contact_desc' },
+      '/help': { titleKey: 'contact.page_title', type: 'contact' },
+      '/contact': { titleKey: 'contact.page_title', type: 'contact' },
       '/accessibility': { titleKey: 'page.accessibility.title', type: 'generic', descKey: 'nav.accessibility_desc' },
       '/privacy': { titleKey: 'page.privacy.title', type: 'generic', descKey: 'nav.privacy_desc' },
       '/terms': { titleKey: 'page.terms.title', type: 'generic', descKey: 'nav.terms_desc' }
@@ -3044,6 +3696,9 @@
             try {
               if (routeInfo.type === 'home') {
                 workspace.innerHTML = renderHomePage();
+              } else if (routeInfo.type === 'contact') {
+                workspace.innerHTML = renderContactPage();
+                setupContactListeners();
               } else if (routeInfo.type === 'device') {
                 const devDetails = DEVICE_DETAILS[path] || DEVICE_DETAILS['/devices/website'];
                 workspace.innerHTML = renderDevicePage(path, devDetails);
