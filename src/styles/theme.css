@@ -37,6 +37,107 @@
   color: var(--color-accent);
 }
 
+/* SECTION GEOMETRY, DEPTH & LAYERING SYSTEM */
+
+/* Base Section Structure with Layering Context */
+.section-story {
+  padding: 48px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  width: 100%;
+  box-sizing: border-box;
+  overflow: visible;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Depth Glow Behind Section Content */
+.section-story::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 30%, rgba(255, 212, 59, 0.035) 0%, transparent 65%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.section-story > * {
+  position: relative;
+  z-index: 2;
+}
+
+/* Distinct Organic Silhouettes & Overlapping Stacking Contexts */
+
+/* 1. Hero Section Silhouette */
+.section-hero {
+  z-index: 10;
+  border-radius: 0 0 36px 18px;
+  margin-bottom: 0;
+  padding-bottom: 56px;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.4);
+}
+
+/* 2. Overview / About Section Silhouette (Asymmetric Inset & Overlap) */
+.section-overview {
+  z-index: 20;
+  width: calc(100% - 12px);
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: -24px;
+  border-radius: 28px 12px 32px 18px;
+  border: 1px solid rgba(255, 212, 59, 0.12);
+  box-shadow: 0 -12px 32px rgba(0, 0, 0, 0.65), 0 12px 28px rgba(0, 0, 0, 0.4);
+  padding: 52px 22px 44px;
+}
+
+/* 3. Simple Setup Section Silhouette (Concave Emerge & Wide Bounds) */
+.section-setup {
+  z-index: 30;
+  width: 100%;
+  margin-top: -28px;
+  border-radius: 20px 32px 16px 28px;
+  border-top: 1px solid rgba(255, 212, 59, 0.15);
+  box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.6), 0 14px 32px rgba(0, 0, 0, 0.45);
+  padding: 56px 20px 48px;
+}
+
+/* 4. Directory Grid Section Silhouette (Asymmetric Arc & Layer Depth) */
+.section-directory {
+  z-index: 40;
+  width: calc(100% - 10px);
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: -24px;
+  border-radius: 32px 16px 28px 24px;
+  border: 1px solid rgba(255, 212, 59, 0.14);
+  box-shadow: 0 -14px 36px rgba(0, 0, 0, 0.7), 0 16px 36px rgba(0, 0, 0, 0.5);
+  padding: 52px 20px 44px;
+}
+
+/* 5. Capabilities / Features Section Silhouette (Organic Convex) */
+.section-capabilities {
+  z-index: 50;
+  width: 100%;
+  margin-top: -26px;
+  border-radius: 18px 28px 24px 32px;
+  border-top: 1px solid rgba(255, 212, 59, 0.12);
+  box-shadow: 0 -12px 32px rgba(0, 0, 0, 0.65), 0 14px 32px rgba(0, 0, 0, 0.45);
+  padding: 54px 20px 48px;
+}
+
+/* 6. CTA / Final Section Silhouette (Curved Dome Cap) */
+.section-cta {
+  z-index: 60;
+  width: 100%;
+  margin-top: -24px;
+  border-radius: 36px 36px 0 0;
+  border-top: 1px solid rgba(255, 212, 59, 0.2);
+  box-shadow: 0 -16px 40px rgba(0, 0, 0, 0.75);
+  padding: 58px 20px 52px;
+}
+
 /* Contact Us & Support Center Styles */
 .contact-container {
   width: 100%;
@@ -233,9 +334,10 @@
 .dm-section {
   background: var(--color-surface);
   border: 1px solid var(--color-border);
-  border-radius: 16px;
+  border-radius: 20px;
   padding: 22px 18px;
   width: 100%;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
 }
 
 .dm-title {

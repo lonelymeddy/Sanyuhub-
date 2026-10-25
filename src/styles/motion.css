@@ -1,4 +1,18 @@
 /* Motion utilities and Scroll-driven Animation States */
+
+/* Section Entrance Animation — Upward Rise from Below */
+.anim-section-rise {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+.anim-section-rise.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 .anim-zoom-in {
   opacity: 0.85;
   transform: scale(0.82);
@@ -50,10 +64,13 @@
   transition: transform 0.1s linear;
 }
 
+/* Inner Content Blocks — Alternating Horizontal Reveals */
 .anim-slide-left {
   opacity: 0;
-  transform: translateX(-36px);
-  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateX(-45px);
+  transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: var(--stagger-delay, 0ms);
   will-change: opacity, transform;
 }
 .anim-slide-left.visible {
@@ -63,8 +80,10 @@
 
 .anim-slide-right {
   opacity: 0;
-  transform: translateX(36px);
-  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateX(45px);
+  transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: var(--stagger-delay, 0ms);
   will-change: opacity, transform;
 }
 .anim-slide-right.visible {
@@ -167,6 +186,7 @@ button[aria-disabled="true"],
 
 /* Reduced Motion Preference */
 @media (prefers-reduced-motion: reduce) {
+  .anim-section-rise,
   .anim-zoom-in,
   .anim-zoom-out,
   .anim-blur-focus,
