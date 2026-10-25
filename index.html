@@ -1087,6 +1087,7 @@
   </main>
 
   <script type="module">
+    import { initSectionEntrance } from '/src/js/animations/SectionEntrance.js';
     import { initZoomTypography } from '/src/js/animations/ZoomTypography.js';
     import { initZoomOutTypography } from '/src/js/animations/ZoomOutTypography.js';
     import { initStaggeredWords } from '/src/js/animations/StaggeredWords.js';
@@ -2498,28 +2499,28 @@
 };
 
 
-    // Curve SVG Generators for smooth section transitions
+    // Curve SVG Generators for smooth section transitions with distinct asymmetrical organic contours
     function renderConvexDivider(fillClass, isTop = false) {
-      return `<svg viewBox="0 0 1200 120" preserveAspectRatio="none" aria-hidden="true" class="section-divider ${fillClass} ${isTop ? 'divider-top' : 'divider-bottom'}"><path d="${isTop ? 'M0,120 Q600,0 1200,120 V0 H0 Z' : 'M0,0 Q600,120 1200,0 V120 H0 Z'}"/></svg>`;
+      return `<svg viewBox="0 0 1200 120" preserveAspectRatio="none" aria-hidden="true" class="section-divider ${fillClass} ${isTop ? 'divider-top' : 'divider-bottom'}"><path d="${isTop ? 'M0,120 Q550,-15 1200,90 V0 H0 Z' : 'M0,0 Q550,135 1200,25 V120 H0 Z'}"/></svg>`;
     }
 
     function renderConcaveDivider(fillClass, isTop = false) {
-      return `<svg viewBox="0 0 1200 120" preserveAspectRatio="none" aria-hidden="true" class="section-divider ${fillClass} ${isTop ? 'divider-top' : 'divider-bottom'}"><path d="${isTop ? 'M0,0 Q600,120 1200,0 V0 H0 Z' : 'M0,120 Q600,0 1200,120 V120 H0 Z'}"/></svg>`;
+      return `<svg viewBox="0 0 1200 120" preserveAspectRatio="none" aria-hidden="true" class="section-divider ${fillClass} ${isTop ? 'divider-top' : 'divider-bottom'}"><path d="${isTop ? 'M0,15 C350,115 850,-10 1200,95 V0 H0 Z' : 'M0,105 C350,-10 850,115 1200,15 V120 H0 Z'}"/></svg>`;
     }
 
     function renderWaveDivider(fillClass, variant = 1) {
-      const pathD = variant === 1 ? 'M0,0 C300,90 900,10 1200,80 V120 H0 Z' : 'M0,60 C320,120 880,0 1200,60 V120 H0 Z';
+      const pathD = variant === 1 ? 'M0,35 C320,110 880,-20 1200,75 V120 H0 Z' : 'M0,75 C280,-15 840,110 1200,35 V120 H0 Z';
       return `<svg viewBox="0 0 1200 120" preserveAspectRatio="none" aria-hidden="true" class="section-divider ${fillClass} divider-bottom"><path d="${pathD}"/></svg>`;
     }
 
     function renderOrganicDivider(fillClass) {
-      return `<svg viewBox="0 0 1200 120" preserveAspectRatio="none" aria-hidden="true" class="section-divider ${fillClass} divider-bottom"><path d="M0,40 C150,90 350,-10 600,50 C850,110 1050,10 1200,30 V120 H0 Z"/></svg>`;
+      return `<svg viewBox="0 0 1200 120" preserveAspectRatio="none" aria-hidden="true" class="section-divider ${fillClass} divider-bottom"><path d="M0,50 C180,110 420,-15 720,85 C920,125 1080,15 1200,45 V120 H0 Z"/></svg>`;
     }
 
     function renderHomePage() {
       return `
         <!-- Hero Section -->
-        <section class="section-story bg-dark hero-section home-hero-section">
+        <section class="section-story bg-dark hero-section section-hero home-hero-section">
           <div class="badge-pill">${t('home.hero_badge', 'Universal Ecosystem')}</div>
           <h1 class="hero-title anim-zoom-in">${t('home.hero_title', 'Your world, connected.')}</h1>
           <p class="body-lead anim-stagger-word">${t('home.hero_lead', 'sanyuhub seamlessly connects your smartphone, computer, smart TV, and streaming devices in one elegant experience.')}</p>
@@ -2538,7 +2539,7 @@
         </section>
 
         <!-- About Section -->
-        <section class="section-story bg-card">
+        <section class="section-story bg-card section-overview">
           <div class="badge-pill">Overview</div>
           <h2 class="section-title anim-zoom-in">${t('home.about_heading', 'What is sanyuhub?')}</h2>
           <p class="body-text anim-blur-focus">${t('home.about_text_1', 'sanyuhub is a modern cross-platform hub that unites digital media, device connectivity, and interactive services across all your daily screens.')}</p>
@@ -2547,7 +2548,7 @@
         </section>
 
         <!-- How It Works Section -->
-        <section class="section-story bg-surface pinned-container">
+        <section class="section-story bg-surface section-setup pinned-container">
           <div class="pinned-headline">
             <div class="badge-pill">Simple Setup</div>
             <h2 class="section-title anim-zoom-out">${t('home.how_heading', 'How sanyuhub Works')}</h2>
@@ -2583,7 +2584,7 @@
         </section>
 
         <!-- Device Directory Grid -->
-        <section class="section-story bg-card">
+        <section class="section-story bg-card section-directory">
           <div class="badge-pill">Directory</div>
           <h2 class="section-title anim-zoom-in">${t('home.directory_title', 'Explore Device Guides')}</h2>
           <p class="body-lead anim-blur-focus">${t('home.directory_sub', 'Select your device category below to view specific requirements and setup guides.')}</p>
@@ -2643,7 +2644,7 @@
         </section>
 
         <!-- Feature Highlights -->
-        <section class="section-story bg-surface">
+        <section class="section-story bg-surface section-capabilities">
           <div class="badge-pill">Capabilities</div>
           <h2 class="section-title anim-zoom-in">${t('home.features_title', 'Built for Every Display')}</h2>
           <p class="body-lead anim-blur-focus">${t('home.features_sub', 'Engineered to deliver high performance without forcing app installations or proprietary stores.')}</p>
@@ -2683,7 +2684,7 @@
         </section>
 
         <!-- CTA Section -->
-        <section class="section-story bg-card">
+        <section class="section-story bg-card section-cta">
           <h2 class="hero-title anim-zoom-in">${t('home.cta_title', 'Ready to connect?')}</h2>
           <p class="body-lead anim-stagger-word">${t('home.cta_lead', 'Launch the sanyuhub web client now and experience seamless device integration.')}</p>
           <a class="btn-primary" href="/devices/website" data-route="/devices/website">
@@ -3635,6 +3636,10 @@
 
     // Attach modular JS scroll animations to rendered DOM elements
     function attachAnimations() {
+      // Major Section Upward Entrance Animations
+      const majorSections = workspace.querySelectorAll('.section-story');
+      majorSections.forEach(el => initSectionEntrance(el));
+
       // Task 5: Zoom Typography (Zoom-in scale 0.82->1)
       const zoomIns = workspace.querySelectorAll('.anim-zoom-in');
       zoomIns.forEach(el => initZoomTypography(el));
