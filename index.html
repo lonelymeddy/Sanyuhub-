@@ -320,13 +320,15 @@
 
     /* Typography Scale */
     .hero-title {
-      font-size: clamp(34px, 8vw, 68px);
+      font-size: clamp(26px, 7vw, 68px);
       font-weight: 750;
       line-height: 1.1;
       letter-spacing: -0.03em;
       margin: 0 0 16px;
       color: #ffffff;
       text-wrap: balance;
+      overflow-wrap: break-word;
+      word-break: break-word;
     }
     .section-title {
       font-size: clamp(26px, 6vw, 48px);
@@ -839,6 +841,294 @@
       font-size: 13.5px;
       color: var(--muted);
       line-height: 1.5;
+    }
+
+    /* Legal, Policy & Informational Page Content Styling */
+    .legal-container {
+      width: 100%;
+      max-width: 880px;
+      margin: 0 auto;
+      text-align: left;
+    }
+    .legal-toc {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
+      padding: 20px;
+      margin-bottom: 24px;
+    }
+    .legal-toc h3 {
+      margin: 0 0 12px;
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--color-accent);
+    }
+    .legal-toc ul {
+      margin: 0;
+      padding-left: 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 8px 16px;
+    }
+    .legal-toc li a {
+      color: var(--color-text-secondary);
+      text-decoration: none;
+      font-size: 13.5px;
+      transition: color 0.15s ease;
+    }
+    .legal-toc li a:hover {
+      color: var(--color-accent);
+      text-decoration: underline;
+    }
+    .legal-section {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
+      padding: 24px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+    }
+    .legal-section h2 {
+      margin: 0 0 14px;
+      font-size: 20px;
+      font-weight: 700;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      letter-spacing: -0.01em;
+    }
+    .legal-section-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 28px;
+      height: 28px;
+      border-radius: 8px;
+      background: rgba(255, 212, 59, 0.15);
+      color: var(--color-accent);
+      font-size: 13px;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+    .legal-section p {
+      margin: 0 0 12px;
+      font-size: 14.5px;
+      line-height: 1.68;
+      color: var(--muted);
+    }
+    .legal-section p:last-child {
+      margin-bottom: 0;
+    }
+    .legal-section ul, .legal-section ol {
+      margin: 0 0 14px;
+      padding-left: 22px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.65;
+    }
+    .legal-section li {
+      margin-bottom: 8px;
+    }
+    .legal-highlight-box {
+      background: rgba(255, 212, 59, 0.08);
+      border-left: 3px solid var(--color-accent);
+      padding: 14px 18px;
+      border-radius: 4px 10px 10px 4px;
+      margin: 14px 0;
+      font-size: 14px;
+      color: #e2e4ec;
+      line-height: 1.6;
+    }
+
+    /* Help & Support Self-Service Knowledgebase Styling */
+    .help-container {
+      width: 100%;
+      max-width: 920px;
+      margin: 0 auto;
+      text-align: left;
+    }
+    .help-search-wrapper {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 20px;
+      margin-bottom: 24px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+    }
+    .help-search-input-box {
+      position: relative;
+      width: 100%;
+    }
+    .help-search-input-box svg {
+      position: absolute;
+      left: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--color-accent);
+      width: 20px;
+      height: 20px;
+      pointer-events: none;
+    }
+    .help-search-input {
+      width: 100%;
+      height: 52px;
+      padding: 12px 16px 12px 48px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--color-border);
+      border-radius: 26px;
+      color: #ffffff;
+      font-size: 15px;
+      outline: none;
+      transition: border-color 0.2s ease, background 0.2s ease;
+    }
+    .help-search-input:focus {
+      border-color: var(--color-accent);
+      background: rgba(255, 255, 255, 0.08);
+      box-shadow: 0 0 0 3px rgba(255, 212, 59, 0.2);
+    }
+    .help-subpage-tabs {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding-bottom: 10px;
+      margin-bottom: 24px;
+      scrollbar-width: thin;
+      scrollbar-color: var(--color-border) transparent;
+    }
+    .help-tab-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 18px;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--card-border);
+      color: var(--color-text-secondary);
+      font-size: 13.5px;
+      font-weight: 600;
+      white-space: nowrap;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .help-tab-btn:hover {
+      background: rgba(255, 255, 255, 0.1);
+      color: #ffffff;
+      border-color: rgba(255, 212, 59, 0.4);
+    }
+    .help-tab-btn.active {
+      background: var(--color-accent);
+      color: #0b0c0f;
+      border-color: var(--color-accent);
+      font-weight: 700;
+    }
+    .troubleshoot-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 24px;
+      margin-bottom: 20px;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+    .troubleshoot-card:hover {
+      border-color: rgba(255, 212, 59, 0.35);
+      box-shadow: 0 8px 28px rgba(0, 0, 0, 0.4);
+    }
+    .troubleshoot-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+    }
+    .troubleshoot-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: #ffffff;
+      margin: 0;
+      line-height: 1.35;
+    }
+    .troubleshoot-badge {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 12px;
+      background: rgba(255, 212, 59, 0.12);
+      border: 1px solid rgba(255, 212, 59, 0.3);
+      color: var(--color-accent);
+      font-size: 11.5px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .troubleshoot-symptom {
+      font-size: 14px;
+      color: #d1d4e0;
+      line-height: 1.55;
+      margin-bottom: 14px;
+      background: rgba(255, 255, 255, 0.03);
+      padding: 10px 14px;
+      border-radius: 8px;
+      border-left: 3px solid #ff4d4d;
+    }
+    .troubleshoot-cause {
+      font-size: 13.5px;
+      color: var(--muted);
+      margin-bottom: 16px;
+      line-height: 1.5;
+    }
+    .troubleshoot-steps-title {
+      font-size: 14.5px;
+      font-weight: 700;
+      color: var(--color-accent);
+      margin: 16px 0 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .troubleshoot-steps {
+      margin: 0 0 16px;
+      padding-left: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .troubleshoot-steps li {
+      font-size: 14px;
+      color: #e2e4ec;
+      line-height: 1.55;
+    }
+    .troubleshoot-steps li strong {
+      color: #ffffff;
+    }
+    .troubleshoot-pro-tip {
+      background: rgba(0, 200, 120, 0.08);
+      border-left: 3px solid #00c878;
+      padding: 10px 14px;
+      border-radius: 4px 8px 8px 4px;
+      font-size: 13px;
+      color: #b0e8ce;
+      line-height: 1.5;
+    }
+    .help-contact-banner {
+      background: linear-gradient(135deg, rgba(255, 212, 59, 0.12), rgba(255, 212, 59, 0.04));
+      border: 1px solid rgba(255, 212, 59, 0.35);
+      border-radius: 16px;
+      padding: 24px;
+      text-align: center;
+      margin-top: 36px;
+    }
+    .help-contact-banner h3 {
+      margin: 0 0 8px;
+      font-size: 18px;
+      font-weight: 700;
+      color: #ffffff;
+    }
+    .help-contact-banner p {
+      margin: 0 0 16px;
+      font-size: 14px;
+      color: var(--muted);
     }
 
   </style>
@@ -2749,25 +3039,447 @@
       </div>`;
     }
 
-    function renderGenericPage(titleKey, title, descKey, fallbackDesc) {
-      const desc = descKey ? t(descKey, fallbackDesc) : fallbackDesc;
+    function renderAboutPage() {
       return `
+        <!-- About Hero Section -->
         <section class="section-story bg-dark hero-section">
-          <div class="badge-pill">Information</div>
-          <h1 class="hero-title anim-zoom-in">${title}</h1>
-          <p class="body-lead anim-stagger-word">${desc}</p>
+          <div class="badge-pill">About sanyuhub</div>
+          <h1 class="hero-title anim-zoom-in">Connecting Media, Entertainment &amp; Devices Worldwide</h1>
+          <p class="body-lead anim-stagger-word">sanyuhub is a browser-first digital entertainment platform engineered to bring seamless playback of movies, live TV, music, and concerts to every screen without forced native app installations.</p>
+
+          <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap; margin-top:16px;">
+            <a class="btn-primary" href="/" data-route="/">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+              ${t('home.btn_launch', 'Explore Web Client')}
+            </a>
+            <a class="btn-secondary" href="/devices/website" data-route="/devices/website">
+              Supported Devices
+            </a>
+          </div>
           ${renderConvexDivider('fill-card')}
         </section>
 
+        <!-- Mission & Core Values Section -->
         <section class="section-story bg-card">
-          <div class="badge-pill">sanyuhub Ecosystem</div>
-          <h2 class="section-title anim-zoom-in">Connected Device Experience</h2>
-          <p class="body-text anim-blur-focus">sanyuhub enables seamless connectivity across mobile smartphones, desktop operating systems, smart TVs, and streaming platforms worldwide.</p>
-          <div style="margin-top: 16px;">
-            <a class="btn-primary" href="/" data-route="/">
-              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-              ${t('nav.back_home', 'Return to Home')}
-            </a>
+          <div class="legal-container">
+            <div class="badge-pill">Our Foundation</div>
+            <h2 class="section-title anim-zoom-in">Mission &amp; Core Principles</h2>
+            <p class="body-text anim-blur-focus">At sanyuhub, we believe media access should be instantaneous, open, and accessible to everyone regardless of operating system, hardware budget, or regional location.</p>
+
+            <div class="category-grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); margin: 24px 0;">
+              <div class="step-card">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                  <h4>Zero Forced App Installs</h4>
+                  <p>Operates directly within standard HTML5 browsers across iOS, Android, Smart TVs, desktop platforms, and set-top boxes without mandatory app store downloads.</p>
+                </div>
+              </div>
+              <div class="step-card">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                  <h4>Universal Device Coverage</h4>
+                  <p>Engineered for low latency and smooth responsive UI whether on budget smartphones, 4K Smart TVs, or desktop workstations.</p>
+                </div>
+              </div>
+              <div class="step-card">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                  <h4>Multi-Language Localization</h4>
+                  <p>Native localized navigation and content discovery across Luganda, Lusoga, Swahili, French, Arabic, Portuguese, Spanish, Hindi, and English.</p>
+                </div>
+              </div>
+              <div class="step-card">
+                <div class="step-number">4</div>
+                <div class="step-content">
+                  <h4>Privacy-First Architecture</h4>
+                  <p>Zero invasive third-party ad tracking or cross-site fingerprinting. Preferences are saved locally on your device with TLS 1.3 encrypted communications.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Platform Architecture Breakdown -->
+            <div class="legal-section" style="margin-top: 32px;">
+              <h2><span class="legal-section-num">1</span> Platform Ecosystem &amp; Entertainment Categories</h2>
+              <p>sanyuhub organizes digital entertainment into four distinct, connected content hubs designed for intuitive navigation:</p>
+              <ul>
+                <li><strong>Movies &amp; Cinema:</strong> In-depth coverage of cinematic releases, regional features, stream guide metadata, and video player optimization across mobile and big-screen displays.</li>
+                <li><strong>Live TV Broadcasts:</strong> Real-time television program guides, live stream signal status, and regional channel categorization.</li>
+                <li><strong>Music &amp; Cultural Soundscapes:</strong> Curated audio experiences, cultural spotlight streams, and continuous audio playback across device lock screens.</li>
+                <li><strong>Concerts &amp; Live Events:</strong> Interactive virtual event streaming, stage schedules, and screen casting setup guides.</li>
+              </ul>
+            </div>
+
+            <div class="legal-section">
+              <h2><span class="legal-section-num">2</span> Modern Web Standards &amp; Edge Delivery</h2>
+              <p>sanyuhub utilizes progressive web technology to deliver performance that rivals native software:</p>
+              <ul>
+                <li><strong>Adaptive HLS Video:</strong> Dynamic bitrate streaming adjusts video quality in real time based on network strength to eliminate buffering.</li>
+                <li><strong>Progressive Web App (PWA):</strong> Add sanyuhub to your home screen or desktop for a fullscreen app experience without downloading from an app store.</li>
+                <li><strong>High-Performance Edge Routing:</strong> Global CDN distribution powered by Vercel serverless nodes ensures sub-second page loads worldwide.</li>
+              </ul>
+            </div>
+
+            <div style="text-align:center; margin-top:28px;">
+              <a class="btn-primary" href="/" data-route="/">Return to Home</a>
+            </div>
+          </div>
+          ${renderConvexDivider('fill-footer')}
+        </section>
+      `;
+    }
+
+    function renderTermsPage() {
+      return `
+        <!-- Terms Hero Section -->
+        <section class="section-story bg-dark hero-section">
+          <div class="badge-pill">Legal Framework</div>
+          <h1 class="hero-title anim-zoom-in">Terms of Service</h1>
+          <p class="body-lead anim-stagger-word">Please review these Terms of Service ("Terms") carefully before using sanyuhub web applications, device portals, or connected media services.</p>
+          ${renderConvexDivider('fill-card')}
+        </section>
+
+        <!-- Terms Detail Section -->
+        <section class="section-story bg-card">
+          <div class="legal-container">
+            <!-- Table of Contents -->
+            <div class="legal-toc">
+              <h3>Table of Contents</h3>
+              <ul>
+                <li><a href="#terms-1">1. Acceptance of Terms &amp; Scope</a></li>
+                <li><a href="#terms-2">2. Eligibility &amp; Account Usage</a></li>
+                <li><a href="#terms-3">3. Permitted Platform Use</a></li>
+                <li><a href="#terms-4">4. Prohibited Conduct</a></li>
+                <li><a href="#terms-5">5. Intellectual Property Rights</a></li>
+                <li><a href="#terms-6">6. Third-Party Media &amp; Links</a></li>
+                <li><a href="#terms-7">7. Subscriptions &amp; Digital Features</a></li>
+                <li><a href="#terms-8">8. System Maintenance &amp; Uptime</a></li>
+                <li><a href="#terms-9">9. Disclaimer of Warranties</a></li>
+                <li><a href="#terms-10">10. Limitation of Liability</a></li>
+                <li><a href="#terms-11">11. Governing Law &amp; Disputes</a></li>
+                <li><a href="#terms-12">12. Contact &amp; Legal Notices</a></li>
+              </ul>
+            </div>
+
+            <div class="legal-highlight-box">
+              <strong>Important Notice:</strong> By accessing, browsing, or using sanyuhub on any web browser, device, Smart TV, or mobile platform, you agree to comply with these Terms. If you do not agree to these terms, please refrain from using our services.
+            </div>
+
+            <div class="legal-section" id="terms-1">
+              <h2><span class="legal-section-num">1</span> Acceptance of Terms &amp; Scope</h2>
+              <p>These Terms of Service constitute a legally binding agreement between you ("User", "you") and sanyuhub ("we", "us", "our"). These Terms apply to all visitors, registered account holders, and device platforms utilizing sanyuhub web clients, device compatibility portals, and connected APIs.</p>
+              <p>We reserve the right to revise or modify these Terms at any time. Material revisions will be indicated by updating the "Last Updated" date at the top of this document. Continued use of sanyuhub following posted modifications signifies your full acceptance of the revised Terms.</p>
+            </div>
+
+            <div class="legal-section" id="terms-2">
+              <h2><span class="legal-section-num">2</span> User Eligibility &amp; Account Usage</h2>
+              <p>You must be at least 13 years of age (or legal age in your jurisdiction) to access or register for an account on sanyuhub. By using our platform, you represent that you possess the legal capacity to enter into a binding agreement.</p>
+              <ul>
+                <li><strong>Account Accuracy:</strong> If you create an account, you must provide accurate, complete information.</li>
+                <li><strong>Credential Confidentiality:</strong> You are strictly responsible for maintaining the confidentiality of your login credentials and for all activities that occur under your account.</li>
+                <li><strong>Immediate Notification:</strong> You must immediately notify sanyuhub support if you suspect unauthorized access or security breaches involving your account.</li>
+              </ul>
+            </div>
+
+            <div class="legal-section" id="terms-3">
+              <h2><span class="legal-section-num">3</span> Permitted Platform Use</h2>
+              <p>sanyuhub grants you a limited, non-exclusive, non-transferable, revocable license to access and use our web application for personal, non-commercial entertainment and device configuration purposes, strictly in accordance with these Terms.</p>
+              <p>You may stream content, view device guides, configure local preferences, and cast media to compatible Smart TVs or streaming hardware via supported browser functionality (e.g., Google Chromecast, Apple AirPlay).</p>
+            </div>
+
+            <div class="legal-section" id="terms-4">
+              <h2><span class="legal-section-num">4</span> Prohibited Conduct &amp; Restrictions</h2>
+              <p>When accessing sanyuhub, you expressly agree NOT to engage in any of the following prohibited activities:</p>
+              <ol>
+                <li><strong>Reverse Engineering:</strong> Decompile, reverse engineer, disassemble, or attempt to extract source code or underlying algorithms of sanyuhub web engines.</li>
+                <li><strong>Automated Scraping:</strong> Use bots, spiders, crawlers, or automated scripts to collect content, user metadata, or system data without explicit written consent.</li>
+                <li><strong>Security Interference:</strong> Circumvent, disable, or tamper with security features, DRM controls, or rate-limiting safeguards.</li>
+                <li><strong>Malicious Injection:</strong> Upload or transmit viruses, malware, keyloggers, or malicious code designed to disrupt platform execution.</li>
+                <li><strong>API &amp; Form Misuse:</strong> Submit automated spam, fraudulent contact inquiries, or false support tickets.</li>
+              </ol>
+            </div>
+
+            <div class="legal-section" id="terms-5">
+              <h2><span class="legal-section-num">5</span> Intellectual Property Rights</h2>
+              <p>All software code, user interface designs, logos, trademarks, graphic animations, visual assets, documentation, and original content on sanyuhub are the exclusive property of sanyuhub and its licensors, protected under international copyright, trademark, and trade secret laws.</p>
+              <p>The "sanyuhub" name, logo, and design marks are registered or unregistered trademarks of sanyuhub. You may not display or use these trademarks without prior written permission.</p>
+            </div>
+
+            <div class="legal-section" id="terms-6">
+              <h2><span class="legal-section-num">6</span> Third-Party Media, Streams &amp; Links</h2>
+              <p>sanyuhub may index, link to, or display content originating from third-party media providers, content distribution networks, or external web services. sanyuhub does not control, endorse, or assume responsibility for any third-party content, privacy policies, or external web services.</p>
+              <p>Your interactions with third-party streaming providers or linked services are solely between you and the respective third party.</p>
+            </div>
+
+            <div class="legal-section" id="terms-7">
+              <h2><span class="legal-section-num">7</span> Subscriptions &amp; Digital Features</h2>
+              <p>Certain premium features or platform tiers may require subscription payments or digital fee processing. All pricing terms, payment methods, renewal cycles, and cancellation procedures will be clearly disclosed prior to transaction confirmation.</p>
+              <p>Unless explicitly stated otherwise, payments are non-refundable except where required by applicable consumer protection laws.</p>
+            </div>
+
+            <div class="legal-section" id="terms-8">
+              <h2><span class="legal-section-num">8</span> System Maintenance, Updates &amp; Service Availability</h2>
+              <p>We continuously perform system maintenance, security patching, and platform updates to enhance performance and device compatibility. While we strive for maximum uptime, sanyuhub does not guarantee uninterrupted, error-free platform access.</p>
+              <p>We reserve the right to temporarily modify, suspend, or discontinue any feature or endpoint at our discretion without liability.</p>
+            </div>
+
+            <div class="legal-section" id="terms-9">
+              <h2><span class="legal-section-num">9</span> Disclaimer of Warranties</h2>
+              <p>THE SANYUHUB PLATFORM IS PROVIDED ON AN "AS IS" AND "AS AVAILABLE" BASIS WITHOUT WARRANTIES OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, NON-INFRINGEMENT, OR COMPATIBILITY WITH SPECIFIC HARDWARE DEVICES.</p>
+            </div>
+
+            <div class="legal-section" id="terms-10">
+              <h2><span class="legal-section-num">10</span> Limitation of Liability &amp; Indemnification</h2>
+              <p>TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, SANYUHUB, ITS AFFILIATES, OFFICERS, EMPLOYEES, AND AGENTS SHALL NOT BE LIABLE FOR ANY INDIRECT, INCIDENTAL, CONSEQUENTIAL, SPECIAL, OR PUNITIVE DAMAGES, LOSS OF DATA, LOSS OF PROFITS, OR DEVICE HARDWARE DISRUPTIONS ARISING OUT OF YOUR USE OF OR INABILITY TO USE THE SERVICE.</p>
+              <p>You agree to defend, indemnify, and hold harmless sanyuhub from any claims, liabilities, damages, or costs resulting from your breach of these Terms or unauthorized platform usage.</p>
+            </div>
+
+            <div class="legal-section" id="terms-11">
+              <h2><span class="legal-section-num">11</span> Governing Law &amp; Dispute Resolution</h2>
+              <p>These Terms shall be governed by and construed in accordance with applicable laws, without regard to conflict of law principles. Any dispute or claim arising out of or relating to these Terms shall be resolved through good-faith negotiation, or binding arbitration if necessary.</p>
+            </div>
+
+            <div class="legal-section" id="terms-12">
+              <h2><span class="legal-section-num">12</span> Legal Inquiries &amp; Contact Information</h2>
+              <p>For questions regarding these Terms of Service or to submit official legal notices, please visit our <a href="/contact" data-route="/contact" style="color:var(--color-accent);">Contact Us page</a> or reach out to the sanyuhub legal department.</p>
+            </div>
+
+            <div style="text-align:center; margin-top:28px;">
+              <a class="btn-primary" href="/" data-route="/">Return to Home</a>
+            </div>
+          </div>
+          ${renderConvexDivider('fill-footer')}
+        </section>
+      `;
+    }
+
+    function renderPrivacyPage() {
+      return `
+        <!-- Privacy Hero Section -->
+        <section class="section-story bg-dark hero-section">
+          <div class="badge-pill">Data Protection</div>
+          <h1 class="hero-title anim-zoom-in">Privacy Policy</h1>
+          <p class="body-lead anim-stagger-word">Learn how sanyuhub collects, protects, utilizes, and respects user data, local browser preferences, and digital privacy across all connected device experiences.</p>
+          ${renderConvexDivider('fill-card')}
+        </section>
+
+        <!-- Privacy Detail Section -->
+        <section class="section-story bg-card">
+          <div class="legal-container">
+            <!-- Table of Contents -->
+            <div class="legal-toc">
+              <h3>Table of Contents</h3>
+              <ul>
+                <li><a href="#priv-1">1. Privacy Commitment &amp; Scope</a></li>
+                <li><a href="#priv-2">2. Information We Collect</a></li>
+                <li><a href="#priv-3">3. Local Browser Storage &amp; Cookies</a></li>
+                <li><a href="#priv-4">4. How We Use Collected Data</a></li>
+                <li><a href="#priv-5">5. Infrastructure &amp; Processors</a></li>
+                <li><a href="#priv-6">6. Data Security &amp; Encryption</a></li>
+                <li><a href="#priv-7">7. Data Retention Standards</a></li>
+                <li><a href="#priv-8">8. User Rights (GDPR / CCPA)</a></li>
+                <li><a href="#priv-9">9. Children's Digital Privacy</a></li>
+                <li><a href="#priv-10">10. Cross-Border Transfers</a></li>
+                <li><a href="#priv-11">11. Policy Changes &amp; Updates</a></li>
+                <li><a href="#priv-12">12. Data Protection Contact</a></li>
+              </ul>
+            </div>
+
+            <div class="legal-highlight-box">
+              <strong>Privacy Summary:</strong> sanyuhub is designed around privacy-by-default. We do NOT sell user data, track you across third-party websites, or use intrusive advertising identifiers. Your interface preferences remain stored safely in your own browser's local storage.
+            </div>
+
+            <div class="legal-section" id="priv-1">
+              <h2><span class="legal-section-num">1</span> Privacy Commitment &amp; Scope</h2>
+              <p>This Privacy Policy outlines how sanyuhub ("we", "us", "our") handles information when you interact with our web applications, device portals, streaming guides, and customer support channels. We adhere to international privacy standards including the General Data Protection Regulation (GDPR), California Consumer Privacy Act (CCPA), and regional data protection frameworks.</p>
+            </div>
+
+            <div class="legal-section" id="priv-2">
+              <h2><span class="legal-section-num">2</span> Information We Collect</h2>
+              <p>We collect minimal information necessary to deliver high-performance streaming guides, device layout rendering, and customer assistance:</p>
+              <ul>
+                <li><strong>Technical Telemetry:</strong> Anonymized web browser specs, user agent string, operating system type, device screen dimensions, and rendering viewport sizes to automatically select optimal layout stylesheets.</li>
+                <li><strong>Network Diagnostics:</strong> IP address and coarse geographical location (country level) used to customize country content filters and routing optimization.</li>
+                <li><strong>Direct Inquiries:</strong> When you submit a support message via our Contact Us page, we collect your provided country, email address, support topic, and message text to process and respond to your request.</li>
+              </ul>
+            </div>
+
+            <div class="legal-section" id="priv-3">
+              <h2><span class="legal-section-num">3</span> Local Browser Storage &amp; Cookie Mechanisms</h2>
+              <p>sanyuhub utilizes HTML5 <code>localStorage</code> rather than intrusive third-party tracking cookies. Local storage allows us to remember your preferences between page reloads entirely on your local device:</p>
+              <ul>
+                <li><code>sanyuhub-country</code>: Saves your preferred country selection for regional filtering.</li>
+                <li><code>sanyuhub-lang</code>: Stores your chosen display language (e.g., Luganda, Swahili, French, English).</li>
+                <li><code>sanyuhub-theme</code>: Remembers your dark mode and reduced-motion visual settings.</li>
+              </ul>
+              <p>You can clear or reset this storage at any time directly in your browser's site settings.</p>
+            </div>
+
+            <div class="legal-section" id="priv-4">
+              <h2><span class="legal-section-num">4</span> How We Use Collected Data</h2>
+              <p>Information processed by sanyuhub is strictly limited to operational purposes:</p>
+              <ol>
+                <li>Delivering responsive layouts tailored to your exact device screen.</li>
+                <li>Routing video stream requests to nearby server nodes for low-latency playback.</li>
+                <li>Processing direct support messages sent through the Contact Us form and issuing reference confirmation codes.</li>
+                <li>Detecting and blocking automated security attacks, rate-limit abuses, or malicious payload submissions.</li>
+              </ol>
+            </div>
+
+            <div class="legal-section" id="priv-5">
+              <h2><span class="legal-section-num">5</span> Infrastructure &amp; Cloud Service Processors</h2>
+              <p>We partner with leading, security-compliant hosting infrastructure providers to execute web services safely. Our backend API endpoints execute on Vercel's serverless edge network, protected by TLS encryption. We do not transfer personal data to unauthorized third parties.</p>
+            </div>
+
+            <div class="legal-section" id="priv-6">
+              <h2><span class="legal-section-num">6</span> Data Security &amp; Encryption Standards</h2>
+              <p>We enforce rigorous administrative, technical, and physical security measures to protect user data against unauthorized access, loss, or alteration:</p>
+              <ul>
+                <li><strong>Encryption in Transit:</strong> All data transmitted between your web browser and sanyuhub servers is encrypted using modern TLS 1.3 protocols over HTTPS.</li>
+                <li><strong>API Security Controls:</strong> Serverless endpoints utilize input validation, rate limiting, and automated payload sanitization.</li>
+              </ul>
+            </div>
+
+            <div class="legal-section" id="priv-7">
+              <h2><span class="legal-section-num">7</span> Data Retention Standards</h2>
+              <p>Support inquiries submitted via the Contact Us form are retained only for as long as necessary to address your ticket and maintain quality assurance records (typically up to 90 days), after which they are safely purged or anonymized.</p>
+            </div>
+
+            <div class="legal-section" id="priv-8">
+              <h2><span class="legal-section-num">8</span> Your Rights Under Global Privacy Laws (GDPR / CCPA)</h2>
+              <p>Depending on your region, you possess specific statutory privacy rights regarding your data:</p>
+              <ul>
+                <li><strong>Right of Access &amp; Portability:</strong> You may request confirmation of whether we hold personal data relating to you and request a copy.</li>
+                <li><strong>Right to Rectification &amp; Erasure:</strong> You may request correction of inaccurate support records or deletion of your support ticket data.</li>
+                <li><strong>Right to Object &amp; Restrict Processing:</strong> You may opt out of non-essential communications or data processing at any time.</li>
+              </ul>
+            </div>
+
+            <div class="legal-section" id="priv-9">
+              <h2><span class="legal-section-num">9</span> Protection of Children's Digital Privacy</h2>
+              <p>sanyuhub does not knowingly collect or solicit personal information from children under 13 years of age. If we learn that we have inadvertently collected personal information from a minor without parental consent, we will immediately take steps to delete that information.</p>
+            </div>
+
+            <div class="legal-section" id="priv-10">
+              <h2><span class="legal-section-num">10</span> International Data Transfers</h2>
+              <p>As a global platform, sanyuhub infrastructure operates across distributed serverless edge locations. Technical data processed outside your jurisdiction is protected under standard contractual clauses and strict encryption protocols.</p>
+            </div>
+
+            <div class="legal-section" id="priv-11">
+              <h2><span class="legal-section-num">11</span> Policy Amendments &amp; Updates</h2>
+              <p>We may update this Privacy Policy periodically to reflect technological advancements, new features, or regulatory requirements. Any modifications will be posted here with an updated revision date.</p>
+            </div>
+
+            <div class="legal-section" id="priv-12">
+              <h2><span class="legal-section-num">12</span> Contacting Our Data Protection Team</h2>
+              <p>If you have questions regarding this Privacy Policy or wish to exercise your data rights, please submit an inquiry through our <a href="/contact" data-route="/contact" style="color:var(--color-accent);">Contact Us page</a> selecting the "Other Enquiries" topic.</p>
+            </div>
+
+            <div style="text-align:center; margin-top:28px;">
+              <a class="btn-primary" href="/" data-route="/">Return to Home</a>
+            </div>
+          </div>
+          ${renderConvexDivider('fill-footer')}
+        </section>
+      `;
+    }
+
+    function renderAccessibilityPage() {
+      return `
+        <!-- Accessibility Hero Section -->
+        <section class="section-story bg-dark hero-section">
+          <div class="badge-pill">Universal Design</div>
+          <h1 class="hero-title anim-zoom-in">Accessibility Statement</h1>
+          <p class="body-lead anim-stagger-word">sanyuhub is committed to ensuring digital accessibility for all users, including individuals with visual, hearing, motor, or cognitive impairments.</p>
+          ${renderConvexDivider('fill-card')}
+        </section>
+
+        <!-- Accessibility Detail Section -->
+        <section class="section-story bg-card">
+          <div class="legal-container">
+            <!-- Table of Contents -->
+            <div class="legal-toc">
+              <h3>Table of Contents</h3>
+              <ul>
+                <li><a href="#a11y-1">1. Accessibility Commitment &amp; Standard</a></li>
+                <li><a href="#a11y-2">2. Screen Reader &amp; ARIA Integration</a></li>
+                <li><a href="#a11y-3">3. Keyboard Navigation &amp; Focus Control</a></li>
+                <li><a href="#a11y-4">4. Reduced Motion &amp; Sensory Options</a></li>
+                <li><a href="#a11y-5">5. Color Contrast &amp; Typography</a></li>
+                <li><a href="#a11y-6">6. Assistive Tech Compatibility</a></li>
+                <li><a href="#a11y-7">7. Auditing &amp; Testing Methodology</a></li>
+                <li><a href="#a11y-8">8. Accessibility Feedback &amp; Assistance</a></li>
+              </ul>
+            </div>
+
+            <div class="legal-highlight-box">
+              <strong>Accessibility Standard Target:</strong> We continuously design and test sanyuhub to conform with Web Content Accessibility Guidelines (WCAG) 2.1 Level AA recommendations and international digital accessibility regulations.
+            </div>
+
+            <div class="legal-section" id="a11y-1">
+              <h2><span class="legal-section-num">1</span> Accessibility Commitment &amp; Standard</h2>
+              <p>At sanyuhub, universal access is a core engineering requirement. We believe that everyone—regardless of ability, screen reader preference, or input device—should enjoy a fast, barrier-free web experience when exploring entertainment and device connectivity guides.</p>
+            </div>
+
+            <div class="legal-section" id="a11y-2">
+              <h2><span class="legal-section-num">2</span> Screen Reader &amp; ARIA Integration</h2>
+              <p>Our single-page web client is structured using semantic HTML tags and Accessible Rich Internet Applications (ARIA) attributes:</p>
+              <ul>
+                <li><strong>Semantic Landmarks:</strong> Proper usage of <code>&lt;header&gt;</code>, <code>&lt;nav&gt;</code>, <code>&lt;main&gt;</code>, <code>&lt;section&gt;</code>, and <code>&lt;footer&gt;</code> containers for logical screen reader navigation.</li>
+                <li><strong>ARIA Labels &amp; States:</strong> Navigation menus, category accordions, modal backdrops, and interactive toggles maintain updated <code>aria-expanded</code>, <code>aria-controls</code>, and <code>aria-hidden</code> properties.</li>
+                <li><strong>Dynamic Announcements:</strong> Search results, form validation errors, and page updates utilize <code>aria-live="polite"</code> regions to alert assistive technology without disrupting navigation flow.</li>
+              </ul>
+            </div>
+
+            <div class="legal-section" id="a11y-3">
+              <h2><span class="legal-section-num">3</span> Keyboard Navigation &amp; Focus Management</h2>
+              <p>All interactive elements across sanyuhub are accessible via standard keyboard inputs without requiring a mouse or touchscreen:</p>
+              <ul>
+                <li><strong>Logical Tab Order:</strong> Tabbing follows a natural top-to-bottom, left-to-right reading flow.</li>
+                <li><strong>Visible Focus Indicators:</strong> High-contrast focus outline rings highlight active elements during keyboard navigation.</li>
+                <li><strong>Modal Focus Trapping:</strong> Country selection modals trap tab focus inside the dialog while open and restore focus to the trigger button upon closing.</li>
+              </ul>
+            </div>
+
+            <div class="legal-section" id="a11y-4">
+              <h2><span class="legal-section-num">4</span> Reduced Motion &amp; Sensory Customization</h2>
+              <p>We respect user motion preferences to accommodate individuals prone to vestibular motion sickness or sensory overload:</p>
+              <ul>
+                <li><strong>Prefers-Reduced-Motion:</strong> sanyuhub automatically detects system-level motion reduction settings and disables zoom, parallax, and blur animations.</li>
+                <li><strong>No Auto-Playing Flash or Sound:</strong> Audio and video content never auto-play with sound enabled without explicit user interaction.</li>
+              </ul>
+            </div>
+
+            <div class="legal-section" id="a11y-5">
+              <h2><span class="legal-section-num">5</span> Color Contrast &amp; Typography Scalability</h2>
+              <p>sanyuhub is designed for optimal visual clarity across modern dark mode interfaces:</p>
+              <ul>
+                <li><strong>High Contrast Ratios:</strong> Text elements maintain contrast ratios exceeding 4.5:1 against dark surface backgrounds.</li>
+                <li><strong>Scalable Typography:</strong> Font sizes utilize fluid CSS clamp units that adjust dynamically and scale up to 200% without breaking text container layouts.</li>
+              </ul>
+            </div>
+
+            <div class="legal-section" id="a11y-6">
+              <h2><span class="legal-section-num">6</span> Assistive Technology Compatibility Matrix</h2>
+              <p>sanyuhub is routinely tested across popular assistive technology combinations:</p>
+              <ul>
+                <li><strong>Screen Readers:</strong> NVDA and JAWS on Windows (Chrome, Firefox, Edge), VoiceOver on macOS and iOS (Safari), TalkBack on Android (Chrome).</li>
+                <li><strong>Input Devices:</strong> Standard physical keyboards, switch control hardware, on-screen keyboards, and Smart TV remote navigation controls.</li>
+              </ul>
+            </div>
+
+            <div class="legal-section" id="a11y-7">
+              <h2><span class="legal-section-num">7</span> Auditing &amp; Continuous Maintenance</h2>
+              <p>We perform regular automated code audits alongside manual keyboard and screen reader walkthroughs during software deployments to prevent regressions and maintain WCAG compliance.</p>
+            </div>
+
+            <div class="legal-section" id="a11y-8">
+              <h2><span class="legal-section-num">8</span> Accessibility Feedback &amp; Assistance</h2>
+              <p>If you encounter an accessibility barrier on sanyuhub or require information in an alternative accessible format, please contact us via our <a href="/contact" data-route="/contact" style="color:var(--color-accent);">Contact Us page</a>. We prioritize accessibility reports and aim to respond within 24–48 hours.</p>
+            </div>
+
+            <div style="text-align:center; margin-top:28px;">
+              <a class="btn-primary" href="/" data-route="/">Return to Home</a>
+            </div>
           </div>
           ${renderConvexDivider('fill-footer')}
         </section>
@@ -2904,6 +3616,337 @@
     }
 
 
+
+    const HELP_SUBPAGES = [
+      { id: 'all', title: 'All Guides & Search', icon: `<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>` },
+      { id: 'playback', title: 'Video & Audio Playback', icon: `<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>` },
+      { id: 'casting', title: 'Casting & Smart TV', icon: `<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="15" rx="2"/><path d="M17 2l-5 5-5-5"/></svg>` },
+      { id: 'account', title: 'Account & Session', icon: `<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>` },
+      { id: 'mobile', title: 'Mobile & PWA App', icon: `<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="3"/><path d="M12 18h.01"/></svg>` },
+      { id: 'network', title: 'Network & Speed', icon: `<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12.55a11 11 0 0 1 14.08 0M1.42 9a16 16 0 0 1 21.16 0M8.53 16.11a6 6 0 0 1 6.95 0M12 20h.01"/></svg>` },
+      { id: 'browser', title: 'Browser & AdBlockers', icon: `<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/></svg>` },
+      { id: 'country', title: 'Country & Region', icon: `<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 8 6 6M4 14l6-6 2-3M2 5h12M7 2h1M14 22l5-11 5 11M16 18h6"/></svg>` },
+      { id: 'errors', title: 'Error Codes Index', icon: `<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0zM12 9v4M12 17h.01"/></svg>` }
+    ];
+
+    const TROUBLESHOOTING_GUIDES = [
+      {
+        id: 'guide-1',
+        category: 'playback',
+        badge: 'Video Stream',
+        title: 'Video Buffering, Stuttering or Endless Loading Spinner',
+        symptom: 'Video freezes repeatedly, takes long to start, or drops quality during playback on movies or live channels.',
+        cause: 'Fluctuating internet bandwidth, browser hardware acceleration conflict, or heavy background network usage.',
+        steps: [
+          '<strong>Lower Stream Quality:</strong> Click the gear icon in the video player and set quality from Auto/1080p down to 720p or 480p.',
+          '<strong>Pre-Buffer Stream:</strong> Pause playback for 10–15 seconds to allow the Adaptive HLS buffer to accumulate video segments.',
+          '<strong>Toggle Hardware Acceleration:</strong> Open browser settings (Chrome/Edge/Firefox), search for "Hardware Acceleration", toggle it off, and restart browser.',
+          '<strong>Clear Browser Cache:</strong> Press Ctrl + Shift + Delete (Windows) or Cmd + Shift + Delete (Mac) and clear cached images and files.'
+        ],
+        proTip: 'Ensure your internet connection delivers at least 5 Mbps for HD video and 25 Mbps for 4K streaming.'
+      },
+      {
+        id: 'guide-2',
+        category: 'playback',
+        badge: 'Audio & Video',
+        title: 'Black Screen with Audio Playing (or Video with No Sound)',
+        symptom: 'You can hear the audio clearly but the video display is completely black, or video plays smoothly with no sound.',
+        cause: 'HTML5 video canvas decoding glitch, system mute setting, or Bluetooth output device conflict.',
+        steps: [
+          '<strong>Check Mute & Audio Output:</strong> Tap the player speaker icon to unmute. Confirm your device default audio output is correct.',
+          '<strong>Force Page Reload:</strong> Press Ctrl + F5 (Windows) or Cmd + Shift + R (Mac) to re-initialize video decoding contexts.',
+          '<strong>Update Browser Codecs:</strong> Ensure your browser is updated to the latest build supporting H.264 / AAC video standards.',
+          '<strong>On Smart TVs:</strong> Exit the TV web browser completely, clear browser data in TV settings, and relaunch sanyuhub.'
+        ],
+        proTip: 'Check whether a connected Bluetooth speaker or headphones caught system audio output.'
+      },
+      {
+        id: 'guide-3',
+        category: 'playback',
+        badge: 'Audio Sync',
+        title: 'Audio and Video Lip-Sync Desynchronization',
+        symptom: 'Sound plays a few seconds ahead of or behind the visible actor movements or live TV broadcast.',
+        cause: 'Temporary CPU processing lag or frame drops on mobile devices or lower-spec Smart TVs.',
+        steps: [
+          '<strong>Seek Backward:</strong> Tap the 10-second rewind button or Live Sync button to re-align audio and video clocks.',
+          '<strong>Close Background Apps:</strong> Close memory-heavy browser tabs or background applications to free up system RAM.',
+          '<strong>Restart Browser:</strong> Close and reopen the web browser tab to reset HTML5 MediaSource buffers.'
+        ],
+        proTip: 'On Android TV or TV sticks, restart the TV device to clear system memory.'
+      },
+      {
+        id: 'guide-4',
+        category: 'casting',
+        badge: 'Chromecast',
+        title: 'Chromecast or Android TV Device Not Found in Cast List',
+        symptom: 'Tapping the Cast button shows "No devices found" or Chromecast fails to connect.',
+        cause: 'Mobile or PC device is connected to a different Wi-Fi frequency band (e.g., 2.4GHz vs 5GHz) or router AP Isolation is enabled.',
+        steps: [
+          '<strong>Verify Same Wi-Fi:</strong> Ensure both your mobile phone/computer and Chromecast are connected to the exact same Wi-Fi network SSID.',
+          '<strong>Disable Router AP Isolation:</strong> Access your router admin panel and turn off "Access Point (AP) Isolation" or "Guest Mode Isolation".',
+          '<strong>Grant Local Network Access:</strong> On iOS, go to Settings -> Chrome -> enable "Local Network". On Chrome browser, allow Local Network permissions.',
+          '<strong>Power-Cycle Chromecast:</strong> Unplug power from Chromecast for 15 seconds, re-plug, and wait 1 minute before retrying.'
+        ],
+        proTip: 'You can also cast the entire browser tab by clicking Chrome Menu (3 dots) -> Cast -> Cast tab.'
+      },
+      {
+        id: 'guide-5',
+        category: 'casting',
+        badge: 'AirPlay',
+        title: 'Apple AirPlay Disconnects or Fails to Stream on Apple TV / Mac',
+        symptom: 'AirPlay mirror icon connects for a brief moment then drops back to your iPhone, iPad, or Mac screen.',
+        cause: 'iOS/macOS AirPlay handoff setting mismatch, Wi-Fi channel interference, or outdated Smart TV firmware.',
+        steps: [
+          '<strong>Enable Bluetooth & Wi-Fi:</strong> AirPlay discovery relies on both Bluetooth and Wi-Fi being active simultaneously.',
+          '<strong>Configure AirPlay Settings:</strong> On iPhone, go to Settings -> General -> AirPlay & Handoff -> set "Automatically AirPlay to TVs" to "Automatic".',
+          '<strong>Restart Apple TV / AirPlay TV:</strong> Restart your Apple TV or Smart TV from settings menu.',
+          '<strong>Verify TV Firmware:</strong> Check Smart TV settings for software updates and install pending OS updates.'
+        ],
+        proTip: 'Keep your iOS device within 15 feet of the AirPlay receiver during streaming.'
+      },
+      {
+        id: 'guide-6',
+        category: 'casting',
+        badge: 'Smart TV',
+        title: 'Smart TV Web Browser Displays Layout Distortion or Button Freezes',
+        symptom: 'On Samsung Tizen, LG webOS, or Hisense VIDAA TV browsers, text overlaps or full screen toggle fails.',
+        cause: 'Built-in Smart TV web browser memory overload or legacy browser layout engine.',
+        steps: [
+          '<strong>Clear TV Browser Cache:</strong> Open TV Browser Settings -> select "Clear Browsing Data" or "Clear Cache and Cookies".',
+          '<strong>Use Smart TV Route:</strong> Navigate to sanyuhub\'s dedicated Smart TV guide route (e.g. <code>/devices/samsung-smart-tv</code> or <code>/devices/lg-smart-tv</code>).',
+          '<strong>Hard Reset TV Memory:</strong> Hold the power button on your TV remote for 5 seconds until the TV logo appears to soft-reboot.'
+        ],
+        proTip: 'For the ultimate 4K TV streaming experience, use a dedicated Google Chromecast or Apple TV hardware dongle.'
+      },
+      {
+        id: 'guide-7',
+        category: 'account',
+        badge: 'Preferences',
+        title: 'Country or Language Preferences Reset Every Time You Close Browser',
+        symptom: 'Your chosen country, display language, or theme resets back to default upon opening a new tab.',
+        cause: 'Browser is running in Incognito / Private Browsing mode, or automatic LocalStorage clearing is active.',
+        steps: [
+          '<strong>Exit Incognito Mode:</strong> Open sanyuhub in a standard, non-private web browser window.',
+          '<strong>Adjust Cookie & Storage Settings:</strong> Go to Browser Settings -> Privacy & Security -> ensure "Clear cookies and site data when you close all windows" is disabled.',
+          '<strong>Allow Local Storage:</strong> Ensure sanyuhub is granted storage permissions in site settings.'
+        ],
+        proTip: 'If using security extensions like Privacy Badger or Brave Shields, add sanyuhub to your trusted site list.'
+      },
+      {
+        id: 'guide-8',
+        category: 'account',
+        badge: 'Security',
+        title: 'Session Timeout or Invalid Security Token Notice',
+        symptom: 'Screen displays "Session Expired" or "Invalid Token" error message while interacting with the platform.',
+        cause: 'Device system clock is out of sync, or local network IP address changed during session.',
+        steps: [
+          '<strong>Synchronize System Clock:</strong> Go to device System Settings -> Date & Time -> turn on "Set Time Automatically".',
+          '<strong>Refresh Browser Tab:</strong> Reload the page to receive a fresh TLS security handshake and session token.',
+          '<strong>Check VPN Connection:</strong> If switching VPN locations, refresh the tab after connecting.'
+        ],
+        proTip: 'Accurate device system time is strictly required for HTTPS/TLS encrypted security validation.'
+      },
+      {
+        id: 'guide-9',
+        category: 'mobile',
+        badge: 'PWA App',
+        title: 'How to Install sanyuhub Progressive Web App (PWA) on Mobile & Desktop',
+        symptom: 'User wants a fast, app-like fullscreen experience on Android or iPhone without app store downloads.',
+        cause: 'PWA installation is enabled directly through modern web browsers.',
+        steps: [
+          '<strong>On iPhone / iPad (Safari):</strong> Open sanyuhub in Safari -> tap the Share button at bottom -> scroll down and tap "Add to Home Screen" -> tap "Add".',
+          '<strong>On Android (Chrome):</strong> Open sanyuhub in Chrome -> tap 3 dots menu top-right -> tap "Install app" or "Add to Home screen" -> confirm installation.',
+          '<strong>On Windows / Mac / Chromebook:</strong> Look for the install icon in Chrome/Edge address bar (top right) and click "Install".'
+        ],
+        proTip: 'The installed sanyuhub PWA launches in standalone fullscreen without address bars and loads cached resources instantly!'
+      },
+      {
+        id: 'guide-10',
+        category: 'mobile',
+        badge: 'Touch UI',
+        title: 'Mobile Touchscreen Unresponsive or Accidental Zooming',
+        symptom: 'Tapping buttons on mobile screens takes multiple attempts or page zooms in unexpectedly.',
+        cause: 'Browser accessibility double-tap zoom enabled or viewport scaling mismatch.',
+        steps: [
+          '<strong>Disable Force Zoom:</strong> In mobile Chrome settings -> Accessibility -> turn off "Force enable zoom".',
+          '<strong>Use Single Taps:</strong> Perform quick, single-finger taps on navigation items.',
+          '<strong>Rotate Device:</strong> Switch between portrait and landscape orientation to reset touch target calculations.'
+        ],
+        proTip: 'Use sanyuhub\'s PWA standalone mode for optimized, native-feeling touch response.'
+      },
+      {
+        id: 'guide-11',
+        category: 'network',
+        badge: 'Connectivity',
+        title: 'Network Timeout (ERR_CONNECTION_TIMED_OUT) or CDN Connection Drops',
+        symptom: 'Page fails to load or media streams stop with connection timeout warnings.',
+        cause: 'Local ISP DNS failure, restrictive firewall rules, or VPN server routing bottlenecks.',
+        steps: [
+          '<strong>Verify Internet Access:</strong> Open another website to confirm active internet access.',
+          '<strong>Change DNS Servers:</strong> Set device DNS to Cloudflare Public DNS (1.1.1.1 / 1.0.0.1) or Google DNS (8.8.8.8 / 8.8.4.4).',
+          '<strong>Disable VPN Temporarily:</strong> Turn off active VPN apps to test if the VPN server is blocking media CDN traffic.',
+          '<strong>Restart Wi-Fi Router:</strong> Unplug router power for 30 seconds to refresh IP allocation.'
+        ],
+        proTip: 'Corporate and university Wi-Fi networks often block media streaming ports.'
+      },
+      {
+        id: 'guide-12',
+        category: 'browser',
+        badge: 'AdBlockers',
+        title: 'Ad-Blocker or Privacy Extension Blocking Stream Manifests (.m3u8)',
+        symptom: 'Video player shows "ERR_MEDIA_FORMAT" or stream fails to load on ad-block enabled browsers.',
+        cause: 'Overly aggressive ad-blocker filtering rules incorrectly flagging video stream segment requests.',
+        steps: [
+          '<strong>Pause Ad-Blocker on sanyuhub:</strong> Click your ad-blocker icon in the browser toolbar (e.g., uBlock Origin, AdGuard) and click "Pause on this site".',
+          '<strong>Whitelist sanyuhub Domain:</strong> Add sanyuhub to your extension\'s whitelist or allowed domains.',
+          '<strong>Refresh Page:</strong> Reload sanyuhub to allow HLS video chunk playlists to load properly.'
+        ],
+        proTip: 'sanyuhub does not deploy intrusive pop-up ads; whitelisting sanyuhub guarantees full media compatibility safely.'
+      },
+      {
+        id: 'guide-13',
+        category: 'country',
+        badge: 'Regional Access',
+        title: 'Live TV Channel or Movie Stream Not Available in Selected Country',
+        symptom: 'Guide displays "Stream Unavailable in Your Selected Country" notification.',
+        cause: 'Regional broadcasting boundaries or mismatched country setting in site preferences.',
+        steps: [
+          '<strong>Open Country Selector:</strong> Click the Country selector in header or footer.',
+          '<strong>Select Current Location:</strong> Search for and select your current geographical country.',
+          '<strong>If Traveling:</strong> Switch country selection to your home nation or current location to view local channels.'
+        ],
+        proTip: 'Your selected country preference is saved locally on your device for future visits.'
+      },
+      {
+        id: 'guide-14',
+        category: 'errors',
+        badge: 'Error Index',
+        title: 'System Error Codes Index & Instant Fixes',
+        symptom: 'The platform displays a specific alphanumeric error code banner.',
+        cause: 'System diagnostic codes for network, media codec, or session handshake events.',
+        steps: [
+          '<strong>ERR_NET_403 (Access Restricted):</strong> Check local network firewall or pause active VPN.',
+          '<strong>ERR_MEDIA_FORMAT (Codec Mismatch):</strong> Update browser to latest version or pause aggressive ad-blocker extensions.',
+          '<strong>ERR_SYNC_500 (Server Timeout):</strong> Refresh page after 10 seconds; sanyuhub edge nodes automatically failover.',
+          '<strong>PWA_INSTALL_FAIL (App Shortcut Error):</strong> Ensure you are using Safari on iOS or Chrome/Edge on Android/Desktop.'
+        ],
+        proTip: 'If an error persists after following these steps, visit our Contact Us page for direct assistance.'
+      }
+    ];
+
+    function renderHelpPage(currentPath = '/help') {
+      let rawSub = currentPath.startsWith('/help/') ? currentPath.replace('/help/', '').toLowerCase() : 'all';
+      if (!rawSub || rawSub === '/help') rawSub = 'all';
+      const activeSubpage = rawSub;
+
+      const filteredGuides = activeSubpage === 'all'
+        ? TROUBLESHOOTING_GUIDES
+        : TROUBLESHOOTING_GUIDES.filter(g => g.category === activeSubpage);
+
+      return `
+        <!-- Help Center Hero Section -->
+        <section class="section-story bg-dark hero-section">
+          <div class="badge-pill">Self-Service Help Center</div>
+          <h1 class="hero-title anim-zoom-in">Troubleshooting &amp; Solutions</h1>
+          <p class="body-lead anim-stagger-word">Find instant step-by-step solutions for any issue you might experience on sanyuhub across video playback, casting, mobile PWA setup, network connectivity, and browser settings without contacting support.</p>
+          ${renderConvexDivider('fill-card')}
+        </section>
+
+        <!-- Help Center Main Knowledgebase Section -->
+        <section class="section-story bg-card">
+          <div class="help-container">
+            <!-- Search Input Box -->
+            <div class="help-search-wrapper">
+              <div class="help-search-input-box">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+                <input type="text" id="helpSearchInput" class="help-search-input" placeholder="Search problems (e.g., buffering, black screen, Chromecast, AirPlay, PWA)..." aria-label="Search troubleshooting guides">
+              </div>
+            </div>
+
+            <!-- Subpage Tabs Navigation -->
+            <div class="help-subpage-tabs" role="tablist" aria-label="Troubleshooting Categories">
+              ${HELP_SUBPAGES.map(sub => {
+                const subRoute = sub.id === 'all' ? '/help' : `/help/${sub.id}`;
+                const isActive = (activeSubpage === sub.id) || (sub.id === 'all' && activeSubpage === '');
+                return `
+                  <a class="help-tab-btn ${isActive ? 'active' : ''}" href="${subRoute}" data-route="${subRoute}" role="tab" aria-selected="${isActive}">
+                    ${sub.icon}
+                    <span>${sub.title}</span>
+                  </a>
+                `;
+              }).join('')}
+            </div>
+
+            <!-- Troubleshooting Guides List -->
+            <div id="helpGuidesList" style="margin-top:20px;">
+              ${filteredGuides.length > 0 ? filteredGuides.map(guide => `
+                <div class="troubleshoot-card anim-zoom-in" data-guide-category="${guide.category}">
+                  <div class="troubleshoot-header">
+                    <h3 class="troubleshoot-title">${guide.title}</h3>
+                    <span class="troubleshoot-badge">${guide.badge}</span>
+                  </div>
+                  <div class="troubleshoot-symptom">
+                    <strong>Symptom:</strong> ${guide.symptom}
+                  </div>
+                  <div class="troubleshoot-cause">
+                    <strong>Possible Cause:</strong> ${guide.cause}
+                  </div>
+                  <div class="troubleshoot-steps-title">
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                    Step-by-Step Resolution Guide:
+                  </div>
+                  <ol class="troubleshoot-steps">
+                    ${guide.steps.map(step => `<li>${step}</li>`).join('')}
+                  </ol>
+                  <div class="troubleshoot-pro-tip">
+                    <strong>Proactive Tip:</strong> ${guide.proTip}
+                  </div>
+                </div>
+              `).join('') : `
+                <div class="troubleshoot-card" style="text-align:center; padding:32px;">
+                  <h3 class="troubleshoot-title">No Guides Found for This Section</h3>
+                  <p class="body-text" style="margin:12px auto;">Try switching to "All Guides &amp; Search" or clear your search query to explore other solutions.</p>
+                  <a class="btn-primary" href="/help" data-route="/help">View All Guides</a>
+                </div>
+              `}
+            </div>
+
+            <!-- Contact Us Callout Banner -->
+            <div class="help-contact-banner">
+              <h3>Still Need Further Assistance?</h3>
+              <p>If you've followed these self-service solutions and your issue persists, our support team is available to help.</p>
+              <a class="btn-primary" href="/contact" data-route="/contact" style="display:inline-flex; width:auto; padding:12px 28px;">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                Visit Contact Us Page
+              </a>
+            </div>
+
+          </div>
+          ${renderConvexDivider('fill-footer')}
+        </section>
+      `;
+    }
+
+    function setupHelpListeners() {
+      const searchInput = document.getElementById('helpSearchInput');
+      const guidesList = document.getElementById('helpGuidesList');
+
+      if (searchInput && guidesList) {
+        searchInput.addEventListener('input', (e) => {
+          const query = e.target.value.toLowerCase().trim();
+          const cards = guidesList.querySelectorAll('.troubleshoot-card');
+
+          cards.forEach(card => {
+            const text = card.textContent.toLowerCase();
+            if (!query || text.includes(query)) {
+              card.style.display = 'block';
+            } else {
+              card.style.display = 'none';
+            }
+          });
+        });
+      }
+    }
 
     // Comprehensive Worldwide Countries Dataset for Support Form
     const WORLD_COUNTRIES = [
@@ -3585,15 +4628,24 @@
       '/devices/roku': { titleKey: 'device.roku', type: 'device' },
       '/devices/android-tv-boxes': { titleKey: 'device.android_tv_boxes', type: 'device' },
       '/devices/compatible-cable-boxes': { titleKey: 'device.compatible_cable_boxes', type: 'device' },
-      '/about': { titleKey: 'page.about.title', type: 'generic', descKey: 'nav.about_desc' },
+      '/about': { titleKey: 'page.about.title', type: 'about' },
       '/blog': { titleKey: 'page.blog.title', type: 'generic', descKey: 'nav.blog_desc' },
       '/careers': { titleKey: 'page.careers.title', type: 'generic', descKey: 'nav.careers_desc' },
       '/partnerships': { titleKey: 'page.partnerships.title', type: 'generic', descKey: 'nav.partnerships_desc' },
-      '/help': { titleKey: 'contact.page_title', type: 'contact' },
-      '/contact': { titleKey: 'contact.page_title', type: 'contact' },
-      '/accessibility': { titleKey: 'page.accessibility.title', type: 'generic', descKey: 'nav.accessibility_desc' },
-      '/privacy': { titleKey: 'page.privacy.title', type: 'generic', descKey: 'nav.privacy_desc' },
-      '/terms': { titleKey: 'page.terms.title', type: 'generic', descKey: 'nav.terms_desc' }
+      '/help': { titleKey: 'page.help.title', type: 'help' },
+      '/help/all': { titleKey: 'page.help.title', type: 'help' },
+      '/help/playback': { titleKey: 'page.help.title', type: 'help' },
+      '/help/casting': { titleKey: 'page.help.title', type: 'help' },
+      '/help/account': { titleKey: 'page.help.title', type: 'help' },
+      '/help/mobile': { titleKey: 'page.help.title', type: 'help' },
+      '/help/network': { titleKey: 'page.help.title', type: 'help' },
+      '/help/browser': { titleKey: 'page.help.title', type: 'help' },
+      '/help/country': { titleKey: 'page.help.title', type: 'help' },
+      '/help/errors': { titleKey: 'page.help.title', type: 'help' },
+      '/contact': { titleKey: 'page.contact.title', type: 'contact' },
+      '/accessibility': { titleKey: 'page.accessibility.title', type: 'accessibility' },
+      '/privacy': { titleKey: 'page.privacy.title', type: 'privacy' },
+      '/terms': { titleKey: 'page.terms.title', type: 'terms' }
     };
 
     const menuToggle = document.getElementById('menuToggle');
@@ -3720,7 +4772,10 @@
         }
 
         const path = (rawPath !== '/' && rawPath.endsWith('/')) ? rawPath.slice(0, -1) : (rawPath || '/');
-        const routeInfo = ROUTES[path];
+        let routeInfo = ROUTES[path];
+        if (!routeInfo && path.startsWith('/help')) {
+          routeInfo = { titleKey: 'page.help.title', type: 'help' };
+        }
 
         document.querySelectorAll('.device.selected, .category-button.selected').forEach(el => el.classList.remove('selected'));
 
@@ -3739,6 +4794,17 @@
               } else if (routeInfo.type === 'contact') {
                 workspace.innerHTML = renderContactPage();
                 setupContactListeners();
+              } else if (routeInfo.type === 'help') {
+                workspace.innerHTML = renderHelpPage(path);
+                setupHelpListeners();
+              } else if (routeInfo.type === 'about') {
+                workspace.innerHTML = renderAboutPage();
+              } else if (routeInfo.type === 'terms') {
+                workspace.innerHTML = renderTermsPage();
+              } else if (routeInfo.type === 'privacy') {
+                workspace.innerHTML = renderPrivacyPage();
+              } else if (routeInfo.type === 'accessibility') {
+                workspace.innerHTML = renderAccessibilityPage();
               } else if (routeInfo.type === 'device') {
                 const devDetails = DEVICE_DETAILS[path] || DEVICE_DETAILS['/devices/website'];
                 workspace.innerHTML = renderDevicePage(path, devDetails);
