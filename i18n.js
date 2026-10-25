@@ -2,6 +2,17 @@
   'use strict';
 
   const COMMON_KEYS = {
+    'home.hero_badge': {
+      en: 'Universal Ecosystem',
+      lg: 'Ebyuma Byonna',
+      lus: 'Ebyuma Byona',
+      sw: 'Mfumo Wote Wa Vifaa',
+      fr: 'Écosystème Universel',
+      ar: 'منظومة شاملة',
+      pt: 'Ecossistema Universal',
+      es: 'Ecosistema Universal',
+      hi: 'सार्वभौमिक पारिस्थितिकी तंत्र'
+    },
     'home.hero_title': {
       en: 'Your world, connected.',
       lg: 'Ensi yo, egattiddwa.',
@@ -12,6 +23,182 @@
       pt: 'Seu mundo, conectado.',
       es: 'Tu mundo, conectado.',
       hi: 'आपकी दुनिया, जुड़ी हुई।'
+    },
+    'about.hero_title': {
+      en: 'Connecting Media, Entertainment & Devices Worldwide',
+      lg: 'Okugatta Emikutu, Ekisanyuzo n\'Ebyuma Mu Nsi Yonna',
+      lus: 'Okugaita Emikutu, Ekisanyuzo n\'Ebyuma Mu Eisialo Lyona',
+      sw: 'Kuunganisha Vyombo vya Habari, Burudani na Vifaa Duniani Kote',
+      fr: 'Connecter les médias, le divertissement et les appareils dans le monde entier',
+      ar: 'ربط الوسائط والترفيه والأجهزة في جميع أنحاء العالم',
+      pt: 'Conectando mídia, entretenimento e dispositivos em todo o mundo',
+      es: 'Conectando medios, entretenimiento y dispositivos en todo el mundo',
+      hi: 'दुनिया भर में मीडिया, मनोरंजन और उपकरणों को जोड़ना'
+    },
+    'about.hero_lead': {
+      en: 'sanyuhub is a browser-first digital entertainment platform engineered to bring seamless playback of movies, live TV, music, and concerts to every screen without forced native app installations.',
+      lg: 'sanyuhub kyiko ky\'omulembe ekigatta firimu, TV, oyimba n\'amasanyu ku buli skuleeni nga tewali kupakira pulogulaamu.',
+      lus: 'sanyuhub kifo ky\'omulembe ekigaita firimu, TV, oyimba n\'amasanyu ku buli skuleeni nga tewali kupakira pulogulaamu.',
+      sw: 'sanyuhub ni jukwaa la kidijitali linaloleta filamu, TV, muziki na tamasha kwenye kila skrini bila kulazimisha kupakua programu.',
+      fr: 'sanyuhub est une plateforme de divertissement numérique conçue pour offrir une lecture fluide de films, TV en direct, musique et concerts sur chaque écran sans installation.',
+      ar: 'sanyuhub هي منصة ترفيهية رقمية مصممة لتوفير تشغيل سلس للأفلام والبث المباشر والموسيقى والحفلات على كل شاشة دون تثبيت تطبيقات.',
+      pt: 'O sanyuhub é uma plataforma de entretenimento digital projetada para oferecer reprodução de filmes, TV ao vivo, música e shows em qualquer tela sem instalações.',
+      es: 'sanyuhub es una plataforma de entretenimiento digital diseñada para ofrecer reproducción fluida de películas, TV en vivo, música y conciertos en cualquier pantalla sin instalaciones.',
+      hi: 'sanyuhub एक डिजिटल मनोरंजन प्लेटफॉर्म है जो बिना ऐप इंस्टॉल किए हर स्क्रीन पर फिल्में, लाइव टीवी, संगीत और संगीत कार्यक्रम लाता है।'
+    },
+    'terms.hero_title': {
+      en: 'Terms of Service',
+      lg: 'Emateeka n\'Ebikwata ku Kukoresa',
+      lus: 'Ebibikiro by\'Okozesa',
+      sw: 'Vigezo na Masharti ya Huduma',
+      fr: 'Conditions d\'utilisation',
+      ar: 'شروط الخدمة',
+      pt: 'Termos de Serviço',
+      es: 'Términos del Servicio',
+      hi: 'सेवा की शर्तें'
+    },
+    'terms.hero_lead': {
+      en: 'Please review these Terms of Service ("Terms") carefully before using sanyuhub web applications, device portals, or connected media services.',
+      lg: 'Soma emateeka gano n\'obwegendereza obukulu nga tonnakoresa emikutu gya sanyuhub.',
+      lus: 'Soma emateeka gano n\'obwegendereza obukulu nga tonnakozesa emikutu gya sanyuhub.',
+      sw: 'Tafadhali kagua Vigezo hivi vya Huduma kwa makini kabla ya kutumia huduma za sanyuhub.',
+      fr: 'Veuillez lire attentivement ces conditions d\'utilisation avant d\'utiliser les services web sanyuhub.',
+      ar: 'يرجى مراجعة شروط الخدمة هذه بعناية قبل استخدام تطبيقات ومواقع sanyuhub.',
+      pt: 'Por favor, leia estes Termos de Serviço cuidadosamente antes de usar os serviços do sanyuhub.',
+      es: 'Por favor, revisa estos Términos de Servicio detenidamente antes de usar los servicios de sanyuhub.',
+      hi: 'कृपया sanyuhub वेब सेवाओं का उपयोग करने से पहले इन सेवा शर्तों को ध्यान से पढ़ें।'
+    },
+    'privacy.hero_title': {
+      en: 'Privacy Policy',
+      lg: 'Nkola y\'Ekyama',
+      lus: 'Eisaza ly\'Ekiyama',
+      sw: 'Sera ya Faragha',
+      fr: 'Politique de confidentialité',
+      ar: 'سياسة الخصوصية',
+      pt: 'Política de Privacidade',
+      es: 'Política de Privacidad',
+      hi: 'गोपनीयता नीति'
+    },
+    'privacy.hero_lead': {
+      en: 'Learn how sanyuhub collects, protects, utilizes, and respects user data, local browser preferences, and digital privacy across all connected device experiences.',
+      lg: 'Soma engeri sanyuhub gyeekuuma ekyama n\'ebyfayo eby\'ebyuma byo.',
+      lus: 'Soma engeri sanyuhub gyeekuuma ekyama n\'ebyfayo eby\'ebyuma byo.',
+      sw: 'Jifunze jinsi sanyuhub inavyokusanya, kulinda na kuheshimu faragha ya data ya watumiaji kwenye vifaa vyote.',
+      fr: 'Découvrez comment sanyuhub protège, utilise et respecte les données des utilisateurs et la vie privée numérique.',
+      ar: 'تعرف على كيفية جمع sanyuhub لبيانات المستخدم وحمايتها واحترام الخصوصية الرقمية عبر جميع الأجهزة.',
+      pt: 'Saiba como o sanyuhub coleta, protege e respeita os dados do usuário e a privacidade digital em todos os dispositivos.',
+      es: 'Aprende cómo sanyuhub recopila, protege y respeta los datos de los usuarios y la privacidad digital en todos los dispositivos.',
+      hi: 'जानें कि sanyuhub उपयोगकर्ता के डेटा और डिजिटल गोपनीयता की रक्षा कैसे करता है।'
+    },
+    'accessibility.hero_title': {
+      en: 'Accessibility Statement',
+      lg: 'Ekiwandiiko kyo\'Lukusa lwa Buli Muntu',
+      lus: 'Ekiwandiiko kyo\'Empereza ya Buli Muntu',
+      sw: 'Taarifa ya Ufikiaji',
+      fr: 'Déclaration d\'accessibilité',
+      ar: 'بيان إمكانية الوصول',
+      pt: 'Declaração de Acessibilidade',
+      es: 'Declaración de Accesibilidad',
+      hi: 'सुगम्यता विवरण'
+    },
+    'accessibility.hero_lead': {
+      en: 'sanyuhub is committed to ensuring digital accessibility for all users, including individuals with visual, hearing, motor, or cognitive impairments.',
+      lg: 'sanyuhub eweebwa kukuuma obukuumi bw\'omukutu ku buli muntu.',
+      lus: 'sanyuhub eweebwa kukuuma obukuumi bw\'omukutu ku buli muntu.',
+      sw: 'sanyuhub imejitolea kuhakikisha ufikiaji wa kidijitali kwa watumiaji wote.',
+      fr: 'sanyuhub s\'engage à garantir l\'accessibilité numérique à tous les utilisateurs.',
+      ar: 'تلتزم sanyuhub بضمان إمكانية الوصول الرقمي لجميع المستخدمين.',
+      pt: 'O sanyuhub está comprometido em garantir acessibilidade digital para todos os usuários.',
+      es: 'sanyuhub se compromete a garantizar la accesibilidad digital para todos los usuarios.',
+      hi: 'sanyuhub सभी उपयोगकर्ताओं के लिए डिजिटल पहुंच सुनिश्चित करने के लिए प्रतिबद्ध है।'
+    },
+    'help.hero_title': {
+      en: 'Troubleshooting & Solutions',
+      lg: 'Okugolola Obuzibu & Obuyambi',
+      lus: 'Okugolola Obuzibu & Obuyambi',
+      sw: 'Utatuzi wa Matatizo na Majibu',
+      fr: 'Dépannage & Solutions',
+      ar: 'استكشاف الأخطاء وإصلاحها',
+      pt: 'Solução de Problemas & Respostas',
+      es: 'Solución de Problemas y Respuestas',
+      hi: 'समस्या निवारण और समाधान'
+    },
+    'help.hero_lead': {
+      en: 'Find instant step-by-step solutions for any issue you might experience on sanyuhub across video playback, casting, mobile PWA setup, network connectivity, and browser settings without contacting support.',
+      lg: 'Laba obuyambi obw\'amangu ku buzibu bw\'omukutu, okwolesa ku TV, n\'amasimu gyo.',
+      lus: 'Laba obuyambi obw\'amangu ku buzibu bw\'omukutu, okwolesa ku TV, n\'emasimu gyo.',
+      sw: 'Pata miongozo ya haraka ya kutatua changamoto za video, casting, PWA ya simu na mtandao.',
+      fr: 'Trouvez des solutions instantanées étape par étape pour la lecture vidéo, le casting et la connexion réseau.',
+      ar: 'اعثر على حلول خطوة بخطوة لأي مشكلة في تشغيل الفيديو والبث وتكاد إعدادات الشبكة.',
+      pt: 'Encontre soluções passo a passo instantâneas para reprodução de vídeo, transmissão e rede.',
+      es: 'Encuentra soluciones paso a paso instantáneas para reproducción de video, transmisión y red.',
+      hi: 'वीडियो प्लेबैक, कास्टिंग और नेटवर्क के लिए त्वरित चरण-दर-चरण समाधान खोजें।'
+    },
+    'device.supported_devices': {
+      en: 'Supported Devices',
+      lg: 'Ebyuma Bisoboka',
+      lus: 'Ebyuma Bisoboka',
+      sw: 'Vifaa Vinavyoungwa Mkono',
+      fr: 'Appareils pris en charge',
+      ar: 'الأجهزة المدعومة',
+      pt: 'Dispositivos Suportados',
+      es: 'Dispositivos Compatibles',
+      hi: 'समर्थित उपकरण'
+    },
+    'device.system_req': {
+      en: 'System Requirements & Prerequisites',
+      lg: 'Ebisaanyizo by\'Ekyuma',
+      lus: 'Ebisaanyizo by\'Ekyuma',
+      sw: 'Mahitaji ya Mfumo',
+      fr: 'Configuration requise',
+      ar: 'متطلبات النظام',
+      pt: 'Requisitos do Sistema',
+      es: 'Requisitos del Sistema',
+      hi: 'सिस्टम आवश्यकताएं'
+    },
+    'device.installation_guide': {
+      en: 'Step-by-Step Installation',
+      lg: 'Eby\'Okukola Omutwe ku Mutwe',
+      lus: 'Eby\'Okukola Omutwe ku Mutwe',
+      sw: 'Mwongozo wa Hatua kwa Hatua',
+      fr: 'Instructions étape par étape',
+      ar: 'دليل التثبيت خطوة بخطوة',
+      pt: 'Guia Passo a Passo',
+      es: 'Guía Paso a Passo',
+      hi: 'चरण-दर-चरण गाइड'
+    },
+    'device.configuration_support': {
+      en: 'Configuration & Support',
+      lg: 'Okuteresaza & Obuyambi',
+      lus: 'Okuteresaza & Obuyambi',
+      sw: 'Uwekaji Mipangilio na Msaada',
+      fr: 'Configuration & Support',
+      ar: 'التهيئة والدعم',
+      pt: 'Configuração & Suporte',
+      es: 'Configuración y Soporte',
+      hi: 'कॉन्फ़िगरेशन और सहायता'
+    },
+    'device.faqs': {
+      en: 'Frequently Asked Questions',
+      lg: 'Ebibuuzo Ebibuuzibwa Ennyo',
+      lus: 'Ebibuuzo Ebibuuzibwa Ennyo',
+      sw: 'Maswali Yanayoulizwa Mara Kwa Mara',
+      fr: 'Foire Aux Questions',
+      ar: 'الأسئلة الشائعة',
+      pt: 'Perguntas Frequentes',
+      es: 'Preguntas Frecuentes',
+      hi: 'अक्सर पूछे जाने वाले प्रश्न'
+    },
+    'device.explore_other': {
+      en: 'Explore Other Devices',
+      lg: 'Laba Ebyuma Ebirala',
+      lus: 'Laba Ebyuma Ebirala',
+      sw: 'Chunguza Vifaa Vingine',
+      fr: 'Explorer d\'autres appareils',
+      ar: 'استكشف أجهزة أخرى',
+      pt: 'Explorar Outros Dispositivos',
+      es: 'Explorar Otros Dispositivos',
+      hi: 'अन्य डिवाइस एक्सप्लोर करें'
     },
     'home.hero_lead': {
       en: 'sanyuhub seamlessly connects your smartphone, computer, smart TV, and streaming devices in one elegant experience.',
