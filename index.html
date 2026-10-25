@@ -3043,9 +3043,9 @@
       return `
         <!-- About Hero Section -->
         <section class="section-story bg-dark hero-section">
-          <div class="badge-pill">About sanyuhub</div>
-          <h1 class="hero-title anim-zoom-in">Connecting Media, Entertainment &amp; Devices Worldwide</h1>
-          <p class="body-lead anim-stagger-word">sanyuhub is a browser-first digital entertainment platform engineered to bring seamless playback of movies, live TV, music, and concerts to every screen without forced native app installations.</p>
+          <div class="badge-pill">${t('nav.about', 'About sanyuhub')}</div>
+          <h1 class="hero-title anim-zoom-in">${t('about.hero_title', 'Connecting Media, Entertainment & Devices Worldwide')}</h1>
+          <p class="body-lead anim-stagger-word">${t('about.hero_lead', 'sanyuhub is a browser-first digital entertainment platform engineered to bring seamless playback of movies, live TV, music, and concerts to every screen without forced native app installations.')}</p>
 
           <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap; margin-top:16px;">
             <a class="btn-primary" href="/" data-route="/">
@@ -3053,7 +3053,7 @@
               ${t('home.btn_launch', 'Explore Web Client')}
             </a>
             <a class="btn-secondary" href="/devices/website" data-route="/devices/website">
-              Supported Devices
+              ${t('device.supported_devices', 'Supported Devices')}
             </a>
           </div>
           ${renderConvexDivider('fill-card')}
@@ -3067,28 +3067,28 @@
             <p class="body-text anim-blur-focus">At sanyuhub, we believe media access should be instantaneous, open, and accessible to everyone regardless of operating system, hardware budget, or regional location.</p>
 
             <div class="category-grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); margin: 24px 0;">
-              <div class="step-card">
+              <div class="step-card anim-slide-left">
                 <div class="step-number">1</div>
                 <div class="step-content">
                   <h4>Zero Forced App Installs</h4>
                   <p>Operates directly within standard HTML5 browsers across iOS, Android, Smart TVs, desktop platforms, and set-top boxes without mandatory app store downloads.</p>
                 </div>
               </div>
-              <div class="step-card">
+              <div class="step-card anim-slide-right">
                 <div class="step-number">2</div>
                 <div class="step-content">
                   <h4>Universal Device Coverage</h4>
                   <p>Engineered for low latency and smooth responsive UI whether on budget smartphones, 4K Smart TVs, or desktop workstations.</p>
                 </div>
               </div>
-              <div class="step-card">
+              <div class="step-card anim-slide-left">
                 <div class="step-number">3</div>
                 <div class="step-content">
                   <h4>Multi-Language Localization</h4>
                   <p>Native localized navigation and content discovery across Luganda, Lusoga, Swahili, French, Arabic, Portuguese, Spanish, Hindi, and English.</p>
                 </div>
               </div>
-              <div class="step-card">
+              <div class="step-card anim-slide-right">
                 <div class="step-number">4</div>
                 <div class="step-content">
                   <h4>Privacy-First Architecture</h4>
@@ -3098,7 +3098,7 @@
             </div>
 
             <!-- Platform Architecture Breakdown -->
-            <div class="legal-section" style="margin-top: 32px;">
+            <div class="legal-section anim-slide-left" style="margin-top: 32px;">
               <h2><span class="legal-section-num">1</span> Platform Ecosystem &amp; Entertainment Categories</h2>
               <p>sanyuhub organizes digital entertainment into four distinct, connected content hubs designed for intuitive navigation:</p>
               <ul>
@@ -3109,7 +3109,7 @@
               </ul>
             </div>
 
-            <div class="legal-section">
+            <div class="legal-section anim-slide-right">
               <h2><span class="legal-section-num">2</span> Modern Web Standards &amp; Edge Delivery</h2>
               <p>sanyuhub utilizes progressive web technology to deliver performance that rivals native software:</p>
               <ul>
@@ -3133,8 +3133,8 @@
         <!-- Terms Hero Section -->
         <section class="section-story bg-dark hero-section">
           <div class="badge-pill">Legal Framework</div>
-          <h1 class="hero-title anim-zoom-in">Terms of Service</h1>
-          <p class="body-lead anim-stagger-word">Please review these Terms of Service ("Terms") carefully before using sanyuhub web applications, device portals, or connected media services.</p>
+          <h1 class="hero-title anim-zoom-in">${t('terms.hero_title', 'Terms of Service')}</h1>
+          <p class="body-lead anim-stagger-word">${t('terms.hero_lead', 'Please review these Terms of Service ("Terms") carefully before using sanyuhub web applications, device portals, or connected media services.')}</p>
           ${renderConvexDivider('fill-card')}
         </section>
 
@@ -3257,8 +3257,8 @@
         <!-- Privacy Hero Section -->
         <section class="section-story bg-dark hero-section">
           <div class="badge-pill">Data Protection</div>
-          <h1 class="hero-title anim-zoom-in">Privacy Policy</h1>
-          <p class="body-lead anim-stagger-word">Learn how sanyuhub collects, protects, utilizes, and respects user data, local browser preferences, and digital privacy across all connected device experiences.</p>
+          <h1 class="hero-title anim-zoom-in">${t('privacy.hero_title', 'Privacy Policy')}</h1>
+          <p class="body-lead anim-stagger-word">${t('privacy.hero_lead', 'Learn how sanyuhub collects, protects, utilizes, and respects user data, local browser preferences, and digital privacy across all connected device experiences.')}</p>
           ${renderConvexDivider('fill-card')}
         </section>
 
@@ -3388,8 +3388,8 @@
         <!-- Accessibility Hero Section -->
         <section class="section-story bg-dark hero-section">
           <div class="badge-pill">Universal Design</div>
-          <h1 class="hero-title anim-zoom-in">Accessibility Statement</h1>
-          <p class="body-lead anim-stagger-word">sanyuhub is committed to ensuring digital accessibility for all users, including individuals with visual, hearing, motor, or cognitive impairments.</p>
+          <h1 class="hero-title anim-zoom-in">${t('accessibility.hero_title', 'Accessibility Statement')}</h1>
+          <p class="body-lead anim-stagger-word">${t('accessibility.hero_lead', 'sanyuhub is committed to ensuring digital accessibility for all users, including individuals with visual, hearing, motor, or cognitive impairments.')}</p>
           ${renderConvexDivider('fill-card')}
         </section>
 
@@ -3513,7 +3513,7 @@
         <!-- System Requirements Section -->
         <section class="section-story bg-card">
           <div class="badge-pill">Compatibility</div>
-          <h2 class="section-title anim-zoom-in">System Requirements & Prerequisites</h2>
+          <h2 class="section-title anim-zoom-in">${t('device.system_req', 'System Requirements & Prerequisites')}</h2>
 
           <div class="spec-box anim-blur-focus">
             ${(details.requirements || []).map(sp => `
@@ -3530,7 +3530,7 @@
         <section class="section-story bg-surface pinned-container">
           <div class="pinned-headline">
             <div class="badge-pill">Installation Guide</div>
-            <h2 class="section-title anim-zoom-out">Step-by-Step Installation</h2>
+            <h2 class="section-title anim-zoom-out">${t('device.installation_guide', 'Step-by-Step Installation')}</h2>
           </div>
 
           <div class="steps-container">
@@ -3550,7 +3550,7 @@
         <!-- Initial Setup & Troubleshooting -->
         <section class="section-story bg-card">
           <div class="badge-pill">Setup & Troubleshooting</div>
-          <h2 class="section-title anim-zoom-in">Configuration & Support</h2>
+          <h2 class="section-title anim-zoom-in">${t('device.configuration_support', 'Configuration & Support')}</h2>
 
           ${details.setup ? `
             <div class="guide-card anim-slide-left">
@@ -3587,7 +3587,7 @@
         <!-- Device FAQs -->
         <section class="section-story bg-surface">
           <div class="badge-pill">Device FAQs</div>
-          <h2 class="section-title anim-zoom-in">Frequently Asked Questions</h2>
+          <h2 class="section-title anim-zoom-in">${t('device.faqs', 'Frequently Asked Questions')}</h2>
 
           <div class="steps-container">
             ${faqs.map((faq, idx) => `
@@ -3604,7 +3604,7 @@
 
         <!-- Related Links -->
         <section class="section-story bg-dark">
-          <h2 class="section-title anim-zoom-in">Explore Other Devices</h2>
+          <h2 class="section-title anim-zoom-in">${t('device.explore_other', 'Explore Other Devices')}</h2>
           <p class="body-lead anim-blur-focus">Check setup guides for your smartphones, smart TVs, or desktop systems.</p>
           <div style="display:flex; gap:12px; flex-wrap:wrap; justify-content:center; width:100%; max-width:380px;">
             <a class="btn-secondary" href="/devices/website" data-route="/devices/website" style="flex:1; min-width:140px;">Web Client</a>
@@ -3615,7 +3615,75 @@
       `;
     }
 
+    function renderGenericPage(titleKey, fallbackTitle, descKey, fallbackDesc) {
+      const pageTitle = t(titleKey, fallbackTitle);
+      const pageDesc = t(descKey, fallbackDesc);
 
+      return `
+        <!-- Generic Hero Section -->
+        <section class="section-story bg-dark hero-section">
+          <div class="badge-pill">sanyuhub</div>
+          <h1 class="hero-title anim-zoom-in">${pageTitle}</h1>
+          <p class="body-lead anim-stagger-word">${pageDesc}</p>
+
+          <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap; margin-top:16px;">
+            <a class="btn-primary" href="/" data-route="/">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+              ${t('nav.back_home', 'Return to Home')}
+            </a>
+            <a class="btn-secondary" href="/devices/website" data-route="/devices/website">
+              ${t('home.btn_launch', 'Explore Web Client')}
+            </a>
+          </div>
+          ${renderConvexDivider('fill-card')}
+        </section>
+
+        <!-- Overview Content Section -->
+        <section class="section-story bg-card">
+          <div class="badge-pill">Information</div>
+          <h2 class="section-title anim-zoom-in">${pageTitle}</h2>
+          <p class="body-text anim-blur-focus">${pageDesc}</p>
+
+          <div class="steps-container" style="margin-top:24px;">
+            <div class="step-card anim-slide-left">
+              <div class="step-number">1</div>
+              <div class="step-content">
+                <h4>Unified Ecosystem Access</h4>
+                <p>sanyuhub provides seamless cross-device compatibility across mobile, desktop, smart TVs, and streaming players without forced software downloads.</p>
+              </div>
+            </div>
+
+            <div class="step-card anim-slide-right">
+              <div class="step-number">2</div>
+              <div class="step-content">
+                <h4>Global Multi-Language Support</h4>
+                <p>Localized interface and support guides available in Luganda, Lusoga, Swahili, French, Arabic, Portuguese, Spanish, Hindi, and English.</p>
+              </div>
+            </div>
+
+            <div class="step-card anim-slide-left">
+              <div class="step-number">3</div>
+              <div class="step-content">
+                <h4>Privacy & Performance First</h4>
+                <p>Fast progressive web technology with local storage preference persistence, zero invasive tracking cookies, and TLS 1.3 encryption.</p>
+              </div>
+            </div>
+          </div>
+          ${renderConcaveDivider('fill-surface')}
+        </section>
+
+        <!-- Call to Action Section -->
+        <section class="section-story bg-surface">
+          <h2 class="hero-title anim-zoom-in">${t('home.cta_title', 'Ready to connect?')}</h2>
+          <p class="body-lead anim-stagger-word">${t('home.cta_lead', 'Launch the sanyuhub web client now and experience seamless device integration.')}</p>
+          <a class="btn-primary" href="/" data-route="/">
+            ${t('nav.back_home', 'Return to Home')}
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+          ${renderConvexDivider('fill-footer')}
+        </section>
+      `;
+    }
 
     const HELP_SUBPAGES = [
       { id: 'all', title: 'All Guides & Search', icon: `<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>` },
@@ -4247,7 +4315,7 @@
 
           <div class="support-category-list">
             ${SUPPORT_CATEGORIES.map((cat, idx) => `
-              <button class="support-cat-item ${contactState.selectedCategoryIndex === idx ? 'active' : ''}" data-cat-idx="${idx}" type="button">
+              <button class="support-cat-item ${idx % 2 === 0 ? 'anim-slide-left' : 'anim-slide-right'} ${contactState.selectedCategoryIndex === idx ? 'active' : ''}" data-cat-idx="${idx}" type="button">
                 <div class="support-cat-icon" aria-hidden="true">${cat.icon}</div>
                 <div class="support-cat-content">
                   <div class="support-cat-title">
