@@ -184,6 +184,42 @@ button[aria-disabled="true"],
   box-shadow: none !important;
 }
 
+/* UI Overlay & Interactive Component Transitions */
+.backdrop {
+  transition: opacity 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              backdrop-filter 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, backdrop-filter;
+}
+
+.country-modal-backdrop {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.country-modal-backdrop.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.country-modal {
+  transform: translateY(12px) scale(0.96);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.country-modal-backdrop.open .country-modal {
+  transform: translateY(0) scale(1);
+}
+
+.category .devices {
+  transition: max-height 0.25s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.2s ease;
+}
+
+.toggle-symbol {
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.category.open .toggle-symbol {
+  transform: rotate(180deg);
+}
+
 /* Reduced Motion Preference */
 @media (prefers-reduced-motion: reduce) {
   .anim-section-rise,
