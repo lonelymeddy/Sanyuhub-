@@ -1131,6 +1131,379 @@
       color: var(--muted);
     }
 
+    /* Admin Panel & Interactive Action Styles */
+    .btn-state-loading {
+      background: #495057 !important;
+      color: #e9ecef !important;
+      opacity: 0.88;
+      cursor: wait !important;
+      transform: scale(0.98) !important;
+    }
+    .btn-state-success {
+      background: #2b8a3e !important;
+      color: #ffffff !important;
+      border-color: #2b8a3e !important;
+      transition: all 0.2s ease;
+    }
+    .btn-state-error {
+      background: #c92a2a !important;
+      color: #ffffff !important;
+      border-color: #c92a2a !important;
+      transition: all 0.2s ease;
+    }
+    @keyframes spin {
+      100% { transform: rotate(360deg); }
+    }
+
+    .admin-subpage-tabs {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding-bottom: 10px;
+      margin-bottom: 24px;
+      scrollbar-width: thin;
+      scrollbar-color: var(--color-border) transparent;
+    }
+    .admin-tab-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 18px;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--card-border);
+      color: var(--color-text-secondary);
+      font-size: 13.5px;
+      font-weight: 600;
+      white-space: nowrap;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .admin-tab-btn:hover {
+      background: rgba(255, 255, 255, 0.1);
+      color: #ffffff;
+      border-color: rgba(255, 212, 59, 0.4);
+    }
+    .admin-tab-btn.active {
+      background: var(--color-accent);
+      color: #0b0c0f;
+      border-color: var(--color-accent);
+      font-weight: 700;
+    }
+
+    .admin-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 20px;
+      margin-bottom: 20px;
+      transition: border-color 0.2s ease;
+    }
+    .admin-card:hover {
+      border-color: rgba(255, 212, 59, 0.3);
+    }
+    .admin-user-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+    .admin-avatar {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: rgba(255, 212, 59, 0.18);
+      color: var(--color-accent);
+      display: grid;
+      place-items: center;
+      font-weight: 700;
+      font-size: 15px;
+      border: 1px solid rgba(255, 212, 59, 0.4);
+      flex-shrink: 0;
+    }
+    .admin-user-info {
+      flex: 1;
+      min-width: 0;
+    }
+    .admin-user-info h4 {
+      margin: 0 0 2px;
+      font-size: 16px;
+      color: #ffffff;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .admin-user-info p {
+      margin: 0;
+      font-size: 13px;
+      color: var(--muted);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .status-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 14px;
+    }
+    .status-tag {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      padding: 3px 8px;
+      border-radius: 6px;
+    }
+    .tag-validated { background: rgba(43, 138, 62, 0.2); color: #51cf66; border: 1px solid rgba(43, 138, 62, 0.4); }
+    .tag-pending { background: rgba(232, 89, 12, 0.2); color: #ffa94d; border: 1px solid rgba(232, 89, 12, 0.4); }
+    .tag-rejected { background: rgba(201, 42, 42, 0.2); color: #ff8787; border: 1px solid rgba(201, 42, 42, 0.4); }
+    .tag-verified { background: rgba(24, 100, 171, 0.2); color: #74c0fc; border: 1px solid rgba(24, 100, 171, 0.4); }
+    .tag-unverified { background: rgba(134, 142, 150, 0.2); color: #ced4da; border: 1px solid rgba(134, 142, 150, 0.4); }
+    .tag-role { background: rgba(255, 212, 59, 0.15); color: #ffd43b; border: 1px solid rgba(255, 212, 59, 0.35); }
+    .tag-suspended { background: rgba(224, 49, 49, 0.3); color: #ff6b6b; border: 1px solid #e03131; }
+
+    .admin-actions-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+      margin-top: 12px;
+      padding-top: 12px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .btn-admin-action {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 8px 12px;
+      border-radius: 8px;
+      font-size: 12.5px;
+      font-weight: 600;
+      cursor: pointer;
+      border: 1px solid transparent;
+      transition: all 0.15s ease;
+      color: #ffffff;
+      background: rgba(255, 255, 255, 0.08);
+    }
+    .btn-admin-action:hover {
+      background: rgba(255, 255, 255, 0.15);
+    }
+    .btn-admin-approve { background: rgba(43, 138, 62, 0.25); border-color: rgba(43, 138, 62, 0.5); color: #69db7c; }
+    .btn-admin-approve:hover { background: rgba(43, 138, 62, 0.4); }
+    .btn-admin-reject { background: rgba(201, 42, 42, 0.2); border-color: rgba(201, 42, 42, 0.4); color: #ffa8a8; }
+    .btn-admin-reject:hover { background: rgba(201, 42, 42, 0.35); }
+    .btn-admin-verify { background: rgba(24, 100, 171, 0.25); border-color: rgba(24, 100, 171, 0.5); color: #91a7ff; }
+    .btn-admin-verify:hover { background: rgba(24, 100, 171, 0.4); }
+    .btn-admin-revoke { background: rgba(134, 142, 150, 0.2); border-color: rgba(134, 142, 150, 0.4); color: #dee2e6; }
+    .btn-admin-revoke:hover { background: rgba(134, 142, 150, 0.35); }
+    .btn-admin-promote { background: rgba(255, 212, 59, 0.15); border-color: rgba(255, 212, 59, 0.4); color: #ffe066; }
+    .btn-admin-promote:hover { background: rgba(255, 212, 59, 0.3); }
+    .btn-admin-delete { background: rgba(224, 49, 49, 0.2); border-color: rgba(224, 49, 49, 0.5); color: #ff8787; margin-left: auto; }
+    .btn-admin-delete:hover { background: rgba(224, 49, 49, 0.4); }
+
+    .role-select-compact {
+      background: #1a1c23;
+      color: #ffffff;
+      border: 1px solid var(--card-border);
+      border-radius: 6px;
+      padding: 6px 8px;
+      font-size: 12px;
+      cursor: pointer;
+    }
+
+    /* Modal Dialog */
+    .admin-modal-backdrop {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.75);
+      backdrop-filter: blur(4px);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+    }
+    .admin-modal-backdrop.open {
+      display: flex;
+    }
+    .admin-modal {
+      background: #1a1c23;
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 24px;
+      max-width: 440px;
+      width: 100%;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+    }
+    .admin-modal h3 {
+      margin: 0 0 10px;
+      font-size: 18px;
+      color: #ffffff;
+    }
+    .admin-modal p {
+      margin: 0 0 20px;
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+    .admin-modal-actions {
+      display: flex;
+      gap: 10px;
+      justify-content: flex-end;
+    }
+
+    /* Music Section Styles */
+    .music-subpage-tabs {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding-bottom: 10px;
+      margin-bottom: 24px;
+      scrollbar-width: thin;
+      scrollbar-color: var(--color-border) transparent;
+    }
+    .music-tab-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 18px;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--card-border);
+      color: var(--color-text-secondary);
+      font-size: 13.5px;
+      font-weight: 600;
+      white-space: nowrap;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .music-tab-btn:hover {
+      background: rgba(255, 255, 255, 0.1);
+      color: #ffffff;
+      border-color: rgba(255, 212, 59, 0.4);
+    }
+    .music-tab-btn.active {
+      background: var(--color-accent);
+      color: #0b0c0f;
+      border-color: var(--color-accent);
+      font-weight: 700;
+    }
+
+    .track-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 16px;
+    }
+    .track-card {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
+      padding: 12px 16px;
+      transition: transform 0.15s ease, border-color 0.15s ease;
+    }
+    .track-card:hover {
+      border-color: rgba(255, 212, 59, 0.35);
+      transform: translateX(3px);
+    }
+    .track-rank {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--color-accent);
+      width: 28px;
+      text-align: center;
+      flex-shrink: 0;
+    }
+    .track-artwork-wrap {
+      width: 52px;
+      height: 52px;
+      border-radius: 8px;
+      overflow: hidden;
+      flex-shrink: 0;
+      background: #252833;
+      display: grid;
+      place-items: center;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .track-artwork {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .track-info {
+      flex: 1;
+      min-width: 0;
+    }
+    .track-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: #ffffff;
+      margin: 0 0 4px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .track-artist {
+      font-size: 13px;
+      color: var(--muted);
+      margin: 0;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .btn-play-preview {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: rgba(255, 212, 59, 0.15);
+      border: 1px solid rgba(255, 212, 59, 0.4);
+      color: var(--color-accent);
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+      flex-shrink: 0;
+      transition: all 0.15s ease;
+    }
+    .btn-play-preview:hover {
+      background: var(--color-accent);
+      color: #0b0c0f;
+    }
+    .btn-play-preview.is-playing {
+      background: var(--color-accent);
+      color: #0b0c0f;
+    }
+
+    /* Skeleton Loading Placeholder */
+    .skeleton-track-card {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
+      padding: 12px 16px;
+    }
+    .skeleton-box {
+      background: linear-gradient(90deg, rgba(255, 255, 255, 0.05) 25%, rgba(255, 255, 255, 0.12) 50%, rgba(255, 255, 255, 0.05) 75%);
+      background-size: 200% 100%;
+      animation: skeleton-shimmer 1.5s infinite;
+      border-radius: 6px;
+    }
+    @keyframes skeleton-shimmer {
+      0% { background-position: 200% 0; }
+      100% { background-position: -200% 0; }
+    }
+
   </style>
 </head>
 <body>
@@ -1159,6 +1532,24 @@
             <svg viewBox="0 0 24 24"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
           </span>
           <span class="category-name" data-i18n="category.home">Home</span>
+        </a>
+      </section>
+
+      <section class="category" data-category="Music">
+        <a class="category-button" href="/music" data-route="/music">
+          <span class="category-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+          </span>
+          <span class="category-name">Music</span>
+        </a>
+      </section>
+
+      <section class="category" data-category="Admin">
+        <a class="category-button" href="/admin" data-route="/admin">
+          <span class="category-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M12 2a5 5 0 0 1 5 5v3a5 5 0 0 1-10 0V7a5 5 0 0 1 5-5z"/><path d="M17 11.5a7 7 0 0 1-10 0M12 19v3M8 22h8"/></svg>
+          </span>
+          <span class="category-name">Admin Panel</span>
         </a>
       </section>
 
@@ -1356,6 +1747,7 @@
             <li><a href="/help" data-route="/help" data-i18n="nav.help">Help &amp; Support</a></li>
             <li><a href="/contact" data-route="/contact" data-i18n="nav.contact">Contact Us</a></li>
             <li><a href="/accessibility" data-route="/accessibility" data-i18n="nav.accessibility">Accessibility</a></li>
+            <li><a href="/admin" data-route="/admin">Admin Panel</a></li>
           </ul>
         </div>
         <div class="footer-group">
@@ -1386,6 +1778,7 @@
     import { initPinnedStorySection } from '/src/js/animations/PinnedStorySection.js';
     import { initDirectionalReveal } from '/src/js/animations/DirectionalReveal.js';
     import { attachMicroInteractions } from '/src/js/animations/MicroInteractions.js';
+    import { executeButtonAction } from '/src/js/animations/ButtonAction.js';
 
     // Translation helper shorthand
     function t(key, fallback) {
@@ -4458,6 +4851,752 @@
       `;
     }
 
+    // Global Admin & Music state
+    const adminState = {
+      activeTab: 'users', // 'users' or 'broadcasts'
+      users: [],
+      broadcasts: [],
+      isLoadingUsers: false,
+      isLoadingBroadcasts: false,
+      userToDelete: null,
+      feedbackMessage: null,
+      feedbackType: null, // 'success' or 'error'
+      broadcastTitle: '',
+      broadcastMessage: '',
+      recipientGroup: 'all',
+      isConfirmingBroadcast: false
+    };
+
+    const musicState = {
+      activeCategory: 'global', // 'global', 'pop', 'hiphop'
+      tracks: [],
+      isLoading: false,
+      error: null,
+      playingTrackId: null,
+      audioElement: null
+    };
+
+    function renderAdminPage(currentPath = '/admin') {
+      const activeTab = currentPath.includes('/broadcasts') ? 'broadcasts' : 'users';
+      adminState.activeTab = activeTab;
+
+      return `
+        <!-- Admin Hero -->
+        <section class="section-story bg-dark hero-section">
+          <div class="badge-pill">Administration</div>
+          <h1 class="hero-title anim-zoom-in">Administrator Portal</h1>
+          <p class="body-lead anim-stagger-word">Manage system accounts, validation, verification, roles, and real-time broadcasts.</p>
+
+          <div class="actions-group">
+            <a class="btn-primary" href="/admin/users" data-route="/admin/users">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+              User Management
+            </a>
+            <a class="btn-secondary" href="/admin/broadcasts" data-route="/admin/broadcasts">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12A10 10 0 0 0 12 2v10z"/><path d="m19 19-3-3"/><path d="M2 12a10 10 0 0 0 10 10v-10z"/></svg>
+              Broadcast System
+            </a>
+          </div>
+          ${renderConvexDivider('fill-card')}
+        </section>
+
+        <!-- Admin Workspace Section -->
+        <section class="section-story bg-card">
+          <!-- Subpage Tabs -->
+          <div class="admin-subpage-tabs" role="tablist">
+            <a class="admin-tab-btn ${activeTab === 'users' ? 'active' : ''}" href="/admin/users" data-route="/admin/users" role="tab">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+              <span>User Accounts</span>
+            </a>
+            <a class="admin-tab-btn ${activeTab === 'broadcasts' ? 'active' : ''}" href="/admin/broadcasts" data-route="/admin/broadcasts" role="tab">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 11 18-5v12L3 14v-3z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/></svg>
+              <span>Broadcast System</span>
+            </a>
+          </div>
+
+          ${adminState.feedbackMessage ? `
+            <div style="padding: 12px 16px; border-radius: 10px; margin-bottom: 20px; font-size: 14px; font-weight: 600; display: flex; align-items: center; gap: 8px; ${adminState.feedbackType === 'success' ? 'background: rgba(43, 138, 62, 0.2); color: #69db7c; border: 1px solid rgba(43, 138, 62, 0.4);' : 'background: rgba(201, 42, 42, 0.2); color: #ff8787; border: 1px solid rgba(201, 42, 42, 0.4);'}">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="${adminState.feedbackType === 'success' ? 'm9 12 2 2 4-4' : 'M12 8v4m0 4h.01'}"/></svg>
+              <span>${adminState.feedbackMessage}</span>
+            </div>
+          ` : ''}
+
+          ${activeTab === 'users' ? renderAdminUsersTab() : renderAdminBroadcastsTab()}
+
+          ${renderConcaveDivider('fill-surface')}
+        </section>
+
+        <!-- Account Deletion Confirmation Modal -->
+        <div class="admin-modal-backdrop ${adminState.userToDelete ? 'open' : ''}" id="adminDeleteModal" aria-hidden="${!adminState.userToDelete}">
+          <div class="admin-modal" role="dialog" aria-modal="true" aria-labelledby="delModalTitle">
+            <h3 id="delModalTitle">Confirm Permanent Account Deletion</h3>
+            <p>Are you sure you want to delete the account for <strong id="deleteTargetName">${adminState.userToDelete?.name || 'this user'}</strong> (${adminState.userToDelete?.email || ''})? This will permanently remove their access records and notification inboxes.</p>
+            <div class="admin-modal-actions">
+              <button type="button" class="btn-admin-action" id="btnCancelDelete">Cancel</button>
+              <button type="button" class="btn-admin-action btn-admin-delete" id="btnConfirmDelete">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+                Delete Account
+              </button>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    function renderAdminUsersTab() {
+      if (adminState.isLoadingUsers && (!adminState.users || adminState.users.length === 0)) {
+        return `
+          <div style="display:flex; flex-direction:column; gap:16px;">
+            <div class="skeleton-box" style="height: 120px;"></div>
+            <div class="skeleton-box" style="height: 120px;"></div>
+            <div class="skeleton-box" style="height: 120px;"></div>
+          </div>
+        `;
+      }
+
+      if (!adminState.users || adminState.users.length === 0) {
+        return `
+          <div style="text-align: center; padding: 40px 16px;">
+            <p style="color: var(--muted); font-size: 15px;">No user accounts found or database connection in progress.</p>
+            <button class="btn-admin-action" id="btnRefreshUsers">Refresh User List</button>
+          </div>
+        `;
+      }
+
+      return `
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+          <h3 style="margin: 0; font-size: 18px; color: #ffffff;">Registered Accounts (${adminState.users.length})</h3>
+          <button class="btn-admin-action" id="btnRefreshUsers" style="font-size: 12px;">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/></svg>
+            Refresh List
+          </button>
+        </div>
+
+        <div class="admin-user-cards-list">
+          ${adminState.users.map(u => {
+            const validationTagClass = u.validationStatus === 'validated' ? 'tag-validated' : (u.validationStatus === 'rejected' ? 'tag-rejected' : 'tag-pending');
+            const verificationTagClass = u.verificationStatus === 'verified' ? 'tag-verified' : 'tag-unverified';
+
+            return `
+              <div class="admin-card" data-user-id="${u.id}">
+                <div class="admin-user-header">
+                  <div class="admin-avatar">${u.avatar || u.name.substring(0, 2).toUpperCase()}</div>
+                  <div class="admin-user-info">
+                    <h4>${u.name}</h4>
+                    <p>${u.email}</p>
+                  </div>
+                </div>
+
+                <div class="status-tags">
+                  <span class="status-tag ${validationTagClass}">Validation: ${u.validationStatus}</span>
+                  <span class="status-tag ${verificationTagClass}">${u.verificationStatus === 'verified' ? 'Verified ✓' : 'Unverified'}</span>
+                  <span class="status-tag tag-role">Role: ${u.role}</span>
+                  ${u.suspended ? '<span class="status-tag tag-suspended">Suspended</span>' : ''}
+                </div>
+
+                <div class="admin-actions-bar">
+                  <!-- Validation actions -->
+                  ${u.validationStatus !== 'validated' ? `
+                    <button type="button" class="btn-admin-action btn-admin-approve" data-user-action="validate" data-status="validated" data-user-id="${u.id}">
+                      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                      Approve Validation
+                    </button>
+                  ` : `
+                    <button type="button" class="btn-admin-action btn-admin-reject" data-user-action="validate" data-status="rejected" data-user-id="${u.id}">
+                      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                      Reject Validation
+                    </button>
+                  `}
+
+                  <!-- Verification actions -->
+                  ${u.verificationStatus !== 'verified' ? `
+                    <button type="button" class="btn-admin-action btn-admin-verify" data-user-action="verify" data-status="verified" data-user-id="${u.id}">
+                      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+                      Verify Account
+                    </button>
+                  ` : `
+                    <button type="button" class="btn-admin-action btn-admin-revoke" data-user-action="verify" data-status="unverified" data-user-id="${u.id}">
+                      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><line x1="9" y1="9" x2="15" y2="15"/><line x1="15" y1="9" x2="9" y2="15"/></svg>
+                      Revoke Verification
+                    </button>
+                  `}
+
+                  <!-- Role promotion -->
+                  <div style="display:inline-flex; align-items:center; gap:6px;">
+                    <select class="role-select-compact" data-user-role-select="${u.id}">
+                      <option value="user" ${u.role === 'user' ? 'selected' : ''}>User</option>
+                      <option value="editor" ${u.role === 'editor' ? 'selected' : ''}>Editor</option>
+                      <option value="admin" ${u.role === 'admin' ? 'selected' : ''}>Admin</option>
+                    </select>
+                    <button type="button" class="btn-admin-action btn-admin-promote" data-user-action="promote" data-user-id="${u.id}">
+                      Promote Role
+                    </button>
+                  </div>
+
+                  <!-- Account Deletion -->
+                  <button type="button" class="btn-admin-action btn-admin-delete" data-trigger-delete="${u.id}" data-user-name="${u.name}" data-user-email="${u.email}">
+                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+                    Delete Account
+                  </button>
+                </div>
+              </div>
+            `;
+          }).join('')}
+        </div>
+      `;
+    }
+
+    function renderAdminBroadcastsTab() {
+      return `
+        <!-- Broadcast Composer -->
+        <div class="admin-card" style="margin-bottom: 24px;">
+          <h3 style="margin: 0 0 6px; font-size: 18px; color: #ffffff;">Compose Announcement</h3>
+          <p style="margin: 0 0 16px; font-size: 13.5px; color: var(--muted);">Announcements are saved to the platform database and delivered directly to target recipient inboxes.</p>
+
+          <form id="adminBroadcastForm" onsubmit="return false;">
+            <div style="margin-bottom: 14px;">
+              <label style="display:block; margin-bottom:6px; font-size:12px; font-weight:700; color:var(--muted); text-transform:uppercase;">Broadcast Title</label>
+              <input type="text" id="broadcastTitle" class="help-search-input" placeholder="e.g., Scheduled Maintenance or New Feature Spotlight" value="${adminState.broadcastTitle}" required style="border-radius:10px;">
+            </div>
+
+            <div style="margin-bottom: 14px;">
+              <label style="display:block; margin-bottom:6px; font-size:12px; font-weight:700; color:var(--muted); text-transform:uppercase;">Recipient Group</label>
+              <select id="broadcastRecipients" class="role-select-compact" style="width:100%; height:44px; padding:0 12px; font-size:14px; border-radius:10px;">
+                <option value="all" ${adminState.recipientGroup === 'all' ? 'selected' : ''}>All Registered Users (Global Broadcast)</option>
+                <option value="editors" ${adminState.recipientGroup === 'editors' ? 'selected' : ''}>Platform Editors & Administrators</option>
+                <option value="verified" ${adminState.recipientGroup === 'verified' ? 'selected' : ''}>Verified Accounts Only</option>
+                <option value="unverified" ${adminState.recipientGroup === 'unverified' ? 'selected' : ''}>Unverified Accounts Only</option>
+                <option value="pending" ${adminState.recipientGroup === 'pending' ? 'selected' : ''}>Pending Validation Accounts</option>
+              </select>
+            </div>
+
+            <div style="margin-bottom: 16px;">
+              <label style="display:block; margin-bottom:6px; font-size:12px; font-weight:700; color:var(--muted); text-transform:uppercase;">Message Composition</label>
+              <textarea id="broadcastMessage" class="help-search-input" placeholder="Type your broadcast message here..." rows="4" style="height:auto; min-height:100px; padding:12px; border-radius:10px; resize:vertical;" required>${adminState.broadcastMessage}</textarea>
+            </div>
+
+            <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
+              <button type="button" class="btn-primary" id="btnSendBroadcast" style="width: auto; padding: 12px 24px; border-radius: 10px;">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                Send Broadcast
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <!-- Broadcast History Log -->
+        <div style="margin-top: 28px;">
+          <h3 style="margin: 0 0 14px; font-size: 18px; color: #ffffff;">Broadcast History & Delivery Records</h3>
+          ${adminState.isLoadingBroadcasts ? `
+            <div class="skeleton-box" style="height: 90px; margin-bottom: 12px;"></div>
+            <div class="skeleton-box" style="height: 90px;"></div>
+          ` : (!adminState.broadcasts || adminState.broadcasts.length === 0) ? `
+            <p style="color: var(--muted); font-size: 14px;">No broadcast transmissions recorded in the database yet.</p>
+          ` : `
+            <div style="display:flex; flex-direction:column; gap:12px;">
+              ${adminState.broadcasts.map(bc => `
+                <div class="admin-card" style="padding: 16px;">
+                  <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:6px; flex-wrap:wrap; gap:8px;">
+                    <h4 style="margin:0; font-size:16px; color:#ffffff;">${bc.title}</h4>
+                    <span class="status-tag tag-validated">Delivered (${bc.recipientsCount} recipients)</span>
+                  </div>
+                  <p style="margin:0 0 10px; font-size:13.5px; color:#c8cad3; line-height:1.45;">${bc.message}</p>
+                  <div style="font-size:12px; color:var(--muted); display:flex; gap:16px;">
+                    <span>Target: <strong>${bc.recipientGroup}</strong></span>
+                    <span>Sent: <strong>${new Date(bc.sentAt).toLocaleString()}</strong></span>
+                  </div>
+                </div>
+              `).join('')}
+            </div>
+          `}
+        </div>
+      `;
+    }
+
+    async function loadAdminUsers() {
+      adminState.isLoadingUsers = true;
+      try {
+        const res = await fetch('/api/admin/users', {
+          headers: { 'Authorization': 'Bearer admin-token', 'X-Admin-Role': 'admin' }
+        });
+        const data = await res.json();
+        if (data.success && Array.isArray(data.users)) {
+          adminState.users = data.users;
+        }
+      } catch (e) {
+        console.error('Failed to load admin users:', e);
+      } finally {
+        adminState.isLoadingUsers = false;
+        renderPage(window.location.pathname);
+      }
+    }
+
+    async function loadAdminBroadcasts() {
+      adminState.isLoadingBroadcasts = true;
+      try {
+        const res = await fetch('/api/admin/broadcasts', {
+          headers: { 'Authorization': 'Bearer admin-token', 'X-Admin-Role': 'admin' }
+        });
+        const data = await res.json();
+        if (data.success && Array.isArray(data.broadcasts)) {
+          adminState.broadcasts = data.broadcasts;
+        }
+      } catch (e) {
+        console.error('Failed to load admin broadcasts:', e);
+      } finally {
+        adminState.isLoadingBroadcasts = false;
+        renderPage(window.location.pathname);
+      }
+    }
+
+    function renderMusicPage() {
+      const activeCat = musicState.activeCategory || 'global';
+
+      const MUSIC_CATEGORIES = [
+        {
+          id: 'global',
+          title: 'Global Top 10',
+          icon: `<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15 15 0 0 1 0 20"/><path d="M12 2a15 15 0 0 0 0 20"/></svg>`
+        },
+        {
+          id: 'pop',
+          title: 'Pop Hits Top 10',
+          icon: `<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>`
+        },
+        {
+          id: 'hiphop',
+          title: 'Hip-Hop & Rap Top 10',
+          icon: `<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/><circle cx="12" cy="14" r="4"/><line x1="12" y1="6" x2="12.01" y2="6"/></svg>`
+        }
+      ];
+
+      return `
+        <!-- Music Hero Section -->
+        <section class="section-story bg-dark hero-section">
+          <div class="badge-pill">Soundscapes &amp; Charts</div>
+          <h1 class="hero-title anim-zoom-in">Official Top 10 Music Charts</h1>
+          <p class="body-lead anim-stagger-word">Genuine real-time music chart rankings directly fetched from leading international music providers.</p>
+          ${renderConvexDivider('fill-card')}
+        </section>
+
+        <!-- Charts Interactive Section -->
+        <section class="section-story bg-card">
+          <!-- Category Selector Buttons matching Movies/Help selectors -->
+          <div class="music-subpage-tabs" role="tablist" aria-label="Music Chart Categories">
+            ${MUSIC_CATEGORIES.map(cat => {
+              const isActive = activeCat === cat.id;
+              return `
+                <button type="button" class="music-tab-btn ${isActive ? 'active' : ''}" data-music-category="${cat.id}" role="tab" aria-selected="${isActive}">
+                  ${cat.icon}
+                  <span>${cat.title}</span>
+                </button>
+              `;
+            }).join('')}
+          </div>
+
+          <div id="musicChartContent">
+            ${renderMusicChartContent()}
+          </div>
+
+          ${renderConcaveDivider('fill-surface')}
+        </section>
+
+        <!-- Information Card -->
+        <section class="section-story bg-surface">
+          <div class="admin-card" style="text-align: center; padding: 28px;">
+            <h3 style="margin: 0 0 8px; font-size: 18px; color: #ffffff;">Continuous Web Playback</h3>
+            <p style="margin: 0 0 16px; font-size: 14px; color: var(--muted); max-width: 500px; margin-left: auto; margin-right: auto;">
+              Preview chart-topping tracks directly within sanyuhub's HTML5 audio player. Lock-screen audio and background streaming supported across mobile browsers.
+            </p>
+            <a class="btn-primary" href="/devices/website" data-route="/devices/website" style="width: auto; display: inline-flex; padding: 10px 22px;">
+              Explore Supported Devices
+            </a>
+          </div>
+          ${renderConvexDivider('fill-footer')}
+        </section>
+      `;
+    }
+
+    function renderMusicChartContent() {
+      if (musicState.isLoading) {
+        return `
+          <div class="track-list">
+            ${Array.from({ length: 10 }).map((_, i) => `
+              <div class="skeleton-track-card">
+                <div class="skeleton-box" style="width: 24px; height: 24px; border-radius: 4px;"></div>
+                <div class="skeleton-box" style="width: 52px; height: 52px; border-radius: 8px;"></div>
+                <div style="flex:1; display:flex; flex-direction:column; gap:8px;">
+                  <div class="skeleton-box" style="width: 55%; height: 16px;"></div>
+                  <div class="skeleton-box" style="width: 35%; height: 13px;"></div>
+                </div>
+                <div class="skeleton-box" style="width: 38px; height: 38px; border-radius: 50%;"></div>
+              </div>
+            `).join('')}
+          </div>
+        `;
+      }
+
+      if (musicState.error) {
+        return `
+          <div class="admin-card" style="text-align:center; padding: 36px 16px;">
+            <svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="#ff6b6b" stroke-width="2" style="margin-bottom:12px;"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            <h4 style="margin:0 0 6px; font-size: 17px; color: #ffffff;">Chart Service Unavailable</h4>
+            <p style="margin:0 0 16px; font-size: 14px; color: var(--muted);">${musicState.error}</p>
+            <button type="button" class="btn-primary" id="btnRetryMusic" style="width:auto; padding: 10px 20px;">
+              Retry Fetching Chart
+            </button>
+          </div>
+        `;
+      }
+
+      if (!musicState.tracks || musicState.tracks.length === 0) {
+        return `
+          <div class="admin-card" style="text-align:center; padding: 36px 16px;">
+            <p style="color: var(--muted); font-size: 14px;">No chart songs available for this category right now.</p>
+            <button type="button" class="btn-primary" id="btnRetryMusic" style="width:auto; padding: 10px 20px;">
+              Refresh Charts
+            </button>
+          </div>
+        `;
+      }
+
+      return `
+        <div class="track-list">
+          ${musicState.tracks.map((t, idx) => {
+            const isPlaying = musicState.playingTrackId === t.id;
+            return `
+              <div class="track-card" data-track-id="${t.id}">
+                <div class="track-rank">#${t.rank || (idx + 1)}</div>
+                <div class="track-artwork-wrap">
+                  ${t.artwork ? `
+                    <img class="track-artwork" src="${t.artwork}" alt="${t.title}" loading="lazy" onerror="this.style.display='none';">
+                  ` : `
+                    <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="#a4a9b4" stroke-width="1.8"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+                  `}
+                </div>
+                <div class="track-info">
+                  <h4 class="track-title">${t.title}</h4>
+                  <p class="track-artist">${t.artist}</p>
+                </div>
+                ${t.previewUrl ? `
+                  <button type="button" class="btn-play-preview ${isPlaying ? 'is-playing' : ''}" data-play-preview="${t.previewUrl}" data-track-id="${t.id}" aria-label="${isPlaying ? 'Pause' : 'Play preview for ' + t.title}">
+                    ${isPlaying ? `
+                      <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
+                    ` : `
+                      <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                    `}
+                  </button>
+                ` : ''}
+              </div>
+            `;
+          }).join('')}
+        </div>
+      `;
+    }
+
+    async function loadMusicCharts(category = 'global') {
+      musicState.isLoading = true;
+      musicState.error = null;
+      renderPage(window.location.pathname);
+
+      try {
+        const res = await fetch(`/api/music/charts?category=${category}`);
+        const data = await res.json();
+        if (!res.ok || !data.success) {
+          throw new Error(data.error || 'Failed to fetch music chart');
+        }
+        musicState.tracks = data.tracks || [];
+      } catch (err) {
+        console.error('Failed to load music charts:', err);
+        musicState.error = err.message || 'Unable to connect to music chart service.';
+        musicState.tracks = [];
+      } finally {
+        musicState.isLoading = false;
+        renderPage(window.location.pathname);
+      }
+    }
+
+    function setupMusicListeners() {
+      const workspaceEl = document.getElementById('workspace');
+      if (!workspaceEl) return;
+
+      // Initial chart fetch if empty
+      if ((!musicState.tracks || musicState.tracks.length === 0) && !musicState.isLoading && !musicState.error) {
+        loadMusicCharts(musicState.activeCategory);
+      }
+
+      // Music category selector buttons with tactile ButtonAction
+      workspaceEl.querySelectorAll('[data-music-category]').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          e.preventDefault();
+          const targetCat = btn.getAttribute('data-music-category');
+          if (musicState.activeCategory === targetCat && musicState.tracks.length > 0) return;
+
+          musicState.activeCategory = targetCat;
+          // Stop current audio preview if playing
+          if (musicState.audioElement) {
+            musicState.audioElement.pause();
+            musicState.playingTrackId = null;
+          }
+
+          executeButtonAction(btn, async () => {
+            await loadMusicCharts(targetCat);
+          }, {
+            loadingText: 'Loading Chart...',
+            successText: btn.textContent.trim(),
+            errorText: 'Failed'
+          });
+        });
+      });
+
+      // Retry button
+      const btnRetry = workspaceEl.querySelector('#btnRetryMusic');
+      if (btnRetry) {
+        btnRetry.addEventListener('click', () => {
+          executeButtonAction(btnRetry, () => loadMusicCharts(musicState.activeCategory), {
+            loadingText: 'Connecting...',
+            successText: 'Loaded',
+            errorText: 'Failed'
+          });
+        });
+      }
+
+      // Audio preview play/pause
+      workspaceEl.querySelectorAll('[data-play-preview]').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const trackId = btn.getAttribute('data-track-id');
+          const previewUrl = btn.getAttribute('data-play-preview');
+
+          if (musicState.playingTrackId === trackId) {
+            // Pause
+            if (musicState.audioElement) {
+              musicState.audioElement.pause();
+            }
+            musicState.playingTrackId = null;
+            renderPage(window.location.pathname);
+          } else {
+            // Play new
+            if (musicState.audioElement) {
+              musicState.audioElement.pause();
+            }
+            const audio = new Audio(previewUrl);
+            musicState.audioElement = audio;
+            musicState.playingTrackId = trackId;
+            audio.play().catch(e => console.warn('Audio play restricted:', e));
+
+            audio.addEventListener('ended', () => {
+              musicState.playingTrackId = null;
+              renderPage(window.location.pathname);
+            });
+
+            renderPage(window.location.pathname);
+          }
+        });
+      });
+    }
+
+    function setupAdminListeners() {
+      const workspaceEl = document.getElementById('workspace');
+      if (!workspaceEl) return;
+
+      // Load initial data if empty
+      if (adminState.activeTab === 'users' && (!adminState.users || adminState.users.length === 0) && !adminState.isLoadingUsers) {
+        loadAdminUsers();
+      } else if (adminState.activeTab === 'broadcasts' && (!adminState.broadcasts || adminState.broadcasts.length === 0) && !adminState.isLoadingBroadcasts) {
+        loadAdminBroadcasts();
+      }
+
+      // Refresh Users button
+      const btnRefresh = workspaceEl.querySelector('#btnRefreshUsers');
+      if (btnRefresh) {
+        btnRefresh.addEventListener('click', () => {
+          executeButtonAction(btnRefresh, () => loadAdminUsers(), {
+            loadingText: 'Refreshing...',
+            successText: 'Refreshed',
+            errorText: 'Failed'
+          });
+        });
+      }
+
+      // User validation & verification buttons
+      workspaceEl.querySelectorAll('[data-user-action]').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          e.preventDefault();
+          const action = btn.getAttribute('data-user-action');
+          const userId = btn.getAttribute('data-user-id');
+          const targetStatus = btn.getAttribute('data-status');
+
+          let payload = { userId, action };
+          let loadingLabel = 'Processing...';
+          let successLabel = 'Updated';
+
+          if (action === 'validate') {
+            payload.validationStatus = targetStatus;
+            loadingLabel = targetStatus === 'validated' ? 'Validating...' : 'Rejecting...';
+            successLabel = targetStatus === 'validated' ? 'Validated' : 'Rejected';
+          } else if (action === 'verify') {
+            payload.verificationStatus = targetStatus;
+            loadingLabel = targetStatus === 'verified' ? 'Verifying...' : 'Revoking...';
+            successLabel = targetStatus === 'verified' ? 'Verified' : 'Revoked';
+          } else if (action === 'promote') {
+            const selectEl = workspaceEl.querySelector(`[data-user-role-select="${userId}"]`);
+            const selectedRole = selectEl ? selectEl.value : 'editor';
+            payload.role = selectedRole;
+            loadingLabel = 'Promoting...';
+            successLabel = 'Promoted';
+          }
+
+          executeButtonAction(btn, async () => {
+            const res = await fetch('/api/admin/users', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer admin-token',
+                'X-Admin-Role': 'admin'
+              },
+              body: JSON.stringify(payload)
+            });
+            const data = await res.json();
+            if (!res.ok || !data.success) {
+              throw new Error(data.error || 'Operation failed');
+            }
+            // Update user in local state immediately
+            if (data.user) {
+              const uIdx = adminState.users.findIndex(u => u.id === userId);
+              if (uIdx !== -1) {
+                adminState.users[uIdx] = data.user;
+              }
+            }
+            return data;
+          }, {
+            loadingText: loadingLabel,
+            successText: successLabel,
+            errorText: 'Error',
+            onSuccess: () => {
+              setTimeout(() => renderPage(window.location.pathname), 400);
+            }
+          });
+        });
+      });
+
+      // Trigger Delete modal
+      workspaceEl.querySelectorAll('[data-trigger-delete]').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const userId = btn.getAttribute('data-trigger-delete');
+          const name = btn.getAttribute('data-user-name');
+          const email = btn.getAttribute('data-user-email');
+          adminState.userToDelete = { id: userId, name, email };
+          renderPage(window.location.pathname);
+        });
+      });
+
+      // Cancel Delete
+      const btnCancelDel = workspaceEl.querySelector('#btnCancelDelete');
+      if (btnCancelDel) {
+        btnCancelDel.addEventListener('click', () => {
+          adminState.userToDelete = null;
+          renderPage(window.location.pathname);
+        });
+      }
+
+      // Confirm Delete
+      const btnConfirmDel = workspaceEl.querySelector('#btnConfirmDelete');
+      if (btnConfirmDel) {
+        btnConfirmDel.addEventListener('click', () => {
+          if (!adminState.userToDelete) return;
+          const targetId = adminState.userToDelete.id;
+
+          executeButtonAction(btnConfirmDel, async () => {
+            const res = await fetch('/api/admin/users', {
+              method: 'DELETE',
+              headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer admin-token',
+                'X-Admin-Role': 'admin'
+              },
+              body: JSON.stringify({ userId: targetId })
+            });
+            const data = await res.json();
+            if (!res.ok || !data.success) {
+              throw new Error(data.error || 'Failed to delete account');
+            }
+            // Remove user from list
+            adminState.users = adminState.users.filter(u => u.id !== targetId);
+            adminState.userToDelete = null;
+            return data;
+          }, {
+            loadingText: 'Deleting...',
+            successText: 'Deleted',
+            errorText: 'Delete Failed',
+            onSuccess: () => {
+              setTimeout(() => renderPage(window.location.pathname), 400);
+            }
+          });
+        });
+      }
+
+      // Send Broadcast Button
+      const btnSendBroadcast = workspaceEl.querySelector('#btnSendBroadcast');
+      if (btnSendBroadcast) {
+        // Track input values in state
+        const titleInput = workspaceEl.querySelector('#broadcastTitle');
+        const msgInput = workspaceEl.querySelector('#broadcastMessage');
+        const recSelect = workspaceEl.querySelector('#broadcastRecipients');
+
+        if (titleInput) titleInput.addEventListener('input', (e) => { adminState.broadcastTitle = e.target.value; });
+        if (msgInput) msgInput.addEventListener('input', (e) => { adminState.broadcastMessage = e.target.value; });
+        if (recSelect) recSelect.addEventListener('change', (e) => { adminState.recipientGroup = e.target.value; });
+
+        btnSendBroadcast.addEventListener('click', () => {
+          const title = (titleInput ? titleInput.value : adminState.broadcastTitle).trim();
+          const message = (msgInput ? msgInput.value : adminState.broadcastMessage).trim();
+          const recipientGroup = recSelect ? recSelect.value : adminState.recipientGroup;
+
+          if (!title || title.length < 3) {
+            alert('Please enter a broadcast title (at least 3 characters).');
+            return;
+          }
+          if (!message || message.length < 5) {
+            alert('Please enter a broadcast message (at least 5 characters).');
+            return;
+          }
+
+          if (!confirm(`Are you sure you want to broadcast this announcement to "${recipientGroup}" recipients?`)) {
+            return;
+          }
+
+          executeButtonAction(btnSendBroadcast, async () => {
+            const res = await fetch('/api/admin/broadcasts', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer admin-token',
+                'X-Admin-Role': 'admin'
+              },
+              body: JSON.stringify({ title, message, recipientGroup })
+            });
+            const data = await res.json();
+            if (!res.ok || !data.success) {
+              throw new Error(data.error || 'Broadcast failed');
+            }
+            adminState.broadcastTitle = '';
+            adminState.broadcastMessage = '';
+            if (data.broadcast) {
+              adminState.broadcasts.unshift(data.broadcast);
+            }
+            return data;
+          }, {
+            loadingText: 'Sending...',
+            successText: 'Broadcast Sent',
+            errorText: 'Failed',
+            onSuccess: () => {
+              setTimeout(() => renderPage(window.location.pathname), 500);
+            }
+          });
+        });
+      }
+    }
+
     // Attach event listeners for Contact page controls
     function setupContactListeners() {
       const workspaceEl = document.getElementById('workspace');
@@ -4710,7 +5849,11 @@
       '/contact': { titleKey: 'page.contact.title', type: 'contact' },
       '/accessibility': { titleKey: 'page.accessibility.title', type: 'accessibility' },
       '/privacy': { titleKey: 'page.privacy.title', type: 'privacy' },
-      '/terms': { titleKey: 'page.terms.title', type: 'terms' }
+      '/terms': { titleKey: 'page.terms.title', type: 'terms' },
+      '/admin': { titleKey: 'Admin Panel', type: 'admin' },
+      '/admin/users': { titleKey: 'Admin User Management', type: 'admin' },
+      '/admin/broadcasts': { titleKey: 'Admin Broadcast System', type: 'admin' },
+      '/music': { titleKey: 'Music & Charts', type: 'music' }
     };
 
     const menuToggle = document.getElementById('menuToggle');
@@ -4862,6 +6005,12 @@
               } else if (routeInfo.type === 'help') {
                 workspace.innerHTML = renderHelpPage(path);
                 setupHelpListeners();
+              } else if (routeInfo.type === 'admin') {
+                workspace.innerHTML = renderAdminPage(path);
+                setupAdminListeners();
+              } else if (routeInfo.type === 'music') {
+                workspace.innerHTML = renderMusicPage();
+                setupMusicListeners();
               } else if (routeInfo.type === 'about') {
                 workspace.innerHTML = renderAboutPage();
               } else if (routeInfo.type === 'terms') {
